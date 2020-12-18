@@ -3,8 +3,8 @@
 # Shortcuts
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias code="cd ~/Code"
-alias v="cd ~/Code/Valet"
+alias projects="cd ~/Projects"
+alias v="cd ~/Projects/Valet"
 
 # PHP
 alias a="php artisan"
