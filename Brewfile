@@ -34,7 +34,7 @@ brew "python@3.9"
 # brew "postgresql", restart_service: true
 # brew "redis", restart_service: true
 
-# Cask
+# Cask Apps
 cask "alfred"
 cask "blender"
 cask "brave-browser-beta"
@@ -63,4 +63,4 @@ mas "Bear", id: 1091189122
 mas "Contrast", id: 1254981365
 mas "Magnet", id: 441258766
 mas "NordVPN IKE", id: 1116599239
-mas "The Unarchiver", id: 425424353
+# mas "The Unarchiver", id: 425424353

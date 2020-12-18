@@ -3,30 +3,30 @@ so ~/.vim/plugins.vim
 "--------- General ----------"
 syntax on
 
-set backspace=indent,eol,start			     "Make backspace perform like any other editor
-let mapleader=','                            "Change default leader to a comma instead of a backslash
+set backspace=indent,eol,start              "Make backspace perform like any other editor
+let mapleader=','                           "Change default leader to a comma instead of a backslash
 
 
 "---------- Visuals ----------"
-colorscheme atom-dark				         "Change the default colorscheme
-set guifont=Operator\ Mono\ Book:h14		 "Set default font face and size
-set linespace=10				             "Set line spacing to a reasonable level
-set number					                 "Activate line numbers
+colorscheme atom-dark				                "Change the default colorscheme
+set guifont=Operator\ Mono\ Book:h14		    "Set default font face and size
+set linespace=10				                    "Set line spacing to a reasonable level
+set number					                        "Activate line numbers
 
-set guioptions-=l                            "Disable left-hand scrollbars
-set guioptions-=L				             "Disable left-hand scrollbars when split
-set guioptions-=r				             "Disable right-hand scrollbars
-set guioptions-=R				             "Disable right-hand scrollbars when split
+set guioptions-=l                           "Disable left-hand scrollbars
+set guioptions-=L				                    "Disable left-hand scrollbars when split
+set guioptions-=r				                    "Disable right-hand scrollbars
+set guioptions-=R				                    "Disable right-hand scrollbars when split
 
-set guioptions-=e				             "Disable custom gui tabs
+set guioptions-=e				                    "Disable custom gui tabs
 
 "Highlighting
 hi vertsplit guifg=bg guibg=bg
 
 
 "---------- Splits ----------"
-set splitbelow					             "Create horizontal splits below current window
-set splitright					             "Create vertical splits to the right of current window
+set splitbelow					                    "Create horizontal splits below current window
+set splitright					                    "Create vertical splits to the right of current window
 
 "Shortcuts to switch window splits
 nmap <C-H> <C-W><C-H>
@@ -36,8 +36,8 @@ nmap <C-L> <C-W><C-L>
 
 
 "---------- Searching ----------"
-set hlsearch					             "Highlight search results
-set incsearch					             "Highlight search results whilst typing query
+set hlsearch					                      "Highlight search results
+set incsearch					                      "Highlight search results whilst typing query
 
 
 "---------- Mappings ----------"
@@ -60,7 +60,7 @@ augroup end
 "/
 "/ CtrlP
 "/
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git' 		"Exclude folders from results
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'   "Exclude folders from results
 
 "Allow the use of Cmd+P for CtrlP
 nmap <D-p> :CtrlP<cr>
@@ -75,7 +75,7 @@ nmap <D-e> :CtrlPMRUFiles<cr>
 "/
 "/ Nerd Tree
 "/
-let NERDTreeHijackNetrw = 0					"Disallow Nerdtree from hijacking hyphen
+let NERDTreeHijackNetrw = 0					        "Disallow Nerdtree from hijacking hyphen
 
 "Add shortcut for nerd tree
 nmap <D-1> :NERDTreeToggle<cr>
