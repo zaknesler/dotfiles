@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# Shortcuts
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias code="cd ~/Code"
+alias v="cd ~/Code/Valet"
+
+# PHP
+alias a="php artisan"
+alias c="composer"
+alias ci="composer install"
+alias cr="composer require"
+alias cu="composer update"
+alias cda="composer dump-autoload -o"
+alias mfs="php artisan migrate:fresh --seed"
+alias pu="./vendor/bin/phpunit"
+alias pe="./vendor/bin/phpunit --exclude-group"
+alias pf="./vendor/bin/phpunit --filter"
+alias pg="./vendor/bin/phpunit --group"
+alias tinker="php artisan tinker"
+
+# Git
+alias gaa="git add ."
+alias gc="git commit -m"
+alias gco="git checkout"
+alias gcom="git checkout master"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gpl="git pull"
+alias gpsh="git push"
+alias gs="git status"
+alias nah="git reset --hard && git clean -df"
+alias wip="git add . && git commit -m 'wip' -q"
+
+# Other
+alias copyssh='command cat ~/.ssh/id_rsa.pub | pbcopy'
+alias tdb="touch ./database/database.sqlite"
+alias l="ls -laFH"
+alias o.="o ."
+alias o="open"
+alias pip="pip3"
+alias py="python3"
+alias python="python3"
+alias weather="curl https://wttr.in/\?u\&0 && echo ''"
+
+# IP addresses
+alias ip="curl https://diagnostic.opendns.com/myip ; echo"
+alias localip="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
