@@ -32,3 +32,9 @@ function mkd() {
 function dns() {
     dig +nocmd "$1" any +multiline +noall +answer
 }
+
+# Create new Laravel Sail project
+function sail-create() {
+    curl -s https://laravel.build/$1 | bash
+    cd $1
+}

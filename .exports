@@ -2,8 +2,12 @@
 
 # PATH
 export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 export PATH="$PATH:$HOME/Users/zak/.local/bin"
 export PATH="$PATH:$HOME/usr/local/sbin"
+
+# Java GTK
+export CLASSPATH=/usr/share/java/gtk.jar:.
 
 # Load NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"

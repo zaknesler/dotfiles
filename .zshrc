@@ -1,8 +1,3 @@
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# Include exports
-source ~/.exports
-
 ####################
 #   ZSH Settings   #
 ####################
@@ -28,9 +23,13 @@ source $ZSH/oh-my-zsh.sh
 # SSH key
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Include bash aliases and functions
+# Include bash exports, aliases, and functions
+source ~/.exports
 source ~/.aliases
 source ~/.functions
+
+# Ruby Env
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Fix percent sign showing up on startup
 # https://superuser.com/a/645612
