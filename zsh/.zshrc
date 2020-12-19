@@ -3,7 +3,7 @@
 ####################
 
 # Path to oh-my-zsh installation
-export ZSH="/Users/zak/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 
 # ZSH theme to use
 ZSH_THEME="robbyrussell"
