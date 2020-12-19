@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # PATH
 export PATH="$PATH:$HOME/.composer/vendor/bin"          # Composer
@@ -10,15 +10,19 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # OS-specific
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then                # Linux
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+
     # Java Home
     export JAVA_HOME=/usr/lib/jvm/java-1.14.0-openjdk-amd64/bin
 
     # Java GTK
     export CLASSPATH=/usr/share/java/gtk.jar:.
-elif [[ "$OSTYPE" == "darwin"* ]]; then                 # OSX
+
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+
     # Go Path
     export GOPATH=$HOME/Projects/Go
+
 fi
 
 # Make Sublime the default editor
