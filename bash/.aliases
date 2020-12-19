@@ -60,7 +60,7 @@ alias tdb="touch ./database/database.sqlite"
 alias weather="curl https://wttr.in/\?u\&0 && echo ''"
 
 # Other
-alias l="ls -laFH"
+alias l="ls -lAh"
 alias o.="o ."
 alias o="open"
 # alias open="xdg-open" # Ubuntu
