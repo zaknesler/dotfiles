@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
 # PATH
-export PATH="$PATH:$HOME/.composer/vendor/bin"
-export PATH="$PATH:$HOME/.config/composer/vendor/bin"
-export PATH="$PATH:$HOME/Users/zak/.local/bin"
-export PATH="$PATH:$HOME/usr/local/sbin"
+export PATH="$PATH:$HOME/.composer/vendor/bin"          # Composer
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"   # Composer
+export PATH="$PATH:$HOME/Users/zak/.local/bin"          # User binaries
 
 # Java GTK
 export CLASSPATH=/usr/share/java/gtk.jar:.
@@ -16,7 +15,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Go Path
 export GOPATH=$HOME/Projects/Go
 
-# Make vim the default editor
+# Make Sublime the default editor
 export EDITOR='subl'
 
 # Enable persistent REPL history for `node`
