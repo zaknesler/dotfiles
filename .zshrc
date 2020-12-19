@@ -32,9 +32,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 source ~/.aliases
 source ~/.functions
 
-# Source NVM (node version manager)
-source $(brew --prefix nvm)/nvm.sh
-
 # Fix percent sign showing up on startup
 # https://superuser.com/a/645612
 unsetopt PROMPT_SP
