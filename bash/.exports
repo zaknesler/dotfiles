@@ -5,15 +5,21 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"          # Composer
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"   # Composer
 export PATH="$PATH:$HOME/Users/zak/.local/bin"          # User binaries
 
-# Java GTK
-export CLASSPATH=/usr/share/java/gtk.jar:.
-
 # Load NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Go Path
-export GOPATH=$HOME/Projects/Go
+# OS-specific
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then                # Linux
+    # Java Home
+    export JAVA_HOME=/usr/lib/jvm/java-1.14.0-openjdk-amd64/bin
+
+    # Java GTK
+    export CLASSPATH=/usr/share/java/gtk.jar:.
+elif [[ "$OSTYPE" == "darwin"* ]]; then                 # OSX
+    # Go Path
+    export GOPATH=$HOME/Projects/Go
+fi
 
 # Make Sublime the default editor
 export EDITOR='subl'

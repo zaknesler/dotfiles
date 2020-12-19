@@ -6,8 +6,7 @@ alias sudo='sudo '
 # Shortcuts
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias projects="cd ~/Projects"
-alias v="cd ~/Projects/Valet"
+alias code="cd ~/Code"
 
 # Git
 alias gaa="git add ."
