@@ -9,8 +9,9 @@ fi
 #   ZSH Settings   #
 ####################
 
+
 # Path to oh-my-zsh installation
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
 
 # ZSH theme to use
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -35,12 +36,12 @@ source $ZSH/oh-my-zsh.sh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Include bash exports, aliases, and functions
-source ~/.exports
-source ~/.aliases
-source ~/.functions
+source $ZDOTDIR/.exports
+source $ZDOTDIR/.aliases
+source $ZDOTDIR/.functions
+
+# P10K Configuration
+source $ZDOTDIR/.p10k.zsh
 
 # Ruby Env
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -8,6 +8,7 @@
 echo 'Install oh-my-zsh'
 echo '-----------------'
 rm -rf $HOME/.oh-my-zsh
+export ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
 curl -L https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 # Install ZSH Autosuggestions
