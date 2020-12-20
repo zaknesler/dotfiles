@@ -1,4 +1,5 @@
 vim/pack
 vim/plugged
 plug.vim
+vendor/
 .zcompdump*
