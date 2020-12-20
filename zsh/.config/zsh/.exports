@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# PATH
+export PATH="$PATH:$HOME/.composer/vendor/bin"          # Composer
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"   # Composer
+export PATH="$PATH:$HOME/Users/zak/.local/bin"          # User binaries
+
+# XDG Base Directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# XDG Supported Directories
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+
+# Vim
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+
+# Load NVM
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# OS-specific
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+
+    # Java Home
+    export JAVA_HOME=/usr/lib/jvm/java-1.14.0-openjdk-amd64/bin
+
+    # Java GTK
+    export CLASSPATH=/usr/share/java/gtk.jar:.
+
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+
+    #
+
+fi
+
+# Go Path
+export GOPATH=$HOME/Code/Go
+
+# Default programs
+export EDITOR="code-insiders"
+export BROWSER="brave-browser-beta"
+
+# Enable persistent REPL history for `node`
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+
+# Allow 32³ entries; the default is 1000
+export NODE_REPL_HISTORY_SIZE="32768"
+
+# Use sloppy mode by default, matching web browsers
+export NODE_REPL_MODE="sloppy"
+
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr
+export PYTHONIOENCODING="UTF-8"
+
+# Increase Bash history size. Allow 32³ entries; the default is 500
+export HISTSIZE="32768"
+export HISTFILESIZE="${HISTSIZE}"
+export HISTFILE="$XDG_DATA_HOME/zsh/history"
+
+# Omit duplicates and commands that begin with a space from history
+export HISTCONTROL="ignoreboth"
+
+# Prefer US English and use UTF-8
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="${yellow}"
+
+# Do not use a less history file
+export LESSHISTFILE="-"
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
+# Avoid issues with `gpg` as installed via Homebrew
+# https://stackoverflow.com/a/42265848/96656
+export GPG_TTY=$(tty)
+
+# Hide the “default interactive shell is now zsh” warning on macOS
+export BASH_SILENCE_DEPRECATION_WARNING=1

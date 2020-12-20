@@ -1,0 +1,4 @@
+vim/pack
+vim/plugged
+plug.vim
+.zcompdump*

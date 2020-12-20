@@ -1,0 +1,12 @@
+[user]
+    name = Zak Nesler
+    email = zak@nesler.dev
+[core]
+    excludesfile = $XDG_CONFIG_HOME/git/.gitignore_global
+[init]
+	defaultBranch = main
+[filter "lfs"]
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
