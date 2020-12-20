@@ -4,33 +4,31 @@ set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
-so $XDG_CONFIG_HOME/vim/plugins.vim
+so $XDG_CONFIG_HOME/vim/plugins.vim         "Source plugins
 
-"--------- General ----------"
+"---------- General ----------"
+
 syntax on
 
 set backspace=indent,eol,start              "Make backspace perform like any other editor
 let mapleader=','                           "Change default leader to a comma instead of a backslash
 
-
 "---------- Visuals ----------"
+
 colorscheme atom-dark                       "Change the default colorscheme
 set guifont=Operator\ Mono\ Book:h14        "Set default font face and size
 set linespace=10                            "Set line spacing to a reasonable level
 set number                                  "Activate line numbers
+set guioptions-=e                           "Disable custom gui tabs
+hi vertsplit guifg=bg guibg=bg              "Highlighting
 
 set guioptions-=l                           "Disable left-hand scrollbars
 set guioptions-=L                           "Disable left-hand scrollbars when split
 set guioptions-=re                          "Disable right-hand scrollbars
 set guioptions-=R                           "Disable right-hand scrollbars when split
 
-set guioptions-=e                           "Disable custom gui tabs
-
-"Highlighting
-hi vertsplit guifg=bg guibg=bg
-
-
 "---------- Splits ----------"
+
 set splitbelow                              "Create horizontal splits below current window
 set splitright                              "Create vertical splits to the right of current window
 
@@ -40,54 +38,44 @@ nmap <C-J> <C-W><C-J>
 nmap <C-K> <C-W><C-K>
 nmap <C-L> <C-W><C-L>
 
-
 "---------- Searching ----------"
+
 set hlsearch                                "Highlight search results
 set incsearch                               "Highlight search results whilst typing query
 
-
 "---------- Mappings ----------"
-"Shortcut to edit vimrc file
-nmap <Leader>ev :tabedit $MYVIMRC<cr>
 
-"Remove highlighting
-nmap <Leader><space> :nohlsearch<cr>
-
+nmap <Leader>ev :tabedit $MYVIMRC<cr>       "Quickly edit vimrc file
+nmap <Leader><space> :nohlsearch<cr>        "Remove highlighting
 
 "---------- Auto-Commands ----------"
+
 "Automatically source the vimrc file on save
 augroup autosourcing
-    autocmd!
-    autocmd BufWritePost .vimrc source %
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source %
 augroup end
 
-
 "---------- Plugin Overrides ----------"
+
 "/
 "/ CtrlP
 "/
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'   "Exclude folders from results
+"Exclude specific folders from results
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
-"Allow the use of Cmd+P for CtrlP
-nmap <D-p> :CtrlP<cr>
-
-"Search for tags
-nmap <D-r> :CtrlPBufTag<cr>
-
-"Show recently used files
-nmap <D-e> :CtrlPMRUFiles<cr>
-
+nmap <D-p> :CtrlP<cr>                       "Allow the use of Cmd+P for CtrlP
+nmap <D-r> :CtrlPBufTag<cr>                 "Search for tags
+nmap <D-e> :CtrlPMRUFiles<cr>               "Show recently used files
 
 "/
 "/ Nerd Tree
 "/
 let NERDTreeHijackNetrw = 0                 "Disallow Nerdtree from hijacking hyphen
-
-"Add shortcut for nerd tree
-nmap <D-1> :NERDTreeToggle<cr>
-
+nmap <D-1> :NERDTreeToggle<cr>              "Add shortcut for nerd tree
 
 "---------- Other ----------"
+
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
