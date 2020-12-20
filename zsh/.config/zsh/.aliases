@@ -63,7 +63,7 @@ alias weather="curl https://wttr.in/\?u\&0 && echo ''"
 alias l="ls -lAh"
 alias o.="o ."
 alias o="open"
-# mv .mvalias open="xdg-open" # Ubuntu
+# alias open="xdg-open" # Ubuntu
 alias rb="ruby"
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
