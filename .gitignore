@@ -1,4 +1,4 @@
-.vim/pack
-.vim/plugged
+vim/pack
+vim/plugged
 plug.vim
 .zcompdump*
