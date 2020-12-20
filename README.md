@@ -4,10 +4,10 @@ This is the repository for all of my dotfiles for Linux/OSX. It uses [GNU Stow](
 
 ## Installation
 
-To install these dotfiles onto a new system, clone this repository to `~/dotfiles`:
+To install these dotfiles onto a new system, clone this repository to `~/.config/dotfiles`:
 
 ```shell
-git clone git@github.com:zaknesler/dotfiles.git ~/dotfiles
+git clone git@github.com:zaknesler/dotfiles.git ~/.config/dotfiles
 ```
 
 Now you can run the `install.sh` file.

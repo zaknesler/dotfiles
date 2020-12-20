@@ -47,7 +47,7 @@ fi
 # Symlink Stow directories
 echo 'Symlink Stow directories'
 echo '------------------------'
-ls -d */ | xargs stow
+ls -d */ | xargs stow -t $HOME
 
 # Install Vim Plug
 echo 'Install Vim Plug'
