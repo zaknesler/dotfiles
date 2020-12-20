@@ -9,17 +9,18 @@ echo 'Install oh-my-zsh'
 echo '-----------------'
 rm -rf $HOME/.oh-my-zsh
 export ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
+export ZSH_CUSTOM="$ZSH/custom"
 curl -L https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 # Install ZSH Autosuggestions
 echo 'Install ZSH Autosuggestions'
 echo '---------------------------'
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/config/oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Install Powerlevel10k
 echo 'Install Powerlevel10k'
 echo '---------------------'
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/config/oh-my-zsh/custom}/themes/powerlevel10k
 
 # OS-specific
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -51,6 +52,6 @@ ls -d */ | xargs stow
 # Install Vim Plug
 echo 'Install Vim Plug'
 echo '----------------'
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+curl -fLo ${XDG_CONFIG_HOME:-$HOME/.config}/vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo "Vim Plug installed. Run :PlugInstall in Vim to install plugins."

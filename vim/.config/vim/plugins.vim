@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')       "Specify plugin directory
+call plug#begin('$XDG_CONFIG_HOME/vim/plugged')       "Specify plugin directory
 
 Plug 'tpope/vim-vinegar'                "Vinegar file browser
 Plug 'scrooloose/nerdtree'              "NerdTree file browser
