@@ -31,6 +31,7 @@ brew 'zsh'
 brew 'elixir'
 brew 'erlang'
 brew 'go'
+brew 'php'
 brew 'python'
 brew 'sqlite'
 
@@ -38,7 +39,6 @@ brew 'sqlite'
 # brew 'dnsmasq', restart_service: true
 # brew 'mariadb', restart_service: true
 # brew 'nginx', restart_service: true
-# brew 'php', restart_service: true
 # brew 'postgresql', restart_service: true
 # brew 'redis', restart_service: true
 

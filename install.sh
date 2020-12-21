@@ -26,7 +26,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Install Homebrew
     echo 'Installing Homebrew'
     echo '-------------------'
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'
 
     # Install GNU Stow
     echo 'Installing GNU Stow'
@@ -55,7 +55,7 @@ echo 'Installing Vim Plug'
 echo '-------------------'
 curl -fLo ${XDG_CONFIG_HOME:-$HOME/.config}/vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-echo "Vim Plug installed. Run :PlugInstall in Vim to install plugins."
+echo 'Vim Plug installed. Run :PlugInstall in Vim to install plugins.'
 
 # Symlink Stow directories
 echo 'Symlinking Stow directories'
