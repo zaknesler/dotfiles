@@ -9,6 +9,13 @@ alias dl="cd ~/Downloads"
 alias dot="cd $XDG_CONFIG_HOME/dotfiles"
 alias dt="cd ~/Desktop"
 
+# Edit Shortcuts
+alias edzsh="$EDITOR $XDG_CONFIG_HOME/zsh/.zshrc"
+alias edvim="$EDITOR $MYVIMRC"
+alias edali="$EDITOR $XDG_CONFIG_HOME/zsh/.aliases"
+alias edexp="$EDITOR $XDG_CONFIG_HOME/zsh/.exports"
+alias edfun="$EDITOR $XDG_CONFIG_HOME/zsh/.functions"
+
 # Git
 alias gaa="git add ."
 alias gc="git commit -m"
