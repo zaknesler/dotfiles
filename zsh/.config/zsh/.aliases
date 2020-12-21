@@ -8,6 +8,7 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias code="cd ~/Code"
 alias dot="cd $XDG_CONFIG_HOME/dotfiles"
+alias vscode="/usr/local/bin/code"
 
 # Git
 alias gaa="git add ."
