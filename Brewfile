@@ -32,7 +32,7 @@ brew 'elixir'
 brew 'erlang'
 brew 'go'
 brew 'php'
-brew 'python'
+brew 'python@3.9'
 brew 'sqlite'
 
 # Valet
