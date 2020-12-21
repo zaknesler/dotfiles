@@ -1,5 +1,6 @@
-vim/pack
-vim/plugged
-plug.vim
+vim/pack/
+vim/plugged/
 vendor/
+.zsh_sessions/
+plug.vim
 .zcompdump*
