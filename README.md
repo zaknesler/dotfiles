@@ -4,10 +4,24 @@ This is the repository for all of my dotfiles for Linux/OSX. It uses [GNU Stow](
 
 ## Installation
 
-To install these dotfiles onto a new system, clone this repository to `~/.config/dotfiles`:
+If you're crazy enough to install somebody else's dotfiles, you may do so by following these steps:
 
-```shell
-git clone git@github.com:zaknesler/dotfiles.git ~/.config/dotfiles
-```
+1. Clone this repository to `~/.config/dotfiles` and `cd` into it:
 
-Now you can run the `install.sh` file.
+    ```shell
+    git clone https://github.com:zaknesler/dotfiles ~/.config/dotfiles
+
+    cd ~/.config/dotfiles
+    ```
+
+2. Run the `install.sh` file to automatically install everything:
+
+    ```shell
+    bash install.sh
+    ```
+
+### Note
+
+It is recommended that you take a long, thorough look through the files before installing. There is nothing malicious but it might be more involved to install than running a single `install.sh` file.
+
+You might have to encourage the script along every now and then, but for the most part I tried to do as much automatically as possible.

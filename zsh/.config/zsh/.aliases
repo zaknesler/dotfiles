@@ -4,10 +4,10 @@
 alias sudo='sudo '
 
 # Shortcuts
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
 alias code="cd ~/Code"
+alias dl="cd ~/Downloads"
 alias dot="cd $XDG_CONFIG_HOME/dotfiles"
+alias dt="cd ~/Desktop"
 alias vscode="/usr/local/bin/code"
 
 # Git
@@ -66,8 +66,8 @@ alias o.="o ."
 alias o="open"
 # alias open="xdg-open" # Ubuntu
 alias rb="ruby"
-alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 
 # Always enable colored `grep` output
 alias egrep='egrep --color=auto'

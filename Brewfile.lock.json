@@ -5,13 +5,13 @@
         "revision": "a374cc7c02e71cbb78b50510587f7163eeaefdc1"
       },
       "homebrew/cask": {
-        "revision": "a0370b3e6cb865b757ee3c8bf154fd07e6ce484c"
+        "revision": "1d3775e5855afc7f205b1e3b5858a9f36837be86"
       },
       "homebrew/cask-fonts": {
         "revision": "78e4a9dbb464ae80e52587f11294446724ffbfd4"
       },
       "homebrew/core": {
-        "revision": "90773dc0bca547d79246e718c260016292ae8617"
+        "revision": "afd3f611b5b285d2cc27bd1f0a7a069824355a8e"
       },
       "homebrew/services": {
         "revision": "6e1ec6f5797e7b841a697929ed09fc8756b59cdd"
@@ -508,6 +508,10 @@
             }
           }
         }
+      },
+      "nvm": {
+        "version": "0.37.2",
+        "bottle": false
       }
     },
     "cask": {
@@ -648,6 +652,42 @@
         "options": {
           "full_name": "font-source-serif-pro"
         }
+      },
+      "github": {
+        "version": "2.6.1-afb56263",
+        "options": {
+          "full_name": "github"
+        }
+      },
+      "font-fira-code": {
+        "version": "5.2",
+        "options": {
+          "full_name": "font-fira-code"
+        }
+      },
+      "font-ibm-plex-mono": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-ibm-plex-mono"
+        }
+      },
+      "font-meslo-lg-nerd-font": {
+        "version": "2.1.0",
+        "options": {
+          "full_name": "font-meslo-lg-nerd-font"
+        }
+      },
+      "font-roboto-mono-nerd-font": {
+        "version": "2.1.0",
+        "options": {
+          "full_name": "font-roboto-mono-nerd-font"
+        }
+      },
+      "font-roboto-mono": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-roboto-mono"
+        }
       }
     },
     "mas": {
@@ -675,7 +715,7 @@
       "big_sur": {
         "HOMEBREW_VERSION": "2.6.2",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "90773dc0bca547d79246e718c260016292ae8617",
+        "Homebrew/homebrew-core": "afd3f611b5b285d2cc27bd1f0a7a069824355a8e",
         "CLT": "12.3.0.0.1.1607026830",
         "Xcode": "12.0",
         "macOS": "11.1"
