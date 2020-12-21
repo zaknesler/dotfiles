@@ -9,7 +9,6 @@ fi
 #   ZSH Settings   #
 ####################
 
-
 # Path to oh-my-zsh installation
 export ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
 
@@ -40,7 +39,7 @@ source $ZDOTDIR/.exports
 source $ZDOTDIR/.aliases
 source $ZDOTDIR/.functions
 
-# P10K Configuration
+# P10k Configuration
 source $ZDOTDIR/.p10k.zsh
 
 # Ruby Env

@@ -48,7 +48,7 @@ alias docr="docker-compose run --rm"
 alias docu="docker-compose up -d"
 
 # Python
-alias activate="venv/bin/activate"
+alias activate="source ./venv/bin/activate"
 alias pip="pip3"
 alias py="python3"
 alias python="python3"

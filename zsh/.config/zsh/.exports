@@ -6,41 +6,44 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_RUNTIME_DIR="$HOME/.runtime"
 
-# PATH (prepend)
-export PATH="/usr/local/bin:$PATH"                       # Brew binaries
-export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH" # Composer
-export PATH="$XDG_DATA_HOME:$PATH"                       # User binaries
-export PATH="$HOME/.local/bin:$PATH"                     # User binaries
+# Path (prepend)
+export PATH="/usr/local/bin:$PATH"                        # Brew binaries
+export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH"  # Composer
+export PATH="$HOME/.local/bin:$PATH"                      # User binaries
+export PATH="$XDG_DATA_HOME:$PATH"                        # User binaries
+
+# Path (append)
+export PATH="$PATH:$HOME/Library/Python/3.9/bin"          # Python pip packages
 
 # XDG Supported Directories
-export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-export WGETRC="$XDG_CONFIG_HOME/wgetrc"
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export NVM_DIR="$XDG_DATA_HOME/nvm"
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 
 # Vim
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # Load NVM
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # OS-specific
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
-    # Java Home
-    export JAVA_HOME=/usr/lib/jvm/java-1.14.0-openjdk-amd64/bin
+  # Java Home
+  export JAVA_HOME=/usr/lib/jvm/java-1.14.0-openjdk-amd64/bin
 
-    # Java GTK
-    export CLASSPATH=/usr/share/java/gtk.jar:.
+  # Java GTK
+  export CLASSPATH=/usr/share/java/gtk.jar:.
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
-    #
+  #
 
 fi
 
@@ -49,7 +52,6 @@ export GOPATH=$HOME/Code/Go
 
 # Default programs
 export EDITOR="vscode"
-export BROWSER="firefox"
 
 # Enable persistent REPL history for `node`
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
