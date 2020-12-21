@@ -15,7 +15,8 @@ let mapleader=','                           "Change default leader to a comma in
 
 "---------- Visuals ----------"
 
-colorscheme atom-dark                       "Change the default colorscheme
+set t_Co=256                                "Set the terminal colors to 256
+colorscheme atom-dark-256                   "Change the default colorscheme
 set guifont=Operator\ Mono\ Book:h14        "Set default font face and size
 set linespace=10                            "Set line spacing to a reasonable level
 set number                                  "Activate line numbers

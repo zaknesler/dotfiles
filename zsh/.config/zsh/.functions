@@ -11,12 +11,32 @@ function sup {
 
 # Update all global packages and apps
 function update {
+    echo 'Updating App Store Apps'
+    echo '-----------------------'
     mas upgrade
+
+    echo '\nUpdating Homebrew'
+    echo '-----------------'
     brew update
+
+    echo '\nUpgrading Brew Packages'
+    echo '-----------------------'
     brew upgrade
+
+    echo '\nCleaning Up Homebrew Taps'
+    echo '-------------------------'
     brew cleanup
+
+    echo '\nUpdating Global NPM Packages'
+    echo '----------------------------'
     npm update -g
+
+    echo '\nUpdating Global Composer Packages'
+    echo '---------------------------------'
     composer global update
+
+    echo '\nUpdating pip Packages'
+    echo '---------------------------'
     pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install --user -U
 }
 
