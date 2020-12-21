@@ -26,7 +26,6 @@ alias wip="git add . && git commit -m 'wip' -q"
 
 # PHP
 alias a="php artisan"
-alias c="composer"
 alias cda="composer dump-autoload -o"
 alias ci="composer install"
 alias cr="composer require"
