@@ -84,6 +84,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   alias open="xdg-open"
   alias vscode="/usr/bin/code"
+  alias pbcopy='xclip -selection clipboard'
+  alias pbpaste='xclip -selection clipboard -o'
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 

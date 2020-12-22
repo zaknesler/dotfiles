@@ -29,11 +29,12 @@ set viminfo=""                                  "Disable viminfo
 
 "---------- Visuals ----------"
 
-set t_Co=256                                    "Set the terminal depth to 256
-colorscheme onedark                             "Change the default colorscheme
+set t_Co=256                                    "Set the terminal color depth to 256
+colorscheme onedark                             "Change the default color scheme
 set guifont=Operator\ Mono\ Book:h14            "Set default font face and size
 set linespace=10                                "Set line spacing to a reasonable level
-set number                                      "Activate line numbers
+set number                                      "Enable line numbers
+set relativenumber                              "Enable relative line numbers
 set guioptions-=e                               "Disable custom gui tabs
 hi vertsplit guifg=bg guibg=bg                  "Change split background
 
@@ -62,6 +63,7 @@ set incsearch                                   "Highlight search results whilst
 
 nmap <Leader>ev :tabedit $MYVIMRC<cr>           "Quickly edit vimrc file
 nmap <Leader><space> :nohlsearch<cr>            "Remove highlighting
+nmap <M-o> o<esc>O<esc>
 
 "---------- Auto-Commands ----------"
 
