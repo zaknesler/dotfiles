@@ -1,6 +1,6 @@
-vim/pack/
-vim/plugged/
+autoload/
+plugged/
+pack/
 vendor/
 .zsh_sessions/
-plug.vim
 .zcompdump*
