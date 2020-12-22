@@ -70,10 +70,7 @@ alias weather="curl https://wttr.in/\?u\&0 && echo ''"
 alias l="ls -lAh"
 alias o.="o ."
 alias o="open"
-# alias open="xdg-open" # Ubuntu
-alias rb="ruby"
 alias stowall="cd $XDG_CONFIG_HOME/dotfiles && ls -d */ | xargs stow -t $HOME"
-alias vscode="/usr/local/bin/code"
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 
@@ -81,3 +78,15 @@ alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
+
+# OS-specific
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+
+  alias open="xdg-open"
+  alias vscode="/usr/bin/code"
+
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+
+  alias vscode="/usr/local/bin/code"
+
+fi
