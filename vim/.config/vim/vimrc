@@ -9,41 +9,44 @@ set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 
 call plug#begin('$XDG_CONFIG_HOME/vim/plugged') "Specify plugin directory
 
-Plug 'ctrlpvim/ctrlp.vim'                   "CtrlP fuzzy search
-Plug 'editorconfig/editorconfig-vim'        "Import editor config
-Plug 'gosukiwi/vim-atom-dark'               "Atom dark color scheme
-Plug 'scrooloose/nerdtree'                  "NerdTree file browser
-Plug 'sheerun/vim-polyglot'                 "Better syntax highlighting
-Plug 'tpope/vim-vinegar'                    "Vinegar file browser
+Plug 'ctrlpvim/ctrlp.vim'                       "CtrlP fuzzy search
+Plug 'editorconfig/editorconfig-vim'            "Import editor config
+Plug 'gosukiwi/vim-atom-dark'                   "Atom dark color scheme
+Plug 'joshdick/onedark.vim'                     "One dark color scheme
+Plug 'scrooloose/nerdtree'                      "NerdTree file browser
+Plug 'sheerun/vim-polyglot'                     "Better syntax highlighting
+Plug 'tpope/vim-vinegar'                        "Vinegar file browser
 
-call plug#end()                             "Initialize plugins
+call plug#end()                                 "Initialize plugins
 
 "---------- General ----------"
 
 syntax on
 
-set backspace=indent,eol,start              "Make backspace perform like any other editor
-let mapleader=','                           "Change default leader to a comma
+set backspace=indent,eol,start                  "Make backspace perform like any other editor
+let mapleader=','                               "Change default leader to a comma
+let skip_defaults_vim=1                         "Disable defaults.vim
+set viminfo=""                                  "Disable viminfo
 
 "---------- Visuals ----------"
 
-set t_Co=256                                "Set the terminal colors to 256
-colorscheme atom-dark-256                   "Change the default colorscheme
-set guifont=Operator\ Mono\ Book:h14        "Set default font face and size
-set linespace=10                            "Set line spacing to a reasonable level
-set number                                  "Activate line numbers
-set guioptions-=e                           "Disable custom gui tabs
-hi vertsplit guifg=bg guibg=bg              "Change split background
+set t_Co=256                                    "Set the terminal depth to 256
+colorscheme onedark                             "Change the default colorscheme
+set guifont=Operator\ Mono\ Book:h14            "Set default font face and size
+set linespace=10                                "Set line spacing to a reasonable level
+set number                                      "Activate line numbers
+set guioptions-=e                               "Disable custom gui tabs
+hi vertsplit guifg=bg guibg=bg                  "Change split background
 
-set guioptions-=l                           "Disable left-hand scrollbars
-set guioptions-=L                           "Disable left-hand scrollbars when split
-set guioptions-=re                          "Disable right-hand scrollbars
-set guioptions-=R                           "Disable right-hand scrollbars when split
+set guioptions-=l                               "Disable left-hand scrollbars
+set guioptions-=L                               "Disable left-hand scrollbars when split
+set guioptions-=re                              "Disable right-hand scrollbars
+set guioptions-=R                               "Disable right-hand scrollbars when split
 
 "---------- Splits ----------"
 
-set splitbelow                              "Create horizontal splits below current window
-set splitright                              "Create vertical splits to the right of current window
+set splitbelow                                  "Create horizontal splits below current window
+set splitright                                  "Create vertical splits to the right of current window
 
 "Shortcuts to switch window splits
 nmap <C-H> <C-W><C-H>
@@ -53,13 +56,13 @@ nmap <C-L> <C-W><C-L>
 
 "---------- Searching ----------"
 
-set hlsearch                                "Highlight search results
-set incsearch                               "Highlight search results whilst typing query
+set hlsearch                                    "Highlight search results
+set incsearch                                   "Highlight search results whilst typing query
 
 "---------- Mappings ----------"
 
-nmap <Leader>ev :tabedit $MYVIMRC<cr>       "Quickly edit vimrc file
-nmap <Leader><space> :nohlsearch<cr>        "Remove highlighting
+nmap <Leader>ev :tabedit $MYVIMRC<cr>           "Quickly edit vimrc file
+nmap <Leader><space> :nohlsearch<cr>            "Remove highlighting
 
 "---------- Auto-Commands ----------"
 
@@ -78,16 +81,16 @@ augroup end
 "Exclude specific folders from results
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
-nmap <D-p> :CtrlP<cr>                       "Allow the use of Cmd+P for CtrlP
-nmap <D-r> :CtrlPBufTag<cr>                 "Search for tags
-nmap <D-e> :CtrlPMRUFiles<cr>               "Show recently used files
+nmap <D-p> :CtrlP<cr>                           "Allow the use of Cmd+P for CtrlP
+nmap <D-r> :CtrlPBufTag<cr>                     "Search for tags
+nmap <D-e> :CtrlPMRUFiles<cr>                   "Show recently used files
 
 "/
 "/ Nerd Tree
 "/
 
-let NERDTreeHijackNetrw = 0                 "Disallow Nerdtree from hijacking hyphen
-nmap <D-1> :NERDTreeToggle<cr>              "Add shortcut for nerd tree
+let NERDTreeHijackNetrw = 0                     "Disallow Nerdtree from hijacking hyphen
+nmap <D-1> :NERDTreeToggle<cr>                  "Add shortcut for nerd tree
 
 "---------- Other ----------"
 
