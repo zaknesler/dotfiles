@@ -4,7 +4,7 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_RUNTIME_DIR="$HOME/.runtime"
+export XDG_RUNTIME_DIR="$XDG_CACHE_HOME/runtime"
 
 # Path (prepend)
 export PATH="/usr/local/bin:$PATH"                        # Brew binaries
@@ -39,13 +39,12 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
 # Vim
-export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+export VIMINIT="source $MYVIMRC"
 
 # Load NVM
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-
 
 # Go Path
 export GOPATH=$HOME/Code/Go

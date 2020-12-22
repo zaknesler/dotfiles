@@ -7,23 +7,23 @@ set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 
 "---------- Plugins ----------"
 
-call plug#begin('$XDG_CONFIG_HOME/vim/plugged')       "Specify plugin directory
+call plug#begin('$XDG_CONFIG_HOME/vim/plugged') "Specify plugin directory
 
-Plug 'tpope/vim-vinegar'                "Vinegar file browser
-Plug 'scrooloose/nerdtree'              "NerdTree file browser
-Plug 'ctrlpvim/ctrlp.vim'               "CtrlP fuzzy search
-Plug 'gosukiwi/vim-atom-dark'           "Atom dark color scheme
-Plug 'sheerun/vim-polyglot'             "Better syntax highlighting
-Plug 'editorconfig/editorconfig-vim'    "Import editor config
+Plug 'ctrlpvim/ctrlp.vim'                   "CtrlP fuzzy search
+Plug 'editorconfig/editorconfig-vim'        "Import editor config
+Plug 'gosukiwi/vim-atom-dark'               "Atom dark color scheme
+Plug 'scrooloose/nerdtree'                  "NerdTree file browser
+Plug 'sheerun/vim-polyglot'                 "Better syntax highlighting
+Plug 'tpope/vim-vinegar'                    "Vinegar file browser
 
-call plug#end()                         "Initialize plugins
+call plug#end()                             "Initialize plugins
 
 "---------- General ----------"
 
 syntax on
 
 set backspace=indent,eol,start              "Make backspace perform like any other editor
-let mapleader=','                           "Change default leader to a comma instead of a backslash
+let mapleader=','                           "Change default leader to a comma
 
 "---------- Visuals ----------"
 
@@ -33,7 +33,7 @@ set guifont=Operator\ Mono\ Book:h14        "Set default font face and size
 set linespace=10                            "Set line spacing to a reasonable level
 set number                                  "Activate line numbers
 set guioptions-=e                           "Disable custom gui tabs
-hi vertsplit guifg=bg guibg=bg              "Highlighting
+hi vertsplit guifg=bg guibg=bg              "Change split background
 
 set guioptions-=l                           "Disable left-hand scrollbars
 set guioptions-=L                           "Disable left-hand scrollbars when split
@@ -74,6 +74,7 @@ augroup end
 "/
 "/ CtrlP
 "/
+
 "Exclude specific folders from results
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
@@ -84,6 +85,7 @@ nmap <D-e> :CtrlPMRUFiles<cr>               "Show recently used files
 "/
 "/ Nerd Tree
 "/
+
 let NERDTreeHijackNetrw = 0                 "Disallow Nerdtree from hijacking hyphen
 nmap <D-1> :NERDTreeToggle<cr>              "Add shortcut for nerd tree
 
