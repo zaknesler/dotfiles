@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # It is recommended that you do not run this script automatically, but instead
-# just copy each command and run them individually. This way nothing unexpected
-# happens while installing. Or just run it; what's the worst that can happen?
+# just copy each section and run them manually. This way nothing unexpected
+# happens. Or just run it; what's the worst that can happen?
 
 # Pre-configuration
 export ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
@@ -14,7 +14,17 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # Install GNU Stow
     echo 'Installing GNU Stow'
     echo '-------------------'
-    apt install -y stow
+    sudo apt install -y stow
+
+    # If ZSH is not detected, install it
+    if [ -z "$ZSH_VERSION" ]; then
+
+        # Install ZSH
+        echo 'Installing ZSH'
+        echo '--------------'
+        sudo apt install -y zsh
+
+    fi
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
@@ -55,7 +65,7 @@ echo 'Installing Vim Plug'
 echo '-------------------'
 curl -fLo ${XDG_CONFIG_HOME:-$HOME/.config}/vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-echo 'Vim Plug installed. Run :PlugInstall in Vim to install plugins.'
+echo 'Vim Plug installed. Run `:PlugInstall` within Vim to install plugins.'
 
 # Symlink Stow directories
 echo 'Symlinking Stow directories'
