@@ -8,11 +8,6 @@
 export ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
 
-# Install Xcode command-line tools
-echo 'Installing Xcode Tools'
-echo '---------------------'
-xcode-select --install
-
 # OS-specific install of GNU Stow
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
@@ -22,6 +17,11 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     apt install -y stow
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
+
+    # Install Xcode command-line tools
+    echo 'Installing Xcode Tools'
+    echo '---------------------'
+    xcode-select --install
 
     # Install Homebrew
     echo 'Installing Homebrew'
