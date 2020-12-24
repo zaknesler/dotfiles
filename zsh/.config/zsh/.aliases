@@ -4,7 +4,7 @@
 alias sudo='sudo '
 
 # Shortcuts
-alias code="cd ~/Code"
+alias co="cd ~/Code"
 alias dl="cd ~/Downloads"
 alias dot="cd $XDG_CONFIG_HOME/dotfiles"
 alias dt="cd ~/Desktop"
@@ -31,18 +31,26 @@ alias nah="git reset --hard && git clean -df"
 alias wip="git add . && git commit -m 'wip' -q"
 
 # PHP
-alias a="php artisan"
 alias cda="composer dump-autoload -o"
 alias ci="composer install"
 alias cr="composer require"
 alias cu="composer update"
-alias mfs="php artisan migrate:fresh --seed"
 alias pe="./vendor/bin/phpunit --exclude-group"
 alias pf="./vendor/bin/phpunit --filter"
 alias pg="./vendor/bin/phpunit --group"
 alias pu="./vendor/bin/phpunit"
-alias sail="bash vendor/bin/sail"
+
+# Laravel
+alias a="php artisan"
+alias mfs="php artisan migrate:fresh --seed"
 alias tinker="php artisan tinker"
+
+# Laravel Sail
+alias sail="bash vendor/bin/sail"
+alias sa="sail artisan"
+alias sc="sail composer"
+alias sn="sail npm"
+alias sp="sail php"
 
 # Docker
 alias do="docker"
@@ -83,7 +91,6 @@ alias grep='grep --color=auto'
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   alias open="xdg-open"
-  alias vscode="/usr/bin/code"
   alias pbcopy='xclip -selection clipboard'
   alias pbpaste='xclip -selection clipboard -o'
 
