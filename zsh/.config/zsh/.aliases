@@ -51,6 +51,7 @@ alias sa="sail artisan"
 alias sc="sail composer"
 alias sn="sail npm"
 alias sp="sail php"
+alias sud="sail up -d"
 
 # Docker
 alias do="docker"
