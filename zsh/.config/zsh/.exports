@@ -37,6 +37,7 @@ export NVM_DIR="$XDG_DATA_HOME/nvm"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+export MYZSHRC="$ZDOTDIR/.zshrc"
 
 # Vim
 export VIMINIT="source $MYVIMRC"
