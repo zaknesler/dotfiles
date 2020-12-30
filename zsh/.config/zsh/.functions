@@ -63,3 +63,22 @@ function giic() {
     git add .
     git commit -m "Initial commit"
 }
+
+# Install Laravel Jetstream
+function install-jetstream() {
+    stack=${1:-livewire}
+
+    if [ -f 'vendor/bin/sail' ]; then
+        sail composer require laravel/jetstream
+        sail artisan jetstream:install $stack
+        sail npm install
+        sail npm run dev
+        sail artisan migrate
+    else
+        composer require laravel/jetstream
+        php artisan jetstream:install $stack
+        npm install
+        npm run dev
+        php artisan migrate
+    fi
+}
