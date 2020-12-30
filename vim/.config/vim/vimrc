@@ -12,9 +12,11 @@ Plug 'ctrlpvim/ctrlp.vim'                       "CtrlP fuzzy search
 Plug 'editorconfig/editorconfig-vim'            "Import editor config
 "Plug 'gosukiwi/vim-atom-dark'                  "Atom dark color scheme
 Plug 'joshdick/onedark.vim'                     "One dark color scheme
+Plug 'junegunn/limelight.vim'                   "Dim inactive lines
 Plug 'scrooloose/nerdtree'                      "NerdTree file browser
 Plug 'sheerun/vim-polyglot'                     "Better syntax highlighting
 Plug 'tpope/vim-vinegar'                        "Vinegar file browser
+Plug 'vim-airline/vim-airline'                  "Statusline
 
 call plug#end()                                 "Initialize plugins
 
@@ -26,6 +28,14 @@ set backspace=indent,eol,start                  "Make backspace perform like any
 let mapleader=','                               "Change default leader to a comma
 let skip_defaults_vim=1                         "Disable defaults.vim
 set viminfo=""                                  "Disable viminfo
+set tabstop=4                                   "Set default tab width to 4
+set shiftwidth=4                                "Set default shift width to 4
+set expandtab                                   "Convert tabs to spaces (sorry)
+
+"---------- Airline ----------"
+
+let g:airline_powerline_fonts=1                 "Enable powerline fonts
+let g:airline_skip_empty_sections = 1
 
 "---------- Visuals ----------"
 
@@ -34,7 +44,6 @@ colorscheme onedark                             "Change the default color scheme
 set guifont=Operator\ Mono\ Book:h14            "Set default font face and size
 set linespace=10                                "Set line spacing to a reasonable level
 set number                                      "Enable line numbers
-set relativenumber                              "Enable relative line numbers
 set guioptions-=e                               "Disable custom gui tabs
 hi vertsplit guifg=bg guibg=bg                  "Change split background
 
@@ -62,8 +71,10 @@ set incsearch                                   "Highlight search results whilst
 "---------- Mappings ----------"
 
 nmap <Leader>ev :tabedit $MYVIMRC<cr>           "Quickly edit vimrc file
-nmap <Leader><space> :nohlsearch<cr>            "Remove highlighting
-nmap <M-o> o<esc>O<esc>
+nmap <Leader>c :nohlsearch<cr>                  "Remove highlighting
+nmap <Leader>ll :Limelight!!<cr>                "Enable limelight mode
+nmap Q <nop>                                    "Disable Ex mode
+nmap q: <nop>                                   "Disable commandline window
 
 "---------- Auto-Commands ----------"
 
