@@ -13,13 +13,18 @@ export PATH="$HOME/.local/share/npm/bin:$PATH"            # NPM binaries
 export PATH="$XDG_DATA_HOME:$PATH"                        # User binaries
 
 # OS-specific
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+if [[ -d "/run/WSL" ]]; then
+
+  # p10k
+  export ZLE_RPROMPT_INDENT=0
+
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   # Java Home
-  export JAVA_HOME=/usr/lib/jvm/java-1.14.0-openjdk-amd64/bin
+  export JAVA_HOME="/usr/lib/jvm/java-1.14.0-openjdk-amd64/bin"
 
   # Java GTK
-  export CLASSPATH=/usr/share/java/gtk.jar:.
+  export CLASSPATH="/usr/share/java/gtk.jar:."
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
@@ -39,16 +44,15 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 export MYZSHRC="$ZDOTDIR/.zshrc"
 
+# Laravel Sail
+export WWWUSER="1000"
+export WWWGROUP="1000"
+
 # Vim
 export VIMINIT="source $MYVIMRC"
 
-# Load NVM
-export NVM_DIR="$XDG_CONFIG_HOME/nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-
 # Go Path
-export GOPATH=$HOME/Code/Go
+export GOPATH="$HOME/Code/Go"
 
 # Default programs
 export EDITOR="vim"
