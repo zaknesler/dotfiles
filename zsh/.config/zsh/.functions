@@ -82,3 +82,20 @@ function install-jetstream() {
         php artisan migrate
     fi
 }
+
+# Install Laravel Breeze
+function install-breeze() {
+    if [ -f 'vendor/bin/sail' ]; then
+        sail composer require --dev laravel/breeze
+        sail artisan breeze:install
+        sail npm install
+        sail npm run dev
+        sail artisan migrate
+    else
+        composer require --dev laravel/breeze
+        php artisan breeze:install
+        npm install
+        npm run dev
+        php artisan migrate
+    fi
+}
