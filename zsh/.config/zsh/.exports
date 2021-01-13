@@ -31,6 +31,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Path (append)
   export PATH="$PATH:$HOME/Library/Python/3.9/bin"  # Python pip packages
 
+  # p10k
+  export ZLE_RPROMPT_INDENT=0
+
 fi
 
 # XDG Supported Directories
