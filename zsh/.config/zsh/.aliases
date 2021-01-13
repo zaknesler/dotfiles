@@ -61,6 +61,7 @@ alias docd="docker-compose down"
 alias doce="docker-compose exec"
 alias docr="docker-compose run --rm"
 alias docu="docker-compose up -d"
+alias do-clean="docker rmi \`docker images -f 'dangling=true' -q\` --force"
 
 # Python
 alias activate="source ./venv/bin/activate"
@@ -74,6 +75,7 @@ alias ip="curl https://diagnostic.opendns.com/myip ; echo"
 alias localip="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 alias tdb="touch ./database/database.sqlite"
 alias weather="curl https://wttr.in/\?u\&0 && echo ''"
+alias own="sudo chown -R $USER:$USER"
 
 # Other
 alias l="ls -lAh"

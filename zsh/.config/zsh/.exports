@@ -47,10 +47,6 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 export MYZSHRC="$ZDOTDIR/.zshrc"
 
-# Laravel Sail
-export WWWUSER="1000"
-export WWWGROUP="1000"
-
 # Vim
 export VIMINIT="source $MYVIMRC"
 
