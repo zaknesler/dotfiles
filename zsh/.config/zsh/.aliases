@@ -79,6 +79,7 @@ alias own="sudo chown -R $USER:$USER"
 
 # Other
 alias l="ls -lAh"
+alias ls="ls --color -h --group-directories-first"
 alias o.="o ."
 alias o="open"
 alias stowall="cd $XDG_CONFIG_HOME/dotfiles && ls -d */ | xargs stow -t $HOME"
