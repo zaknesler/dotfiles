@@ -15,9 +15,8 @@ export PATH="$XDG_DATA_HOME:$PATH"                        # User binaries
 # OS-specific
 if [[ -d "/run/WSL" ]]; then
 
-  # p10k
-  export ZLE_RPROMPT_INDENT=0
-
+  #
+    
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   # Java Home
@@ -30,9 +29,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
   # Path (append)
   export PATH="$PATH:$HOME/Library/Python/3.9/bin"  # Python pip packages
-
-  # p10k
-  export ZLE_RPROMPT_INDENT=0
 
 fi
 
@@ -49,6 +45,9 @@ export MYZSHRC="$ZDOTDIR/.zshrc"
 
 # Vim
 export VIMINIT="source $MYVIMRC"
+
+# p10k
+export ZLE_RPROMPT_INDENT=0
 
 # Go Path
 export GOPATH="$HOME/Code/Go"
