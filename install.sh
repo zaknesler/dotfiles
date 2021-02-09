@@ -60,6 +60,11 @@ echo 'Installing Powerlevel10k'
 echo '------------------------'
 git clone --depth=1 https://github.com/romkatv/powerlevel10k ${ZSH_CUSTOM:-$HOME/config/oh-my-zsh/custom}/themes/powerlevel10k
 
+# Install zsh-nvm
+echo 'Installing zsh-nvm'
+echo '------------------'
+git clone https://github.com/lukechilds/zsh-nvm ${ZSH_CUSTOM:-$HOME/config/oh-my-zsh/custom}/plugins/zsh-nvm
+
 # Install Vim Plug
 echo 'Installing Vim Plug'
 echo '-------------------'
