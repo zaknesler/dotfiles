@@ -99,3 +99,11 @@ function install-breeze() {
         php artisan migrate
     fi
 }
+
+# Setup Sail project
+function sail-setup() {
+    docker run --rm \
+        -v $(pwd):/opt \
+        -w /opt laravelsail/php80-composer:latest \
+        bash -c "composer install"
+}
