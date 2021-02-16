@@ -17,7 +17,6 @@ source $ZDOTDIR/.exports
 
 # List of plugins to load
 plugins=(
-  git
   zsh-autosuggestions
   zsh-nvm
 )
