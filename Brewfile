@@ -45,6 +45,7 @@ brew 'sqlite'
 # Cask Apps
 cask 'alfred'
 cask 'blender'
+cask 'brave-browser'
 cask 'discord'
 cask 'docker'
 cask 'figma'
@@ -56,6 +57,7 @@ cask 'google-backup-and-sync'
 cask 'iterm2'
 cask 'ngrok'
 cask 'postman'
+cask 'racket'
 cask 'spotify'
 cask 'tableplus'
 cask 'visual-studio-code'
@@ -84,4 +86,6 @@ mas 'Bear', id: 1091189122
 mas 'Contrast', id: 1254981365
 mas 'Magnet', id: 441258766
 mas 'NordVPN IKE', id: 1116599239
+mas 'Spark', id: 1176895641
+
 # mas 'The Unarchiver', id: 425424353
