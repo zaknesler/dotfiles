@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Enable aliases to be sudo’ed
-alias sudo='sudo '
+alias sudo="sudo "
 
-# Shortcuts
+# Directory Shortcuts
 alias co="cd ~/Code"
 alias dl="cd ~/Downloads"
 alias dot="cd $XDG_CONFIG_HOME/dotfiles"
@@ -71,12 +71,12 @@ alias py="python3"
 alias python="python3"
 
 # Utilities
-alias copyssh='command cat ~/.ssh/id_rsa.pub | pbcopy'
+alias copyssh="command cat ~/.ssh/id_rsa.pub | pbcopy"
 alias ip="curl https://diagnostic.opendns.com/myip ; echo"
 alias localip="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias own="sudo chown -R $USER:$USER"
 alias tdb="touch ./database/database.sqlite"
 alias weather="curl https://wttr.in/\?u\&0 && echo ''"
-alias own="sudo chown -R $USER:$USER"
 
 # Other
 alias c.="code ."
@@ -85,20 +85,23 @@ alias ls="ls -hv --color=auto --group-directories-first"
 alias o.="o ."
 alias o="open"
 alias stowall="cd $XDG_CONFIG_HOME/dotfiles && ls -d */ | xargs stow -t $HOME"
+
+# XDG overrides
+alias units="units --history $XDG_CACHE_HOME/units_history"
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 
 # Always enable colored `grep` output
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias grep='grep --color=auto'
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias grep="grep --color=auto"
 
 # OS-specific
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   alias open="xdg-open"
-  alias pbcopy='xclip -selection clipboard'
-  alias pbpaste='xclip -selection clipboard -o'
+  alias pbcopy="xclip -selection clipboard"
+  alias pbpaste="xclip -selection clipboard -o"
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
