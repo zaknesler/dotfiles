@@ -29,8 +29,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
-  # Path (append)
-  export PATH="$PATH:$HOME/Library/Python/3.9/bin"        # Python pip packages
+  # Path 
+  export PATH="$PATH:$HOME/Library/Python/3.9/bin"              # Python pip packages
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"   # GNU Coreutils
 
 fi
 
