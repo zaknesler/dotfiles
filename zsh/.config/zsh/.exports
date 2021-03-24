@@ -29,10 +29,10 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
-  # Path 
+  # Path
   export PATH="$PATH:$HOME/Library/Python/3.9/bin"              # Python pip packages
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"   # GNU Coreutils
-
+  export PATH="/usr/local/opt/openjdk/bin:$PATH"             # OpenJDK
 fi
 
 # XDG Supported Directories
