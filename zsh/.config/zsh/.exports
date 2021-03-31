@@ -32,7 +32,11 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Path
   export PATH="$PATH:$HOME/Library/Python/3.9/bin"              # Python pip packages
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"   # GNU Coreutils
-  export PATH="/usr/local/opt/openjdk/bin:$PATH"             # OpenJDK
+  export PATH="/usr/local/opt/openjdk/bin:$PATH"                # OpenJDK
+
+  # Java Home
+  export JAVA_HOME="/usr/local/opt/openjdk"
+  export JDK_HOME="/usr/local/opt/openjdk"
 fi
 
 # XDG Supported Directories
