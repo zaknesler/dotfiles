@@ -17,9 +17,12 @@ brew 'git'
 brew 'hub'
 brew 'mackup'
 brew 'mas'
+brew 'maven'
 brew 'neofetch'
 brew 'nvm'
+brew 'openjdk'
 brew 'openssl'
+brew 'rlwrap'
 brew 'stow'
 brew 'svn'
 brew 'telnet'
@@ -58,10 +61,12 @@ cask 'iterm2'
 cask 'ngrok'
 cask 'postman'
 cask 'racket'
+cask 'rar'
 cask 'spotify'
 cask 'tableplus'
 cask 'visual-studio-code'
 cask 'vlc'
+cask 'zoom'
 # cask 'zotero'
 
 # Fonts
@@ -81,11 +86,10 @@ cask 'font-source-sans-pro'
 cask 'font-source-serif-pro'
 
 # Mac App Store
-mas '1Password 7 - Password Manager', id: 1333542190
+mas "1Password 7", id: 1333542190
 mas 'Bear', id: 1091189122
 mas 'Contrast', id: 1254981365
 mas 'Magnet', id: 441258766
 mas 'NordVPN IKE', id: 1116599239
 mas 'Spark', id: 1176895641
-
 # mas 'The Unarchiver', id: 425424353
