@@ -35,8 +35,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH="/usr/local/opt/openjdk/bin:$PATH"                # OpenJDK
 
   # Java Home
-  export JAVA_HOME="/usr/local/opt/openjdk"
-  export JDK_HOME="/usr/local/opt/openjdk"
+  export JAVA_HOME="/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+  export JDK_HOME="/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+
 fi
 
 # XDG Supported Directories
