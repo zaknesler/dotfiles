@@ -82,6 +82,7 @@ alias weather="curl https://wttr.in/\?u\&0 && echo ''"
 
 # Other
 alias c.="code ."
+alias cs="cd"
 alias l="ls -lAh"
 alias ls="ls -hv --color=auto --group-directories-first"
 alias o.="o ."
