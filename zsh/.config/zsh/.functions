@@ -37,12 +37,12 @@ function update {
 
     echo '\nUpdating pip Packages'
     echo '---------------------------'
-    pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install --user -U
+    pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install --user -U
 }
 
 # Create a new directory and enter it
 function mkd() {
-   mkdir -p "$@" && cd "$@"
+    mkdir -p "$@" && cd "$@"
 }
 
 # Fetch all dig info for a URL

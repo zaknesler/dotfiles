@@ -7,23 +7,23 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_RUNTIME_DIR="$XDG_CACHE_HOME/runtime"
 
 # Path (prepend)
-export PATH="/usr/local/bin:$PATH"                        # Brew binaries
-export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH"  # Composer binaries
-export PATH="$HOME/.local/share/npm/bin:$PATH"            # NPM binaries
-export PATH="$HOME/.local/bin:$PATH"                      # Python binaries
-export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"              # Rust binaries
-export PATH="$XDG_DATA_HOME:$PATH"                        # User binaries
+export PATH="/usr/local/bin:$PATH"                       # Brew binaries
+export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH" # Composer binaries
+export PATH="$HOME/.local/share/npm/bin:$PATH"           # NPM binaries
+export PATH="$HOME/.local/bin:$PATH"                     # Python binaries
+export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"             # Rust binaries
+export PATH="$XDG_DATA_HOME:$PATH"                       # User binaries
 
 # OS-specific
 if [[ -d "/run/WSL" ]]; then
 
   # Java Home
-  export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+  export JAVA_HOME="/usr/lib/jvm/default-java"
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   # Java Home
-  export JAVA_HOME="/usr/lib/jvm/java-1.14.0-openjdk-amd64/bin"
+  export JAVA_HOME="/usr/lib/jvm/default-java"
 
   # Java GTK
   export CLASSPATH="/usr/share/java/gtk.jar:."
@@ -31,9 +31,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
   # Path
-  export PATH="$PATH:$HOME/Library/Python/3.9/bin"              # Python pip packages
-  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"   # GNU Coreutils
-  export PATH="/usr/local/opt/openjdk/bin:$PATH"                # OpenJDK
+  export PATH="$PATH:$HOME/Library/Python/3.9/bin"            # Python pip packages
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH" # GNU Coreutils
+  export PATH="/usr/local/opt/openjdk/bin:$PATH"              # OpenJDK
 
   # Java Home
   export JAVA_HOME="/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
