@@ -66,6 +66,8 @@ alias do-clean="docker rmi \`docker images -f 'dangling=true' -q\` --force"
 
 # Python
 alias activate="source ./venv/bin/activate"
+alias act="activate"
+alias dact="deactivate"
 alias pip="pip3"
 alias py="python3"
 alias python="python3"

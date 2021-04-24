@@ -17,7 +17,8 @@ export PATH="$XDG_DATA_HOME:$PATH"                        # User binaries
 # OS-specific
 if [[ -d "/run/WSL" ]]; then
 
-  #
+  # Java Home
+  export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
@@ -29,7 +30,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
-  # Path 
+  # Path
   export PATH="$PATH:$HOME/Library/Python/3.9/bin"              # Python pip packages
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"   # GNU Coreutils
 
