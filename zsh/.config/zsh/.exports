@@ -20,6 +20,9 @@ if [[ -d "/run/WSL" ]]; then
   # Java Home
   export JAVA_HOME="/usr/lib/jvm/default-java"
 
+  # PKG Config
+  export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
+
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   # Java Home
