@@ -80,6 +80,7 @@ alias own="sudo chown -R $USER:$USER"
 alias tdb="touch ./database/database.sqlite"
 alias weather="curl https://wttr.in/\?u\&0 && echo ''"
 alias zd="ssh -qt dilbert zsh"
+alias clean~="rm -rf ~/.aws ~/.azure ~/.yarnrc ~/errors.log ~/.sudo_as_admin_successful ~/.wget-hsts ~/.python_history ~/.tailwindcss ~/.omnisharp ~/.nuxtrc ~/.electron ~/.vue-templates ~/.dotnet ~/.racket_history"
 
 # Other
 alias c.="code ."
