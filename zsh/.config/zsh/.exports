@@ -56,6 +56,12 @@ export NVM_DIR="$XDG_DATA_HOME/nvm"
 export PLTUSERHOME="$XDG_DATA_HOME/racket"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
+export NUGET_PACKAGES="$XDG_CACHE_HOME/NuGetPackages"
+export GEM_HOME="$XDG_DATA_HOME/gem"
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 
 # Vim
 export VIMINIT="source $MYVIMRC"

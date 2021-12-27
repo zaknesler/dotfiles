@@ -107,3 +107,9 @@ function sail-setup() {
         -w /opt laravelsail/php80-composer:latest \
         bash -c "composer install"
 }
+
+# Install Tailwind
+function install-tw() {
+    npm install -D tailwindcss@next postcss@latest autoprefixer@latest
+    npx tailwindcss init -p
+}
