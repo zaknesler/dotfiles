@@ -110,6 +110,6 @@ function sail-setup() {
 
 # Install Tailwind
 function install-tw() {
-    npm install -D tailwindcss@next postcss@latest autoprefixer@latest
+    npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
     npx tailwindcss init -p
 }
