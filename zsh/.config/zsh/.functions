@@ -113,3 +113,12 @@ function install-tw() {
     npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
     npx tailwindcss init -p
 }
+
+# Add new Nginx site
+function add-site() {
+    sudo cp "/etc/nginx/sites-available/.template" "/etc/nginx/sites-available/$1"
+    sudo sed -i "s/{NAME}/$1/g" "/etc/nginx/sites-available/$1"
+    sudo ln -s "/etc/nginx/sites-available/$1" "/etc/nginx/sites-enabled/$1"
+    sudo service nginx restart
+    sudo service php8.1-fpm restart
+}
