@@ -2,5 +2,6 @@ autoload/
 plugged/
 pack/
 vendor/
+composer/.config/composer/*pub
 .zsh_sessions/
 .zcompdump*
