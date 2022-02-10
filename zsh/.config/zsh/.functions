@@ -122,3 +122,15 @@ function add-site() {
     sudo service nginx restart
     sudo service php8.1-fpm restart
 }
+
+# Start all web services
+function start-web() {
+    sudo service nginx start
+    sudo service php8.1-fpm start
+    sudo service postgresql start
+}
+
+# Change to college directory
+function c() {
+    cd ~/Code/College/cs-$1
+}
