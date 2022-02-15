@@ -4,4 +4,6 @@ pack/
 vendor/
 composer/.config/composer/*pub
 .zsh_sessions/
+*.session
+composer.lock
 .zcompdump*
