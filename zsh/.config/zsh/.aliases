@@ -85,7 +85,8 @@ alias c~="rm -rf ~/.aws ~/.azure ~/.yarnrc ~/errors.log ~/.sudo_as_admin_success
 # Other
 alias c.="code ."
 alias cs="cd"
-alias l="ls -lAh"
+alias l="ls -lh"
+alias ll="ls -lAh"
 alias ls="ls -hv --color=auto --group-directories-first"
 alias o.="o ."
 alias o="open"

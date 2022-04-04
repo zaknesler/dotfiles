@@ -17,6 +17,7 @@ Plug 'scrooloose/nerdtree'                      "NerdTree file browser
 Plug 'sheerun/vim-polyglot'                     "Better syntax highlighting
 Plug 'tpope/vim-vinegar'                        "Vinegar file browser
 Plug 'vim-airline/vim-airline'                  "Statusline
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }      "Vim LaTeX preview
 
 call plug#end()                                 "Initialize plugins
 

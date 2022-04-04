@@ -66,6 +66,9 @@ export GEM_HOME="$XDG_DATA_HOME/gem"
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export TEXMFHOME="$XDG_DATA_HOME/texmf"
+export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
+export TEXMFCONFIG="$XDG_CONFIG_HOME/texlive/texmf-config"
 
 # Vim
 export VIMINIT="source $MYVIMRC"
@@ -75,7 +78,7 @@ export ZLE_RPROMPT_INDENT=0
 
 # Go Path
 export GOPATH="$HOME/Code/Go"
-export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 
 # Default programs
 export EDITOR="vim"
