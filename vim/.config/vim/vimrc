@@ -9,6 +9,7 @@ set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 call plug#begin('$XDG_CONFIG_HOME/vim/plugged') "Specify plugin directory
 
 Plug 'ctrlpvim/ctrlp.vim'                       "CtrlP fuzzy search
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "Autocompletion
 Plug 'editorconfig/editorconfig-vim'            "Import editor config
 "Plug 'gosukiwi/vim-atom-dark'                  "Atom dark color scheme
 Plug 'joshdick/onedark.vim'                     "One dark color scheme
@@ -76,6 +77,18 @@ nmap <Leader>c :nohlsearch<cr>                  "Remove highlighting
 nmap <Leader>ll :Limelight!!<cr>                "Enable limelight mode
 nmap Q <nop>                                    "Disable Ex mode
 nmap q: <nop>                                   "Disable commandline window
+
+
+"COC config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-rust-analyzer',
+  \ 'coc-json',
+  \ ]
 
 "---------- Auto-Commands ----------"
 

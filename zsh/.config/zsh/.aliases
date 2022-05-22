@@ -18,6 +18,7 @@ alias edfun="$EDITOR $XDG_CONFIG_HOME/zsh/.functions"
 
 # Git
 alias gaa="git add -A"
+alias gac="git add -A && git commit -m"
 alias gc="git commit -m"
 alias gco="git checkout"
 alias gcom="git checkout main"
