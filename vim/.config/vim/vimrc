@@ -6,21 +6,22 @@ set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 
 "---------- Plugins ----------"
 
-call plug#begin('$XDG_CONFIG_HOME/vim/plugged') "Specify plugin directory
+call plug#begin('$XDG_CONFIG_HOME/vim/plugged')        " Specify plugin directory
 
-Plug 'ctrlpvim/ctrlp.vim'                       "CtrlP fuzzy search
-Plug 'neoclide/coc.nvim', {'branch': 'release'} "Autocompletion
-Plug 'editorconfig/editorconfig-vim'            "Import editor config
-"Plug 'gosukiwi/vim-atom-dark'                  "Atom dark color scheme
-Plug 'joshdick/onedark.vim'                     "One dark color scheme
-Plug 'junegunn/limelight.vim'                   "Dim inactive lines
-Plug 'scrooloose/nerdtree'                      "NerdTree file browser
-Plug 'sheerun/vim-polyglot'                     "Better syntax highlighting
-Plug 'tpope/vim-vinegar'                        "Vinegar file browser
-Plug 'vim-airline/vim-airline'                  "Statusline
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }      "Vim LaTeX preview
+Plug 'ctrlpvim/ctrlp.vim'                              " CtrlP fuzzy search
+Plug 'neoclide/coc.nvim', {'branch': 'release'}        " Autocompletion
+Plug 'editorconfig/editorconfig-vim'                   " Import editor config
+Plug 'gosukiwi/vim-atom-dark'                          " Atom dark color scheme
+Plug 'joshdick/onedark.vim'                            " One dark color scheme
+Plug 'junegunn/limelight.vim'                          " Dim inactive lines
+Plug 'scrooloose/nerdtree'                             " NerdTree file browser
+Plug 'sheerun/vim-polyglot'                            " Better syntax highlighting
+Plug 'tpope/vim-vinegar'                               " Vinegar file browser
+Plug 'godlygeek/tabular'                               " Character alignment
+Plug 'itchyny/lightline.vim'                           " Statusline
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " Vim LaTeX preview
 
-call plug#end()                                 "Initialize plugins
+call plug#end()                                        " Initialize plugins
 
 "---------- General ----------"
 
@@ -36,8 +37,12 @@ set expandtab                                   "Convert tabs to spaces (sorry)
 
 "---------- Airline ----------"
 
-let g:airline_powerline_fonts=1                 "Enable powerline fonts
-let g:airline_skip_empty_sections = 1
+"let g:airline_powerline_fonts=1                 "Enable powerline fonts
+"let g:airline_skip_empty_sections = 1
+
+"---------- Lightline config ----------"
+
+set laststatus=2
 
 "---------- Visuals ----------"
 
