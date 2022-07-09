@@ -131,7 +131,7 @@ function start-web() {
 }
 
 # Change to college directory
-function c() {
+function cl() {
     cd ~/Code/College/cs-$1
 }
 

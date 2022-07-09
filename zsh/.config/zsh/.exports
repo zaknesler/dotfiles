@@ -38,6 +38,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH="$PATH:$HOME/Library/Python/3.9/bin"            # Python pip packages
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH" # GNU Coreutils
   export PATH="/usr/local/opt/openjdk/bin:$PATH"              # OpenJDK
+  export PATH="/opt/homebrew/bin:$PATH"                       # Homebrew
 
   # Java Home
   export JAVA_HOME="/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
