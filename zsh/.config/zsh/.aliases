@@ -29,6 +29,8 @@ alias gpl="git pull"
 alias gpsh="git push"
 alias grao="git remote add origin"
 alias gs="git status"
+alias gsh="git stash -u"
+alias gshp="git stash pop"
 alias nah="git reset --hard && git clean -df"
 alias wip="git add . && git commit -m 'wip' -q"
 
