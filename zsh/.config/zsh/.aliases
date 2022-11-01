@@ -16,6 +16,9 @@ alias edali="$EDITOR $XDG_CONFIG_HOME/zsh/.aliases"
 alias edexp="$EDITOR $XDG_CONFIG_HOME/zsh/.exports"
 alias edfun="$EDITOR $XDG_CONFIG_HOME/zsh/.functions"
 
+# Vim
+alias vim="nvim"
+
 # Git
 alias gaa="git add -A"
 alias gac="git add -A && git commit -m"
@@ -61,7 +64,8 @@ alias sn="sail npm"
 alias sp="sail php"
 alias sud="sail up -d"
 
-alias nr="npm run"
+alias n="npm"
+alias no="npm outdated"
 alias nrb="npm run build"
 alias nrd="npm run dev"
 alias nrs="npm run start"
