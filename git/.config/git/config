@@ -3,6 +3,7 @@
     email = zak@nesler.dev
 [core]
     excludesfile = $XDG_CONFIG_HOME/git/.gitignore_global
+	ignorecase = false
 [init]
     defaultBranch = main
 [filter "lfs"]
