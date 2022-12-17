@@ -1,9 +1,15 @@
-autoload/
-plugged/
-pack/
-vendor/
-composer/.config/composer/*pub
-.zsh_sessions/
-*.session
-composer.lock
+# Zsh
 .zcompdump*
+*.session
+.zsh_sessions/
+
+# Vim/Nvim
+autoload/
+pack/
+plugged/
+vendor/
+packer_compiled.lua
+
+# Composer
+composer/.config/composer/*pub
+composer.lock
