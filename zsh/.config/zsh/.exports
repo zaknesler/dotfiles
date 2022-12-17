@@ -24,6 +24,9 @@ if [[ -d "/run/WSL" ]]; then
   # PKG Config
   export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
 
+  # Java GTK
+  export CLASSPATH="/usr/share/java/gtk.jar:."
+
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   # Java Home
@@ -52,7 +55,6 @@ export CONDARC="$XDG_CONFIG_HOME/conda/condarc"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 export MYZSHRC="$ZDOTDIR/.zshrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NVM_DIR="$XDG_DATA_HOME/nvm"
@@ -71,21 +73,22 @@ export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
 export TEXMFCONFIG="$XDG_CONFIG_HOME/texlive/texmf-config"
 
-# Vim
-export VIMINIT="source $MYVIMRC"
-
 # p10k
 export ZLE_RPROMPT_INDENT=0
 
 # Go Path
-export GOPATH="$HOME/Code/Go"
+export GOPATH="$HOME/code/go"
 export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 
 # Default programs
-export EDITOR="vim"
+export EDITOR="nvim"
 
 # NVM
 export NVM_AUTO_USE=true
+
+# PNPM
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+export PATH="$PNPM_HOME:$PATH"
 
 # Enable persistent REPL history for `node`
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
@@ -108,8 +111,8 @@ export HISTFILE="$XDG_DATA_HOME/zsh/history"
 export HISTCONTROL="ignoreboth"
 
 # Prefer US English and use UTF-8
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+# export LANG="en_US.UTF-8"
+# export LC_ALL="en_US.UTF-8"
 
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md="${yellow}"

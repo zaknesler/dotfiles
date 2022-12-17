@@ -43,6 +43,11 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo '-------------------'
     brew install stow
 
+    # Install formulae from Brewfile
+    echo 'Installing Brew Formulae'
+    echo '------------------------'
+    brew bundle
+
 fi
 
 # Install oh-my-zsh
@@ -77,9 +82,7 @@ echo 'Symlinking Stow directories'
 echo '---------------------------'
 ls -d */ | xargs stow -t $HOME
 
-# Install formulae from Brewfile
-echo 'Installing Brew Formulae'
-echo '------------------------'
-brew bundle
+# Create directory for ZSH history
+mkdir -p $HOME/.local/share/zsh
 
 echo 'Finished installing dotfiles!'

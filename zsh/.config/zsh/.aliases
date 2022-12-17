@@ -64,11 +64,19 @@ alias sn="sail npm"
 alias sp="sail php"
 alias sud="sail up -d"
 
+# NPM
 alias n="npm"
 alias no="npm outdated"
 alias nrb="npm run build"
 alias nrd="npm run dev"
 alias nrs="npm run start"
+
+# PNPM
+alias pn="pnpm"
+alias pno="pnpm outdated"
+alias pnrb="pnpm run build"
+alias pnrd="pnpm run dev"
+alias pnrs="pnpm run start"
 
 # Docker
 alias do="docker"
