@@ -2,8 +2,8 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Enable moving selections
-vim.keymap.set("v", "k", ":m '<-2<cr>gv=gv")
-vim.keymap.set("v", "j", ":m '>+1<cr>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
 
 -- Append next line to current line
 vim.keymap.set("n", "J", "mzJ`z")

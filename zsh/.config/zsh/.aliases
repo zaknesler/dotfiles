@@ -17,6 +17,7 @@ alias edexp="$EDITOR $XDG_CONFIG_HOME/zsh/.exports"
 alias edfun="$EDITOR $XDG_CONFIG_HOME/zsh/.functions"
 
 # Vim
+alias v="nvim"
 alias vim="nvim"
 
 # Git
