@@ -85,6 +85,15 @@ alias pnrd="pnpm run dev"
 alias pnrs="pnpm run start"
 alias pnrt="pnpm run test"
 
+# PNPM
+alias pn="pnpm"
+alias pni="pnpm"
+alias pnr="pnpm run"
+alias pno="pnpm outdated"
+alias pnrd="pnpm run dev"
+alias pnrb="pnpm run build"
+alias pnrs="pnpm run start"
+
 # Docker
 alias do="docker"
 alias doc="docker-compose"
