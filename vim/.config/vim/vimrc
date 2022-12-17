@@ -11,8 +11,8 @@ call plug#begin('$XDG_CONFIG_HOME/vim/plugged')        " Specify plugin director
 Plug 'ctrlpvim/ctrlp.vim'                              " CtrlP fuzzy search
 Plug 'neoclide/coc.nvim', {'branch': 'release'}        " Autocompletion
 Plug 'editorconfig/editorconfig-vim'                   " Import editor config
-" Plug 'gosukiwi/vim-atom-dark'                        " Atom dark color scheme
-" Plug 'joshdick/onedark.vim'                          " One dark color scheme
+Plug 'gosukiwi/vim-atom-dark'                          " Atom dark color scheme
+Plug 'joshdick/onedark.vim'                            " One dark color scheme
 " Plug 'junegunn/limelight.vim'                        " Dim inactive lines
 Plug 'arcticicestudio/nord-vim'                        " Nord color theme
 Plug 'scrooloose/nerdtree'                             " NerdTree file browser
@@ -48,7 +48,7 @@ set laststatus=2
 "---------- Visuals ----------"
 
 set t_Co=256                                    "Set the terminal color depth to 256
-colorscheme nord                                "Change the default color scheme
+colorscheme onedark                             "Change the default color scheme
 set guifont=Operator\ Mono\ Book:h14            "Set default font face and size
 set linespace=10                                "Set line spacing to a reasonable level
 set number                                      "Enable line numbers

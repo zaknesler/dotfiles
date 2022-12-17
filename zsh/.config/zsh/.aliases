@@ -25,6 +25,7 @@ alias gac="git add -A && git commit -m"
 alias gb="git branch"
 alias gc="git commit -m"
 alias gco="git checkout"
+alias gcob="git checkout -b"
 alias gcom="git checkout main"
 alias gd="git diff"
 alias gf="git fetch"
@@ -66,17 +67,23 @@ alias sud="sail up -d"
 
 # NPM
 alias n="npm"
+alias ni="npm install"
 alias no="npm outdated"
+alias nr="npm run"
 alias nrb="npm run build"
 alias nrd="npm run dev"
 alias nrs="npm run start"
+alias nrt="npm run test"
 
 # PNPM
 alias pn="pnpm"
+alias pni="pnpm install"
 alias pno="pnpm outdated"
+alias pnr="pnpm run"
 alias pnrb="pnpm run build"
 alias pnrd="pnpm run dev"
 alias pnrs="pnpm run start"
+alias pnrt="pnpm run test"
 
 # Docker
 alias do="docker"
