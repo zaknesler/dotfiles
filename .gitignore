@@ -8,7 +8,6 @@ autoload/
 pack/
 plugged/
 vendor/
-undodir/*
 packer_compiled.lua
 
 # Composer
