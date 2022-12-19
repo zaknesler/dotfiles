@@ -43,6 +43,11 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo '-------------------'
     brew install stow
 
+    # Install formulae from Brewfile
+    echo 'Installing Brew Formulae'
+    echo '------------------------'
+    brew bundle
+
 fi
 
 # Install oh-my-zsh
@@ -60,26 +65,22 @@ echo 'Installing Powerlevel10k'
 echo '------------------------'
 git clone --depth=1 https://github.com/romkatv/powerlevel10k ${ZSH_CUSTOM:-$HOME/config/oh-my-zsh/custom}/themes/powerlevel10k
 
-# Install zsh-nvm
-echo 'Installing zsh-nvm'
+# install zsh-nvm
+echo 'installing zsh-nvm'
 echo '------------------'
 git clone https://github.com/lukechilds/zsh-nvm ${ZSH_CUSTOM:-$HOME/config/oh-my-zsh/custom}/plugins/zsh-nvm
 
-# Install Vim Plug
-echo 'Installing Vim Plug'
-echo '-------------------'
-curl -fLo ${XDG_CONFIG_HOME:-$HOME/.config}/vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-echo 'Vim Plug installed. Run `:PlugInstall` within Vim to install plugins.'
+# Install Packer for Neovim
+echo 'Installing packer.vim'
+echo '------------------'
+git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 # Symlink Stow directories
 echo 'Symlinking Stow directories'
 echo '---------------------------'
 ls -d */ | xargs stow -t $HOME
 
-# Install formulae from Brewfile
-echo 'Installing Brew Formulae'
-echo '------------------------'
-brew bundle
+# Create directory for ZSH history
+mkdir -p $HOME/.local/share/zsh
 
 echo 'Finished installing dotfiles!'

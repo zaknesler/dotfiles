@@ -17,6 +17,7 @@ alias edexp="$EDITOR $XDG_CONFIG_HOME/zsh/.exports"
 alias edfun="$EDITOR $XDG_CONFIG_HOME/zsh/.functions"
 
 # Vim
+alias v="nvim"
 alias vim="nvim"
 
 # Git
@@ -68,11 +69,22 @@ alias sud="sail up -d"
 # NPM
 alias n="npm"
 alias ni="npm install"
-alias nr="npm run"
 alias no="npm outdated"
-alias nrd="npm run dev"
+alias nr="npm run"
 alias nrb="npm run build"
+alias nrd="npm run dev"
 alias nrs="npm run start"
+alias nrt="npm run test"
+
+# PNPM
+alias pn="pnpm"
+alias pni="pnpm install"
+alias pno="pnpm outdated"
+alias pnr="pnpm run"
+alias pnrb="pnpm run build"
+alias pnrd="pnpm run dev"
+alias pnrs="pnpm run start"
+alias pnrt="pnpm run test"
 
 # PNPM
 alias pn="pnpm"
