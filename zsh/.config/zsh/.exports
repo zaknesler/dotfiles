@@ -78,7 +78,7 @@ export VIMINIT="source $MYVIMRC"
 export ZLE_RPROMPT_INDENT=0
 
 # Go Path
-export GOPATH="$HOME/Code/Go"
+export GOPATH="$HOME/code/go"
 export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 
 # Default programs
