@@ -1,3 +1,6 @@
+# Run this to ignore future changes:
+# git update-index --assume-unchanged $XDG_CONFIG_HOME/dotfiles/git/.config/git/config
+
 [user]
     name = Zak Nesler
     email = zak@nesler.dev
