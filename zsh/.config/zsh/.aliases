@@ -44,27 +44,27 @@ alias nah="git reset --hard && git clean -df"
 alias wip="git add . && git commit -m 'wip' -q"
 
 # PHP
-alias cda="composer dump-autoload -o"
-alias ci="composer install"
-alias cr="composer require"
-alias cu="composer update"
-alias pe="./vendor/bin/phpunit --exclude-group"
-alias pf="./vendor/bin/phpunit --filter"
-alias pg="./vendor/bin/phpunit --group"
-alias pu="./vendor/bin/phpunit"
+# alias cda="composer dump-autoload -o"
+# alias ci="composer install"
+# alias cr="composer require"
+# alias cu="composer update"
+# alias pe="./vendor/bin/phpunit --exclude-group"
+# alias pf="./vendor/bin/phpunit --filter"
+# alias pg="./vendor/bin/phpunit --group"
+# alias pu="./vendor/bin/phpunit"
 
 # Laravel
-alias a="php artisan"
-alias mfs="php artisan migrate:fresh --seed"
-alias tinker="php artisan tinker"
+# alias a="php artisan"
+# alias mfs="php artisan migrate:fresh --seed"
+# alias tinker="php artisan tinker"
 
 # Laravel Sail
-alias sail="bash vendor/bin/sail"
-alias sa="sail artisan"
-alias sc="sail composer"
-alias sn="sail npm"
-alias sp="sail php"
-alias sud="sail up -d"
+# alias sail="bash vendor/bin/sail"
+# alias sa="sail artisan"
+# alias sc="sail composer"
+# alias sn="sail npm"
+# alias sp="sail php"
+# alias sud="sail up -d"
 
 # NPM
 alias n="npm"
@@ -86,15 +86,6 @@ alias pnrd="pnpm run dev"
 alias pnrs="pnpm run start"
 alias pnrt="pnpm run test"
 
-# PNPM
-alias pn="pnpm"
-alias pni="pnpm"
-alias pnr="pnpm run"
-alias pno="pnpm outdated"
-alias pnrd="pnpm run dev"
-alias pnrb="pnpm run build"
-alias pnrs="pnpm run start"
-
 # Docker
 alias do="docker"
 alias doc="docker-compose"
@@ -114,17 +105,15 @@ alias py="python3"
 alias python="python3"
 
 # Utilities
+alias catssh="cat ~/.ssh/id_rsa.pub"
 alias copyssh="command cat ~/.ssh/id_rsa.pub | pbcopy"
 alias ip="curl https://diagnostic.opendns.com/myip ; echo"
 alias localip="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 alias own="sudo chown -R $USER:$USER"
-alias tdb="touch ./database/database.sqlite"
 alias weather="curl https://wttr.in/\?u\&0 && echo ''"
-alias zd="ssh -qt groot zsh"
 alias c~="rm -rf ~/.aws ~/.azure ~/.yarnrc ~/errors.log ~/.sudo_as_admin_successful ~/.wget-hsts ~/.python_history ~/.tailwindcss ~/.omnisharp ~/.nuxtrc ~/.electron ~/.vue-templates ~/.dotnet ~/.racket_history"
 
 # Other
-alias catssh="cat ~/.ssh/id_rsa.pub"
 alias c.="code ."
 alias cs="cd"
 alias l="ls -lh"
