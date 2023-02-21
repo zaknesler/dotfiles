@@ -3,7 +3,7 @@
 *.session
 .zsh_sessions/
 
-# Vim/Nvim
+# Neovim
 autoload/
 pack/
 plugged/
@@ -11,6 +11,5 @@ vendor/
 packer_compiled.lua
 .netrwhist
 
-# Composer
-composer/.config/composer/*pub
-composer.lock
+# Brew
+Brewfile.lock*
