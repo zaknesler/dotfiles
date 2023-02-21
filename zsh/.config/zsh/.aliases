@@ -4,14 +4,14 @@
 alias sudo="sudo "
 
 # Directory Shortcuts
-alias co="cd ~/code"
-alias dl="cd ~/Downloads"
+alias c-="cd - &>/dev/null"
+alias co="cd ~/Code &> /dev/null || cd ~/code &> /dev/null"
+alias dl="cd ~/Downloads &> /dev/null || cd ~/downloads &> /dev/null"
 alias dot="cd $XDG_CONFIG_HOME/dotfiles"
-alias dt="cd ~/Desktop"
+alias dt="cd ~/Desktop &> /dev/null || cd ~/desktop &> /dev/null"
 
 # Edit Shortcuts
 alias edzsh="$EDITOR $XDG_CONFIG_HOME/zsh/.zshrc"
-alias edvim="$EDITOR $MYVIMRC"
 alias edali="$EDITOR $XDG_CONFIG_HOME/zsh/.aliases"
 alias edexp="$EDITOR $XDG_CONFIG_HOME/zsh/.exports"
 alias edfun="$EDITOR $XDG_CONFIG_HOME/zsh/.functions"
