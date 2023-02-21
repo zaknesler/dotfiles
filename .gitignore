@@ -9,6 +9,7 @@ pack/
 plugged/
 vendor/
 packer_compiled.lua
+.netrwhist
 
 # Composer
 composer/.config/composer/*pub
