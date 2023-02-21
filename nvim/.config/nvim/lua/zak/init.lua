@@ -1,2 +1,2 @@
-require("zak.remap")
 require("zak.set")
+require("zak.remap")
