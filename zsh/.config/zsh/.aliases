@@ -124,6 +124,7 @@ alias zd="ssh -qt groot zsh"
 alias c~="rm -rf ~/.aws ~/.azure ~/.yarnrc ~/errors.log ~/.sudo_as_admin_successful ~/.wget-hsts ~/.python_history ~/.tailwindcss ~/.omnisharp ~/.nuxtrc ~/.electron ~/.vue-templates ~/.dotnet ~/.racket_history"
 
 # Other
+alias catssh="cat ~/.ssh/id_rsa.pub"
 alias c.="code ."
 alias cs="cd"
 alias l="ls -lh"
@@ -131,7 +132,7 @@ alias ll="ls -lAh"
 alias ls="$([[ "$OSTYPE" == "darwin"* ]] && echo "gls" || echo "ls") -hv --color=auto --group-directories-first"
 alias o.="o ."
 alias o="open"
-alias srczsh="source ~/.config/zsh/.{exports,functions,aliases}"
+alias srczsh="source ~/.config/zsh/.aliases ~/.config/zsh/.exports ~/.config/zsh/.functions"
 alias stowall="cd $XDG_CONFIG_HOME/dotfiles && ls -d */ | xargs stow -t $HOME"
 alias web="python3 -m http.server"
 
