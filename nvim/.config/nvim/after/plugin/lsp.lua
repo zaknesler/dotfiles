@@ -37,6 +37,16 @@ lsp.set_preferences({
     }
 })
 
+lsp.configure('lua_ls', {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
+})
+
 vim.diagnostic.config({
     virtual_text = true,
 })
