@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Enable aliases to be sudo’ed
-alias sudo="sudo "
+alias su="su -l" # Always use login shell for su
+alias sudo="sudo " # Enable alias expansion for sudo
 
 # Directory Shortcuts
 alias c-="cd - &>/dev/null"
@@ -88,12 +88,12 @@ alias pnrt="pnpm run test"
 
 # Docker
 alias do="docker"
-alias doc="docker-compose"
-alias docb="docker-compose build"
-alias docd="docker-compose down"
-alias doce="docker-compose exec"
-alias docr="docker-compose run --rm"
-alias docu="docker-compose up -d"
+alias doc="docker compose"
+alias docb="docker compose build"
+alias docd="docker compose down"
+alias doce="docker compose exec"
+alias docr="docker compose run --rm"
+alias docu="docker compose up -d"
 alias do-clean="docker rmi \`docker images -f 'dangling=true' -q\` --force"
 
 # Python
