@@ -44,4 +44,5 @@ return require('packer').startup(function(use)
 
   use("laytan/cloak.nvim")
   use("github/copilot.vim")
+  use("folke/zen-mode.nvim")
 end)
