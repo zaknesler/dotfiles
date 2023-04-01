@@ -1,14 +1,4 @@
-local lsp = require("lsp-zero")
-
-lsp.preset("recommended")
-
-lsp.ensure_installed({
-  'tsserver',
-  'eslint',
-  'lua_ls',
-  'rust_analyzer',
-  'gopls',
-})
+local lsp = require("lsp-zero").preset("recommended")
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -29,7 +19,7 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.set_preferences({
-  suggest_lsp_servers = false,
+  suggest_lsp_servers = true,
   sign_icons = {
     error = 'E',
     warn = 'W',
@@ -55,16 +45,6 @@ vim.diagnostic.config({
 lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
 
-  -- enable formatting for eslint
-  if client.name == "eslint" then
-    client.server_capabilities.documentFormattingProvider = true
-  end
-
-  -- disable formatting for tsserver
-  if client.name == "tsserver" then
-    client.server_capabilities.documentFormattingProvider = false
-  end
-
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
@@ -78,3 +58,7 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
+
+vim.diagnostic.config({
+  virtual_text = true
+})

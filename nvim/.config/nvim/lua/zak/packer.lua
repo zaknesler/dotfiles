@@ -4,25 +4,16 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use({
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.0',
-    requires = { { 'nvim-lua/plenary.nvim' } }
-  })
-
-  use({ 'catppuccin/nvim', as = 'catppuccin' })
-
-  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-  use('theprimeagen/harpoon')
-  use('mbbill/undotree')
-  use('tpope/vim-fugitive')
-  use('nvim-treesitter/nvim-treesitter-context')
-
-  use({
     'VonHeikemen/lsp-zero.nvim',
     requires = {
       -- LSP Support
       { 'neovim/nvim-lspconfig' },
-      { 'williamboman/mason.nvim' },
+      {
+        'williamboman/mason.nvim',
+        run = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
       { 'williamboman/mason-lspconfig.nvim' },
 
       -- Autocompletion
@@ -38,6 +29,20 @@ return require('packer').startup(function(use)
       { 'rafamadriz/friendly-snippets' },
     }
   })
+
+  use({
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.0',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  })
+
+  use({ 'catppuccin/nvim', as = 'catppuccin' })
+
+  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+  use('theprimeagen/harpoon')
+  use('mbbill/undotree')
+  use('tpope/vim-fugitive')
+  use('nvim-treesitter/nvim-treesitter-context')
 
   use({
     'nvim-neo-tree/neo-tree.nvim',
