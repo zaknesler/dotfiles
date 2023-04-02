@@ -1,45 +1,5 @@
 #!/bin/bash
 
-# Set-up-project
-# Basically, configure cloned Laravel project
-function sup {
-    composer install
-    composer run-script post-root-package-install
-    composer run-script post-create-project-cmd
-    npm install
-}
-
-# Update all global packages and apps
-function update {
-    echo 'Updating App Store Apps'
-    echo '-----------------------'
-    mas upgrade
-
-    echo '\nUpdating Homebrew'
-    echo '-----------------'
-    brew update
-
-    echo '\nUpgrading Brew Packages'
-    echo '-----------------------'
-    brew upgrade
-
-    echo '\nCleaning Up Homebrew Taps'
-    echo '-------------------------'
-    brew cleanup
-
-    echo '\nUpdating Global NPM Packages'
-    echo '----------------------------'
-    npm update -g
-
-    echo '\nUpdating Global Composer Packages'
-    echo '---------------------------------'
-    composer global update
-
-    echo '\nUpdating pip Packages'
-    echo '---------------------------'
-    pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install --user -U
-}
-
 # Create a new directory and enter it
 function mkd() {
     mkdir -p "$@" && cd "$@"
@@ -51,12 +11,6 @@ function dns() {
     dig +nocmd "$1" any +multiline +noall +answer
 }
 
-# Create new Laravel Sail project
-function sail-create() {
-    curl -s https://laravel.build/$1 | bash
-    cd $1
-}
-
 # Initialize Git repository and create initial commit
 function giic() {
     git init
@@ -64,75 +18,10 @@ function giic() {
     git commit -m "Initial commit"
 }
 
-# Install Laravel Jetstream
-function install-jetstream() {
-    stack=${1:-livewire}
-
-    if [ -f 'vendor/bin/sail' ]; then
-        sail composer require laravel/jetstream
-        sail artisan jetstream:install $stack
-        sail npm install
-        sail npm run dev
-        sail artisan migrate
-    else
-        composer require laravel/jetstream
-        php artisan jetstream:install $stack
-        npm install
-        npm run dev
-        php artisan migrate
-    fi
-}
-
-# Install Laravel Breeze
-function install-breeze() {
-    if [ -f 'vendor/bin/sail' ]; then
-        sail composer require --dev laravel/breeze
-        sail artisan breeze:install
-        sail npm install
-        sail npm run dev
-        sail artisan migrate
-    else
-        composer require --dev laravel/breeze
-        php artisan breeze:install
-        npm install
-        npm run dev
-        php artisan migrate
-    fi
-}
-
-# Setup Sail project
-function sail-setup() {
-    docker run --rm \
-        -v $(pwd):/opt \
-        -w /opt laravelsail/php80-composer:latest \
-        bash -c "composer install"
-}
-
 # Install Tailwind
 function install-tw() {
     npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
     npx tailwindcss init -p
-}
-
-# Add new Nginx site
-function add-site() {
-    sudo cp "/etc/nginx/sites-available/.template" "/etc/nginx/sites-available/$1"
-    sudo sed -i "s/{NAME}/$1/g" "/etc/nginx/sites-available/$1"
-    sudo ln -s "/etc/nginx/sites-available/$1" "/etc/nginx/sites-enabled/$1"
-    sudo service nginx restart
-    sudo service php8.1-fpm restart
-}
-
-# Start all web services
-function start-web() {
-    sudo service nginx start
-    sudo service php8.1-fpm start
-    sudo service postgresql start
-}
-
-# Change to college directory
-function cl() {
-    cd ~/Code/College/cs-$1
 }
 
 # Create private GitHub repository in current directory
