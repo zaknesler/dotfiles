@@ -17,7 +17,9 @@ alias edexp="$EDITOR $XDG_CONFIG_HOME/zsh/.exports"
 alias edfun="$EDITOR $XDG_CONFIG_HOME/zsh/.functions"
 
 # Vim
+alias nv="nvim"
 alias v="nvim"
+alias vi="nvim"
 alias vim="nvim"
 
 # Git
@@ -43,29 +45,6 @@ alias gshp="git stash pop"
 alias nah="git reset --hard && git clean -df"
 alias wip="git add . && git commit -m 'wip' -q"
 
-# PHP
-# alias cda="composer dump-autoload -o"
-# alias ci="composer install"
-# alias cr="composer require"
-# alias cu="composer update"
-# alias pe="./vendor/bin/phpunit --exclude-group"
-# alias pf="./vendor/bin/phpunit --filter"
-# alias pg="./vendor/bin/phpunit --group"
-# alias pu="./vendor/bin/phpunit"
-
-# Laravel
-# alias a="php artisan"
-# alias mfs="php artisan migrate:fresh --seed"
-# alias tinker="php artisan tinker"
-
-# Laravel Sail
-# alias sail="bash vendor/bin/sail"
-# alias sa="sail artisan"
-# alias sc="sail composer"
-# alias sn="sail npm"
-# alias sp="sail php"
-# alias sud="sail up -d"
-
 # NPM
 alias n="npm"
 alias ni="npm install"
@@ -87,14 +66,14 @@ alias pnrs="pnpm run start"
 alias pnrt="pnpm run test"
 
 # Docker
-alias do="docker"
-alias doc="docker compose"
-alias docb="docker compose build"
-alias docd="docker compose down"
-alias doce="docker compose exec"
-alias docr="docker compose run --rm"
-alias docu="docker compose up -d"
-alias do-clean="docker rmi \`docker images -f 'dangling=true' -q\` --force"
+alias dr="docker"
+alias drc="docker compose"
+alias drcb="docker compose build"
+alias drcd="docker compose down"
+alias drce="docker compose exec"
+alias drcr="docker compose run --rm"
+alias drcu="docker compose up -d"
+alias dr-clean="docker rmi \`docker images -f 'dangling=true' -q\` --force"
 
 # Python
 alias activate="source ./venv/bin/activate"
