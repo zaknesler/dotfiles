@@ -1,3 +1,10 @@
+# Run this to ignore future changes:
+# git update-index --assume-unchanged $XDG_CONFIG_HOME/dotfiles/npm/.config/npm/npmrc
+#
+# To undo:
+# git update-index --no-assume-unchanged $XDG_CONFIG_HOME/dotfiles/npm/.config/npm/npmrc
+
+# Global
 prefix=${XDG_DATA_HOME}/npm
 cache=${XDG_CACHE_HOME}/npm
 fund=false
