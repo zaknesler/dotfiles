@@ -13,3 +13,6 @@ packer_compiled.lua
 
 # Brew
 Brewfile.lock*
+
+# Nushell
+history.txt
