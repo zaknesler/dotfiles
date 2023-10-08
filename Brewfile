@@ -22,11 +22,11 @@ brew 'go'
 brew 'sqlite'
 
 # Cask Apps
-cask 'brave-browser'
+# cask 'brave-browser'
 cask 'discord'
-cask 'docker'
+# cask 'docker' 
 cask 'figma'
-cask 'postman'
+# cask 'postman'
 cask 'spotify'
 cask 'visual-studio-code'
 
