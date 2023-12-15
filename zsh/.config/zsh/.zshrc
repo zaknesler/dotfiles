@@ -40,3 +40,6 @@ source $ZDOTDIR/.functions
 
 # P10k Configuration
 source $ZDOTDIR/.p10k.zsh
+
+# Bun completions
+[ -s "/Users/zak/.bun/_bun" ] && source "/Users/zak/.bun/_bun"

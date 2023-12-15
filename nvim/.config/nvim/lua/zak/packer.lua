@@ -47,7 +47,6 @@ return require('packer').startup(function(use)
     }
   })
 
-
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
@@ -63,7 +62,6 @@ return require('packer').startup(function(use)
     }
   })
 
-  use('github/copilot.vim')
   use('folke/zen-mode.nvim')
   use('andrewferrier/wrapping.nvim')
 end)

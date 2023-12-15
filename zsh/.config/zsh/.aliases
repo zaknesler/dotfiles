@@ -45,6 +45,9 @@ alias gshp="git stash pop"
 alias nah="git reset --hard && git clean -df"
 alias wip="git add . && git commit -m 'wip' -q"
 
+# Cargo/Rust
+alias c="cargo"
+
 # NPM
 alias n="npm"
 alias ni="npm install"

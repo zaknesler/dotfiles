@@ -13,6 +13,7 @@ export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH" # Composer binaries
 export PATH="$HOME/.local/share/npm/bin:$PATH"           # NPM binaries
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"      # bob nvim binaries
 export PATH="$HOME/.local/bin:$PATH"                     # Python binaries
+export PATH="$HOME/.bun/bin:$PATH"                       # Bun binaries
 export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"             # Rust binaries
 export PATH="$XDG_DATA_HOME:$PATH"                       # User binaries
 

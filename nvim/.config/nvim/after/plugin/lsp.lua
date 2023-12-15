@@ -38,6 +38,14 @@ lsp.configure('lua_ls', {
   }
 })
 
+lsp.configure('tsserver', {
+  javascript = {
+    format = {
+      semicolons = false
+    },
+  },
+})
+
 vim.diagnostic.config({
   virtual_text = true,
 })
