@@ -1,6 +1,6 @@
 # Nushell Config File
 #
-# version = 0.82.1
+# version = "0.91.0"
 
 # For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html
@@ -14,45 +14,24 @@ let dark_theme = {
     empty: blue
     # Closures can be used to choose colors for specific values.
     # The value (in this case, a bool) is piped into the closure.
-    bool: {|| if $in { 'light_cyan' } else { 'light_gray' } }
+    # eg) {|| if $in { 'light_cyan' } else { 'light_gray' } }
+    bool: light_cyan
     int: white
-    filesize: {|e|
-        if $e == 0b {
-            'white'
-        } else if $e < 1mb {
-            'cyan'
-        } else { 'blue' }
-    }
+    filesize: cyan
     duration: white
-    date: {|| (date now) - $in |
-        if $in < 1hr {
-            'purple'
-        } else if $in < 6hr {
-            'red'
-        } else if $in < 1day {
-            'yellow'
-        } else if $in < 3day {
-            'green'
-        } else if $in < 1wk {
-            'light_green'
-        } else if $in < 6wk {
-            'cyan'
-        } else if $in < 52wk {
-            'blue'
-        } else { 'dark_gray' }
-    }
+    date: purple
     range: white
     float: white
     string: white
     nothing: white
     binary: white
-    cellpath: white
+    cell-path: white
     row_index: green_bold
     record: white
     list: white
     block: white
     hints: dark_gray
-    search_result: {bg: red fg: white}
+    search_result: { bg: red fg: white }
     shape_and: purple_bold
     shape_binary: purple_bold
     shape_block: blue_bold
@@ -63,6 +42,7 @@ let dark_theme = {
     shape_directory: cyan
     shape_external: cyan
     shape_externalarg: green_bold
+    shape_external_resolved: light_yellow_bold
     shape_filepath: cyan
     shape_flag: blue_bold
     shape_float: purple_bold
@@ -71,6 +51,7 @@ let dark_theme = {
     shape_globpattern: cyan_bold
     shape_int: purple_bold
     shape_internalcall: cyan_bold
+    shape_keyword: cyan_bold
     shape_list: cyan_bold
     shape_literal: blue
     shape_match_pattern: green
@@ -98,45 +79,24 @@ let light_theme = {
     empty: blue
     # Closures can be used to choose colors for specific values.
     # The value (in this case, a bool) is piped into the closure.
-    bool: {|| if $in { 'dark_cyan' } else { 'dark_gray' } }
+    # eg) {|| if $in { 'dark_cyan' } else { 'dark_gray' } }
+    bool: dark_cyan
     int: dark_gray
-    filesize: {|e|
-        if $e == 0b {
-            'dark_gray'
-        } else if $e < 1mb {
-            'cyan_bold'
-        } else { 'blue_bold' }
-    }
+    filesize: cyan_bold
     duration: dark_gray
-    date: {|| (date now) - $in |
-        if $in < 1hr {
-            'purple'
-        } else if $in < 6hr {
-            'red'
-        } else if $in < 1day {
-            'yellow'
-        } else if $in < 3day {
-            'green'
-        } else if $in < 1wk {
-            'light_green'
-        } else if $in < 6wk {
-            'cyan'
-        } else if $in < 52wk {
-            'blue'
-        } else { 'dark_gray' }
-    }
+    date: purple
     range: dark_gray
     float: dark_gray
     string: dark_gray
     nothing: dark_gray
     binary: dark_gray
-    cellpath: dark_gray
+    cell-path: dark_gray
     row_index: green_bold
-    record: white
-    list: white
-    block: white
+    record: dark_gray
+    list: dark_gray
+    block: dark_gray
     hints: dark_gray
-    search_result: {fg: white bg: red}
+    search_result: { fg: white bg: red }
     shape_and: purple_bold
     shape_binary: purple_bold
     shape_block: blue_bold
@@ -147,6 +107,7 @@ let light_theme = {
     shape_directory: cyan
     shape_external: cyan
     shape_externalarg: green_bold
+    shape_external_resolved: light_purple_bold
     shape_filepath: cyan
     shape_flag: blue_bold
     shape_float: purple_bold
@@ -155,6 +116,7 @@ let light_theme = {
     shape_globpattern: cyan_bold
     shape_int: purple_bold
     shape_internalcall: cyan_bold
+    shape_keyword: cyan_bold
     shape_list: cyan_bold
     shape_literal: blue
     shape_match_pattern: green
@@ -176,9 +138,8 @@ let light_theme = {
 
 # External completer example
 # let carapace_completer = {|spans|
-#     carapace $spans.0 nushell $spans | from json
+#     carapace $spans.0 nushell ...$spans | from json
 # }
-
 
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
@@ -193,20 +154,21 @@ $env.config = {
         always_trash: false # always act as if -t was given. Can be overridden with -p
     }
 
-    cd: {
-        abbreviations: false # allows `cd s/o/f` to expand to `cd some/other/folder`
-    }
-
     table: {
-        mode: light # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
+        mode: compact # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
         index_mode: always # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
         show_empty: true # show 'empty list' and 'empty record' placeholders for command output
+        padding: { left: 1, right: 1 } # a left right padding of each column in a table
         trim: {
             methodology: wrapping # wrapping or truncating
             wrapping_try_keep_words: true # A strategy used by the 'wrapping' methodology
             truncating_suffix: "..." # A suffix used by the 'truncating' methodology
         }
+        header_on_separator: false # show header text on separator/border line
+        # abbreviated_row_count: 10 # limit data rows from top and bottom after reaching a set point
     }
+
+    error_style: "fancy" # "fancy" or "plain" for screen reader-friendly error messages
 
     # datetime_format determines what a datetime rendered in the shell would look like.
     # Behavior without this configuration point will be to "humanize" the datetime display,
@@ -217,31 +179,19 @@ $env.config = {
     }
 
     explore: {
-        try: {
-            border_color: {fg: "white"}
-        },
-        status_bar_background: {fg: "#1D1F21", bg: "#C4C9C6"},
-        command_bar_text: {fg: "#C4C9C6"},
-        highlight: {fg: "black", bg: "yellow"},
+        status_bar_background: { fg: "#1D1F21", bg: "#C4C9C6" },
+        command_bar_text: { fg: "#C4C9C6" },
+        highlight: { fg: "black", bg: "yellow" },
         status: {
-            error: {fg: "white", bg: "red"},
+            error: { fg: "white", bg: "red" },
             warn: {}
             info: {}
         },
         table: {
-            split_line: {fg: "#404040"},
-            selected_cell: {},
+            split_line: { fg: "#404040" },
+            selected_cell: { bg: light_blue },
             selected_row: {},
             selected_column: {},
-            cursor: true,
-            line_head_top: true,
-            line_head_bottom: true,
-            line_shift: true,
-            line_index: true,
-        },
-        config: {
-            border_color: {fg: "white"}
-            cursor_color: {fg: "black", bg: "light_yellow"}
         },
     }
 
@@ -262,20 +212,21 @@ $env.config = {
             max_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
             completer: null # check 'carapace_completer' above as an example
         }
+        use_ls_colors: true # set this to true to enable file/path/directory completions using LS_COLORS
     }
 
     filesize: {
-        metric: true # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
+        metric: false # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
         format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
     }
 
     cursor_shape: {
-        emacs: line # block, underscore, line, blink_block, blink_underscore, blink_line (line is the default)
-        vi_insert: block # block, underscore, line , blink_block, blink_underscore, blink_line (block is the default)
-        vi_normal: underscore # block, underscore, line, blink_block, blink_underscore, blink_line (underscore is the default)
+        emacs: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)
+        vi_insert: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (block is the default)
+        vi_normal: underscore # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
-    color_config: {} # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
+    color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
     use_grid_icons: true
     footer_mode: "25" # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables
@@ -285,6 +236,10 @@ $env.config = {
     edit_mode: emacs # emacs, vi
     shell_integration: false # enables terminal shell integration. Off by default, as some terminals have issues with this.
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
+    use_kitty_protocol: false # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
+    highlight_resolved_externals: false # true enables highlighting of external commands in the repl resolved by which.
+
+    plugins: {} # Per-plugin configuration. See https://www.nushell.sh/contributor-book/plugins.html#configuration.
 
     hooks: {
         pre_prompt: [{ null }] # run before the prompt is shown
@@ -292,7 +247,7 @@ $env.config = {
         env_change: {
             PWD: [{|before, after| null }] # run if the PWD environment is different since the last repl input
         }
-        display_output: { table } # run before the output of a command is drawn, example: `{ if (term size).columns >= 100 { table -e } else { table } }`
+        display_output: "if (term size).columns >= 100 { table -e } else { table }" # run to display the output of a pipeline
         command_not_found: { null } # return an error message when a command is not found
     }
 
@@ -311,8 +266,43 @@ $env.config = {
             }
             style: {
                 text: green
-                selected_text: green_reverse
+                selected_text: { attr: r }
                 description_text: yellow
+                match_text: { attr: u }
+                selected_match_text: { attr: ur }
+            }
+        }
+        {
+            name: ide_completion_menu
+            only_buffer_difference: false
+            marker: "| "
+            type: {
+                layout: ide
+                min_completion_width: 0,
+                max_completion_width: 50,
+                max_completion_height: 10, # will be limited by the available lines in the terminal
+                padding: 0,
+                border: true,
+                cursor_offset: 0,
+                description_mode: "prefer_right"
+                min_description_width: 0
+                max_description_width: 50
+                max_description_height: 10
+                description_offset: 1
+                # If true, the cursor pos will be corrected, so the suggestions match up with the typed text
+                #
+                # C:\> str
+                #      str join
+                #      str trim
+                #      str split
+                correct_cursor_pos: false
+            }
+            style: {
+                text: green
+                selected_text: { attr: r }
+                description_text: yellow
+                match_text: { attr: u }
+                selected_match_text: { attr: ur }
             }
         }
         {
@@ -359,6 +349,20 @@ $env.config = {
                 until: [
                     { send: menu name: completion_menu }
                     { send: menunext }
+                    { edit: complete }
+                ]
+            }
+        }
+        {
+            name: ide_completion_menu
+            modifier: control
+            keycode: char_n
+            mode: [emacs vi_normal vi_insert]
+            event: {
+                until: [
+                    { send: menu name: ide_completion_menu }
+                    { send: menunext }
+                    { edit: complete }
                 ]
             }
         }
@@ -433,7 +437,7 @@ $env.config = {
         {
             name: search_history
             modifier: control
-            keycode: char_r
+            keycode: char_q
             mode: [emacs, vi_normal, vi_insert]
             event: { send: searchhistory }
         }
@@ -451,8 +455,8 @@ $env.config = {
             mode: [emacs, vi_normal, vi_insert]
             event: {
                 until: [
-                    {send: menuup}
-                    {send: up}
+                    { send: menuup }
+                    { send: up }
                 ]
             }
         }
@@ -463,8 +467,8 @@ $env.config = {
             mode: [emacs, vi_normal, vi_insert]
             event: {
                 until: [
-                    {send: menudown}
-                    {send: down}
+                    { send: menudown }
+                    { send: down }
                 ]
             }
         }
@@ -475,8 +479,8 @@ $env.config = {
             mode: [emacs, vi_normal, vi_insert]
             event: {
                 until: [
-                    {send: menuleft}
-                    {send: left}
+                    { send: menuleft }
+                    { send: left }
                 ]
             }
         }
@@ -487,9 +491,9 @@ $env.config = {
             mode: [emacs, vi_normal, vi_insert]
             event: {
                 until: [
-                    {send: historyhintcomplete}
-                    {send: menuright}
-                    {send: right}
+                    { send: historyhintcomplete }
+                    { send: menuright }
+                    { send: right }
                 ]
             }
         }
@@ -498,7 +502,7 @@ $env.config = {
             modifier: control
             keycode: left
             mode: [emacs, vi_normal, vi_insert]
-            event: {edit: movewordleft}
+            event: { edit: movewordleft }
         }
         {
             name: move_one_word_right_or_take_history_hint
@@ -507,8 +511,8 @@ $env.config = {
             mode: [emacs, vi_normal, vi_insert]
             event: {
                 until: [
-                    {send: historyhintwordcomplete}
-                    {edit: movewordright}
+                    { send: historyhintwordcomplete }
+                    { edit: movewordright }
                 ]
             }
         }
@@ -517,14 +521,14 @@ $env.config = {
             modifier: none
             keycode: home
             mode: [emacs, vi_normal, vi_insert]
-            event: {edit: movetolinestart}
+            event: { edit: movetolinestart }
         }
         {
             name: move_to_line_start
             modifier: control
             keycode: char_a
             mode: [emacs, vi_normal, vi_insert]
-            event: {edit: movetolinestart}
+            event: { edit: movetolinestart }
         }
         {
             name: move_to_line_end_or_take_history_hint
@@ -533,8 +537,8 @@ $env.config = {
             mode: [emacs, vi_normal, vi_insert]
             event: {
                 until: [
-                    {send: historyhintcomplete}
-                    {edit: movetolineend}
+                    { send: historyhintcomplete }
+                    { edit: movetolineend }
                 ]
             }
         }
@@ -545,8 +549,8 @@ $env.config = {
             mode: [emacs, vi_normal, vi_insert]
             event: {
                 until: [
-                    {send: historyhintcomplete}
-                    {edit: movetolineend}
+                    { send: historyhintcomplete }
+                    { edit: movetolineend }
                 ]
             }
         }
@@ -555,14 +559,14 @@ $env.config = {
             modifier: control
             keycode: home
             mode: [emacs, vi_normal, vi_insert]
-            event: {edit: movetolinestart}
+            event: { edit: movetolinestart }
         }
         {
             name: move_to_line_end
             modifier: control
             keycode: end
             mode: [emacs, vi_normal, vi_insert]
-            event: {edit: movetolineend}
+            event: { edit: movetolineend }
         }
         {
             name: move_up
@@ -571,8 +575,8 @@ $env.config = {
             mode: [emacs, vi_normal, vi_insert]
             event: {
                 until: [
-                    {send: menuup}
-                    {send: up}
+                    { send: menuup }
+                    { send: up }
                 ]
             }
         }
@@ -583,8 +587,8 @@ $env.config = {
             mode: [emacs, vi_normal, vi_insert]
             event: {
                 until: [
-                    {send: menudown}
-                    {send: down}
+                    { send: menudown }
+                    { send: down }
                 ]
             }
         }
@@ -593,56 +597,56 @@ $env.config = {
             modifier: none
             keycode: backspace
             mode: [emacs, vi_insert]
-            event: {edit: backspace}
+            event: { edit: backspace }
         }
         {
             name: delete_one_word_backward
             modifier: control
             keycode: backspace
             mode: [emacs, vi_insert]
-            event: {edit: backspaceword}
+            event: { edit: backspaceword }
         }
         {
             name: delete_one_character_forward
             modifier: none
             keycode: delete
             mode: [emacs, vi_insert]
-            event: {edit: delete}
+            event: { edit: delete }
         }
         {
             name: delete_one_character_forward
             modifier: control
             keycode: delete
             mode: [emacs, vi_insert]
-            event: {edit: delete}
+            event: { edit: delete }
         }
         {
-            name: delete_one_character_forward
+            name: delete_one_character_backward
             modifier: control
             keycode: char_h
             mode: [emacs, vi_insert]
-            event: {edit: backspace}
+            event: { edit: backspace }
         }
         {
             name: delete_one_word_backward
             modifier: control
             keycode: char_w
             mode: [emacs, vi_insert]
-            event: {edit: backspaceword}
+            event: { edit: backspaceword }
         }
         {
             name: move_left
             modifier: none
             keycode: backspace
             mode: vi_normal
-            event: {edit: moveleft}
+            event: { edit: moveleft }
         }
         {
             name: newline_or_run_command
             modifier: none
             keycode: enter
             mode: emacs
-            event: {send: enter}
+            event: { send: enter }
         }
         {
             name: move_left
@@ -651,8 +655,8 @@ $env.config = {
             mode: emacs
             event: {
                 until: [
-                    {send: menuleft}
-                    {send: left}
+                    { send: menuleft }
+                    { send: left }
                 ]
             }
         }
@@ -663,9 +667,9 @@ $env.config = {
             mode: emacs
             event: {
                 until: [
-                    {send: historyhintcomplete}
-                    {send: menuright}
-                    {send: right}
+                    { send: historyhintcomplete }
+                    { send: menuright }
+                    { send: right }
                 ]
             }
         }
@@ -674,56 +678,56 @@ $env.config = {
             modifier: control
             keycode: char_g
             mode: emacs
-            event: {edit: redo}
+            event: { edit: redo }
         }
         {
             name: undo_change
             modifier: control
             keycode: char_z
             mode: emacs
-            event: {edit: undo}
+            event: { edit: undo }
         }
         {
             name: paste_before
             modifier: control
             keycode: char_y
             mode: emacs
-            event: {edit: pastecutbufferbefore}
+            event: { edit: pastecutbufferbefore }
         }
         {
             name: cut_word_left
             modifier: control
             keycode: char_w
             mode: emacs
-            event: {edit: cutwordleft}
+            event: { edit: cutwordleft }
         }
         {
             name: cut_line_to_end
             modifier: control
             keycode: char_k
             mode: emacs
-            event: {edit: cuttoend}
+            event: { edit: cuttoend }
         }
         {
             name: cut_line_from_start
             modifier: control
             keycode: char_u
             mode: emacs
-            event: {edit: cutfromstart}
+            event: { edit: cutfromstart }
         }
         {
             name: swap_graphemes
             modifier: control
             keycode: char_t
             mode: emacs
-            event: {edit: swapgraphemes}
+            event: { edit: swapgraphemes }
         }
         {
             name: move_one_word_left
             modifier: alt
             keycode: left
             mode: emacs
-            event: {edit: movewordleft}
+            event: { edit: movewordleft }
         }
         {
             name: move_one_word_right_or_take_history_hint
@@ -732,8 +736,8 @@ $env.config = {
             mode: emacs
             event: {
                 until: [
-                    {send: historyhintwordcomplete}
-                    {edit: movewordright}
+                    { send: historyhintwordcomplete }
+                    { edit: movewordright }
                 ]
             }
         }
@@ -742,7 +746,7 @@ $env.config = {
             modifier: alt
             keycode: char_b
             mode: emacs
-            event: {edit: movewordleft}
+            event: { edit: movewordleft }
         }
         {
             name: move_one_word_right_or_take_history_hint
@@ -751,8 +755,8 @@ $env.config = {
             mode: emacs
             event: {
                 until: [
-                    {send: historyhintwordcomplete}
-                    {edit: movewordright}
+                    { send: historyhintwordcomplete }
+                    { edit: movewordright }
                 ]
             }
         }
@@ -761,49 +765,172 @@ $env.config = {
             modifier: alt
             keycode: delete
             mode: emacs
-            event: {edit: deleteword}
+            event: { edit: deleteword }
         }
         {
             name: delete_one_word_backward
             modifier: alt
             keycode: backspace
             mode: emacs
-            event: {edit: backspaceword}
+            event: { edit: backspaceword }
         }
         {
             name: delete_one_word_backward
             modifier: alt
             keycode: char_m
             mode: emacs
-            event: {edit: backspaceword}
+            event: { edit: backspaceword }
         }
         {
             name: cut_word_to_right
             modifier: alt
             keycode: char_d
             mode: emacs
-            event: {edit: cutwordright}
+            event: { edit: cutwordright }
         }
         {
             name: upper_case_word
             modifier: alt
             keycode: char_u
             mode: emacs
-            event: {edit: uppercaseword}
+            event: { edit: uppercaseword }
         }
         {
             name: lower_case_word
             modifier: alt
             keycode: char_l
             mode: emacs
-            event: {edit: lowercaseword}
+            event: { edit: lowercaseword }
         }
         {
             name: capitalize_char
             modifier: alt
             keycode: char_c
             mode: emacs
-            event: {edit: capitalizechar}
+            event: { edit: capitalizechar }
+        }
+        {
+            name: copy_selection
+            modifier: control_shift
+            keycode: char_c
+            mode: emacs
+            event: { edit: copyselection }
+        }
+        {
+            name: cut_selection
+            modifier: control_shift
+            keycode: char_x
+            mode: emacs
+            event: { edit: cutselection }
+        }
+        {
+            name: select_all
+            modifier: control_shift
+            keycode: char_a
+            mode: emacs
+            event: { edit: selectall }
+        }
+        {
+            name: paste
+            modifier: control_shift
+            keycode: char_v
+            mode: emacs
+            event: { edit: pastecutbufferbefore }
         }
     ]
 }
+
+# Aliases
+
+alias s- = su -l" # Always use login shell for s
+alias sudo = sudo " # Enable alias expansion for sud
+
+# Directory Shortcuts
+alias dot = cd $"($env.XDG_CONFIG_HOME)/dotfiles"
+
+# Vim
+alias nv = nvim
+alias v = nvim
+alias vi = nvim
+alias vim = nvim
+
+# Git
+alias gaa = git add -A
+alias gac = git add -A and git commit -m
+alias gb = git branch
+alias gc = git commit -m
+alias gco = git checkout
+alias gcob = git checkout -b
+alias gcom = git checkout main
+alias gd = git diff
+alias gf = git fetch
+alias gi = git init
+let glgfmt = "--pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'"
+alias glg = git log --graph $glgfmt --abbrev-commit
+alias glgr = git log --reverse $glgfmt --abbrev-commit
+alias gpl = git pull
+alias gpsh = git push
+alias grao = git remote add origin
+alias gs = git status
+alias gsh = git stash -u
+alias gshp = git stash pop
+alias nah = git reset --hard and git clean -df
+alias wip = git add . and git commit -m 'wip' -q
+
+# Rust
+alias c = cargo
+
+# NPM
+alias n = npm
+alias ni = npm install
+alias no = npm outdated
+alias nr = npm run
+alias nrb = npm run build
+alias nrd = npm run dev
+alias nrs = npm run start
+alias nrt = npm run test
+
+# PNPM
+alias pn = pnpm
+alias pni = pnpm install
+alias pno = pnpm outdated
+alias pnr = pnpm run
+alias pnrb = pnpm run build
+alias pnrd = pnpm run dev
+alias pnrs = pnpm run start
+alias pnrt = pnpm run test
+
+# Docker
+alias dr = docker
+alias drc = docker compose
+alias drcb = docker compose build
+alias drcd = docker compose down
+alias drce = docker compose exec
+alias drcr = docker compose run --rm
+alias drcu = docker compose up -d
+alias dr-clean = docker rmi \`docker images -f 'dangling=true' -q\` --force
+
+# Python
+alias pip = pip3
+alias py = python3
+alias python = python3
+
+# Utilities
+alias catssh = cat ~/.ssh/id_rsa.pub
+alias own = sudo chown -R "$USER:$USER"
+alias c~ = rm -rf ~/.aws ~/.azure ~/.yarnrc ~/errors.log ~/.sudo_as_admin_successful ~/.wget-hsts ~/.python_history ~/.tailwindcss ~/.omnisharp ~/.nuxtrc ~/.electron ~/.vue-templates ~/.dotnet ~/.racket_history
+
+# Other
+alias c. = code .
+alias o. = o .
+alias o = open
+
+# XDG overrides
+alias units = units --history $"($env.XDG_CACHE_HOME)/units_history"
+alias wget = wget --hsts-file $"($env.XDG_CACHE_HOME)/wget-hsts"
+alias yarn = yarn --use-yarnrc $"($env.XDG_CONFIG_HOME)/yarn/config"
+
+# Always enable colored `grep` output
+alias egrep = egrep --color=auto
+alias fgrep = fgrep --color=auto
+alias grep = grep --color=auto
