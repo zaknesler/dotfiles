@@ -1,4 +1,3 @@
-
 alias s- = su -l" # Always use login shell for s
 alias sudo = sudo " # Enable alias expansion for sud
 

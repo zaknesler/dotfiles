@@ -1,5 +1,5 @@
-export-env {
-    $env.config.menus = [
+export def main [] {
+    return [
         # Configuration for default nushell menus
         # Note the lack of source parameter
         {

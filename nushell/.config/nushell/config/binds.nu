@@ -1,5 +1,5 @@
-export-env {
-    $env.config.keybindings = [
+export def main [] {
+    return [
         {
             name: completion_menu
             modifier: none
@@ -498,4 +498,4 @@ export-env {
             event: { edit: pastecutbufferbefore }
         }
     ]
- }
+}
