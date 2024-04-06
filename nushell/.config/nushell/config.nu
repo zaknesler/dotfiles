@@ -2,9 +2,9 @@
 # version = "0.91.0"
 
 # Import config files
-use ($nu.default-config-dir | path join 'config' | path join 'binds.nu')
-use ($nu.default-config-dir | path join 'config' | path join 'menus.nu')
-use ($nu.default-config-dir | path join 'config' | path join 'theme.nu')
+use ($nu.default-config-dir | path join 'config' 'binds.nu')
+use ($nu.default-config-dir | path join 'config' 'menus.nu')
+use ($nu.default-config-dir | path join 'config' 'theme.nu')
 
 $env.config = {
     show_banner: false
@@ -119,5 +119,5 @@ $env.config = {
     keybindings: (binds)
 }
 
-# Import aliases
+# Aliases
 source ($nu.default-config-dir | path join 'aliases.nu')

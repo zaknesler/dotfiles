@@ -1,7 +1,5 @@
 export def main [] {
     return [
-        # Configuration for default nushell menus
-        # Note the lack of source parameter
         {
             name: completion_menu
             only_buffer_difference: false
