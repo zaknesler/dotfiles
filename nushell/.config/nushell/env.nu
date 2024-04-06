@@ -97,8 +97,14 @@ $env.GPG_TTY = (is-terminal --stdin)
 use std "path add"
 
 path add $env.PNPM_HOME --append
-path add ($env.GOPATH | path join "bin") --append
-# path add ($env.GOROOT | path join "bin") --append
+
+if not ($env | get GOPATH -i | is-empty) {
+    path add ($env.GOPATH | path join "bin") --append
+}
+
+if not ($env | get GOROOT -i | is-empty) {
+    path add ($env.GOROOT | path join "bin") --append
+}
 
 # OS-specific
 if (sys | get host.name) == "Darwin" {
