@@ -1,6 +1,12 @@
 # Nushell Environment Config File
 # version = "0.91.0"
 
+# The following XDG environment variables must already be configured:
+# XDG_CACHE_HOME="$HOME/.cache"
+# XDG_CONFIG_HOME="$HOME/.config"
+# XDG_DATA_HOME="$HOME/.local/share"
+# XDG_RUNTIME_DIR="$XDG_CACHE_HOME/runtime"
+
 def create_left_prompt [] {
     let dir = match (do --ignore-shell-errors { $env.PWD | path relative-to $nu.home-path }) {
         null => $env.PWD
@@ -63,10 +69,90 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins')
 ]
 
-# $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-# use std "path add"
-# $env.PATH = ($env.PATH | split row (char esep))
-# path add /some/path
-# path add ($env.CARGO_HOME | path join "bin")
-# path add ($env.HOME | path join ".local" "bin")
-# $env.PATH = ($env.PATH | uniq)
+# XDG Supported Directories
+$env.CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
+$env.CONDARC = ($env.XDG_CONFIG_HOME | path join "conda" "condarc")
+$env.CUDA_CACHE_PATH = ($env.XDG_CACHE_HOME | path join "nv")
+$env.DOCKER_CONFIG = ($env.XDG_CONFIG_HOME | path join "docker")
+$env.GNUPGHOME = ($env.XDG_DATA_HOME | path join "gnupg")
+$env.NPM_CONFIG_USERCONFIG = ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
+$env.NVM_DIR = ($env.XDG_DATA_HOME | path join "nvm")
+$env.PLTUSERHOME = ($env.XDG_DATA_HOME | path join "racket")
+$env.PM2_HOME = ($env.XDG_CONFIG_HOME | path join "pm2")
+$env.RUSTUP_HOME = ($env.XDG_DATA_HOME | path join "rustup")
+$env.WGETRC = ($env.XDG_CONFIG_HOME | path join "wgetrc")
+$env.BUNDLE_USER_CONFIG = ($env.XDG_CONFIG_HOME | path join "bundle")
+$env.BUNDLE_USER_CACHE = ($env.XDG_CACHE_HOME | path join "bundle")
+$env.BUNDLE_USER_PLUGIN = ($env.XDG_DATA_HOME | path join "bundle")
+$env.NUGET_PACKAGES = ($env.XDG_CACHE_HOME | path join "NuGetPackages")
+$env.GEM_HOME = ($env.XDG_DATA_HOME | path join "gem")
+$env.GEM_SPEC_CACHE = ($env.XDG_CACHE_HOME | path join "gem")
+$env.IPYTHONDIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
+$env.JUPYTER_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
+$env.TEXMFHOME = ($env.XDG_DATA_HOME | path join "texmf")
+$env.TEXMFVAR = ($env.XDG_CACHE_HOME | path join "texlive" "texmf-var")
+$env.TEXMFCONFIG = ($env.XDG_CONFIG_HOME | path join "texlive" "texmf-config")
+
+$env.EDITOR = "nvim"
+
+# NVM
+$env.NVM_AUTO_USE = true
+
+# PNPM
+$env.PNPM_HOME = ($env.XDG_DATA_HOME | path join "pnpm")
+
+# Node REPL
+$env.NODE_REPL_HISTORY = ($env.XDG_DATA_HOME | path join "node_repl_history")
+$env.NODE_REPL_HISTORY_SIZE = "32768"
+$env.NODE_REPL_MODE = "sloppy"
+
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr
+$env.PYTHONIOENCODING = "UTF-8"
+
+# Highlight section titles in manual pages
+$env.LESS_TERMCAP_md = "${yellow}"
+
+# Do not use a less history file
+$env.LESSHISTFILE = "-"
+
+# Don’t clear the screen after quitting a manual page
+$env.MANPAGER = "less -X"
+
+# Avoid issues with `gpg` as installed via Homebrew
+# https://stackoverflow.com/a/42265848/96656
+$env.GPG_TTY = (is-terminal --stdin)
+
+# Path configuration
+use std "path add"
+
+path add $env.PNPM_HOME --append
+path add ($env.GOPATH | path join "bin") --append
+path add ($env.GOROOT | path join "bin") --append
+
+# OS-specific
+if (sys | get host.name) == "Darwin" {
+    path add ($env.HOME | path join "Library/Python/3.9/bin")
+    path add "/usr/local/opt/coreutils/libexec/gnubin" --append
+    path add "/usr/local/opt/openjdk/bin" --append
+    path add "/opt/homebrew/bin" --append
+
+    $env.JAVA_HOME = "/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+    $env.JDK_HOME = "/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+}
+
+if (sys | get host.name) == "Debian GNU/Linux" {
+    $env.JAVA_HOME = "/usr/lib/jvm/default-java"
+    $env.CLASSPATH = "/usr/share/java/gtk.jar:."
+}
+
+# Unix-like
+if (sys | get host.name) in ["Darwin", "Debian GNU/Linux"] {
+    path add "/usr/local/bin"
+    path add "/usr/local/go/bin"
+    path add ($env.HOME | path join ".local" "share" "npm" "bin")
+    path add ($env.HOME | path join ".local" "share" "bob" "nvim-bin")
+    path add ($env.HOME | path join ".local" "bin")
+    path add ($env.HOME | path join ".bun" "bin")
+    path add ($env.XDG_DATA_HOME | path join "cargo" "bin")
+    path add $env.XDG_DATA_HOME
+}

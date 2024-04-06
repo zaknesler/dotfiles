@@ -9,7 +9,6 @@ export XDG_RUNTIME_DIR="$XDG_CACHE_HOME/runtime"
 # Path (prepend)
 export PATH="/usr/local/bin:$PATH"                       # Brew binaries
 export PATH="/usr/local/go/bin:$PATH"                    # Go binaries
-export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH" # Composer binaries
 export PATH="$HOME/.local/share/npm/bin:$PATH"           # NPM binaries
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"      # bob nvim binaries
 export PATH="$HOME/.local/bin:$PATH"                     # Python binaries
