@@ -1,42 +1,13 @@
 # Nushell Environment Config File
 # version = "0.91.0"
 
-# The following XDG environment variables must already be configured:
-# XDG_CACHE_HOME="$HOME/.cache"
-# XDG_CONFIG_HOME="$HOME/.config"
-# XDG_DATA_HOME="$HOME/.local/share"
-# XDG_RUNTIME_DIR="$XDG_CACHE_HOME/runtime"
+# Ensure XDG variables are set
+$env.XDG_CACHE_HOME = ($env.HOME | path join ".cache")
+$env.XDG_CONFIG_HOME = ($env.HOME | path join ".config")
+$env.XDG_DATA_HOME = ($env.HOME | path join ".local" "share")
+$env.XDG_RUNTIME_DIR = ($env.XDG_CACHE_HOME | path join "runtime")
 
-def create_left_prompt [] {
-    let dir = match (do --ignore-shell-errors { $env.PWD | path relative-to $nu.home-path }) {
-        null => $env.PWD
-        '' => '~'
-        $relative_pwd => ([~ $relative_pwd] | path join)
-    }
-
-    let path_color = (if (is-admin) { ansi red_bold } else { ansi green_bold })
-    let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
-    let path_segment = $"($path_color)($dir)"
-
-    $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
-}
-
-def create_right_prompt [] {
-    let time_segment = ([
-        (ansi reset)
-        (ansi magenta)
-        (date now | format date "%Y-%m-%d %H:%M:%S")
-    ] | str join | str replace --regex --all "([/:])" $"(ansi green)${1}(ansi magenta)" |
-        str replace --regex --all "([AP]M)" $"(ansi magenta)${1}")
-
-    let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
-        (ansi rb)
-        ($env.LAST_EXIT_CODE)
-    ] | str join)
-    } else { "" }
-
-    ([$last_exit_code, (char space), $time_segment] | str join)
-}
+use ($nu.default-config-dir | path join 'config' 'prompt.nu') [create_left_prompt, create_right_prompt]
 
 $env.PROMPT_COMMAND = {|| create_left_prompt }
 $env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
