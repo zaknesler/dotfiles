@@ -2,9 +2,9 @@
 # version = "0.91.0"
 
 # Import config files
-use ($nu.default-config-dir | path join 'config' 'binds.nu')
-use ($nu.default-config-dir | path join 'config' 'menus.nu')
-use ($nu.default-config-dir | path join 'config' 'theme.nu')
+use ($nu.default-config-dir | path join "config" "binds.nu")
+use ($nu.default-config-dir | path join "config" "menus.nu")
+use ($nu.default-config-dir | path join "config" "theme.nu")
 
 $env.config = {
     show_banner: false
@@ -120,7 +120,7 @@ $env.config = {
 }
 
 # Aliases
-source ($nu.default-config-dir | path join 'aliases.nu')
+source ($nu.default-config-dir | path join "custom" "aliases.nu")
 
 # Functions
-source ($nu.default-config-dir | path join 'functions.nu')
+source ($nu.default-config-dir | path join "custom"  "functions.nu")

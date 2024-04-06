@@ -1,8 +1,9 @@
-alias s- = su -l" # Always use login shell for s
-alias sudo = sudo " # Enable alias expansion for sud
+alias s- = su -l"
+alias sudo = sudo "
 
-# Directory Shortcuts
-alias dot = cd $"($env.XDG_CONFIG_HOME)/dotfiles"
+# Directories
+alias dot = cd ($env.XDG_CONFIG_HOME | path join "dotfiles")
+alias dt = cd ($env.HOME | path join "desktop")
 
 # Vim
 alias nv = nvim
@@ -82,9 +83,9 @@ alias o. = o .
 alias o = open
 
 # XDG overrides
-alias units = units --history $"($env.XDG_CACHE_HOME)/units_history"
-alias wget = wget --hsts-file $"($env.XDG_CACHE_HOME)/wget-hsts"
-alias yarn = yarn --use-yarnrc $"($env.XDG_CONFIG_HOME)/yarn/config"
+alias units = units --history ($env.XDG_CACHE_HOME | path join "units_history")
+alias wget = wget --hsts-file ($env.XDG_CACHE_HOME | path join "wget-hsts")
+alias yarn = yarn --use-yarnrc ($env.XDG_CONFIG_HOME | path join "yarn" "config")
 
 # Always enable colored `grep` output
 alias egrep = egrep --color=auto

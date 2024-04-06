@@ -106,7 +106,7 @@ if not ($env | get GOROOT -i | is-empty) {
     path add ($env.GOROOT | path join "bin") --append
 }
 
-# OS-specific
+# Mac OS
 if (sys | get host.name) == "Darwin" {
     path add ($env.HOME | path join "Library/Python/3.9/bin")
     path add "/usr/local/opt/coreutils/libexec/gnubin" --append
@@ -117,6 +117,7 @@ if (sys | get host.name) == "Darwin" {
     $env.JDK_HOME = "/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 }
 
+# Linux
 if (sys | get host.name) == "Debian GNU/Linux" {
     $env.JAVA_HOME = "/usr/lib/jvm/default-java"
     $env.CLASSPATH = "/usr/share/java/gtk.jar:."
