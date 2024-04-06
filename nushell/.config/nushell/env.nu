@@ -127,7 +127,7 @@ use std "path add"
 
 path add $env.PNPM_HOME --append
 path add ($env.GOPATH | path join "bin") --append
-path add ($env.GOROOT | path join "bin") --append
+# path add ($env.GOROOT | path join "bin") --append
 
 # OS-specific
 if (sys | get host.name) == "Darwin" {
