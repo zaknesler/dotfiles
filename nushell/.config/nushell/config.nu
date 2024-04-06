@@ -121,3 +121,6 @@ $env.config = {
 
 # Aliases
 source ($nu.default-config-dir | path join 'aliases.nu')
+
+# Functions
+source ($nu.default-config-dir | path join 'functions.nu')
