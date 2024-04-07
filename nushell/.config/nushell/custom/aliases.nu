@@ -1,5 +1,4 @@
-alias s- = su -l"
-alias sudo = sudo "
+alias s- = su -
 
 # Directories
 alias dot = cd ($env.XDG_CONFIG_HOME | path join "dotfiles")
@@ -74,7 +73,7 @@ alias py = python3
 alias python = python3
 
 # Utilities
-alias catssh = cat ~/.ssh/id_rsa.pub
+alias catssh = cat ~/.ssh/id_*.pub
 alias own = sudo chown -R "$USER:$USER"
 alias c~ = rm -rf ~/.aws ~/.azure ~/.yarnrc ~/errors.log ~/.sudo_as_admin_successful ~/.wget-hsts ~/.python_history ~/.tailwindcss ~/.omnisharp ~/.nuxtrc ~/.electron ~/.vue-templates ~/.dotnet ~/.racket_history
 
