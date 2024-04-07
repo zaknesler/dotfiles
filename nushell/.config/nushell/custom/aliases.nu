@@ -17,7 +17,6 @@ alias ll = ls -al
 
 # Git
 alias gaa = git add -A
-alias gac = git add -A; git commit -m
 alias gb = git branch
 alias gc = git commit -m
 alias gco = git checkout
@@ -35,8 +34,6 @@ alias grao = git remote add origin
 alias gs = git status
 alias gsh = git stash -u
 alias gshp = git stash pop
-alias nah = git reset --hard; git clean -df
-alias wip = git add .; git commit -m 'wip' -q
 
 # Rust
 alias c = cargo

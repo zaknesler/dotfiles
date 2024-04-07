@@ -11,6 +11,24 @@ def giic [] {
     git commit -m "initial commit"
 }
 
+# Add all current changes and author new commit
+def gac [] {
+    alias gac = git add -A
+    git commit -m
+}
+
+# Add all changes and create "wip" commit
+def wip [] {
+    git add -A
+    git commit -m 'wip' -q
+}
+
+# Discard all git changes
+def nah [] {
+    git reset --hard
+    git clean -df
+}
+
 # Install Tailwind
 def install [] {
     npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
