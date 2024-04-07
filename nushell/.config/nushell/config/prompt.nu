@@ -1,3 +1,9 @@
+def spacify [lines: list<string> sep: string = (char space)] {
+    if ($lines | is-empty) { return "" }
+
+    $lines | filter {|s| $s != ""} | str join $sep | str trim
+}
+
 export def create_left_prompt [] {
     let dir = match (do --ignore-shell-errors { $env.PWD | path relative-to $nu.home-path }) {
         null => $env.PWD
@@ -5,29 +11,22 @@ export def create_left_prompt [] {
         $relative_pwd => ([~ $relative_pwd] | path join)
     }
 
-    let path_color = (if (is-admin) { ansi red_bold } else { ansi green_bold })
-    let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
+    let path_color = if (is-admin) { ansi light_red } else { ansi light_green }
+    let separator_color = if (is-admin) { ansi red } else { ansi green }
     let path_segment = $"($path_color)($dir)"
 
-    $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
+    let path = $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
+
+    let line = spacify [ $path (git_info) ]
+    [ $line (char newline) (char newline) ] | str join
 }
 
-export def create_right_prompt [] {
-    let sep = ([ (ansi reset) (char space) ] | str join)
-
-    let last_exit_code = match $env.LAST_EXIT_CODE {
-        $code if $code != 0 => ([ (ansi rb) ($env.LAST_EXIT_CODE) ] | str join)
-        _ => ""
-    }
-
-    let time = (
-        [ (ansi white_dimmed) (date now | format date "%I:%M:%S %p") ]
-        | str join
-        | str replace --regex --all "([/:])" $"(ansi dark_gray_dimmed)${1}(ansi white_dimmed)"
-    )
+def git_info [] {
+    # nu_plugin_gstat must be installed
+    if (which gstat | is-empty) { return "" }
 
     let git_branch = match (gstat | get branch) {
-        $branch if $branch != "no_branch" => ([ (ansi seagreen2) $branch ] | str join)
+        $branch if $branch != "no_branch" => ([ (ansi seagreen3) $branch ] | str join)
         _ => ""
     }
 
@@ -36,11 +35,28 @@ export def create_right_prompt [] {
         _ => ""
     }
 
-    let git_inner = [ $git_branch $git_modified ] | filter {|s| $s != ""} | str join " " | str trim
-    let git = if $git_inner != "" { ([ (ansi darkseagreen4a) "[" $git_inner (ansi darkseagreen4a) "]" ] | str join) } else { "" }
+    let git = match (spacify [ $git_branch $git_modified ]) {
+        $inner if ($inner | is-not-empty) => ([ (ansi darkseagreen4a) "[" $inner (ansi darkseagreen4a) "]" ] | str join)
+        _ => ""
+    }
 
-    let login = ([ (whoami | str downcase) (sys | get host.hostname) ] | str join "@")
-    let user = ([ (ansi tan) $login ] | str join)
+    spacify [$git]
+}
 
-    ([ (ansi reset) $git $user $last_exit_code $time (ansi reset) ] | filter {|s| $s != ""} | str join $sep | str trim)
+export def create_right_prompt [] {
+    let sep = [ (ansi reset) (char space) ] | str join
+
+    let last_exit_code = match $env.LAST_EXIT_CODE {
+        $code if $code != 0 => ([ (ansi rb) ($env.LAST_EXIT_CODE) ] | str join)
+        _ => ""
+    }
+
+    let time = [ (ansi white_dimmed) (date now | format date "%I:%M:%S %p") ]
+        | str join
+        | str replace --regex --all "([/:])" $"(ansi dark_gray_dimmed)${1}(ansi white_dimmed)"
+
+    let login = [ (whoami | str downcase) (sys | get host.hostname) ] | str join "@"
+    let user = [ (ansi tan) $login ] | str join
+
+    spacify [ $user $last_exit_code $time ] $sep
 }
