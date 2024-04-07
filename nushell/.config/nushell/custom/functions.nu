@@ -1,5 +1,5 @@
 # Create a new directory and enter it
-def mkd [dirname] {
+def mkd [dirname: string] {
     mkdir $dirname
     cd $dirname
 }
@@ -36,8 +36,8 @@ def install [] {
 }
 
 # Create private GitHub repository in current directory
-def ghcr [repo] {
+def ghcr [repo: string] {
     git init
     gh repo create $repo --private --source=. --remote=upstream
-    git remote add origin "git@github.com:zaknesler/$1.git"
+    git remote add origin $"git@github.com:zaknesler/($repo).git"
 }
