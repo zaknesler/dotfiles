@@ -40,7 +40,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
     ```nushell
     cargo install nu_plugin_gstat
     let gstat = (which nu_plugin_gstat | get path | first)
-    nu -c $'register '($plugin)'; version'
+    nu -c $'register '($gstat)'; version'
     ```
 
 1. Symlink directories using Stow
