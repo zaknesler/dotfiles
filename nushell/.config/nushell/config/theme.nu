@@ -14,23 +14,7 @@ export def main [] {
             } else {{ fg: "#0366d6" }}
         }
         duration: "#6a737d"
-        date: {|| (date now) - $in |
-            if $in < 1hr {
-                { fg: "#d73a49" attr: "b" }
-            } else if $in < 6hr {
-                "#d73a49"
-            } else if $in < 1day {
-                "#dbab09"
-            } else if $in < 3day {
-                "#28a745"
-            } else if $in < 1wk {
-                { fg: "#28a745" attr: "b" }
-            } else if $in < 6wk {
-                "#0598bc"
-            } else if $in < 52wk {
-                "#0366d6"
-            } else { "dark_gray" }
-        }
+        date: "#6a737d"
         range: "#6a737d"
         float: "#6a737d"
         string: "#6a737d"

@@ -25,17 +25,22 @@ def git_info [] {
     # nu_plugin_gstat must be installed
     if (which gstat | is-empty) { return "" }
 
-    let git_branch = match (gstat | get branch) {
+    let branch = match (gstat | get branch) {
         $branch if $branch != "no_branch" => ([ (ansi seagreen3) $branch ] | str join)
         _ => ""
     }
 
-    let git_modified = match (gstat | get wt_modified) {
+    let modified = match (gstat | get wt_modified) {
         $modified if $modified > 0 => ([ (ansi yellow) "!" $modified ] | str join)
         _ => ""
     }
 
-    match (spacify [ $git_branch $git_modified ]) {
+    let staged = match (gstat | get idx_modified_staged) {
+        $staged if $staged > 0 => ([ (ansi yellow) "+" $staged ] | str join)
+        _ => ""
+    }
+
+    match (spacify [ $branch $modified $staged ]) {
         $inner if ($inner | is-not-empty) => ([ (ansi darkseagreen4a) "[" $inner (ansi darkseagreen4a) "]" ] | str join)
         _ => ""
     }
