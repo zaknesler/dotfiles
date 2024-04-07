@@ -58,6 +58,7 @@ $env.NUGET_PACKAGES = ($env.XDG_CACHE_HOME | path join "NuGetPackages")
 $env.NVM_DIR = ($env.XDG_DATA_HOME | path join "nvm")
 $env.PLTUSERHOME = ($env.XDG_DATA_HOME | path join "racket")
 $env.PM2_HOME = ($env.XDG_CONFIG_HOME | path join "pm2")
+$env.PNPM_HOME = ($env.XDG_DATA_HOME | path join "pnpm")
 $env.RUSTUP_HOME = ($env.XDG_DATA_HOME | path join "rustup")
 $env.TEXMFCONFIG = ($env.XDG_CONFIG_HOME | path join "texlive" "texmf-config")
 $env.TEXMFHOME = ($env.XDG_DATA_HOME | path join "texmf")
@@ -69,9 +70,6 @@ $env.EDITOR = "nvim"
 
 # NVM
 $env.NVM_AUTO_USE = true
-
-# PNPM
-$env.PNPM_HOME = ($env.XDG_DATA_HOME | path join "pnpm")
 
 # Node REPL
 $env.NODE_REPL_HISTORY = ($env.XDG_DATA_HOME | path join "node_repl_history")
@@ -99,7 +97,7 @@ use std "path add"
 
 path add $env.PNPM_HOME --append
 path add ($env.HOME | path join ".local" "bin")
-path add ($env.HOME | path join ".bun" "bin")
+path add ($env.HOME | path join ".bun" "bin") # no XDG support yet (https://github.com/oven-sh/bun/issues/1678)
 path add ($env.XDG_DATA_HOME | path join "cargo" "bin")
 path add $env.XDG_DATA_HOME
 

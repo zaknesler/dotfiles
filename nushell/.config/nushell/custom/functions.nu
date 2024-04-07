@@ -1,5 +1,5 @@
 # Create a new directory and enter it
-def mkd [dirname: string] {
+def --env mkcd [dirname: string]: nothing -> nothing {
     mkdir $dirname
     cd $dirname
 }
@@ -9,12 +9,6 @@ def giic [] {
     git init
     git add .
     git commit -m "initial commit"
-}
-
-# Add all current changes and author new commit
-def gac [] {
-    alias gac = git add -A
-    git commit -m
 }
 
 # Add all changes and create "wip" commit
@@ -29,13 +23,13 @@ def nah [] {
     git clean -df
 }
 
-# Install Tailwind
-def install [] {
-    npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+# Install Tailwind, PostCSS, and Autoprefixer
+def install-tw [] {
+    pnpm install -D tailwindcss@latest postcss@latest autoprefixer@latest
     npx tailwindcss init -p
 }
 
-# Create private GitHub repository in current directory
+# Initialize and create a private GitHub repository
 def ghcr [repo: string] {
     git init
     gh repo create $repo --private --source=. --remote=upstream
