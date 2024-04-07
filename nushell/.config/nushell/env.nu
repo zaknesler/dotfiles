@@ -41,29 +41,30 @@ $env.NU_PLUGIN_DIRS = [
 ]
 
 # XDG Supported Directories
+$env.BUNDLE_USER_CACHE = ($env.XDG_CACHE_HOME | path join "bundle")
+$env.BUNDLE_USER_CONFIG = ($env.XDG_CONFIG_HOME | path join "bundle")
+$env.BUNDLE_USER_PLUGIN = ($env.XDG_DATA_HOME | path join "bundle")
 $env.CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
 $env.CONDARC = ($env.XDG_CONFIG_HOME | path join "conda" "condarc")
 $env.CUDA_CACHE_PATH = ($env.XDG_CACHE_HOME | path join "nv")
 $env.DOCKER_CONFIG = ($env.XDG_CONFIG_HOME | path join "docker")
+$env.GEM_HOME = ($env.XDG_DATA_HOME | path join "gem")
+$env.GEM_SPEC_CACHE = ($env.XDG_CACHE_HOME | path join "gem")
 $env.GNUPGHOME = ($env.XDG_DATA_HOME | path join "gnupg")
+$env.IPYTHONDIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
+$env.JUPYTER_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
 $env.NPM_CONFIG_USERCONFIG = ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
+$env.NUGET_PACKAGES = ($env.XDG_CACHE_HOME | path join "NuGetPackages")
 $env.NVM_DIR = ($env.XDG_DATA_HOME | path join "nvm")
 $env.PLTUSERHOME = ($env.XDG_DATA_HOME | path join "racket")
 $env.PM2_HOME = ($env.XDG_CONFIG_HOME | path join "pm2")
 $env.RUSTUP_HOME = ($env.XDG_DATA_HOME | path join "rustup")
-$env.WGETRC = ($env.XDG_CONFIG_HOME | path join "wgetrc")
-$env.BUNDLE_USER_CONFIG = ($env.XDG_CONFIG_HOME | path join "bundle")
-$env.BUNDLE_USER_CACHE = ($env.XDG_CACHE_HOME | path join "bundle")
-$env.BUNDLE_USER_PLUGIN = ($env.XDG_DATA_HOME | path join "bundle")
-$env.NUGET_PACKAGES = ($env.XDG_CACHE_HOME | path join "NuGetPackages")
-$env.GEM_HOME = ($env.XDG_DATA_HOME | path join "gem")
-$env.GEM_SPEC_CACHE = ($env.XDG_CACHE_HOME | path join "gem")
-$env.IPYTHONDIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
-$env.JUPYTER_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
+$env.TEXMFCONFIG = ($env.XDG_CONFIG_HOME | path join "texlive" "texmf-config")
 $env.TEXMFHOME = ($env.XDG_DATA_HOME | path join "texmf")
 $env.TEXMFVAR = ($env.XDG_CACHE_HOME | path join "texlive" "texmf-var")
-$env.TEXMFCONFIG = ($env.XDG_CONFIG_HOME | path join "texlive" "texmf-config")
+$env.WGETRC = ($env.XDG_CONFIG_HOME | path join "wgetrc")
 
+# Defaults
 $env.EDITOR = "nvim"
 
 # NVM
@@ -97,7 +98,12 @@ $env.GPG_TTY = (is-terminal --stdin)
 use std "path add"
 
 path add $env.PNPM_HOME --append
+path add ($env.HOME | path join ".local" "bin")
+path add ($env.HOME | path join ".bun" "bin")
+path add ($env.XDG_DATA_HOME | path join "cargo" "bin")
+path add $env.XDG_DATA_HOME
 
+# Go
 if not ($env | get GOPATH -i | is-empty) {
     path add ($env.GOPATH | path join "bin") --append
 }
@@ -129,8 +135,4 @@ if (sys | get host.name) in ["Darwin", "Debian GNU/Linux"] {
     path add "/usr/local/go/bin"
     path add ($env.HOME | path join ".local" "share" "npm" "bin")
     path add ($env.HOME | path join ".local" "share" "bob" "nvim-bin")
-    path add ($env.HOME | path join ".local" "bin")
-    path add ($env.HOME | path join ".bun" "bin")
-    path add ($env.XDG_DATA_HOME | path join "cargo" "bin")
-    path add $env.XDG_DATA_HOME
 }
