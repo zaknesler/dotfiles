@@ -11,9 +11,13 @@ alias v = nvim
 alias vi = nvim
 alias vim = nvim
 
+# ls
+alias la = ls -a
+alias ll = ls -al
+
 # Git
 alias gaa = git add -A
-alias gac = git add -A and git commit -m
+alias gac = git add -A; git commit -m
 alias gb = git branch
 alias gc = git commit -m
 alias gco = git checkout
@@ -31,8 +35,8 @@ alias grao = git remote add origin
 alias gs = git status
 alias gsh = git stash -u
 alias gshp = git stash pop
-alias nah = git reset --hard and git clean -df
-alias wip = git add . and git commit -m 'wip' -q
+alias nah = git reset --hard; git clean -df
+alias wip = git add .; git commit -m 'wip' -q
 
 # Rust
 alias c = cargo
