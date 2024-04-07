@@ -35,12 +35,10 @@ def git_info [] {
         _ => ""
     }
 
-    let git = match (spacify [ $git_branch $git_modified ]) {
+    match (spacify [ $git_branch $git_modified ]) {
         $inner if ($inner | is-not-empty) => ([ (ansi darkseagreen4a) "[" $inner (ansi darkseagreen4a) "]" ] | str join)
         _ => ""
     }
-
-    spacify [$git]
 }
 
 export def create_right_prompt [] {
