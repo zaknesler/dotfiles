@@ -22,7 +22,7 @@ alias gcom = git checkout main
 alias gd = git diff
 alias gf = git fetch
 alias gi = git init
-let glgfmt = "--pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'"
+let glgfmt = "--pretty=format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset"
 alias glg = git log --graph $glgfmt --abbrev-commit
 alias glgr = git log --reverse $glgfmt --abbrev-commit
 alias gpl = git pull
