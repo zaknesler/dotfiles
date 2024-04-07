@@ -40,7 +40,17 @@ def git_info [] {
         _ => ""
     }
 
-    match (spacify [ $branch $modified $staged ]) {
+    let ahead = match (gstat | get ahead) {
+        $ahead if $ahead > 0 => ([ (ansi yellow) (char upwards_arrow) $ahead ] | str join)
+        _ => ""
+    }
+
+    let behind = match (gstat | get behind) {
+        $behind if $behind > 0 => ([ (ansi yellow) (char downwards_arrow) $behind ] | str join)
+        _ => ""
+    }
+
+    match (spacify [ $branch $modified $staged $ahead $behind ]) {
         $inner if ($inner | is-not-empty) => ([ (ansi darkseagreen4a) "[" $inner (ansi darkseagreen4a) "]" ] | str join)
         _ => ""
     }
