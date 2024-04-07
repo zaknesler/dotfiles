@@ -13,18 +13,34 @@ export def create_left_prompt [] {
 }
 
 export def create_right_prompt [] {
-    let time_segment = ([
-        (ansi reset)
-        (ansi magenta)
-        (date now | format date "%Y-%m-%d %H:%M:%S")
-    ] | str join | str replace --regex --all "([/:])" $"(ansi green)${1}(ansi magenta)" |
-        str replace --regex --all "([AP]M)" $"(ansi magenta)${1}")
+    let sep = ([ (ansi reset) (char space) ] | str join)
 
-    let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
-        (ansi rb)
-        ($env.LAST_EXIT_CODE)
-    ] | str join)
-    } else { "" }
+    let last_exit_code = match $env.LAST_EXIT_CODE {
+        $code if $code != 0 => ([ (ansi rb) ($env.LAST_EXIT_CODE) ] | str join)
+        _ => ""
+    }
 
-    ([$last_exit_code, (char space), $time_segment] | str join)
+    let time = (
+        [ (ansi white_dimmed) (date now | format date "%I:%M:%S %p") ]
+        | str join
+        | str replace --regex --all "([/:])" $"(ansi dark_gray_dimmed)${1}(ansi white_dimmed)"
+    )
+
+    let git_branch = match (gstat | get branch) {
+        $branch if $branch != "no_branch" => ([ (ansi seagreen2) $branch ] | str join)
+        _ => ""
+    }
+
+    let git_modified = match (gstat | get wt_modified) {
+        $modified if $modified > 0 => ([ (ansi yellow) "!" $modified ] | str join)
+        _ => ""
+    }
+
+    let git_inner = [ $git_branch $git_modified ] | filter {|s| $s != ""} | str join " " | str trim
+    let git = if $git_inner != "" { ([ (ansi darkseagreen4a) "[" $git_inner (ansi darkseagreen4a) "]" ] | str join) } else { "" }
+
+    let login = ([ (whoami | str downcase) (sys | get host.hostname) ] | str join "@")
+    let user = ([ (ansi tan) $login ] | str join)
+
+    ([ (ansi reset) $git $user $last_exit_code $time (ansi reset) ] | filter {|s| $s != ""} | str join $sep | str trim)
 }
