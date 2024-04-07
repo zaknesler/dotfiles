@@ -35,6 +35,11 @@ def git_info [] {
         _ => ""
     }
 
+    let deleted = match (gstat | get wt_deleted) {
+        $deleted if $deleted > 0 => ([ (ansi light_red) "!" $deleted ] | str join)
+        _ => ""
+    }
+
     let staged = match (gstat | get idx_modified_staged) {
         $staged if $staged > 0 => ([ (ansi yellow) "+" $staged ] | str join)
         _ => ""
@@ -50,7 +55,7 @@ def git_info [] {
         _ => ""
     }
 
-    match (spacify [ $branch $modified $staged $ahead $behind ]) {
+    match (spacify [ $branch $deleted $modified $staged $ahead $behind ]) {
         $inner if ($inner | is-not-empty) => ([ (ansi darkseagreen4a) "[" $inner (ansi darkseagreen4a) "]" ] | str join)
         _ => ""
     }
