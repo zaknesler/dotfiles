@@ -76,5 +76,10 @@ export def create_right_prompt [] {
     let login = [ (whoami | str downcase) (sys | get host.hostname) ] | str join "@"
     let user = [ (ansi tan) $login ] | str join
 
-    spacify [ $user $last_exit_code $time ] $sep
+    let wsl = match ("/run/WSL" | path exists) {
+        true => ([ (ansi lightslategrey) "[" (ansi lightslateblue) "wsl" (ansi lightslategrey) "]" ] | str join)
+        false => ""
+    }
+
+    spacify [ $user $wsl $last_exit_code $time ] $sep
 }
