@@ -14,15 +14,15 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
 
 #### Installation
 
-1. Clone repository
+1. Clone repository to `~/.config/dotfiles` and `cd` into it
 
-    ```shell
+    ```nushell
     git clone https://github.com/zaknesler/dotfiles.git ~/.config/dotfiles
 
     cd ~/.config/dotfiles
     ```
 
-2. *Optional: Mac OS only*
+1. *Optional: Mac OS only*
 
     ```nushell
     # Install Xcode tools
@@ -35,7 +35,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
     brew bundle
     ```
 
-3. Install `nu_plugin_gstat` (enables git repo data)
+1. Install `nu_plugin_gstat` (enables git repo data)
 
     ```nushell
     cargo install nu_plugin_gstat
@@ -43,7 +43,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
     nu -c $'register '($plugin)'; version'
     ```
 
-4. Symlink directories using Stow
+1. Symlink directories using Stow
 
     ```nushell
     ls ~/.config/dotfiles | where type == dir | each { |dir| stow -t $env.HOME ($dir | get name) }
