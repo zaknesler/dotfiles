@@ -12,11 +12,12 @@ use ($nu.default-config-dir | path join 'config' 'prompt.nu') [create_left_promp
 $env.PROMPT_COMMAND = {|| create_left_prompt }
 $env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
 
-# The prompt indicators are environmental variables that represent
-# the state of the prompt
-$env.PROMPT_INDICATOR = {|| "> " }
-$env.PROMPT_INDICATOR_VI_INSERT = {|| "> " }
-$env.PROMPT_INDICATOR_VI_NORMAL = {|| "> " }
+let prompt_color = (ansi deepskyblue4b)
+let arrow = (char black_right_pointing_triangle)
+
+$env.PROMPT_INDICATOR = {|| [ $prompt_color $arrow (char space) ] | str join }
+$env.PROMPT_INDICATOR_VI_INSERT = {|| [ $prompt_color $arrow (char space) ] | str join }
+$env.PROMPT_INDICATOR_VI_NORMAL = {|| [ $prompt_color $arrow (char space) ] | str join }
 $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 
 $env.ENV_CONVERSIONS = {
