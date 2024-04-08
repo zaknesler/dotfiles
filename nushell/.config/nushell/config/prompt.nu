@@ -24,6 +24,7 @@ export def create_left_prompt [] {
 def git_info [] {
     # nu_plugin_gstat must be installed
     if (which gstat | is-empty) { return "" }
+    if (gstat | get repo_name | is-empty) { return "" }
 
     def create-item [value: string items: list<string>] {
         match (gstat | get $value) {
@@ -32,8 +33,14 @@ def git_info [] {
         }
     }
 
-    let branch = match (gstat | get branch) {
-        $branch if $branch != "no_branch" => ([ (ansi seagreen3) $branch ] | str join)
+    let branch = match [ (gstat | get branch) (gstat | get tag) ] {
+        [ $branch $tag ] if $branch != "no_branch" and $tag == "no_tag" => ([ (ansi seagreen3) $branch ] | str join)
+        [ $branch $tag ] if $tag != "no_branch" and ($tag | is-not-empty) and $tag != "no_tag" => ([
+                (ansi darkseagreen4a) "#"
+                (ansi seagreen3) $branch
+                (ansi darkseagreen4a) "@"
+                (ansi seagreen3) $tag
+            ] | str join)
         _ => ""
     }
 
