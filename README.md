@@ -46,5 +46,5 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
 1. Symlink directories using Stow
 
     ```nushell
-    ls ~/.config/dotfiles | where type == dir | each { |dir| stow -t $env.HOME ($dir | get name) }
+    cd ~/.config/dotfiles; ls -s | where type == dir | each { |dir| stow -t $env.HOME ($dir | get name) }
     ```
