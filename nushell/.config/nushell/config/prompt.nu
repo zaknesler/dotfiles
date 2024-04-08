@@ -1,4 +1,4 @@
-def spacify [lines: list<string> sep: string = (char space)] {
+def spacify [lines: list<string> sep: string = " "] {
     if ($lines | is-empty) { return "" }
 
     $lines | filter {|s| $s != ""} | str join $sep | str trim
@@ -52,7 +52,8 @@ def git_info [] {
         (create-item wt_deleted [ (ansi yellow) "-" ])
         (create-item idx_modified_staged [ (ansi light_green) "+" ])
         (create-item idx_deleted_staged [ (ansi light_red) "-" ])
-    ]
+        (create-item stashes [ (ansi yellow) "*" ])
+        ]
 
     match $items {
         $inner if ($inner | is-not-empty) => ([ (ansi darkseagreen4a) "[" $inner (ansi darkseagreen4a) "]" ] | str join)
