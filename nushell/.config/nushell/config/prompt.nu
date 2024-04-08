@@ -62,14 +62,20 @@ export def create_right_prompt [] {
     let login = [ (whoami | str downcase) (sys | get host.hostname) ] | str join "@"
     let user = [ (ansi tan) $login ] | str join
 
-    let wsl = match ("/run/WSL" | path exists) {
-        true => ([ (ansi lightslategrey) "[" (ansi lightslateblue) "wsl" (ansi lightslategrey) "]" ] | str join)
-        false => ""
+    let type = match () {
+        _ if ("/run/WSL" | path exists) => "wsl"
+        _ if ($env | get -i SSH_TTY | is-not-empty) => "ssh"
+        _ => ""
+    }
+
+    let session = match $type {
+        $type if ($type | is-not-empty) => ([ (ansi lightslategrey) "[" (ansi lightslateblue) $type (ansi lightslategrey) "]" ] | str join)
+        _ => ""
     }
 
     let time = [ (ansi white_dimmed) (date now | format date "%I:%M:%S %p") ]
         | str join
         | str replace --regex --all "([/:])" $"(ansi dark_gray_dimmed)${1}(ansi white_dimmed)"
 
-    spacify [ $last_exit_code $user $wsl $time ] ([ (ansi reset) (char space) ] | str join)
+    spacify [ $last_exit_code $user $session $time ] ([ (ansi reset) (char space) ] | str join)
 }
