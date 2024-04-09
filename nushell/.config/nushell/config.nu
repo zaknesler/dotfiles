@@ -2,9 +2,9 @@
 # version = "0.91.0"
 
 # Import config files
-use ($nu.default-config-dir | path join "config" "binds.nu")
-use ($nu.default-config-dir | path join "config" "menus.nu")
-use ($nu.default-config-dir | path join "config" "theme.nu")
+use binds.nu
+use menus.nu
+use theme.nu
 
 $env.config = {
     show_banner: false
@@ -120,7 +120,14 @@ $env.config = {
 }
 
 # Aliases
-source ($nu.default-config-dir | path join "custom" "aliases.nu")
+source aliases.nu
 
 # Functions
-source ($nu.default-config-dir | path join "custom" "functions.nu")
+source functions.nu
+
+# Completions
+source git/git-completions.nu
+source npm/npm-completions.nu
+source pnpm/pnpm-completions.nu
+source cargo/cargo-completions.nu
+source rustup/rustup-completions.nu

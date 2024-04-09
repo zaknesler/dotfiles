@@ -1,0 +1,3 @@
+[submodule "nushell/.config/nushell/custom/nu_scripts"]
+	path = nushell/.config/nushell/custom/nu_scripts
+	url = https://github.com/nushell/nu_scripts

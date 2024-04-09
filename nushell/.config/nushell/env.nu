@@ -7,7 +7,7 @@ $env.XDG_CONFIG_HOME = ($env.HOME | path join ".config")
 $env.XDG_DATA_HOME = ($env.HOME | path join ".local" "share")
 $env.XDG_RUNTIME_DIR = ($env.XDG_CACHE_HOME | path join "runtime")
 
-use ($nu.default-config-dir | path join 'config' 'prompt.nu') [create_left_prompt, create_right_prompt]
+use ($nu.config-path | path dirname | path join 'config' 'prompt.nu') [create_left_prompt, create_right_prompt]
 
 $env.PROMPT_COMMAND = {|| create_left_prompt }
 $env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
@@ -33,12 +33,15 @@ $env.ENV_CONVERSIONS = {
 
 # Directories to search for scripts when calling source or use
 $env.NU_LIB_DIRS = [
-    ($nu.default-config-dir | path join 'scripts')
+    ($nu.config-path | path dirname | path join 'scripts')
+    ($nu.config-path | path dirname | path join 'config')
+    ($nu.config-path | path dirname | path join 'custom')
+    ($nu.config-path | path dirname | path join 'custom' 'nu_scripts' 'custom-completions')
 ]
 
 # Directories to search for plugin binaries when calling register
 $env.NU_PLUGIN_DIRS = [
-    ($nu.default-config-dir | path join 'plugins')
+    ($nu.config-path | path dirname | path join 'plugins')
 ]
 
 # XDG Supported Directories
