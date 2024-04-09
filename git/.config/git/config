@@ -5,21 +5,21 @@
 # git update-index --no-assume-unchanged $XDG_CONFIG_HOME/dotfiles/git/.config/git/config
 
 [user]
-    name = Zak Nesler
-    email = zak@nesler.dev
+	name = Zak Nesler
+	email = zak@nesler.dev
 [core]
-    excludesfile = $XDG_CONFIG_HOME/git/.gitignore_global
+	excludesfile = $XDG_CONFIG_HOME/git/.gitignore_global
 	ignorecase = false
 	autocrlf = input
 [init]
-    defaultBranch = main
+	defaultBranch = main
 [filter "lfs"]
-    process = git-lfs filter-process
-    required = true
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 [pull]
-    rebase = false
+	rebase = false
 [push]
-    autoSetupRemote = true
-    default = current
+	autoSetupRemote = true
+	default = current
