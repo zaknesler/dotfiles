@@ -17,7 +17,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
 1. Clone repository to `~/.config/dotfiles` and `cd` into it
 
     ```nushell
-    git clone https://github.com/zaknesler/dotfiles.git ~/.config/dotfiles
+    git clone --depth 1 https://github.com/zaknesler/dotfiles.git ~/.config/dotfiles
 
     cd ~/.config/dotfiles
     ```
