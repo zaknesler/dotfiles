@@ -35,7 +35,7 @@ def git_info [] {
         }
     }
 
-    let branch = match [ ($git | get branch) ($git | get tag) ] {
+    let repo = match [ ($git | get branch) ($git | get tag) ] {
         [ $branch $tag ] if $branch != "no_branch" and $tag == "no_tag" => ([ (ansi seagreen3) $branch ] | str join)
         [ $branch $tag ] if $tag != "no_branch" and ($tag | is-not-empty) and $tag != "no_tag" => ([
                 (ansi seagreen3) $branch
@@ -45,7 +45,7 @@ def git_info [] {
     }
 
     let items = spacify [
-        $branch
+        $repo
         (create-item ahead [ (ansi yellow) (char upwards_arrow) ])
         (create-item behind [ (ansi yellow) (char downwards_arrow) ])
         (create-item wt_modified [ (ansi yellow) "!" ])
