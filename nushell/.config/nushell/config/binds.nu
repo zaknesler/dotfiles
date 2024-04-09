@@ -159,14 +159,14 @@ export def main [] {
         }
         {
             name: move_one_word_left
-            modifier: control
+            modifier: alt
             keycode: left
             mode: [emacs, vi_normal, vi_insert]
             event: { edit: movewordleft }
         }
         {
             name: move_one_word_right_or_take_history_hint
-            modifier: control
+            modifier: alt
             keycode: right
             mode: [emacs, vi_normal, vi_insert]
             event: {
@@ -261,7 +261,7 @@ export def main [] {
         }
         {
             name: delete_one_word_backward
-            modifier: control
+            modifier: alt
             keycode: backspace
             mode: [emacs, vi_insert]
             event: { edit: backspaceword }
@@ -275,7 +275,7 @@ export def main [] {
         }
         {
             name: delete_one_character_forward
-            modifier: control
+            modifier: alt
             keycode: delete
             mode: [emacs, vi_insert]
             event: { edit: delete }
