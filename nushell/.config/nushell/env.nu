@@ -112,7 +112,7 @@ if not ($env | get GOROOT -i | is-empty) {
 }
 
 # Mac OS
-if (sys | get host.name) =~ "(?i)darwin" {
+if $nu.os-info.name == "macos" {
     path add ($env.HOME | path join "Library/Python/3.9/bin")
     path add "/usr/local/opt/coreutils/libexec/gnubin" --append
     path add "/usr/local/opt/openjdk/bin" --append
@@ -123,13 +123,13 @@ if (sys | get host.name) =~ "(?i)darwin" {
 }
 
 # Linux
-if (sys | get host.name) =~ "(?i)linux" {
+if $nu.os-info.name == "linux" {
     $env.JAVA_HOME = "/usr/lib/jvm/default-java"
     $env.CLASSPATH = "/usr/share/java/gtk.jar:."
 }
 
 # Unix-like
-if (sys | get host.name) =~ "(?i)darwin|linux" {
+if $nu.os-info.family == "unix" {
     path add "/usr/local/bin"
     path add "/usr/local/go/bin"
     path add ($env.HOME | path join ".local" "share" "npm" "bin")

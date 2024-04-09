@@ -38,10 +38,8 @@ def git_info [] {
     let branch = match [ ($git | get branch) ($git | get tag) ] {
         [ $branch $tag ] if $branch != "no_branch" and $tag == "no_tag" => ([ (ansi seagreen3) $branch ] | str join)
         [ $branch $tag ] if $tag != "no_branch" and ($tag | is-not-empty) and $tag != "no_tag" => ([
-                (ansi darkseagreen4a) "#"
                 (ansi seagreen3) $branch
-                (ansi darkseagreen4a) "@"
-                (ansi seagreen3) $tag
+                (ansi grey53) " #" $tag
             ] | str join)
         _ => ""
     }
