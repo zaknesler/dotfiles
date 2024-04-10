@@ -53,7 +53,7 @@ def git_info [] {
         (create-item idx_modified_staged [ (ansi light_green) "+" ])
         (create-item idx_deleted_staged [ (ansi light_red) "-" ])
         (create-item stashes [ (ansi yellow) "*" ])
-        ]
+    ]
 
     match $items {
         $inner if ($inner | is-not-empty) => ([ (ansi darkseagreen4a) "[" $inner (ansi darkseagreen4a) "]" ] | str join)
@@ -72,7 +72,10 @@ export def create_right_prompt [] {
 
     let type = match () {
         _ if ("/run/WSL" | path exists) => "wsl"
-        _ if ($env | get -i SSH_TTY | is-not-empty) => "ssh"
+        _ if ($env | get -i SSH_TTY | is-not-empty)
+            or ($env | get -i SSH_CLIENT | is-not-empty)
+            or ($env | get -i SSH_CONNECTION | is-not-empty)
+            or ((which who | is-not-empty) and ((who) =~ "\\(\\d+\\.\\d+\\.\\d+\\.\\d+\\)")) => "ssh"
         _ => ""
     }
 
