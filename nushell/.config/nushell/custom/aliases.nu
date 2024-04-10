@@ -36,6 +36,7 @@ alias n = npm
 alias ni = npm install
 alias no = npm outdated
 alias nr = npm run
+alias nt = npm test
 alias nrb = npm run build
 alias nrd = npm run dev
 alias nrs = npm run start

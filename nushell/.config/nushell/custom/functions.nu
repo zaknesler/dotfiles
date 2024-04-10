@@ -35,3 +35,8 @@ def ghcr [repo: string] {
     gh repo create $repo --private --source=. --remote=upstream
     git remote add origin $"git@github.com:zaknesler/($repo).git"
 }
+
+# Run npm test filtering by test path and name
+def ntt [path: string name: string] {
+    npm test $path -- -t $name
+}
