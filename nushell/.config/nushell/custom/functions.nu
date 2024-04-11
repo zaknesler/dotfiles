@@ -7,7 +7,7 @@ def --env mkcd [dirname: string]: nothing -> nothing {
 # Initialize Git repository and create initial commit
 def giic [] {
     git init
-    git add .
+    git add -A
     git commit -m "initial commit"
 }
 
