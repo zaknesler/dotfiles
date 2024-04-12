@@ -52,7 +52,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
    cat /etc/shells
 
    # Set user shell
-   chsh
+   chsh -s $(which nu)
    ```
 
 1. Re-login or run `nu` to use new configuration
