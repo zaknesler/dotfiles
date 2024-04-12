@@ -14,37 +14,59 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
 
 #### Installation
 
+1. Install [Nushell](https://github.com/nushell/nushell?tab=readme-ov-file#installation), [GNU Stow](https://www.gnu.org/software/stow), and [Neovim](https://github.com/neovim/neovim)
+
+   > Do not start Nushell until the directories are symlinked. Nushell will not let you symlink its config directory if it's already running. The first few steps should use the default shell (`bash`, `zsh`, etc.).
+
+1. *(Optional) Mac OS only*
+
+   ```bash
+   # Install Xcode tools
+   xcode-select --install
+
+   # Install Homebrew
+   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+   # (Optional) Install formulae from ./Brewfile
+   brew bundle
+   ```
+
 1. Clone repository to `~/.config/dotfiles` and `cd` into it
 
-    ```nushell
-    git clone --recurse-submodules --depth 1 https://github.com/zaknesler/dotfiles.git ~/.config/dotfiles
+   ```bash
+   git clone --recurse-submodules --depth 1 https://github.com/zaknesler/dotfiles.git ~/.config/dotfiles
 
-    cd ~/.config/dotfiles
-    ```
-
-1. *Optional: Mac OS only*
-
-    ```nushell
-    # Install Xcode tools
-    xcode-select --install
-
-    # Install Homebrew
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    # Install formulae from ./Brewfile
-    brew bundle
-    ```
-
-1. Install `nu_plugin_gstat` (enables git repo data)
-
-    ```nushell
-    cargo install nu_plugin_gstat
-    let gstat = (which nu_plugin_gstat | get path | first)
-    nu -c $'register '($gstat)'; version'
-    ```
+   cd ~/.config/dotfiles
+   ```
 
 1. Symlink directories using Stow
 
-    ```nushell
-    cd ~/.config/dotfiles; ls -s | where type == dir | each { |dir| stow -t $env.HOME ($dir | get name) }
-    ```
+   ```bash
+   ls -d */ | xargs stow -t $HOME
+   ```
+
+1. Set your default shell to Nushell (Linux/Mac OS)
+
+   ```bash
+   # Ensure Nushell exists as an option
+   cat /etc/shells
+
+   # Set user shell
+   chsh
+   ```
+
+1. Re-login or run `nu` to use new configuration
+
+1. Install Rust via [rustup](https://rustup.rs)
+
+   ```nushell
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   ```
+
+1. Install `nu_plugin_gstat` (enables git repo data)
+
+   ```nushell
+   cargo install nu_plugin_gstat
+   let gstat = (which nu_plugin_gstat | get path | first)
+   nu -c $'register '($gstat)'; version'
+   ```

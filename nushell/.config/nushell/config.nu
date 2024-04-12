@@ -126,8 +126,8 @@ source aliases.nu
 source functions.nu
 
 # Completions
-source git/git-completions.nu
-source npm/npm-completions.nu
-source pnpm/pnpm-completions.nu
-source cargo/cargo-completions.nu
-source rustup/rustup-completions.nu
+source nu_scripts/custom-completions/git/git-completions.nu
+source nu_scripts/custom-completions/npm/npm-completions.nu
+source nu_scripts/custom-completions/pnpm/pnpm-completions.nu
+source nu_scripts/custom-completions/cargo/cargo-completions.nu
+source nu_scripts/custom-completions/rustup/rustup-completions.nu

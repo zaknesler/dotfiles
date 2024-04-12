@@ -36,7 +36,6 @@ $env.NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'scripts')
     ($nu.config-path | path dirname | path join 'config')
     ($nu.config-path | path dirname | path join 'custom')
-    ($nu.config-path | path dirname | path join 'custom' 'nu_scripts' 'custom-completions')
 ]
 
 # Directories to search for plugin binaries when calling register
