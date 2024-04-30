@@ -71,6 +71,7 @@ $env.WGETRC = ($env.XDG_CONFIG_HOME | path join "wgetrc")
 
 # Defaults
 $env.EDITOR = "nvim"
+$env.VISUAL = "nvim"
 
 # NVM
 $env.NVM_AUTO_USE = true
