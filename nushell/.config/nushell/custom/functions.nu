@@ -37,6 +37,9 @@ def ghcr [repo: string] {
 }
 
 # Run npm test filtering by test path and name
-def ntt [path: string name: string] {
+def ntt [
+    path: string = ""
+    name: string = ""
+] {
     npm test $path -- -t $name
 }
