@@ -44,6 +44,7 @@ $env.NU_PLUGIN_DIRS = [
 ]
 
 # XDG Supported Directories
+$env.BLEND_HOME = ($env.XDG_CONFIG_HOME | path join "blend")
 $env.BUNDLE_USER_CACHE = ($env.XDG_CACHE_HOME | path join "bundle")
 $env.BUNDLE_USER_CONFIG = ($env.XDG_CONFIG_HOME | path join "bundle")
 $env.BUNDLE_USER_PLUGIN = ($env.XDG_DATA_HOME | path join "bundle")
