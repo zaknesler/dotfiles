@@ -131,3 +131,6 @@ source nu_scripts/custom-completions/npm/npm-completions.nu
 source nu_scripts/custom-completions/pnpm/pnpm-completions.nu
 source nu_scripts/custom-completions/cargo/cargo-completions.nu
 source nu_scripts/custom-completions/rustup/rustup-completions.nu
+
+# FNM
+source fnm.nu
