@@ -6,7 +6,6 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
 
 #### Pre-requisites
 
-- [Rust](https://rustup.rs)
 - [Nushell](https://github.com/nushell/nushell?tab=readme-ov-file#installation)
 - [Neovim](https://github.com/neovim/neovim)
 - [GNU Stow](https://www.gnu.org/software/stow)
