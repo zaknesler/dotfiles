@@ -133,4 +133,4 @@ source nu_scripts/custom-completions/cargo/cargo-completions.nu
 source nu_scripts/custom-completions/rustup/rustup-completions.nu
 
 # FNM
-source fnm.nu
+source nu_scripts/modules/fnm/fnm.nu
