@@ -43,3 +43,11 @@ def ntt [
 ] {
     npm test $path -- -t $name
 }
+
+# Reset all changes, git checkout to dev, pull new changes, and re-install npm deps
+def reset-to-dev [] {
+    nah
+    gco dev
+    gpl
+    npm i
+}

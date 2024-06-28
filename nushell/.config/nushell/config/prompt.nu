@@ -67,7 +67,7 @@ export def create_right_prompt [] {
         _ => ""
     }
 
-    let login = [ (whoami | str downcase) (sys | get host.hostname) ] | str join "@"
+    let login = [ (whoami | str downcase) (sys host | get hostname) ] | str join "@"
     let user = [ (ansi tan) $login ] | str join
 
     let type = match () {
