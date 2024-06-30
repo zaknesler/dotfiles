@@ -17,3 +17,4 @@ Brewfile.lock*
 # Nushell
 history.txt
 plugin.nu
+*.msgpackz
