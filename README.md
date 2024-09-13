@@ -26,7 +26,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
    # Install Homebrew
    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-   # (Optional) Install formulae from ./Brewfile
+   # (Optional, after cloning) Install formulae from ./Brewfile
    brew bundle
    ```
 
@@ -67,5 +67,5 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
    ```nushell
    cargo install nu_plugin_gstat
    let gstat = (which nu_plugin_gstat | get path | first)
-   nu -c $'register '($gstat)'; version'
+   nu -c $'plugin add '($gstat)'; version'
    ```
