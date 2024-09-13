@@ -1,10 +1,3 @@
-# Taps
-tap 'homebrew/bundle'
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
-tap 'homebrew/core'
-tap 'homebrew/services'
-
 # Brew Formulae
 brew 'curl'
 brew 'gcc'
@@ -23,10 +16,12 @@ brew 'sqlite'
 
 # Cask Apps
 cask 'brave-browser'
-cask 'discord'
-cask 'docker' 
+# cask 'discord'
+# cask 'docker'
 cask 'figma'
+cask 'iterm2'
 cask 'postman'
+cask 'raycast'
 cask 'spotify'
 cask 'visual-studio-code'
 
