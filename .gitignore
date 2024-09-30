@@ -1,0 +1,20 @@
+# Zsh
+.zcompdump*
+*.session
+.zsh_sessions/
+
+# Neovim
+autoload/
+pack/
+plugged/
+vendor/
+packer_compiled.lua
+.netrwhist
+
+# Brew
+Brewfile.lock*
+
+# Nushell
+history.txt
+plugin.nu
+*.msgpackz

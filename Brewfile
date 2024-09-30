@@ -1,0 +1,43 @@
+# Brew Formulae
+brew 'curl'
+brew 'gcc'
+brew 'gh'
+brew 'git'
+brew 'htop'
+brew 'mongosh'
+brew 'neofetch'
+brew 'nushell'
+brew 'openssl'
+brew 'pnpm'
+brew 'stow'
+brew 'wget'
+brew 'zsh'
+
+# Languages
+brew 'go'
+brew 'node'
+brew 'sqlite'
+
+# Cask Apps
+cask 'brave-browser'
+# cask 'discord'
+# cask 'docker'
+cask 'figma'
+cask 'iterm2'
+cask 'linear-linear'
+cask 'mongodb-compass'
+cask 'notion-calendar'
+cask 'notion'
+cask 'openvpn-connect'
+cask 'postman'
+cask 'raycast'
+cask 'slack'
+cask 'spotify'
+cask 'visual-studio-code'
+cask 'vlc'
+
+# Fonts
+cask 'font-hack'
+cask 'font-hack-nerd-font'
+cask 'font-inter'
+cask 'font-meslo-lg-nerd-font'
