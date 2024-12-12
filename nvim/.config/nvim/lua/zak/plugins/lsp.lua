@@ -55,7 +55,7 @@ return {
         },
       })
 
-      lsp.configure('tsserver', {
+      lsp.configure('ts_ls', {
         javascript = {
           format = {
             semicolons = false,
