@@ -19,8 +19,12 @@ def wip [] {
 
 # Discard all git changes
 def nah [] {
-    git reset --hard
-    git clean -df
+    let response = input "you sure? (y/n): "
+
+    if $response == "y" {
+        git reset --hard
+        git clean -df
+    }
 }
 
 # Install Tailwind, PostCSS, and Autoprefixer
@@ -46,7 +50,8 @@ def ntt [
 
 # Reset all changes, git checkout to dev, pull new changes, and re-install npm deps
 def reset-to-dev [] {
-    nah
+    git reset --hard
+    git clean -df
     gco dev
     gpl
     npm i
