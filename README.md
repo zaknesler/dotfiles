@@ -17,19 +17,6 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
 
    > Do not start Nushell until the directories are symlinked. Nushell will not let you symlink its config directory if it's already running. The first few steps should use the default shell (`bash`, `zsh`, etc.).
 
-1. *(Optional) Mac OS only*
-
-   ```bash
-   # Install Xcode tools
-   xcode-select --install
-
-   # Install Homebrew
-   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-   # (Optional, after cloning) Install formulae from ./Brewfile
-   brew bundle
-   ```
-
 1. Clone repository to `~/.config/dotfiles` and `cd` into it
 
    ```bash
@@ -42,6 +29,19 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
 
    ```bash
    ls -d */ | xargs stow -t $HOME
+   ```
+
+1. *(Optional) Mac OS only*
+
+   ```bash
+   # Install Xcode tools
+   xcode-select --install
+
+   # Install Homebrew
+   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+   # (Optional, after cloning) Install formulae from ./Brewfile
+   brew bundle
    ```
 
 1. Set your default shell to Nushell (Linux/Mac OS)
