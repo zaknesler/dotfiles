@@ -56,3 +56,19 @@ def reset-to-dev [] {
     gpl
     npm i
 }
+
+# Download all images from a URL to the current directory
+def gdl [
+    url: string,
+    # URL containing images to download
+    --default-filename (-d)
+    # Ignore custom filename format and use the default
+] {
+    if ($default_filename) {
+        # Use gallery-dl with default filename handling
+        gallery-dl -D . $url
+    } else {
+        # Use custom filename format
+        gallery-dl -D . --filename "{date:%Y-%m-%d}_{index}_{filename}.{extension}" $url
+    }
+}

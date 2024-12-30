@@ -68,8 +68,8 @@ alias catssh = cat ~/.ssh/id_*.pub
 alias own = sudo chown -R ([$env.USER $env.USER] | str join ":")
 alias c~ = rm -rf ~/.aws ~/.azure ~/.yarnrc ~/errors.log ~/.sudo_as_admin_successful ~/.wget-hsts ~/.python_history ~/.tailwindcss ~/.omnisharp ~/.nuxtrc ~/.electron ~/.vue-templates ~/.dotnet ~/.racket_history
 
-alias o = open
-alias e = explorer
+alias o = ^open
+alias e = ^explorer
 
 alias units = units --history ($env.XDG_CACHE_HOME | path join "units_history")
 alias wget = wget --hsts-file ($env.XDG_CACHE_HOME | path join "wget-hsts")
