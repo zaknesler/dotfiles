@@ -21,9 +21,7 @@ def wip [] {
 def nah [
     --yes (-y) # Accept yes/no prompt
 ] {
-    let response = input "you sure? (y/n): "
-
-    if $response == "y" or $yes {
+    if $yes or (input "you sure? (y/n): ") == "y"  {
         git reset --hard
         git clean -df
     }
