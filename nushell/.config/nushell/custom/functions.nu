@@ -18,10 +18,12 @@ def wip [] {
 }
 
 # Discard all git changes
-def nah [] {
+def nah [
+    --yes (-y) # Accept yes/no prompt
+] {
     let response = input "you sure? (y/n): "
 
-    if $response == "y" {
+    if $response == "y" or $yes {
         git reset --hard
         git clean -df
     }
