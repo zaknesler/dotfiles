@@ -59,10 +59,8 @@ def reset-to-dev [] {
 
 # Download all images from a URL to the current directory
 def gdl [
-    url: string,
-    # URL containing images to download
-    --default-filename (-d)
-    # Ignore custom filename format and use the default
+    url: string # URL containing images to download
+    --default-filename (-d) # Ignore custom filename format and use the default
 ] {
     if ($default_filename) {
         # Use gallery-dl with default filename handling
