@@ -18,7 +18,7 @@ export def create_left_prompt [] {
     let path = $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
 
     let line = spacify [ $path (git_info) ]
-    [ $line (char newline) (char newline) ] | str join
+    [ $line (char newline) ] | str join
 }
 
 def git_info [] {
