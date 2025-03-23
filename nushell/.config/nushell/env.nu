@@ -65,6 +65,7 @@ $env.NVM_DIR = ($env.XDG_DATA_HOME | path join "nvm")
 $env.PLTUSERHOME = ($env.XDG_DATA_HOME | path join "racket")
 $env.PM2_HOME = ($env.XDG_CONFIG_HOME | path join "pm2")
 $env.PNPM_HOME = ($env.XDG_DATA_HOME | path join "pnpm")
+$env.PYENV_ROOT = ($env.XDG_DATA_HOME | path join "pyenv")
 $env.RUSTUP_HOME = ($env.XDG_DATA_HOME | path join "rustup")
 $env.TEXMFCONFIG = ($env.XDG_CONFIG_HOME | path join "texlive" "texmf-config")
 $env.TEXMFHOME = ($env.XDG_DATA_HOME | path join "texmf")
@@ -107,6 +108,7 @@ path add ($env.HOME | path join ".local" "bin")
 path add ($env.HOME | path join ".bun" "bin") # no XDG support yet (https://github.com/oven-sh/bun/issues/1678)
 path add ($env.HOME | path join ".deno" "bin") # ditto, what the fuck is with new software that doesn't follow XDG
 path add ($env.XDG_DATA_HOME | path join "cargo" "bin")
+path add ($env.XDG_DATA_HOME | path join "pyenv" "bin")
 path add $env.XDG_DATA_HOME
 
 # Go
