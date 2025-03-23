@@ -5,10 +5,10 @@ def --env mkcd [dirname: string]: nothing -> nothing {
 }
 
 # Initialize Git repository and create initial commit
-def giic [] {
+def gii [] {
     git init
     git add -A
-    git commit -m "initial commit"
+    git commit -m "initial"
 }
 
 # Add all changes and create "wip" commit
