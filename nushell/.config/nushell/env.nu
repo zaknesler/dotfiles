@@ -52,6 +52,7 @@ $env.CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
 $env.COMPOSER_HOME = ($env.XDG_DATA_HOME | path join "composer")
 $env.CONDARC = ($env.XDG_CONFIG_HOME | path join "conda" "condarc")
 $env.CUDA_CACHE_PATH = ($env.XDG_CACHE_HOME | path join "nv")
+$env.DENO_DIR = ($env.XDG_DATA_HOME | path join "deno")
 $env.DOCKER_CONFIG = ($env.XDG_CONFIG_HOME | path join "docker")
 $env.FNM_DIR = ($env.XDG_DATA_HOME | path join "fnm")
 $env.GEM_HOME = ($env.XDG_DATA_HOME | path join "gem")
@@ -106,7 +107,7 @@ use std "path add"
 path add $env.PNPM_HOME --append
 path add ($env.HOME | path join ".local" "bin")
 path add ($env.HOME | path join ".bun" "bin") # no XDG support yet (https://github.com/oven-sh/bun/issues/1678)
-path add ($env.HOME | path join ".deno" "bin") # ditto, what the fuck is with new software that doesn't follow XDG
+path add ($env.XDG_DATA_HOME | path join "deno" "bin")
 path add ($env.XDG_DATA_HOME | path join "cargo" "bin")
 path add ($env.XDG_DATA_HOME | path join "pyenv" "bin")
 path add $env.XDG_DATA_HOME
