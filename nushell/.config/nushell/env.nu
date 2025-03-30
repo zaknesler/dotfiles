@@ -128,9 +128,10 @@ if $nu.os-info.name == "macos" {
     path add "/usr/local/opt/coreutils/libexec/gnubin" --append
     path add "/usr/local/opt/openjdk/bin" --append
     path add "/opt/homebrew/bin" --append
+    path add "/opt/homebrew/opt/java/bin" --append
 
-    $env.JAVA_HOME = "/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
-    $env.JDK_HOME = "/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+    $env.JAVA_HOME = "/opt/homebrew/opt/java"
+    $env.JDK_HOME = "/opt/homebrew/opt/java"
 }
 
 # Linux
