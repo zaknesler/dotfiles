@@ -1,7 +1,7 @@
 def spacify [lines: list<string> sep: string = " "] {
     if ($lines | is-empty) { return "" }
 
-    $lines | filter {|s| $s != ""} | str join $sep | str trim
+    $lines | where {|s| $s != ""} | str join $sep | str trim
 }
 
 export def create_left_prompt [] {
