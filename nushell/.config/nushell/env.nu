@@ -1,5 +1,5 @@
 # Nushell Environment Config File
-# version = "0.91.0"
+# version = "0.107.0"
 
 # Ensure XDG variables are set
 $env.XDG_CACHE_HOME = ($env.HOME | path join ".cache")
