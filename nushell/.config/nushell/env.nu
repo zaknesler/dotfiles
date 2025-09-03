@@ -113,11 +113,11 @@ path add ($env.XDG_DATA_HOME | path join "pyenv" "bin")
 path add $env.XDG_DATA_HOME
 
 # Go
-if not ($env | get GOPATH -i | is-empty) {
+if not ($env | get -o GOPATH | is-empty) {
     path add ($env.GOPATH | path join "bin") --append
 }
 
-if not ($env | get GOROOT -i | is-empty) {
+if not ($env | get -o GOROOT | is-empty) {
     path add ($env.GOROOT | path join "bin") --append
 }
 

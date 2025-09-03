@@ -72,9 +72,9 @@ export def create_right_prompt [] {
 
     let type = match () {
         _ if ("/run/WSL" | path exists) => "wsl"
-        _ if ($env | get -i SSH_TTY | is-not-empty)
-            or ($env | get -i SSH_CLIENT | is-not-empty)
-            or ($env | get -i SSH_CONNECTION | is-not-empty)
+        _ if ($env | get -o SSH_TTY | is-not-empty)
+            or ($env | get -o SSH_CLIENT | is-not-empty)
+            or ($env | get -o SSH_CONNECTION | is-not-empty)
             or ((which who | is-not-empty) and ((who) =~ "\\(\\d+\\.\\d+\\.\\d+\\.\\d+\\)")) => "ssh"
         _ => ""
     }
