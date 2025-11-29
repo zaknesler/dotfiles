@@ -102,7 +102,19 @@ $env.MANPAGER = "less -X"
 $env.GPG_TTY = (is-terminal --stdin)
 
 # Path configuration
-use std "path add"
+def 'path add' [
+    new_path: path # The path to add
+    --append (-a) # Add path to the end instead of the start
+] {
+    let path_name = if ('Path' in $env) { 'Path' } else { 'path' }
+    let current_path = ($env | get -o $path_name | default '' | split row (char esep) | path expand --no-symlink)
+    let new_path_list = if $append {
+        ($current_path | append $new_path | uniq)
+    } else {
+        ([$new_path] | append $current_path | uniq)
+    }
+    $env | upsert $path_name ($new_path_list | str join (char esep))
+}
 
 path add $env.PNPM_HOME --append
 path add ($env.HOME | path join ".local" "bin")
