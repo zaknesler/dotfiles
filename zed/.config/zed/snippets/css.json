@@ -1,0 +1,45 @@
+{
+  "Flex Column Stretch": {
+    "prefix": "flc",
+    "body": [
+      "display: flex;",
+      "align-items: stretch;",
+      "flex-direction: column;",
+      "gap: ${1:1rem};"
+    ],
+    "description": "Flex (column) with stretched items and and gap."
+  },
+  "Flex Row Center": {
+    "prefix": "flr",
+    "body": [
+      "display: flex;",
+      "align-items: center;",
+      "justify-content: center;",
+      "gap: ${1:1rem};"
+    ],
+    "description": "Flex (row) with centered items and gap."
+  },
+  "Text Truncate": {
+    "prefix": "truncate",
+    "body": [
+      "overflow: hidden;",
+      "white-space: nowrap;",
+      "text-overflow: ellipsis;"
+    ],
+    "description": "Single line text truncation with ellipsis."
+  },
+  "Transition Properties": {
+    "prefix": "trp",
+    "body": [
+      "transition-property: color, background, background-color, border-color, box-shadow, transform;",
+      "transition-duration: var(--duration-${1:medium});",
+      "transition-timing-function: ${2:ease-in-out};"
+    ],
+    "description": "Transition with specific properties and CSS variable duration."
+  },
+  "Media Query Breakpoint": {
+    "prefix": "mq",
+    "body": ["@media (--screen-${1|sm,md,lg,xl|}) {", "  $0", "}"],
+    "description": "Media query with custom breakpoint variable."
+  }
+}
