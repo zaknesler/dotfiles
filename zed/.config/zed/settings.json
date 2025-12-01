@@ -1,0 +1,97 @@
+// https://zed.dev/docs/configuring-zed
+{
+  "agent": { "default_profile": "ask" },
+  "buffer_font_family": "Hack Nerd Font",
+  "buffer_font_features": { "calt": false },
+  "buffer_font_size": 14,
+  "buffer_line_height": { "custom": 2 },
+  "code_actions_on_format": { "source.fixAll.eslint": true },
+  "collaboration_panel": { "button": false },
+  "current_line_highlight": "all",
+  "disable_ai": true,
+  "double_click_in_multibuffer": "open",
+  "edit_predictions": {
+    "copilot": {
+      "enterprise_uri": null,
+      "proxy": null,
+      "proxy_no_verify": null
+    },
+    "enabled_in_text_threads": false,
+    "mode": "subtle"
+  },
+  "ensure_final_newline_on_save": true,
+  "features": { "edit_prediction_provider": "zed" },
+  "git": { "inline_blame": { "enabled": false } },
+  "git_panel": { "dock": "left" },
+  "icon_theme": {
+    "dark": "Colored Zed Icons Theme Dark",
+    "light": "Colored Zed Icons Theme Light",
+    "mode": "system"
+  },
+  "indent_guides": { "enabled": true },
+  "inline_code_actions": false,
+  "languages": { "Astro": { "language_servers": ["eslint"] } },
+  "outline_panel": { "button": false },
+  "profiles": {
+    "Focus": {
+      "buffer_font_size": 18,
+      "current_line_highlight": "none",
+      "gutter": {
+        "breakpoints": false,
+        "folds": false,
+        "line_numbers": false,
+        "min_line_number_digits": 0,
+        "runnables": false
+      },
+      "indent_guides": { "enabled": false },
+      "scrollbar": {
+        "cursors": false,
+        "diagnostics": "none",
+        "git_diff": false,
+        "search_results": false,
+        "selected_symbol": false,
+        "show": "never"
+      },
+      "tab_bar": { "show": false, "show_nav_history_buttons": false },
+      "toolbar": { "breadcrumbs": false, "quick_actions": false }
+    }
+  },
+  "project_panel": {
+    "auto_fold_dirs": true,
+    "dock": "right",
+    "indent_size": 12
+  },
+  "remove_trailing_whitespace_on_save": true,
+  "search": { "button": false },
+  "show_edit_predictions": false,
+  "ssh_connections": [
+    {
+      "args": [],
+      "host": "axo",
+      "projects": [{ "paths": ["/home/zak"] }],
+      "username": "zak"
+    }
+  ],
+  "tab_size": 2,
+  "tabs": {
+    "activate_on_close": "neighbour",
+    "close_position": "right",
+    "file_icons": true,
+    "git_status": true
+  },
+  "telemetry": { "diagnostics": false, "metrics": false },
+  "terminal": {
+    "line_height": { "custom": 1.6 },
+    "shell": { "program": "nu" }
+  },
+  "theme": {
+    "dark": "Github Dark Dimmed",
+    "light": "Github Light",
+    "mode": "system"
+  },
+  "ui_font_family": ".ZedSans",
+  "ui_font_size": 16,
+  "vertical_scroll_margin": 6,
+  "vim": { "toggle_relative_line_numbers": true },
+  "vim_mode": false
+}

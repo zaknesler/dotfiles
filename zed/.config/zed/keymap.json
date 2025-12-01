@@ -1,0 +1,27 @@
+// https://zed.dev/docs/key-bindings
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-shift-d": null,
+      "ctrl-shift-d": null,
+      "ctrl-tab": "pane::ActivateNextItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+      "ctrl-alt-c": "project_panel::CollapseAllEntries",
+      "ctrl-alt-win-c": "workspace::ToggleCenteredLayout"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-shift-d": "editor::DuplicateSelection",
+      "ctrl-shift-d": "editor::DuplicateSelection"
+    }
+  },
+  {
+    "context": "(Editor && mode == full)",
+    "bindings": {
+      "alt-z": "editor::ToggleSoftWrap"
+    }
+  }
+]

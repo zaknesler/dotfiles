@@ -1,0 +1,43 @@
+// https://zed.dev/docs/snippets
+{
+  "React component (TSX)": {
+    "prefix": "rc",
+    "body": [
+      "import styles from './styles.module.css';",
+      "",
+      "type ${1:Component}Props = {",
+      "  // ...",
+      "};",
+      "",
+      "export const ${1:Component} = ({ ${2} }: ${1:Component}Props) => {",
+      "  return (",
+      "    ${0}",
+      "  );",
+      "};"
+    ],
+    "description": "Exported React component."
+  },
+  "React component w/ children (TSX)": {
+    "prefix": "rcc",
+    "body": [
+      "import { type PropsWithChildren } from 'react';",
+      "import styles from './styles.module.css';",
+      "",
+      "type ${1:Component}Props = PropsWithChildren<{",
+      "  // ...",
+      "}>;",
+      "",
+      "export const ${1:Component} = ({ ${2:children} }: ${1:Component}Props) => {",
+      "  return (",
+      "    ${0}",
+      "  );",
+      "};"
+    ],
+    "description": "Exported React component with children prop."
+  },
+  "ESLint disable react-hooks/exhaustive-deps": {
+    "prefix": "eslint-disable-react-deps",
+    "body": ["// eslint-disable-next-line react-hooks/exhaustive-deps"],
+    "description": "Disable ESLint react-hooks/exhaustive-deps on next line."
+  }
+}
