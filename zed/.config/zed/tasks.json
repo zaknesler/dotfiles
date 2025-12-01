@@ -5,5 +5,13 @@
     "command": "touch",
     "args": ["${ZED_DIRNAME}/styles.module.css"],
     "reveal": "never"
+  },
+  {
+    "label": "Checkout audit fix branch",
+    "command": "git",
+    "args": ["checkout -b tweak/audit-fix-$(date +%-m)-$(date +%-d)"],
+    "shell": { "program": "sh" },
+    "reveal": "never",
+    "hide": "always"
   }
 ]
