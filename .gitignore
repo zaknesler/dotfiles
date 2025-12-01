@@ -1,3 +1,5 @@
+.DS_Store
+
 # Zsh
 .zcompdump*
 *.session
@@ -19,3 +21,6 @@ history.txt
 plugin.nu
 *.msgpackz
 nushell/.config/nushell/scripts/*
+
+# Zed
+zed/conversations/*

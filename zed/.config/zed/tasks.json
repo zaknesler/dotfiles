@@ -1,0 +1,9 @@
+// https://zed.dev/docs/tasks
+[
+  {
+    "label": "Create styles.module.css",
+    "command": "touch",
+    "args": ["${ZED_DIRNAME}/styles.module.css"],
+    "reveal": "never"
+  }
+]
