@@ -23,4 +23,5 @@ plugin.nu
 nushell/.config/nushell/scripts/*
 
 # Zed
-zed/conversations/*
+zed/**/conversations/*
+zed/**/prompts/*
