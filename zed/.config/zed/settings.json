@@ -4,7 +4,7 @@
   "buffer_font_family": "Hack Nerd Font",
   "buffer_font_features": { "calt": false },
   "buffer_font_size": 14,
-  "buffer_line_height": { "custom": 2 },
+  "buffer_line_height": { "custom": 2.1 },
   "code_actions_on_format": { "source.fixAll.eslint": true },
   "collaboration_panel": { "button": false },
   "current_line_highlight": "all",
@@ -30,7 +30,12 @@
   },
   "indent_guides": { "enabled": true },
   "inline_code_actions": false,
-  "languages": { "Astro": { "language_servers": ["eslint"] } },
+  "languages": {
+    "Astro": { "language_servers": ["eslint", "..."] },
+    "CSS": {
+      "language_servers": ["vtsls", "..."]
+    }
+  },
   "outline_panel": { "button": false },
   "profiles": {
     "Focus": {
