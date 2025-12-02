@@ -38,7 +38,7 @@
     "description": "Transition with specific properties and CSS variable duration."
   },
   "Media Query Breakpoint": {
-    "prefix": "mq",
+    "prefix": "@m",
     "body": ["@media (--screen-${1|sm,md,lg,xl|}) {", "  $0", "}"],
     "description": "Media query with custom breakpoint variable."
   }
