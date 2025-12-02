@@ -1,4 +1,9 @@
 {
+  "Wrapper Class": {
+    "prefix": "wr",
+    "body": [".wrapper {", "  $0", "}"],
+    "description": "Create an empty wrapper class selector."
+  },
   "Flex Column Stretch": {
     "prefix": "flc",
     "body": [
