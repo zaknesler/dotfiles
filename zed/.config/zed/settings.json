@@ -31,6 +31,7 @@
     "**/*.lock*",
     "**/*__pycache__",
     "**/*log",
+    "**/.*ignore",
     "**/.astro",
     "**/.browserslistrc",
     "**/.classpath",
@@ -49,6 +50,7 @@
     "**/.prettierrc*",
     "**/.project",
     "**/.settings",
+    "**/.svelte*",
     "**/.swc",
     "**/.vscode",
     "**/.zcompdump*",
@@ -56,6 +58,7 @@
     "**/artisan",
     "**/azure*yml",
     "**/biome.json*",
+    "**/build",
     "**/Cargo.lock",
     "**/coverage",
     "**/dist",
@@ -112,7 +115,7 @@
   "project_panel": {
     "auto_fold_dirs": true,
     "dock": "right",
-    "hide_hidden": true,
+    "hide_hidden": false,
     "indent_size": 12
   },
   "remove_trailing_whitespace_on_save": true,
