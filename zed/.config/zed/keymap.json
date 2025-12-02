@@ -7,7 +7,6 @@
       "ctrl-shift-d": null,
       "ctrl-tab": "pane::ActivateNextItem",
       "ctrl-shift-tab": "pane::ActivatePreviousItem",
-      "ctrl-alt-c": "project_panel::CollapseAllEntries",
       "ctrl-alt-win-c": "workspace::ToggleCenteredLayout"
     }
   },
@@ -23,6 +22,12 @@
     "context": "(Editor && mode == full)",
     "bindings": {
       "alt-z": "editor::ToggleSoftWrap"
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-alt-c": "project_panel::CollapseAllEntries",
+      "alt-cmd-c": "project_panel::CollapseAllEntries"
     }
   }
 ]
