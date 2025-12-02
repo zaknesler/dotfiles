@@ -15,7 +15,8 @@
     "context": "Editor",
     "bindings": {
       "cmd-shift-d": "editor::DuplicateSelection",
-      "ctrl-shift-d": "editor::DuplicateSelection"
+      "ctrl-shift-d": "editor::DuplicateSelection",
+      "cmd-;": null
     }
   },
   {
