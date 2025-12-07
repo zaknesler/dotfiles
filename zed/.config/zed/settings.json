@@ -92,7 +92,7 @@
     }
   },
   "project_panel": {
-    "auto_fold_dirs": true,
+    "auto_fold_dirs": false,
     "dock": "right",
     "entry_spacing": "standard",
     "folder_icons": false,
