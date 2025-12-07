@@ -1,1 +1,1 @@
-require("zak")
+require("config")
