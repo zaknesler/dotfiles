@@ -52,13 +52,13 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
 1. Install Rust via [rustup](https://rustup.rs)
 
    ```nushell
-   curl -L --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   curl -fsSL --proto '=https' --tlsv1.2 https://sh.rustup.rs | sh
    ```
 
 1. Install [cargo-binstall](https://github.com/cargo-bins/cargo-binstall) (Linux only)
 
    ```nushell
-   curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | sh
+   curl -fsSL --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | sh
    ```
 
 1. Install and activate `nu_plugin_gstat` (enables git repo data)
