@@ -62,10 +62,16 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    ```
 
-1. Install `nu_plugin_gstat` (enables git repo data)
+1. Install [cargo-binstall](https://github.com/cargo-bins/cargo-binstall) (Linux)
 
    ```nushell
-   cargo install nu_plugin_gstat
+   curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | sh
+   ```
+
+1. Install and activate `nu_plugin_gstat` (enables git repo data)
+
+   ```nushell
+   cargo binstall nu_plugin_gstat
    let gstat = (which nu_plugin_gstat | get path | first)
    nu -c $'plugin add '($gstat)'; version'
    ```
