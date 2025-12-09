@@ -52,7 +52,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
 1. Install Rust via [rustup](https://rustup.rs)
 
    ```nushell
-   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   curl -L --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    ```
 
 1. Install [cargo-binstall](https://github.com/cargo-bins/cargo-binstall) (Linux only)
@@ -71,6 +71,6 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
 
 1. Install FNM (Linux/macOS)
 
-   ```
+   ```nushell
    curl -fsSL https://fnm.vercel.app/install | sh
    ```
