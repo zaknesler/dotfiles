@@ -14,8 +14,8 @@ return {
         },
       })
 
-      vim.keymap.set('n', '<leader>tq', ":Neotree action=close<CR>")
-      vim.keymap.set('n', '<leader>t', ":Neotree<CR>")
+      vim.keymap.set("n", "<leader>tq", ":Neotree action=close<CR>")
+      vim.keymap.set("n", "<leader>t", ":Neotree<CR>")
     end,
   },
 }

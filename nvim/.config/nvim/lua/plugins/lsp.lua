@@ -9,8 +9,9 @@ return {
     require("mason-lspconfig").setup({
       ensure_installed = {
         "lua_ls",
-        "ts_ls",
+        "markdown_oxide",
         "rust_analyzer",
+        "vtsls",
       }
     })
 
