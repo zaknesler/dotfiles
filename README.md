@@ -31,7 +31,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
    xcode-select --install
 
    # Install Homebrew
-   bash -c "$(curl -fsSL --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   curl -fsSL --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | sh
 
    # Install formulae from ./Brewfile
    brew bundle
