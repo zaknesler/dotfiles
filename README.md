@@ -4,12 +4,12 @@
 
 This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GNU Stow](https://www.gnu.org/software/stow) to organize the configuration files, and follows the [XDG Base Directory specification](https://wiki.archlinux.org/index.php/XDG_Base_Directory) to keep my home directory (`~/`) as clean as possible.
 
-### Installation
-
 > [!IMPORTANT]
 > Do not start Nushell until the directories are symlinked. Nushell will not let you symlink its config directory if it's already running. Use the default shell (`bash`, `zsh`, etc.) for the first few steps.
 
-1. Install [Nushell](https://github.com/nushell/nushell), [GNU Stow](https://www.gnu.org/software/stow), and [Neovim](https://github.com/neovim/neovim)   
+### Installation
+
+1. Install [Nushell](https://github.com/nushell/nushell), [GNU Stow](https://www.gnu.org/software/stow), and [Neovim](https://github.com/neovim/neovim)
 
 1. Clone repository to `~/.config/dotfiles` and `cd` into it
 
