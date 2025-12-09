@@ -10,7 +10,7 @@
   "colorize_brackets": true,
   "current_line_highlight": "all",
   "disable_ai": true,
-  "double_click_in_multibuffer": "open",
+  "double_click_in_multibuffer": "select",
   "edit_predictions": {
     "copilot": {
       "enterprise_uri": null,
