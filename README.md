@@ -9,19 +9,19 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
 - [Nushell](https://github.com/nushell/nushell?tab=readme-ov-file#installation)
 - [Neovim](https://github.com/neovim/neovim)
 - [GNU Stow](https://www.gnu.org/software/stow)
-- [Homebrew](https://brew.sh) (Mac only)
+- [Homebrew](https://brew.sh) (macOS only)
 
 #### Installation
 
 1. Install [Nushell](https://github.com/nushell/nushell?tab=readme-ov-file#installation), [GNU Stow](https://www.gnu.org/software/stow), and [Neovim](https://github.com/neovim/neovim)
 
-   > Do not start Nushell until the directories are symlinked. Nushell will not let you symlink its config directory if it's already running. The first few steps should use the default shell (`bash`, `zsh`, etc.).
+   > [!IMPORTANT]
+   > Do not start Nushell until the directories are symlinked. Nushell will not let you symlink its config directory if it's already running. Use the default shell (`bash`, `zsh`, etc.) for the first few steps.
 
 1. Clone repository to `~/.config/dotfiles` and `cd` into it
 
    ```bash
    git clone --recurse-submodules --depth 1 https://github.com/zaknesler/dotfiles.git ~/.config/dotfiles
-
    cd ~/.config/dotfiles
    ```
 
@@ -31,7 +31,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
    ls -d */ | xargs stow -t $HOME
    ```
 
-1. *(Optional) Mac OS only*
+1. Install Homebrew (macOS only)
 
    ```bash
    # Install Xcode tools
@@ -44,7 +44,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
    brew bundle
    ```
 
-1. Set your default shell to Nushell (Linux/Mac OS)
+1. Set your default shell to Nushell (Linux/macOS only)
 
    ```bash
    # Ensure Nushell exists as an option
@@ -62,7 +62,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    ```
 
-1. Install [cargo-binstall](https://github.com/cargo-bins/cargo-binstall) (Linux)
+1. Install [cargo-binstall](https://github.com/cargo-bins/cargo-binstall) (Linux only)
 
    ```nushell
    curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | sh
