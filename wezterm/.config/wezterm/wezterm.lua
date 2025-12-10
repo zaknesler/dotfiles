@@ -1,52 +1,67 @@
-local wezterm = require "wezterm"
+local w = require "wezterm"
+local c = w.config_builder()
 
-local config = wezterm.config_builder()
+local is_win = w.target_triple:find("windows")
 
-config.default_prog = { "nu" }
+-- c.front_end = "WebGpu"
+c.default_prog = { "nu" }
 
 -- Appearance
-config.initial_cols = 115
-config.initial_rows = 30
-config.line_height = 1.15
-config.color_scheme = "Github Dark (Gogh)"
-config.font = wezterm.font("Hack Nerd Font")
-config.window_decorations = "RESIZE"
-
-if wezterm.target_triple:find("windows") then
-  config.font_size = 11
-else
-  config.font_size = 14
-end
+c.max_fps = 240
+c.initial_cols = 115
+c.initial_rows = 30
+c.line_height = 1.15
+c.font = w.font("Hack Nerd Font")
+c.font_size = is_win and 11 or 14
+c.term = "xterm-256color"
+c.color_scheme = "Catppuccin Latte"
+c.adjust_window_size_when_changing_font_size = false
+c.send_composed_key_when_right_alt_is_pressed = false
+c.show_new_tab_button_in_tab_bar = false
+c.show_tab_index_in_tab_bar = false
+c.window_decorations = 'NONE|RESIZE'
+c.audible_bell = "Disabled"
+c.automatically_reload_config = true
+c.window_frame = {
+  font = w.font("Hack Nerd Font"),
+  font_size = 12,
+}
+c.window_padding = {
+  left = 16,
+  right = 16,
+  top = 16,
+  bottom = 16,
+}
 
 -- Binds
-config.keys = {
+c.keys = {
   {
     key = "w",
     mods = "CMD",
-    action = wezterm.action.CloseCurrentPane { confirm = false },
+    action = w.action.CloseCurrentPane { confirm = false },
   },
   {
     key = "w",
     mods = "CTRL|SHIFT",
-    action = wezterm.action.CloseCurrentPane { confirm = false },
+    action = w.action.CloseCurrentPane { confirm = false },
   },
 }
 
 -- Background
-config.macos_window_background_blur = 20
-config.win32_system_backdrop = "Acrylic"
-config.background = {
+c.macos_window_background_blur = 20
+c.win32_system_backdrop = "Acrylic"
+c.background = {
   {
     source = { Color = "black" },
-    opacity = 0.8,
+    opacity = 0.5,
     width = "100%",
     height = "100%",
   },
   {
-    source = { File = wezterm.config_dir .. "/background.png" },
+    source = { File = w.config_dir .. "/background.png" },
     vertical_align = "Middle",
-    opacity = 0.2,
+    opacity = 0.15,
   }
 }
 
-return config
+return c
