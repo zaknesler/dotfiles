@@ -3,8 +3,9 @@ local c = w.config_builder()
 
 local is_win = w.target_triple:find("windows")
 
--- c.front_end = "WebGpu"
-c.default_prog = { "nu" }
+if is_win then
+  c.default_prog = { "nu" }
+end
 
 -- Appearance
 c.max_fps = 240
