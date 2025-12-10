@@ -81,10 +81,28 @@ c.background = {
   }
 }
 
-w.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+w.on("format-tab-title", function(tab)
   local title = tab.active_pane.title
+  local max_title_width = 30
+
+  if #title > max_title_width then
+    -- Truncate middle with ellipsis
+    local ellipsis = "…"
+    local chars_to_show = max_title_width - #ellipsis
+    local left_chars = math.floor(chars_to_show / 2)
+    local right_chars = chars_to_show - left_chars
+    title = title:sub(1, left_chars) .. ellipsis .. title:sub(-right_chars)
+  else
+    -- Center short titles with padding to reach the max width
+    local padding = max_title_width - #title
+    local left_pad = math.floor(padding / 2)
+    local right_pad = padding - left_pad
+    title = string.rep(" ", left_pad) .. title .. string.rep(" ", right_pad)
+  end
+
   return {
-    { Text = string.rep(" ", 8) .. title .. string.rep(" ", 8) },
+    { Text = title },
   }
 end)
+
 return c
