@@ -7,7 +7,6 @@ if is_win then
   c.default_prog = { "nu" }
 end
 
--- Appearance
 c.max_fps = 240
 c.initial_cols = 130
 c.initial_rows = 35
@@ -53,7 +52,6 @@ c.colors = {
   }
 }
 
--- Binds
 c.keys = {
   {
     key = "w",
@@ -67,20 +65,19 @@ c.keys = {
   },
 }
 
--- Background
 c.macos_window_background_blur = 20
 c.win32_system_backdrop = "Acrylic"
 c.background = {
   {
     source = { Color = "black" },
-    opacity = is_win and 0.5 or 0.7,
+    opacity = is_win and 0.5 or 0.8,
     width = "100%",
     height = "100%",
   },
   {
     source = { File = w.config_dir .. "/background.png" },
     vertical_align = "Middle",
-    opacity = is_win and 0.15 or 0.15,
+    opacity = is_win and 0.15 or 0.1,
   }
 }
 
