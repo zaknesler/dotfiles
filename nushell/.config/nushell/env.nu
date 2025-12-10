@@ -21,26 +21,26 @@ $env.PROMPT_INDICATOR_VI_NORMAL = {|| [ $prompt_color $arrow (char space) ] | st
 $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 
 $env.ENV_CONVERSIONS = {
-    "PATH": {
-        from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-        to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-    }
-    "Path": {
-        from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-        to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-    }
+  "PATH": {
+    from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
+    to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
+  }
+  "Path": {
+    from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
+    to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
+  }
 }
 
 # Directories to search for scripts when calling source or use
 $env.NU_LIB_DIRS = [
-    ($nu.config-path | path dirname | path join 'scripts')
-    ($nu.config-path | path dirname | path join 'config')
-    ($nu.config-path | path dirname | path join 'custom')
+  ($nu.config-path | path dirname | path join 'scripts')
+  ($nu.config-path | path dirname | path join 'config')
+  ($nu.config-path | path dirname | path join 'custom')
 ]
 
 # Directories to search for plugin binaries when calling register
 $env.NU_PLUGIN_DIRS = [
-    ($nu.config-path | path dirname | path join 'plugins')
+  ($nu.config-path | path dirname | path join 'plugins')
 ]
 
 # XDG Supported Directories
@@ -114,36 +114,36 @@ path add $env.XDG_DATA_HOME
 
 # Go
 if not ($env | get -o GOPATH | is-empty) {
-    path add ($env.GOPATH | path join "bin") --append
+  path add ($env.GOPATH | path join "bin") --append
 }
 
 if not ($env | get -o GOROOT | is-empty) {
-    path add ($env.GOROOT | path join "bin") --append
+  path add ($env.GOROOT | path join "bin") --append
 }
 
 # Mac OS
 if $nu.os-info.name == "macos" {
-    path add ($env.HOME | path join "Library" "Application Support" "Herd" "bin")
-    path add ($env.HOME | path join "Library" "Python" "3.9" "bin")
-    path add "/usr/local/opt/coreutils/libexec/gnubin" --append
-    path add "/usr/local/opt/openjdk/bin" --append
-    path add "/opt/homebrew/bin" --append
-    path add "/opt/homebrew/opt/java/bin" --append
+  path add ($env.HOME | path join "Library" "Application Support" "Herd" "bin")
+  path add ($env.HOME | path join "Library" "Python" "3.9" "bin")
+  path add "/usr/local/opt/coreutils/libexec/gnubin" --append
+  path add "/usr/local/opt/openjdk/bin" --append
+  path add "/opt/homebrew/bin" --append
+  path add "/opt/homebrew/opt/java/bin" --append
 
-    $env.JAVA_HOME = "/opt/homebrew/opt/java"
-    $env.JDK_HOME = "/opt/homebrew/opt/java"
+  $env.JAVA_HOME = "/opt/homebrew/opt/java"
+  $env.JDK_HOME = "/opt/homebrew/opt/java"
 }
 
 # Linux
 if $nu.os-info.name == "linux" {
-    $env.JAVA_HOME = "/usr/lib/jvm/default-java"
-    $env.CLASSPATH = "/usr/share/java/gtk.jar:."
+  $env.JAVA_HOME = "/usr/lib/jvm/default-java"
+  $env.CLASSPATH = "/usr/share/java/gtk.jar:."
 }
 
 # Unix-like
 if $nu.os-info.family == "unix" {
-    path add "/usr/local/bin"
-    path add "/usr/local/go/bin"
-    path add ($env.HOME | path join ".local" "share" "npm" "bin")
-    path add ($env.HOME | path join ".local" "share" "bob" "nvim-bin")
+  path add "/usr/local/bin"
+  path add "/usr/local/go/bin"
+  path add ($env.HOME | path join ".local" "share" "npm" "bin")
+  path add ($env.HOME | path join ".local" "share" "bob" "nvim-bin")
 }
