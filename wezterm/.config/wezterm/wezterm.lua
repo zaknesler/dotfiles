@@ -9,9 +9,9 @@ end
 
 -- Appearance
 c.max_fps = 240
-c.initial_cols = 115
-c.initial_rows = 30
-c.line_height = 1.15
+c.initial_cols = 130
+c.initial_rows = 35
+c.line_height = 1.2
 c.font = w.font("Hack Nerd Font")
 c.font_size = is_win and 11 or 14
 c.color_scheme = "Atelier Savanna (base16)"
@@ -22,15 +22,17 @@ c.show_tab_index_in_tab_bar = false
 c.window_decorations = 'NONE|RESIZE'
 c.audible_bell = "Disabled"
 c.automatically_reload_config = true
+c.window_close_confirmation = "NeverPrompt"
 c.window_frame = {
   font = w.font("Hack Nerd Font"),
-  font_size = 12,
+  font_size = is_win and 12 or 14,
   border_left_width = '1px',
   border_right_width = '1px',
   border_bottom_height = '1px',
   border_left_color = 'rgb(255 255 255 / 20%)',
   border_right_color = 'rgb(255 255 255 / 20%)',
   border_bottom_color = 'rgb(255 255 255 / 20%)',
+  active_titlebar_bg = 'rgb(0 0 0 / 30%)',
 }
 c.window_padding = {
   left = 32,
@@ -38,8 +40,18 @@ c.window_padding = {
   top = 32,
   bottom = 32,
 }
-c.window_close_confirmation = "NeverPrompt"
-c.tab_max_width = 32
+c.colors = {
+  tab_bar = {
+    active_tab = {
+      bg_color = "#333",
+      fg_color = "#fff",
+    },
+    inactive_tab = {
+      bg_color = "#000",
+      fg_color = "#555",
+    },
+  }
+}
 
 -- Binds
 c.keys = {
@@ -72,4 +84,10 @@ c.background = {
   }
 }
 
+w.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+  local title = tab.active_pane.title
+  return {
+    { Text = string.rep(" ", 8) .. title .. string.rep(" ", 8) },
+  }
+end)
 return c
