@@ -2,18 +2,32 @@ local wezterm = require "wezterm"
 
 local config = wezterm.config_builder()
 
+config.default_prog = { "nu" }
+
+-- Appearance
 config.initial_cols = 115
 config.initial_rows = 30
-config.font_size = 14
 config.line_height = 1.15
 config.color_scheme = "Github Dark (Gogh)"
 config.font = wezterm.font("Hack Nerd Font")
-
 config.window_decorations = "RESIZE"
+
+if wezterm.target_triple:find("windows") then
+  config.font_size = 11
+else
+  config.font_size = 14
+end
+
+-- Binds
 config.keys = {
   {
     key = "w",
     mods = "CMD",
+    action = wezterm.action.CloseCurrentPane { confirm = false },
+  },
+  {
+    key = "w",
+    mods = "CTRL|SHIFT",
     action = wezterm.action.CloseCurrentPane { confirm = false },
   },
 }
