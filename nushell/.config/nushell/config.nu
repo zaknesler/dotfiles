@@ -1,6 +1,5 @@
 use binds.nu
 use menus.nu
-use theme.nu
 
 $env.config = {
   show_banner: false
@@ -12,7 +11,7 @@ $env.config = {
     always_trash: false
   }
   table: {
-    mode: none
+    mode: light
     index_mode: always
     show_empty: true
     header_on_separator: false
@@ -63,7 +62,7 @@ $env.config = {
     vi_insert: block
     vi_normal: underscore
   }
-  color_config: (theme)
+  # color_config: (theme)
   footer_mode: "auto"
   float_precision: 2
   buffer_editor: ""
@@ -86,6 +85,9 @@ $env.config = {
   menus: (menus)
   keybindings: (binds)
 }
+
+# Theme
+source nu_scripts/themes/nu-themes/atelier-savanna.nu
 
 # Aliases
 source aliases.nu

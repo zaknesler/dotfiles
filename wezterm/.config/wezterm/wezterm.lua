@@ -14,8 +14,7 @@ c.initial_rows = 30
 c.line_height = 1.15
 c.font = w.font("Hack Nerd Font")
 c.font_size = is_win and 11 or 14
-c.term = "xterm-256color"
-c.color_scheme = "Catppuccin Latte"
+c.color_scheme = "Atelier Savanna (base16)"
 c.adjust_window_size_when_changing_font_size = false
 c.send_composed_key_when_right_alt_is_pressed = false
 c.show_new_tab_button_in_tab_bar = false
@@ -26,13 +25,21 @@ c.automatically_reload_config = true
 c.window_frame = {
   font = w.font("Hack Nerd Font"),
   font_size = 12,
+  border_left_width = '1px',
+  border_right_width = '1px',
+  border_bottom_height = '1px',
+  border_left_color = 'rgb(255 255 255 / 20%)',
+  border_right_color = 'rgb(255 255 255 / 20%)',
+  border_bottom_color = 'rgb(255 255 255 / 20%)',
 }
 c.window_padding = {
-  left = 16,
-  right = 16,
-  top = 16,
-  bottom = 16,
+  left = 32,
+  right = 32,
+  top = 32,
+  bottom = 32,
 }
+c.window_close_confirmation = "NeverPrompt"
+c.tab_max_width = 32
 
 -- Binds
 c.keys = {
@@ -54,14 +61,14 @@ c.win32_system_backdrop = "Acrylic"
 c.background = {
   {
     source = { Color = "black" },
-    opacity = 0.5,
+    opacity = is_win and 0.5 or 0.7,
     width = "100%",
     height = "100%",
   },
   {
     source = { File = w.config_dir .. "/background.png" },
     vertical_align = "Middle",
-    opacity = 0.15,
+    opacity = is_win and 0.15 or 0.15,
   }
 }
 
