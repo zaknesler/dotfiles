@@ -96,7 +96,7 @@
     "dock": "right",
     "entry_spacing": "comfortable",
     "folder_icons": true,
-    "hide_hidden": false,
+    "hide_hidden": true,
     "hide_root": false,
     "indent_size": 16,
     "show_diagnostics": "off"
