@@ -18,7 +18,7 @@ c.adjust_window_size_when_changing_font_size = false
 c.send_composed_key_when_right_alt_is_pressed = false
 c.show_new_tab_button_in_tab_bar = false
 c.show_tab_index_in_tab_bar = false
-c.window_decorations = 'NONE|RESIZE'
+c.window_decorations = 'NONE'
 c.audible_bell = "Disabled"
 c.automatically_reload_config = true
 c.window_close_confirmation = "NeverPrompt"
@@ -27,9 +27,11 @@ c.window_frame = {
   font_size = is_win and 12 or 14,
   border_left_width = '1px',
   border_right_width = '1px',
+  border_top_height = '1px',
   border_bottom_height = '1px',
   border_left_color = 'rgb(255 255 255 / 20%)',
   border_right_color = 'rgb(255 255 255 / 20%)',
+  border_top_color = 'rgb(255 255 255 / 20%)',
   border_bottom_color = 'rgb(255 255 255 / 20%)',
   active_titlebar_bg = 'rgb(0 0 0 / 30%)',
 }
@@ -42,12 +44,12 @@ c.window_padding = {
 c.colors = {
   tab_bar = {
     active_tab = {
-      bg_color = "#333",
+      bg_color = "rgb(0 0 0 / 0%)",
       fg_color = "#fff",
     },
     inactive_tab = {
-      bg_color = "#000",
-      fg_color = "#555",
+      bg_color = "rgb(0 0 0 / 0%)",
+      fg_color = "#333",
     },
   }
 }
@@ -70,7 +72,7 @@ c.win32_system_backdrop = "Acrylic"
 c.background = {
   {
     source = { Color = "black" },
-    opacity = is_win and 0.5 or 0.8,
+    opacity = 0.8,
     width = "100%",
     height = "100%",
   },
@@ -81,9 +83,10 @@ c.background = {
   }
 }
 
-w.on("format-tab-title", function(tab)
+w.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local title = tab.active_pane.title
-  local max_title_width = 30
+  local max_title_width = 20
+
 
   if #title > max_title_width then
     -- Truncate middle with ellipsis
@@ -102,6 +105,7 @@ w.on("format-tab-title", function(tab)
 
   return {
     { Text = title },
+    { Background = { Color = 'green' } },
   }
 end)
 
