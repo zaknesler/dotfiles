@@ -1,6 +1,7 @@
 // https://zed.dev/docs/configuring-zed
 {
   "agent": { "default_profile": "ask" },
+  "autosave": "on_focus_change",
   "buffer_font_family": "Hack Nerd Font",
   "buffer_font_features": { "calt": false },
   "buffer_font_size": 14,
@@ -23,7 +24,7 @@
   "ensure_final_newline_on_save": true,
   "features": { "edit_prediction_provider": "zed" },
   "git": { "inline_blame": { "enabled": false } },
-  "git_panel": { "dock": "left" },
+  "git_panel": { "sort_by_path": false, "dock": "left" },
   "hidden_files": [
     "**/*-lock*",
     "**/*.class",
@@ -51,8 +52,8 @@
     ".*"
   ],
   "icon_theme": {
-    "dark": "Colored Zed Icons Theme Dark",
-    "light": "Colored Zed Icons Theme Light",
+    "dark": "Catppuccin Mocha",
+    "light": "Catppuccin Latte",
     "mode": "system"
   },
   "indent_guides": { "enabled": true },
@@ -141,8 +142,8 @@
     "shell": { "program": "nu" }
   },
   "theme": {
-    "dark": "Arrakis Night",
-    "light": "Arrakis Day",
+    "dark": "One Dark",
+    "light": "One Light",
     "mode": "system"
   },
   "ui_font_family": ".ZedSans",
