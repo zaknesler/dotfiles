@@ -7,7 +7,11 @@
       "ctrl-shift-d": null,
       "ctrl-tab": "pane::ActivateNextItem",
       "ctrl-shift-tab": "pane::ActivatePreviousItem",
-      "ctrl-alt-win-c": "workspace::ToggleCenteredLayout"
+      "ctrl-alt-win-c": "workspace::ToggleCenteredLayout",
+      "cmd-shift-g": [
+        "task::Spawn",
+        { "task_name": "LazyGit", "reveal_target": "center" }
+      ]
     }
   },
   {
