@@ -137,6 +137,7 @@
   },
   "telemetry": { "diagnostics": false, "metrics": false },
   "terminal": {
+    "toolbar": { "breadcrumbs": false },
     "line_height": { "custom": 1.6 },
     "shell": { "program": "nu" }
   },
