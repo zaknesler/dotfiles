@@ -1,11 +1,21 @@
 // https://zed.dev/docs/configuring-zed
 {
   "agent": { "default_profile": "ask" },
+  "auto_install_extensions": {
+    "biome": true,
+    "catppuccin-icons": true,
+    "crates-lsp": true,
+    "emmet": true,
+    "git-firefly": true,
+    "html": true,
+    "nu": true,
+    "stylelint": true,
+    "toml": true
+  },
   "buffer_font_family": "Hack Nerd Font",
   "buffer_font_features": { "calt": false },
   "buffer_font_size": 14,
   "buffer_line_height": { "custom": 2.1 },
-  "code_actions_on_format": { "source.fixAll.eslint": true },
   "collaboration_panel": { "button": false },
   "colorize_brackets": true,
   "current_line_highlight": "all",
@@ -58,11 +68,15 @@
   "indent_guides": { "enabled": true },
   "inline_code_actions": false,
   "languages": {
-    "Astro": { "language_servers": ["eslint", "..."] },
-    "CSS": { "language_servers": ["vtsls", "..."] },
+    "CSS": { "language_servers": ["stylelint", "vtsls", "..."] },
     "JSON": { "language_servers": ["vacuum", "..."] }
   },
   "lsp": {
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    },
     "json-language-server": {
       "settings": {
         "json": {
