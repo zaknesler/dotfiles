@@ -141,6 +141,7 @@
       "username": "zak"
     }
   ],
+  "sticky_scroll": { "enabled": true },
   "tab_bar": { "show_nav_history_buttons": false },
   "tab_size": 2,
   "tabs": {
