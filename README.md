@@ -68,9 +68,3 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
    let gstat = (which nu_plugin_gstat | get path | first)
    nu -c $'plugin add '($gstat)'; version'
    ```
-
-1. Install FNM (Linux/macOS)
-
-   ```nushell
-   curl -fsSL --proto '=https' --tlsv1.2 https://fnm.vercel.app/install | sh
-   ```
