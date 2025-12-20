@@ -124,11 +124,11 @@ if not ($env | get -o GOROOT | is-empty) {
 # Mac OS
 if $nu.os-info.name == "macos" {
   path add ($env.HOME | path join "Library" "Application Support" "Herd" "bin")
-  path add ($env.HOME | path join "Library" "Python" "3.9" "bin")
-  path add "/usr/local/opt/coreutils/libexec/gnubin" --append
-  path add "/usr/local/opt/openjdk/bin" --append
-  path add "/opt/homebrew/bin" --append
-  path add "/opt/homebrew/opt/java/bin" --append
+  # path add ($env.HOME | path join "Library" "Python" "3.9" "bin")
+  path add "/usr/local/opt/coreutils/libexec/gnubin"
+  path add "/usr/local/opt/openjdk/bin"
+  path add "/opt/homebrew/bin"
+  path add "/opt/homebrew/opt/java/bin"
 
   $env.JAVA_HOME = "/opt/homebrew/opt/java"
   $env.JDK_HOME = "/opt/homebrew/opt/java"
