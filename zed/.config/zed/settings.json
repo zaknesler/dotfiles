@@ -10,7 +10,7 @@
     "html": true,
     "nu": true,
     "stylelint": true,
-    "toml": true
+    "toml": true,
   },
   "buffer_font_family": "Hack Nerd Font",
   "buffer_font_features": { "calt": false },
@@ -25,10 +25,10 @@
     "copilot": {
       "enterprise_uri": null,
       "proxy": null,
-      "proxy_no_verify": null
+      "proxy_no_verify": null,
     },
     "enabled_in_text_threads": false,
-    "mode": "subtle"
+    "mode": "subtle",
   },
   "ensure_final_newline_on_save": true,
   "features": { "edit_prediction_provider": "zed" },
@@ -58,24 +58,24 @@
     "**/target",
     "**/vendor",
     "**/venv",
-    ".*"
+    ".*",
   ],
   "icon_theme": {
     "dark": "Catppuccin Mocha",
     "light": "Catppuccin Latte",
-    "mode": "system"
+    "mode": "system",
   },
   "indent_guides": { "enabled": true },
   "inline_code_actions": false,
   "languages": {
     "CSS": { "language_servers": ["stylelint", "vtsls", "..."] },
-    "JSON": { "language_servers": ["vacuum", "..."] }
+    "JSON": { "language_servers": ["vacuum", "..."] },
   },
   "lsp": {
     "biome": {
       "settings": {
-        "require_config_file": true
-      }
+        "require_config_file": true,
+      },
     },
     "json-language-server": {
       "settings": {
@@ -83,12 +83,12 @@
           "schemas": [
             {
               "fileMatch": ["**/openapi.json"],
-              "url": "https://spec.openapis.org/oas/3.0/schema/2021-09-28"
-            }
-          ]
-        }
-      }
-    }
+              "url": "https://spec.openapis.org/oas/3.0/schema/2021-09-28",
+            },
+          ],
+        },
+      },
+    },
   },
   "outline_panel": { "button": false },
   "profiles": {
@@ -100,7 +100,7 @@
         "folds": false,
         "line_numbers": false,
         "min_line_number_digits": 0,
-        "runnables": false
+        "runnables": false,
       },
       "indent_guides": { "enabled": false },
       "scrollbar": {
@@ -109,16 +109,16 @@
         "git_diff": false,
         "search_results": false,
         "selected_symbol": false,
-        "show": "never"
+        "show": "never",
       },
       "tab_bar": { "show": false },
-      "toolbar": { "breadcrumbs": false, "quick_actions": false }
+      "toolbar": { "breadcrumbs": false, "quick_actions": false },
     },
     "Sharing": {
       "buffer_font_size": 26,
       "project_panel": { "indent_size": 20 },
-      "ui_font_size": 26
-    }
+      "ui_font_size": 26,
+    },
   },
   "project_panel": {
     "auto_fold_dirs": true,
@@ -128,7 +128,7 @@
     "hide_hidden": true,
     "hide_root": false,
     "indent_size": 16,
-    "show_diagnostics": "off"
+    "show_diagnostics": "off",
   },
   "remove_trailing_whitespace_on_save": true,
   "search": { "button": false },
@@ -138,32 +138,31 @@
       "args": [],
       "host": "axo",
       "projects": [{ "paths": ["/home/zak"] }],
-      "username": "zak"
-    }
+      "username": "zak",
+    },
   ],
   "sticky_scroll": { "enabled": true },
   "tab_bar": { "show_nav_history_buttons": false },
-  "tab_size": 2,
   "tabs": {
     "activate_on_close": "neighbour",
     "close_position": "right",
     "file_icons": true,
-    "git_status": true
+    "git_status": true,
   },
   "telemetry": { "diagnostics": false, "metrics": false },
   "terminal": {
     "toolbar": { "breadcrumbs": false },
     "line_height": { "custom": 1.6 },
-    "shell": { "program": "nu" }
+    "shell": { "program": "nu" },
   },
   "theme": {
     "dark": "One Dark",
     "light": "One Light",
-    "mode": "system"
+    "mode": "system",
   },
   "ui_font_family": ".ZedSans",
   "ui_font_size": 16,
   "vertical_scroll_margin": 6,
   "vim": { "toggle_relative_line_numbers": true },
-  "vim_mode": false
+  "vim_mode": false,
 }
