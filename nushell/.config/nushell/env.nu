@@ -1,11 +1,15 @@
 # Nushell Environment Config File
-# version = "0.107.0"
+# version = "0.109.1"
 
 # Ensure XDG variables are set
 $env.XDG_CACHE_HOME = ($env.HOME | path join ".cache")
 $env.XDG_CONFIG_HOME = ($env.HOME | path join ".config")
 $env.XDG_DATA_HOME = ($env.HOME | path join ".local" "share")
-$env.XDG_RUNTIME_DIR = ($env.XDG_CACHE_HOME | path join "runtime")
+$env.XDG_STATE_HOME = ($env.HOME | path join ".local" "state")
+
+if ($env | get -o XDG_RUNTIME_DIR | is-empty) {
+  $env.XDG_RUNTIME_DIR = ($env.XDG_CACHE_HOME | path join "runtime")
+}
 
 use ($nu.config-path | path dirname | path join 'config' 'prompt.nu') [create_left_prompt, create_right_prompt]
 
@@ -44,6 +48,9 @@ $env.NU_PLUGIN_DIRS = [
 ]
 
 # XDG Supported Directories
+$env.AWS_CONFIG_FILE = ($env.XDG_CONFIG_HOME | path join "aws" "config")
+$env.AWS_SHARED_CREDENTIALS_FILE = ($env.XDG_CONFIG_HOME | path join "aws" "credentials")
+$env.AZURE_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "azure")
 $env.BLEND_HOME = ($env.XDG_CONFIG_HOME | path join "blend")
 $env.BUNDLE_USER_CACHE = ($env.XDG_CACHE_HOME | path join "bundle")
 $env.BUNDLE_USER_CONFIG = ($env.XDG_CONFIG_HOME | path join "bundle")
@@ -57,17 +64,35 @@ $env.DOCKER_CONFIG = ($env.XDG_CONFIG_HOME | path join "docker")
 $env.FNM_DIR = ($env.XDG_DATA_HOME | path join "fnm")
 $env.GEM_HOME = ($env.XDG_DATA_HOME | path join "gem")
 $env.GEM_SPEC_CACHE = ($env.XDG_CACHE_HOME | path join "gem")
+$env.GHCUP_USE_XDG_DIRS = "true"
 $env.GNUPGHOME = ($env.XDG_DATA_HOME | path join "gnupg")
+$env.GOMODCACHE = ($env.XDG_CACHE_HOME | path join "go" "mod")
+$env.GOPATH = ($env.XDG_DATA_HOME | path join "go")
+$env.GRADLE_USER_HOME = ($env.XDG_DATA_HOME | path join "gradle")
+$env.INPUTRC = ($env.XDG_CONFIG_HOME | path join "readline" "inputrc")
 $env.IPYTHONDIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
 $env.JUPYTER_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
+$env.MACHINE_STORAGE_PATH = ($env.XDG_DATA_HOME | path join "docker-machine")
+$env.MAVEN_ARGS = $"--settings ($env.XDG_CONFIG_HOME | path join 'maven' 'settings.xml')"
+$env.MAVEN_OPTS = $"-Dmaven.repo.local=($env.XDG_DATA_HOME | path join 'maven' 'repository')"
+$env.MIX_XDG = "true"
+$env.MYSQL_HISTFILE = ($env.XDG_STATE_HOME | path join "mysql" "history")
+$env.NODE_REPL_HISTORY = ($env.XDG_STATE_HOME | path join "node_repl_history")
 $env.NPM_CONFIG_USERCONFIG = ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
 $env.NUGET_PACKAGES = ($env.XDG_CACHE_HOME | path join "NuGetPackages")
 $env.NVM_DIR = ($env.XDG_DATA_HOME | path join "nvm")
+$env.OLLAMA_MODELS = ($env.XDG_DATA_HOME | path join "ollama" "models")
 $env.PLTUSERHOME = ($env.XDG_DATA_HOME | path join "racket")
 $env.PM2_HOME = ($env.XDG_CONFIG_HOME | path join "pm2")
 $env.PNPM_HOME = ($env.XDG_DATA_HOME | path join "pnpm")
+$env.PSQL_HISTORY = ($env.XDG_STATE_HOME | path join "psql_history")
 $env.PYENV_ROOT = ($env.XDG_DATA_HOME | path join "pyenv")
+$env.PYTHON_HISTORY = ($env.XDG_STATE_HOME | path join "python_history")
+$env.PYTHONPYCACHEPREFIX = ($env.XDG_CACHE_HOME | path join "python")
+$env.PYTHONUSERBASE = ($env.XDG_DATA_HOME | path join "python")
+$env.REDISCLI_HISTFILE = ($env.XDG_STATE_HOME | path join "redis" "rediscli_history")
 $env.RUSTUP_HOME = ($env.XDG_DATA_HOME | path join "rustup")
+$env.SQLITE_HISTORY = ($env.XDG_STATE_HOME | path join "sqlite_history")
 $env.TEXMFCONFIG = ($env.XDG_CONFIG_HOME | path join "texlive" "texmf-config")
 $env.TEXMFHOME = ($env.XDG_DATA_HOME | path join "texmf")
 $env.TEXMFVAR = ($env.XDG_CACHE_HOME | path join "texlive" "texmf-var")
@@ -77,19 +102,16 @@ $env.WGETRC = ($env.XDG_CONFIG_HOME | path join "wgetrc")
 $env.EDITOR = "nvim"
 $env.VISUAL = "nvim"
 
-# NVM
-$env.NVM_AUTO_USE = true
-
-# Node REPL
-$env.NODE_REPL_HISTORY = ($env.XDG_DATA_HOME | path join "node_repl_history")
+# Node
 $env.NODE_REPL_HISTORY_SIZE = "32768"
 $env.NODE_REPL_MODE = "sloppy"
+$env.NVM_AUTO_USE = true
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr
 $env.PYTHONIOENCODING = "UTF-8"
 
 # Highlight section titles in manual pages
-$env.LESS_TERMCAP_md = "${yellow}"
+$env.LESS_TERMCAP_md = (ansi yellow)
 
 # Do not use a less history file
 $env.LESSHISTFILE = "-"
@@ -110,7 +132,6 @@ path add ($env.HOME | path join ".bun" "bin") # no XDG support yet (https://gith
 path add ($env.XDG_DATA_HOME | path join "deno" "bin")
 path add ($env.XDG_DATA_HOME | path join "cargo" "bin")
 path add ($env.XDG_DATA_HOME | path join "pyenv" "bin")
-path add $env.XDG_DATA_HOME
 
 # Go
 if not ($env | get -o GOPATH | is-empty) {
