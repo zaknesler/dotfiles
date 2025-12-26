@@ -70,3 +70,37 @@ def gdl [
     gallery-dl -D . --filename "{date:%Y-%m-%d}_{index}_{filename}.{extension}" $url
   }
 }
+
+def yt-dl-plex [
+  url: string  # URL to download
+  --cookies (-c)  # Use cookies from Brave
+] {
+  let args = [
+    -o "%(upload_date>%Y-%m-%d)s %(title)s/%(title)s [%(id)s].%(ext)s"
+    -f "bv*[height<=1080]+ba/b[height<=1080]"
+    --parse-metadata "title:(?P<meta_title>.+)"
+    --parse-metadata "uploader:(?P<meta_artist>.+)"
+    --parse-metadata "uploader:(?P<meta_album>.+)"
+    --parse-metadata "%(upload_date>%Y-%m-%d)s:(?P<meta_date>.+)"
+    --parse-metadata "description:(?s)(?P<meta_description>.+)"
+    --parse-metadata "description:(?s)(?P<meta_synopsis>.+)"
+    --parse-metadata "description:(?s)(?P<meta_comment>.+)"
+    --parse-metadata "webpage_url:(?P<meta_comment>.+)"
+    --parse-metadata ":(?P<meta_genre>)YouTube"
+    --embed-metadata
+    --embed-chapters
+    --embed-thumbnail
+    --write-thumbnail
+    --write-info-json
+    --merge-output-format mp4
+    --postprocessor-args "ffmpeg:-movflags +faststart"
+  ]
+
+  let cookie_args = if $cookies {
+    [--cookies-from-browser brave]
+  } else {
+    []
+  }
+
+  yt-dlp ...($args | append $cookie_args | append $url)
+}
