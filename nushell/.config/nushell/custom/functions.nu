@@ -73,7 +73,8 @@ def gdl [
 
 def yt-dl-plex [
   url: string  # URL to download
-  --cookies (-c)  # Use cookies from Brave
+  --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
+  --cookies (-c): string  # Path to cookies file
 ] {
   let args = [
     -o "%(upload_date>%Y-%m-%d)s %(title)s/%(title)s [%(id)s].%(ext)s"
@@ -91,13 +92,17 @@ def yt-dl-plex [
     --embed-chapters
     --embed-thumbnail
     --write-thumbnail
+    -o "thumbnail:%(upload_date>%Y-%m-%d)s %(title)s/%(title)s [%(id)s]-thumb.%(ext)s"
+    --convert-thumbnails jpg
     --write-info-json
     --merge-output-format mp4
     --postprocessor-args "ffmpeg:-movflags +faststart"
   ]
 
-  let cookie_args = if $cookies {
-    [--cookies-from-browser brave]
+  let cookie_args = if ($cookies_from_browser | is-not-empty) {
+    [--cookies-from-browser $cookies_from_browser]
+  } else if ($cookies | is-not-empty) {
+    [--cookies $cookies]
   } else {
     []
   }
