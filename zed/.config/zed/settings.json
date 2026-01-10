@@ -17,7 +17,7 @@
   "buffer_font_size": 14,
   "buffer_line_height": { "custom": 2.1 },
   "collaboration_panel": { "button": false },
-  "colorize_brackets": true,
+  "colorize_brackets": false,
   "current_line_highlight": "all",
   "disable_ai": true,
   "double_click_in_multibuffer": "select",
@@ -33,7 +33,11 @@
   "ensure_final_newline_on_save": true,
   "features": { "edit_prediction_provider": "zed" },
   "git": { "inline_blame": { "enabled": false } },
-  "git_panel": { "tree_view": false, "sort_by_path": false, "dock": "left" },
+  "git_panel": {
+    "dock": "left",
+    "sort_by_path": false,
+    "tree_view": false,
+  },
   "hidden_files": [
     "**/*-lock*",
     "**/*.class",
