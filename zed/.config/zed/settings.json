@@ -1,6 +1,12 @@
 // https://zed.dev/docs/configuring-zed
 {
-  "agent": { "default_profile": "ask" },
+  "agent": {
+    "default_model": {
+      "model": "claude-sonnet-4-5",
+      "provider": "zed.dev",
+    },
+    "default_profile": "write",
+  },
   "auto_install_extensions": {
     "biome": true,
     "catppuccin-icons": true,
@@ -19,7 +25,7 @@
   "collaboration_panel": { "button": false },
   "colorize_brackets": false,
   "current_line_highlight": "all",
-  "disable_ai": true,
+  "disable_ai": false,
   "double_click_in_multibuffer": "select",
   "edit_predictions": {
     "copilot": {
@@ -72,10 +78,25 @@
   "indent_guides": { "enabled": true },
   "inline_code_actions": false,
   "languages": {
-    "CSS": { "language_servers": ["stylelint", "vtsls", "..."] },
+    "CSS": { "language_servers": ["stylelint-lsp", "vtsls", "..."] },
     "JSON": { "language_servers": ["vacuum", "..."] },
   },
   "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+      },
+      "enable_lsp_tasks": true,
+    },
     "biome": {
       "settings": {
         "require_config_file": true,
