@@ -18,7 +18,7 @@
     "stylelint": true,
     "toml": true,
   },
-  "buffer_font_family": "Hack Nerd Font",
+  "buffer_font_family": "0xProto Nerd Font",
   "buffer_font_features": { "calt": false },
   "buffer_font_size": 14,
   "buffer_line_height": { "custom": 2.1 },
