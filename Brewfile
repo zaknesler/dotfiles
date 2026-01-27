@@ -61,6 +61,7 @@ cask 'tableplus'
 # cask 'vlc'
 
 # Fonts
+cask 'font-0xproto-nerd-font'
 cask 'font-hack'
 cask 'font-hack-nerd-font'
 cask 'font-inter'
