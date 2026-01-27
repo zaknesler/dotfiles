@@ -5,7 +5,17 @@
       "model": "claude-sonnet-4-5",
       "provider": "zed.dev",
     },
-    "default_profile": "write",
+    "default_profile": "ask",
+    "favorite_models": [
+      {
+        "model": "claude-sonnet-4-5",
+        "provider": "zed.dev",
+      },
+      {
+        "model": "claude-haiku-4-5",
+        "provider": "zed.dev",
+      },
+    ],
   },
   "auto_install_extensions": {
     "biome": true,
