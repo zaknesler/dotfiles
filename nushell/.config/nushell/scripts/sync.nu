@@ -106,7 +106,7 @@ export def download [
       --write-thumbnail
 
       # Thumbnail in same directory as video
-      -o (["thumbnail:" $channel.path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s].%(ext)s"] | str join)
+      -o (["thumbnail:" ([$channel.path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s]-thumb.%(ext)s"] | path join)] | str join)
       --convert-thumbnails jpg
 
       --write-info-json
@@ -137,8 +137,8 @@ export def download [
     try {
       yt-dlp ...$all_args
       print $"✓ Synced ($channel.name)"
-    } catch {
-      print $"✗ Failed to sync ($channel.name): ($in)"
+    } catch { |err|
+      print $"✗ Failed to sync ($channel.name): ($err.msg)"
     }
   }
 
