@@ -20,7 +20,8 @@ Brewfile.lock*
 history.txt
 plugin.nu
 *.msgpackz
-nushell/.config/nushell/scripts/*
+
+nushell/.config/nushell/scripts*/*.nuon
 
 # Zed
 zed/**/conversations/*
