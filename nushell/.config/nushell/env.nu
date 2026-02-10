@@ -129,6 +129,7 @@ use std "path add"
 path add $env.PNPM_HOME --append
 path add ($env.HOME | path join ".local" "bin")
 path add ($env.HOME | path join ".bun" "bin") # no XDG support yet (https://github.com/oven-sh/bun/issues/1678)
+path add ($env.XDG_CACHE_HOME | path join ".bun" "bin")
 path add ($env.XDG_DATA_HOME | path join "deno" "bin")
 path add ($env.XDG_DATA_HOME | path join "cargo" "bin")
 path add ($env.XDG_DATA_HOME | path join "pyenv" "bin")

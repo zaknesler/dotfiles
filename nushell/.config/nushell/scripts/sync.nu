@@ -44,14 +44,34 @@ export def download [
       }
     )
 
+    # Determine the minimum date from config (optional `after` field)
+    let config_after = if ($channel | get -o after | is-not-empty) {
+      let raw = $channel.after | str replace -a "-" ""
+      print $"  Config minimum date: ($channel.after)"
+      $raw
+    } else {
+      null
+    }
+
     let date_after = if ($existing_videos | is-empty) {
-      print "  No existing videos found, downloading all"
-      "19700101"  # Download all videos if none exist
+      if ($config_after | is-not-empty) {
+        print "  No existing videos found, using config minimum date"
+        $config_after
+      } else {
+        print "  No existing videos found, downloading all"
+        "19700101"  # Download all videos if none exist
+      }
     } else {
       let latest_date = $existing_videos | first
-      print $"  Latest video date: ($latest_date)"
-      # Convert YYYY-MM-DD to YYYYMMDD for yt-dlp
-      $latest_date | str replace -a "-" ""
+      let latest_yyyymmdd = $latest_date | str replace -a "-" ""
+      print "  Latest video date: ($latest_date)"
+      # Use the later of the two dates (config minimum vs latest existing)
+      if ($config_after | is-not-empty) and ($config_after | into int) > ($latest_yyyymmdd | into int) {
+        print "  Using config minimum date (later than latest video)"
+        $config_after
+      } else {
+        $latest_yyyymmdd
+      }
     }
 
     print $"  Downloading videos after: ($date_after)"
@@ -131,6 +151,7 @@ export def add [
   path: string
   name: string
   --config (-f): string  # Path to config file (defaults to sync.nuon in script directory)
+  --after (-a): string  # Minimum date to download from (YYYY-MM-DD)
 ] {
   let config_path = if ($config | is-empty) {
     $DIR | path join "sync.nuon"
@@ -144,7 +165,7 @@ export def add [
     []
   }
 
-  let new_channel = {url: $url, path: $path, name: $name}
+  let new_channel = {url: $url, path: $path, name: $name, after: (if ($after | is-not-empty) { $after } else { null })}
   let updated = ($channels | append $new_channel)
 
   $updated | save -f $config_path
