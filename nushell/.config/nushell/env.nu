@@ -133,6 +133,7 @@ path add ($env.XDG_CACHE_HOME | path join ".bun" "bin")
 path add ($env.XDG_DATA_HOME | path join "deno" "bin")
 path add ($env.XDG_DATA_HOME | path join "cargo" "bin")
 path add ($env.XDG_DATA_HOME | path join "pyenv" "bin")
+path add ($env.XDG_DATA_HOME | path join "python" "bin")
 
 # Go
 if not ($env | get -o GOPATH | is-empty) {
