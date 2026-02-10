@@ -32,15 +32,12 @@ export def download [
         ls ($channel.path | path expand | path join "**" "*.mp4")
         | where type == file
         | get name
-        | each { |f|
-            # Extract date from filename YYYY-MM-DD
-            $f | parse "{date}_{rest}" | get date.0?
-          }
+        | each { |f| $f | parse "{date}_{rest}" | get date.0? }
         | compact
         | sort
         | reverse
       } catch {
-        []  # Return empty list if no files found
+        [] # Return empty list if no files found
       }
     )
 
