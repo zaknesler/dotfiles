@@ -78,7 +78,7 @@ export def download [
       # Main video output
       -o ([$channel.path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s].%(ext)s"] | path join)
       --restrict-filenames  # Removes special characters, use underscores, etc.
-      -f "bv*[height<=1080]+ba/b[height<=1080]"
+      -f "bv*[height<=1080][vcodec^=avc1]+ba/bv*[height<=1080][vcodec^=avc]+ba/bv*[height<=1080][vcodec!*=av01]+ba/b[height<=1080]"
 
       # Only download videos after the latest one we have
       --dateafter $date_after
