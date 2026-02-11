@@ -110,6 +110,12 @@ export def download [
       --merge-output-format mp4
       --postprocessor-args "ffmpeg:-movflags +faststart"
 
+      # Resume/failure handling
+      --no-continue  # Don't resume partial downloads (prevents 416 errors)
+      --retries 3  # Retry failed downloads 3 times
+      --fragment-retries 3  # Retry failed fragments
+      --abort-on-unavailable-fragments
+
       # Use download archive to avoid re-downloading
       --download-archive ([$channel.path ".downloaded"] | path join)
       --break-on-existing
