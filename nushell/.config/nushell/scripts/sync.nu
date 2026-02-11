@@ -112,6 +112,7 @@ export def download [
 
       # Use download archive to avoid re-downloading
       --download-archive ([$channel.path ".downloaded"] | path join)
+      --break-on-existing
     ]
 
     let cookie_args = if ($cookies_from_browser | is-not-empty) {
