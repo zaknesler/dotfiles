@@ -136,7 +136,12 @@ export def download [
       yt-dlp ...$all_args
       print $"✓ Synced ($channel.name)"
     } catch { |err|
-      print $"✗ Failed to sync ($channel.name): ($err.msg)"
+      # The debug field is a string, need to check if it contains exit_code: 101
+      if ($err.debug | str contains "exit_code: 101") {
+        print $"✓ Synced ($channel.name) \(reached existing video\)"
+      } else {
+        print $"✗ Failed to sync ($channel.name): ($err.msg)"
+      }
     }
   }
 
