@@ -67,6 +67,7 @@
     "**/artisan",
     "**/azure*yml",
     "**/build",
+    "**/bunfig.toml",
     "**/Cargo.lock",
     "**/coverage",
     "**/dist",
