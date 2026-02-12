@@ -1,20 +1,12 @@
 // https://zed.dev/docs/configuring-zed
 {
   "agent": {
-    "default_model": {
-      "model": "claude-opus-4.6",
-      "provider": "copilot_chat",
-    },
+    "default_model": { "model": "claude-opus-4.6", "provider": "copilot_chat" },
     "default_profile": "write",
     "favorite_models": [
-      {
-        "model": "claude-sonnet-4-5",
-        "provider": "zed.dev",
-      },
-      {
-        "model": "claude-haiku-4-5",
-        "provider": "zed.dev",
-      },
+      { "model": "claude-opus-4.6", "provider": "copilot_chat" },
+      { "model": "claude-sonnet-4.5", "provider": "copilot_chat" },
+      { "model": "claude-haiku-4.5", "provider": "copilot_chat" },
     ],
   },
   "auto_install_extensions": {
