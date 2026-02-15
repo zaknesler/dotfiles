@@ -111,9 +111,9 @@ export def download [
       --postprocessor-args "ffmpeg:-movflags +faststart"
 
       # Resume/failure handling
-      --no-continue  # Don't resume partial downloads (prevents 416 errors)
-      --retries 3  # Retry failed downloads 3 times
-      --fragment-retries 3  # Retry failed fragments
+      --no-continue
+      --retries 3
+      --fragment-retries 3
       --abort-on-unavailable-fragments
 
       # Use download archive to avoid re-downloading
