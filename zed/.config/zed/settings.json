@@ -1,7 +1,10 @@
 // https://zed.dev/docs/configuring-zed
 {
   "agent": {
-    "default_model": { "model": "claude-opus-4.6", "provider": "copilot_chat" },
+    "default_model": {
+      "model": "claude-sonnet-4-5",
+      "provider": "zed.dev",
+    },
     "default_profile": "write",
     "favorite_models": [
       { "model": "claude-opus-4.6", "provider": "copilot_chat" },
@@ -67,11 +70,11 @@
     "**/node_modules",
     "**/phpunit.xml",
     "**/pnpm-lock*",
-    "**/sentry*",
     "**/target",
     "**/vendor",
     "**/venv",
     ".*",
+    "/sentry*",
   ],
   "icon_theme": {
     "dark": "Catppuccin Mocha",
