@@ -5,6 +5,8 @@ export def download [
   --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
   --cookies (-c): string  # Path to cookies file
   --dry-run (-d)  # Show what would be downloaded without downloading
+  --filter-channel (-l): string  # Specific channel name to download (optional)
+  --no-break-on-existing  # Don't stop when reaching existing videos
 ] {
   # Default to sync.nuon in the same directory as this script
   let config_path = if ($config | is-empty) {
@@ -14,9 +16,29 @@ export def download [
   }
 
   # Load channel configuration
-  let channels = open $config_path
+  let all_channels = open $config_path
 
-  print $"Syncing ($channels | length) channels..."
+  # Filter to specific channels if requested (supports comma-separated list)
+  let channels = if ($filter_channel | is-not-empty) {
+    let channel_filters = ($filter_channel | split row "," | each { |c| $c | str trim })
+    $all_channels | where {|ch|
+      $channel_filters | any {|filter| $ch.name =~ $"\(?i\)($filter)"}
+    }
+  } else {
+    $all_channels
+  }
+
+  if ($channels | is-empty) {
+    if ($filter_channel | is-not-empty) {
+      print $"Error: No channels matching '($filter_channel)' found in config"
+      return
+    } else {
+      print "No channels found in config"
+      return
+    }
+  }
+
+  print $"Syncing ($channels | length) channel\(s\)..."
 
   for channel in $channels {
     print $"\n=== Syncing: ($channel.name) ==="
@@ -118,8 +140,15 @@ export def download [
 
       # Use download archive to avoid re-downloading
       --download-archive ([$channel.path ".downloaded"] | path join)
-      --break-on-existing
     ]
+
+    # Add break-on-existing unless disabled
+    let break_args = if $no_break_on_existing {
+      print "  Note: --break-on-existing disabled, will download all matching videos"
+      []
+    } else {
+      [--break-on-existing]
+    }
 
     let cookie_args = if ($cookies_from_browser | is-not-empty) {
       [--cookies-from-browser $cookies_from_browser]
@@ -135,7 +164,7 @@ export def download [
       []
     }
 
-    let all_args = ($base_args | append $cookie_args | append $dry_run_args | append $channel.url)
+    let all_args = ($base_args | append $break_args | append $cookie_args | append $dry_run_args | append $channel.url)
 
     # Run yt-dlp
     try {
