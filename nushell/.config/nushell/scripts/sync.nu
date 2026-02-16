@@ -133,7 +133,6 @@ export def download [
       --postprocessor-args "ffmpeg:-movflags +faststart"
 
       # Resume/failure handling
-      --no-continue
       --retries 3
       --fragment-retries 3
       --abort-on-unavailable-fragments
