@@ -95,79 +95,9 @@ export def download [
 
     print $"  Downloading videos after: ($date_after)"
 
-    # Build yt-dlp arguments
-    let base_args = [
-      # Main video output
-      -o ([$channel.path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s].%(ext)s"] | path join)
-      --restrict-filenames  # Removes special characters, use underscores, etc.
-      -f "bv*[height<=1080][vcodec^=avc1]+ba/bv*[height<=1080][vcodec^=avc]+ba/bv*[height<=1080][vcodec!*=av01]+ba/b[height<=1080]"
-
-      # Only download videos after the latest one we have
-      --dateafter $date_after
-
-      # Don't write playlist metadata files
-      --no-write-playlist-metafiles
-
-      # Metadata mapping
-      --parse-metadata "title:(?P<meta_title>.+)"
-      --parse-metadata "uploader:(?P<meta_artist>.+)"
-      --parse-metadata "uploader:(?P<meta_album>.+)"
-      --parse-metadata "%(upload_date>%Y-%m-%d)s:(?P<meta_date>.+)"
-      --parse-metadata "description:(?s)(?P<meta_description>.+)"
-      --parse-metadata "description:(?s)(?P<meta_synopsis>.+)"
-      --parse-metadata "description:(?s)(?P<meta_comment>.+)"
-      --parse-metadata "webpage_url:(?P<meta_comment>.+)"
-      --parse-metadata ":(?P<meta_genre>)YouTube"
-
-      --embed-metadata
-      --embed-chapters
-      --embed-thumbnail
-      --write-thumbnail
-
-      # Thumbnail in same directory as video
-      -o (["thumbnail:" ([$channel.path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s]-thumb.%(ext)s"] | path join)] | str join)
-      --convert-thumbnails jpg
-
-      --write-info-json
-      --merge-output-format mp4
-      --postprocessor-args "ffmpeg:-movflags +faststart"
-
-      # Resume/failure handling
-      --retries 3
-      --fragment-retries 3
-      --abort-on-unavailable-fragments
-
-      # Use download archive to avoid re-downloading
-      --download-archive ([$channel.path ".downloaded"] | path join)
-    ]
-
-    # Add break-on-existing unless disabled
-    let break_args = if $no_break_on_existing {
-      print "  Note: --break-on-existing disabled, will download all matching videos"
-      []
-    } else {
-      [--break-on-existing]
-    }
-
-    let cookie_args = if ($cookies_from_browser | is-not-empty) {
-      [--cookies-from-browser $cookies_from_browser]
-    } else if ($cookies | is-not-empty) {
-      [--cookies $cookies]
-    } else {
-      []
-    }
-
-    let dry_run_args = if $dry_run {
-      [--simulate --print "%(upload_date>%Y-%m-%d)s - %(title)s [%(id)s]"]
-    } else {
-      []
-    }
-
-    let all_args = ($base_args | append $break_args | append $cookie_args | append $dry_run_args | append $channel.url)
-
     # Run yt-dlp
     try {
-      yt-dlp ...$all_args
+      process-video $channel.url $channel.path $date_after $cookies_from_browser $cookies $dry_run $no_break_on_existing
       print $"✓ Synced ($channel.name)"
     } catch { |err|
       # The debug field is a string, need to check if it contains exit_code: 101
@@ -182,7 +112,37 @@ export def download [
   print "\n=== Sync complete ==="
 }
 
-# Helper command to add a new channel
+# Download one or more URLs
+export def video [
+  ...urls: string  # URL(s) of the video(s) to download
+  --path (-p): string  # Directory to save the video to (defaults to current directory)
+  --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
+  --cookies (-c): string  # Path to cookies file
+  --dry-run (-d)  # Show what would be downloaded without downloading
+] {
+  let target_path = if ($path | is-empty) { "." } else { $path }
+
+  print $"Downloading ($urls | length) video\(s\) to: ($target_path)"
+  for url in $urls {
+    print $"  URL: ($url)"
+  }
+
+  # Ensure directory exists
+  mkdir ($target_path | path expand)
+
+  # Use date_after of "19700101" to download the video regardless of date
+  let date_after = "19700101"
+
+  # Run yt-dlp with all URLs (no break-on-existing for single video)
+  try {
+    process-video ($urls | str join " ") $target_path $date_after $cookies_from_browser $cookies $dry_run true
+    print $"✓ Downloaded video\(s\)"
+  } catch { |err|
+    print $"✗ Failed to download video\(s\): ($err.msg)"
+  }
+}
+
+# Add a new channel
 export def add [
   url: string
   path: string
@@ -209,7 +169,7 @@ export def add [
   print $"Added channel: ($name)"
 }
 
-# Helper command to list configured channels
+# List configured channels
 export def list [
   --config (-f): string  # Path to config file (defaults to sync.nuon in script directory)
 ] {
@@ -225,4 +185,88 @@ export def list [
   }
 
   open $config_path | table
+}
+
+
+# Internal helper function to run yt-dlp with specified arguments
+def process-video [
+  url: string
+  output_path: string
+  date_after: string
+  cookies_from_browser?: string
+  cookies?: string
+  dry_run: bool = false
+  no_break_on_existing: bool = false
+] {
+  # Build yt-dlp arguments
+  let base_args = [
+    # Main video output
+    -o ([$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s].%(ext)s"] | path join)
+    --restrict-filenames  # Removes special characters, use underscores, etc.
+    -f "bv*[height<=1080][vcodec^=avc1]+ba/bv*[height<=1080][vcodec^=avc]+ba/bv*[height<=1080][vcodec!*=av01]+ba/b[height<=1080]"
+
+    # Only download videos after the latest one we have
+    --dateafter $date_after
+
+    # Don't write playlist metadata files
+    --no-write-playlist-metafiles
+
+    # Metadata mapping
+    --parse-metadata "title:(?P<meta_title>.+)"
+    --parse-metadata "uploader:(?P<meta_artist>.+)"
+    --parse-metadata "uploader:(?P<meta_album>.+)"
+    --parse-metadata "%(upload_date>%Y-%m-%d)s:(?P<meta_date>.+)"
+    --parse-metadata "description:(?s)(?P<meta_description>.+)"
+    --parse-metadata "description:(?s)(?P<meta_synopsis>.+)"
+    --parse-metadata "description:(?s)(?P<meta_comment>.+)"
+    --parse-metadata "webpage_url:(?P<meta_comment>.+)"
+    --parse-metadata ":(?P<meta_genre>)YouTube"
+
+    --embed-metadata
+    --embed-chapters
+    --embed-thumbnail
+    --write-thumbnail
+
+    # Thumbnail in same directory as video
+    -o (["thumbnail:" ([$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s]-thumb.%(ext)s"] | path join)] | str join)
+    --convert-thumbnails jpg
+
+    --write-info-json
+    --merge-output-format mp4
+    --postprocessor-args "ffmpeg:-movflags +faststart"
+
+    # Resume/failure handling
+    --retries 5
+    --fragment-retries 5
+    --abort-on-unavailable-fragments
+
+    # Use download archive to avoid re-downloading
+    --download-archive ([$output_path ".downloaded"] | path join)
+  ]
+
+  # Add break-on-existing unless disabled
+  let break_args = if $no_break_on_existing {
+    []
+  } else {
+    [--break-on-existing]
+  }
+
+  let cookie_args = if ($cookies_from_browser | is-not-empty) {
+    [--cookies-from-browser $cookies_from_browser]
+  } else if ($cookies | is-not-empty) {
+    [--cookies $cookies]
+  } else {
+    []
+  }
+
+  let dry_run_args = if $dry_run {
+    [--simulate --print "%(upload_date>%Y-%m-%d)s - %(title)s [%(id)s]"]
+  } else {
+    []
+  }
+
+  let all_args = ($base_args | append $break_args | append $cookie_args | append $dry_run_args | append $url)
+
+  # Run yt-dlp
+  yt-dlp ...$all_args
 }
