@@ -24,7 +24,7 @@
     "toml": true,
   },
   "buffer_font_family": "0xProto Nerd Font",
-  "buffer_font_features": { "calt": false },
+  "buffer_font_features": { "calt": false, "ss01": false },
   "buffer_font_size": 14,
   "buffer_line_height": { "custom": 2.1 },
   "collaboration_panel": { "button": false },
@@ -84,7 +84,6 @@
   "indent_guides": { "enabled": true },
   "inline_code_actions": false,
   "languages": {
-    "CSS": { "language_servers": ["stylelint-lsp", "vtsls", "..."] },
     "JSON": { "language_servers": ["vacuum", "..."] },
   },
   "language_models": {
@@ -200,6 +199,20 @@
     "dark": "One Dark",
     "light": "One Light",
     "mode": "system",
+  },
+  "theme_overrides": {
+    "One Dark": {
+      "syntax": {
+        "comment": { "font_style": "italic" },
+        "comment.doc": { "font_style": "italic" },
+      },
+    },
+    "One Light": {
+      "syntax": {
+        "comment": { "font_style": "italic" },
+        "comment.doc": { "font_style": "italic" },
+      },
+    },
   },
   "title_bar": {
     "show_sign_in": false,

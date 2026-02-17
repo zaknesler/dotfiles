@@ -123,9 +123,6 @@ export def video [
   let target_path = if ($path | is-empty) { "." } else { $path }
 
   print $"Downloading ($urls | length) video\(s\) to: ($target_path)"
-  for url in $urls {
-    print $"  URL: ($url)"
-  }
 
   # Ensure directory exists
   mkdir ($target_path | path expand)
@@ -133,12 +130,16 @@ export def video [
   # Use date_after of "19700101" to download the video regardless of date
   let date_after = "19700101"
 
-  # Run yt-dlp with all URLs (no break-on-existing for single video)
-  try {
-    process-video ($urls | str join " ") $target_path $date_after $cookies_from_browser $cookies $dry_run true
-    print $"✓ Downloaded video\(s\)"
-  } catch { |err|
-    print $"✗ Failed to download video\(s\): ($err.msg)"
+  for url in $urls {
+
+
+    # Run yt-dlp for each video
+    try {
+      process-video $url $target_path $date_after $cookies_from_browser $cookies $dry_run true
+      print $"✓ Downloaded video\(s\)"
+    } catch { |err|
+      print $"✗ Failed to download video\(s\): ($err.msg)"
+    }
   }
 }
 
