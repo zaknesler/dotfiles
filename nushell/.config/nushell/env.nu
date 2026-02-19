@@ -60,7 +60,6 @@ $env.COMPOSER_HOME = ($env.XDG_DATA_HOME | path join "composer")
 $env.CONDARC = ($env.XDG_CONFIG_HOME | path join "conda" "condarc")
 $env.CUDA_CACHE_PATH = ($env.XDG_CACHE_HOME | path join "nv")
 $env.DENO_DIR = ($env.XDG_DATA_HOME | path join "deno")
-$env.DOCKER_CONFIG = ($env.XDG_CONFIG_HOME | path join "docker")
 $env.FNM_DIR = ($env.XDG_DATA_HOME | path join "fnm")
 $env.GEM_HOME = ($env.XDG_DATA_HOME | path join "gem")
 $env.GEM_SPEC_CACHE = ($env.XDG_CACHE_HOME | path join "gem")
@@ -97,6 +96,10 @@ $env.TEXMFCONFIG = ($env.XDG_CONFIG_HOME | path join "texlive" "texmf-config")
 $env.TEXMFHOME = ($env.XDG_DATA_HOME | path join "texmf")
 $env.TEXMFVAR = ($env.XDG_CACHE_HOME | path join "texlive" "texmf-var")
 $env.WGETRC = ($env.XDG_CONFIG_HOME | path join "wgetrc")
+
+# Docker
+# $env.DOCKER_CONFIG = ($env.XDG_CONFIG_HOME | path join "docker")
+$env.DOCKER_BUILDKIT = "1"
 
 # Defaults
 $env.EDITOR = "nvim"
