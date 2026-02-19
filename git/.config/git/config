@@ -1,8 +1,8 @@
 # Run this to ignore future changes:
-# git update-index --assume-unchanged $XDG_CONFIG_HOME/dotfiles/git/.config/git/config
+# git update-index --assume-unchanged ($XDG_CONFIG_HOME | path join /dotfiles/git/.config/git/config)
 #
 # To undo:
-# git update-index --no-assume-unchanged $XDG_CONFIG_HOME/dotfiles/git/.config/git/config
+# git update-index --no-assume-unchanged ($XDG_CONFIG_HOME | path join /dotfiles/git/.config/git/config)
 
 [user]
 	name = Zak Nesler
