@@ -1,3 +1,19 @@
+# Load current directory into the environment
+def --env direnv-load [] {
+  direnv export json | from json | default {} | load-env
+}
+
+# Initialize the current directory with .envrc and allow it
+def --env direnv-init [] {
+  if not (".envrc" | path exists) {
+    "dotenv" | save .envrc
+    print "Created .envrc"
+  }
+
+  direnv allow .
+  direnv-load
+}
+
 # Create a new directory and enter it
 def --env mkcd [dirname: string]: nothing -> nothing {
   mkdir $dirname
