@@ -10,30 +10,32 @@
       "ctrl-alt-win-c": "workspace::ToggleCenteredLayout",
       "cmd-shift-g": [
         "task::Spawn",
-        { "task_name": "LazyGit", "reveal_target": "center" }
-      ]
-    }
+        { "task_name": "LazyGit", "reveal_target": "center" },
+      ],
+      "ctrl-}": "window::ShowNextWindowTab",
+      "ctrl-{": "window::ShowPreviousWindowTab",
+    },
   },
   {
     "context": "Editor",
     "bindings": {
       "cmd-shift-d": "editor::DuplicateSelection",
       "ctrl-shift-d": "editor::DuplicateSelection",
-      "cmd-;": null
-    }
+      "cmd-;": null,
+    },
   },
   {
     "context": "(Editor && mode == full)",
     "bindings": {
-      "alt-z": "editor::ToggleSoftWrap"
-    }
+      "alt-z": "editor::ToggleSoftWrap",
+    },
   },
   {
     "bindings": {
       "ctrl-alt-c": "project_panel::CollapseAllEntries",
       "alt-cmd-c": "project_panel::CollapseAllEntries",
       "ctrl-alt-v": "project_panel::ToggleHideHidden",
-      "alt-cmd-v": "project_panel::ToggleHideHidden"
-    }
-  }
+      "alt-cmd-v": "project_panel::ToggleHideHidden",
+    },
+  },
 ]
