@@ -57,7 +57,7 @@
     "**/*.lock*",
     "**/*.tsbuildinfo",
     "**/*env.d.ts",
-    "**/*log",
+    "**/*.log",
     "**/__*",
     "**/artisan",
     "**/azure*yml",
