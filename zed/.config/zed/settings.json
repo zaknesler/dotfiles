@@ -2,8 +2,8 @@
 {
   "agent": {
     "default_model": {
-      "model": "claude-sonnet-4-5",
-      "provider": "zed.dev",
+      "model": "claude-sonnet-4.5",
+      "provider": "copilot_chat",
     },
     "default_profile": "write",
     "favorite_models": [
