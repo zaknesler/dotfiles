@@ -11,6 +11,11 @@
       { "model": "claude-sonnet-4.5", "provider": "copilot_chat" },
       { "model": "claude-haiku-4.5", "provider": "copilot_chat" },
     ],
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-haiku-4.5",
+      "enable_thinking": false,
+    },
   },
   "auto_install_extensions": {
     "biome": true,
@@ -33,13 +38,14 @@
   "disable_ai": false,
   "double_click_in_multibuffer": "select",
   "edit_predictions": {
-    "provider": "copilot",
     "copilot": {
+      "enable_next_edit_suggestions": true,
       "enterprise_uri": null,
       "proxy": null,
       "proxy_no_verify": null,
     },
     "enabled_in_text_threads": false,
+    "provider": "copilot",
     "mode": "subtle",
   },
   "ensure_final_newline_on_save": true,
@@ -85,11 +91,11 @@
   "inline_code_actions": false,
   "languages": {
     "JSON": { "language_servers": ["vacuum", "..."] },
+    "TypeScript": { "language_servers": ["vtsls"] },
+    "JavaScript": { "language_servers": ["vtsls"] },
   },
   "language_models": {
-    "ollama": {
-      "api_url": "http://10.0.10.0:11434",
-    },
+    "ollama": { "api_url": "http://10.0.10.0:11434" },
   },
   "lsp": {
     "vtsls": {
@@ -115,18 +121,6 @@
     "biome": {
       "settings": {
         "require_config_file": true,
-      },
-    },
-    "json-language-server": {
-      "settings": {
-        "json": {
-          "schemas": [
-            {
-              "fileMatch": ["**/openapi.json"],
-              "url": "https://spec.openapis.org/oas/3.0/schema/2021-09-28",
-            },
-          ],
-        },
       },
     },
   },
@@ -161,13 +155,14 @@
   },
   "project_panel": {
     "auto_fold_dirs": true,
+    "diagnostic_badges": true,
     "dock": "right",
     "entry_spacing": "comfortable",
     "folder_icons": true,
     "hide_hidden": true,
     "hide_root": false,
     "indent_size": 16,
-    "show_diagnostics": "off",
+    "show_diagnostics": "all",
   },
   "remove_trailing_whitespace_on_save": true,
   "search": { "button": false },

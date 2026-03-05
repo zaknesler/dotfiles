@@ -31,6 +31,12 @@
     },
   },
   {
+    "context": "Pane",
+    "bindings": {
+      "cmd-shift-alt-f": "workspace::NewSearch",
+    },
+  },
+  {
     "bindings": {
       "ctrl-alt-c": "project_panel::CollapseAllEntries",
       "alt-cmd-c": "project_panel::CollapseAllEntries",
