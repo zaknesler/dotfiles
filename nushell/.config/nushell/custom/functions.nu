@@ -93,3 +93,106 @@ def gdl [
     gallery-dl -D . --filename "{date:%Y-%m-%d}_{index}_{filename}.{extension}" ...$urls
   }
 }
+
+# Create backup of file with timestamp
+def bak [file: string] {
+  let timestamp = (date now | format date "%Y%m%d_%H%M%S")
+  cp $file $"($file).($timestamp).bak"
+  print $"Backed up to ($file).($timestamp).bak"
+}
+
+# Compress files/directories into a tar.gz archive
+def tarpls [
+  output: string # Output archive filename (without .tar.gz extension)
+  ...paths: string # Files or directories to compress
+  --exclude-vendor (-e) # Exclude common vendor folders (node_modules, vendor, .git, etc.)
+] {
+  let tarfile = if ($output | str ends-with ".tar.gz") {
+    $output
+  } else if ($output | str ends-with ".tar") {
+    $"($output).gz"
+  } else {
+    $"($output).tar.gz"
+  }
+
+  if ($paths | is-empty) {
+    print "Error: No files or directories specified"
+    return
+  }
+
+  # Convert paths to relative (strip current directory prefix)
+  let cwd = ($env.PWD | path expand)
+  let relative_paths = ($paths | each { |p|
+    let expanded = ($p | path expand)
+    if ($expanded | str starts-with $cwd) {
+      $expanded | str replace $"($cwd)/" ""
+    } else {
+      $p
+    }
+  })
+
+  # Common vendor/build folders to exclude
+  let exclude_patterns = [
+    "*.log"
+    ".cargo"
+    ".DS_Store"
+    ".git"
+    ".hg"
+    ".idea"
+    ".next"
+    ".nuxt"
+    ".pytest_cache"
+    ".svn"
+    ".venv"
+    ".vscode"
+    "__pycache__"
+    "build"
+    "dist"
+    "node_modules"
+    "target"
+    "Thumbs.db"
+    "vendor"
+    "venv"
+  ]
+
+  if $exclude_vendor {
+    let exclude_args = ($exclude_patterns | each { |pat| ["--exclude" $pat] } | flatten)
+    tar -czf $tarfile ...$exclude_args ...$relative_paths
+    print $"Created ($tarfile) (excluded vendor folders)"
+  } else {
+    tar -czf $tarfile ...$relative_paths
+    print $"Created ($tarfile)"
+  }
+}
+
+# Extract common archive formats
+def extract [file: string] {
+  match ($file | path parse | get extension) {
+    "zip" => { unzip $file },
+    "tar" => { tar -xf $file },
+    "gz" => { tar -xzf $file },
+    "bz2" => { tar -xjf $file },
+    _ => { print "Unknown archive format" }
+  }
+}
+
+# Amend last commit without editing message
+def gca [] {
+  git commit --amend --no-edit
+}
+
+# Undo last commit but keep changes staged
+def gundo [] {
+  git reset --soft HEAD~1
+}
+
+# Stop all processes by port
+def killport [port: int] {
+  let pid = (lsof -ti $":($port)")
+  if ($pid | is-empty) {
+    print $"No process found on port ($port)"
+  } else {
+    kill -9 $pid
+    print $"Killed process ($pid) on port ($port)"
+  }
+}
