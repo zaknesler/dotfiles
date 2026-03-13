@@ -1,17 +1,12 @@
-# Load current directory into the environment
-def --env direnv-load [] {
-  direnv export json | from json | default {} | load-env
-}
-
 # Initialize the current directory with .envrc and allow it
-def --env direnv-init [] {
+def --env load-direnv [] {
   if not (".envrc" | path exists) {
     "dotenv" | save .envrc
     print "Created .envrc"
   }
 
   direnv allow .
-  direnv-load
+  direnv export json | from json | default {} | load-env
 }
 
 # Create a new directory and enter it
@@ -58,6 +53,14 @@ def ntt [
   npm test $path -- -t $name
 }
 
+# Run pnpm test filtering by test path and name
+def pntt [
+  path: string = ""
+  name: string = ""
+] {
+  pnpm test $path -- -t $name
+}
+
 # Reset all changes, git checkout to dev, pull new changes, and re-install npm deps
 def reset-to-dev [] {
   git reset --hard
@@ -67,16 +70,26 @@ def reset-to-dev [] {
   npm i
 }
 
+# Get public IP address and location info
+def myip [] {
+  curl -s https://ipv4.wtfismyip.com/json
+    | from json
+    | transpose key value
+    | update key { str replace "YourFucking" "" | str snake-case }
+    | transpose --header-row
+    | into record
+}
+
 # Download all images from a URL to the current directory
 def gdl [
-  url: string # URL containing images to download
+  ...urls: string # URL containing images to download
   --default-filename (-d) # Ignore custom filename format and use the default
 ] {
   if ($default_filename) {
     # Use gallery-dl with default filename handling
-    gallery-dl -D . $url
+    gallery-dl -D . ...$urls
   } else {
     # Use custom filename format
-    gallery-dl -D . --filename "{date:%Y-%m-%d}_{index}_{filename}.{extension}" $url
+    gallery-dl -D . --filename "{date:%Y-%m-%d}_{index}_{filename}.{extension}" ...$urls
   }
 }

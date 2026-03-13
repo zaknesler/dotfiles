@@ -2,6 +2,7 @@ alias s- = su -
 
 alias dot = cd ($env.XDG_CONFIG_HOME | path join "dotfiles")
 alias dt = cd ($env.HOME | path join "desktop")
+alias co = cd ($env.HOME | path join "code")
 
 alias nv = nvim
 alias v = nvim
@@ -40,15 +41,18 @@ alias nt = npm test
 alias nrb = npm run build
 alias nrd = npm run dev
 alias nrs = npm run start
+alias nrp = npm run preview
 alias nrt = npm run test
 
 alias pn = pnpm
 alias pni = pnpm install
 alias pno = pnpm outdated
 alias pnr = pnpm run
+alias pnt = pnpm run
 alias pnrb = pnpm run build
 alias pnrd = pnpm run dev
 alias pnrs = pnpm run start
+alias pnrp = pnpm run preview
 alias pnrt = pnpm run test
 
 alias dr = docker

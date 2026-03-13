@@ -42,6 +42,7 @@
       "alt-cmd-c": "project_panel::CollapseAllEntries",
       "ctrl-alt-v": "project_panel::ToggleHideHidden",
       "alt-cmd-v": "project_panel::ToggleHideHidden",
+      "alt-cmd-i": null,
     },
   },
 ]
