@@ -16,16 +16,31 @@
       "model": "claude-haiku-4.5",
       "enable_thinking": false,
     },
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "default": "confirm",
+          "always_allow": [
+            { "pattern": "^cargo\\s+(build|test|check|clippy|fmt)" },
+            { "pattern": "^(p?npm|bun)\\s+(install|test|run|build|update)" },
+            { "pattern": "^git\\s+(status|log|diff|branch|pull)" },
+            {
+              "pattern": "^(ls|cat|pwd|echo|which|find|grep|tree|test|head|tail|wc)\\b",
+            },
+          ],
+          "always_deny": [
+            { "pattern": "rm\\s+-rf\\s+(/|~)" },
+            { "pattern": "sudo\\b" },
+          ],
+        },
+      },
+    },
   },
   "auto_install_extensions": {
-    "biome": true,
     "catppuccin-icons": true,
-    "crates-lsp": true,
     "emmet": true,
     "git-firefly": true,
     "html": true,
-    "nu": true,
-    "stylelint": true,
     "toml": true,
   },
   "buffer_font_family": "0xProto Nerd Font",
@@ -90,7 +105,6 @@
   "indent_guides": { "enabled": true },
   "inline_code_actions": false,
   "languages": {
-    "JSON": { "language_servers": ["vacuum", "..."] },
     "TypeScript": { "language_servers": ["vtsls"] },
     "JavaScript": { "language_servers": ["vtsls"] },
   },
@@ -117,11 +131,6 @@
         },
       },
       "enable_lsp_tasks": true,
-    },
-    "biome": {
-      "settings": {
-        "require_config_file": true,
-      },
     },
   },
   "profiles": {
@@ -154,7 +163,7 @@
     },
   },
   "project_panel": {
-    "auto_fold_dirs": true,
+    "auto_fold_dirs": false,
     "diagnostic_badges": true,
     "dock": "right",
     "entry_spacing": "comfortable",

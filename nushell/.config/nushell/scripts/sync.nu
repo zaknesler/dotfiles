@@ -138,8 +138,6 @@ export def video [
   let date_after = "19700101"
 
   for url in $urls {
-
-
     # Run yt-dlp for each video
     try {
       process-video $url $target_path $date_after $cookies_from_browser $cookies $dry_run true
