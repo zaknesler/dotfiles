@@ -1,10 +1,10 @@
 const DIR = (path self | path dirname)
 
 const YT_DLP_FORMAT = ([
-  "bv*[height<=2160][height>=720][vcodec^=avc1]+ba"
-  "bv*[height<=2160][height>=720][vcodec^=avc]+ba"
-  "bv*[height<=2160][height>=720][vcodec!*=av01]+ba"
-  "b[height<=2160][height>=720]"
+  "bv*[height<=2160][vcodec^=avc1]+ba"
+  "bv*[height<=2160][vcodec^=avc]+ba"
+  "bv*[height<=2160][vcodec!*=av01]+ba"
+  "b[height<=2160]"
 ] | str join "/")
 
 export def download [
