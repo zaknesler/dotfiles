@@ -80,18 +80,26 @@ def myip [] {
     | into record
 }
 
-# Download all images from a URL to the current directory
+# Download all images from a list of URLs to the current directory
 def gdl [
-  ...urls: string # URL containing images to download
-  --default-filename (-d) # Ignore custom filename format and use the default
+  ...urls: string  # URL containing images to download
+  --default-filename (-d)              # Ignore custom filename format and use the default
+  --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
+  --cookies (-C): string               # Path to cookies file
+  --args (-a): list<string>            # Extra arguments to pass through to gallery-dl (e.g., --args [--no-mtime --retries 5])
 ] {
-  if ($default_filename) {
-    # Use gallery-dl with default filename handling
-    gallery-dl -D . ...$urls
-  } else {
-    # Use custom filename format
-    gallery-dl -D . --filename "{date:%Y-%m-%d}_{index}_{filename}.{extension}" ...$urls
-  }
+  let args = [
+    "-D" "."
+    "-c" $"($env.XDG_CONFIG_HOME)/gallery-dl/gallery-dl.conf"
+    (if $default_filename { null } else { ["--filename" "{date:%Y-%m-%d}_{index}_{filename}.{extension}"] })
+    (if $cookies_from_browser != null { ["--cookies-from-browser" $cookies_from_browser] } else { null })
+    (if $cookies != null { ["--cookies" $cookies] } else { null })
+    (if $args != null { $args } else { null })
+  ]
+  | flatten
+  | compact
+
+  echo ...$args ...$urls
 }
 
 # Create backup of file with timestamp
