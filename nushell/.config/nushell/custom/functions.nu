@@ -99,7 +99,7 @@ def gdl [
   | flatten
   | compact
 
-  echo ...$args ...$urls
+  gallery-dl ...$args ...$urls
 }
 
 # Create backup of file with timestamp
