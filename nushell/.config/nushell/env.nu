@@ -1,5 +1,5 @@
-# Nushell Environment Config File
-# version = "0.109.1"
+# Nushell config
+# version = "0.111.0"
 
 # Ensure XDG variables are set
 $env.XDG_CACHE_HOME = ($env.HOME | path join ".cache")
@@ -68,6 +68,7 @@ $env.GNUPGHOME = ($env.XDG_DATA_HOME | path join "gnupg")
 $env.GOMODCACHE = ($env.XDG_CACHE_HOME | path join "go" "mod")
 $env.GOPATH = ($env.HOME | path join "code" "go")
 $env.GRADLE_USER_HOME = ($env.XDG_DATA_HOME | path join "gradle")
+$env.HISTFILE = ($env.XDG_STATE_HOME | path join "bash" "history")
 $env.INPUTRC = ($env.XDG_CONFIG_HOME | path join "readline" "inputrc")
 $env.IPYTHONDIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
 $env.JUPYTER_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
@@ -97,6 +98,7 @@ $env.TEXMFHOME = ($env.XDG_DATA_HOME | path join "texmf")
 $env.TEXMFVAR = ($env.XDG_CACHE_HOME | path join "texlive" "texmf-var")
 $env.VITE_PLUS_HOME = ($env.XDG_CONFIG_HOME | path join "vite-plus")
 $env.WGETRC = ($env.XDG_CONFIG_HOME | path join "wgetrc")
+$env.ZDOTDIR = ($env.XDG_CONFIG_HOME | path join "zsh")
 
 # Docker
 # $env.DOCKER_CONFIG = ($env.XDG_CONFIG_HOME | path join "docker")
