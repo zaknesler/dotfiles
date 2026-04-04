@@ -1,23 +1,30 @@
 // https://zed.dev/docs/configuring-zed
 {
   "agent": {
+    "commit_message_model": {
+      "model": "claude-haiku-4.5",
+      "provider": "copilot_chat",
+    },
     "default_model": {
-      "model": "claude-sonnet-4.5",
+      "effort": "high",
+      "enable_thinking": true,
+      "model": "claude-sonnet-4.6",
       "provider": "copilot_chat",
     },
     "default_profile": "write",
     "favorite_models": [
       { "model": "claude-opus-4.6", "provider": "copilot_chat" },
-      { "model": "claude-sonnet-4.5", "provider": "copilot_chat" },
+      { "model": "claude-sonnet-4.6", "provider": "copilot_chat" },
       { "model": "claude-haiku-4.5", "provider": "copilot_chat" },
     ],
     "inline_assistant_model": {
+      "model": "claude-sonnet-4.6",
       "provider": "copilot_chat",
-      "model": "claude-haiku-4.5",
       "enable_thinking": false,
     },
     "tool_permissions": {
       "tools": {
+        "fetch": { "default": "allow" },
         "terminal": {
           "default": "confirm",
           "always_allow": [
@@ -77,9 +84,9 @@
     "**/*.egg*",
     "**/*.env",
     "**/*.lock*",
+    "**/*.log",
     "**/*.tsbuildinfo",
     "**/*env.d.ts",
-    "**/*.log",
     "**/__*",
     "**/artisan",
     "**/azure*yml",
@@ -93,6 +100,7 @@
     "**/phpunit.xml",
     "**/pnpm-lock*",
     "**/target",
+    "**/tsconfig.*",
     "**/vendor",
     "**/venv",
     ".*",
