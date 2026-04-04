@@ -84,6 +84,9 @@ defaults write com.apple.controlcenter "NSStatusItem Visible KeyboardBrightness"
 defaults write com.apple.controlcenter "NSStatusItem Visible UserSwitcher" -bool 0
 defaults write com.apple.controlcenter RemoteLiveActivitiesEnabled -bool 1
 
+# Brave: disable swipe navigation
+defaults write com.brave.Browser AppleEnableSwipeNavigateWithScrolls -bool FALSE
+
 echo "Restarting Dock, Finder, SystemUIServer..."
 killall Dock Finder SystemUIServer cfprefsd 2>/dev/null || true
 echo "Done."

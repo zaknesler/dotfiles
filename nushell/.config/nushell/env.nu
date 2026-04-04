@@ -161,6 +161,8 @@ if $nu.os-info.name == "macos" {
 
   $env.JAVA_HOME = "/opt/homebrew/opt/java"
   $env.JDK_HOME = "/opt/homebrew/opt/java"
+  $env.LIBRARY_PATH = "/opt/homebrew/lib"
+  $env.CPATH = "/opt/homebrew/include"
 }
 
 # Linux
