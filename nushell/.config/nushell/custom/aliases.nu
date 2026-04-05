@@ -30,6 +30,9 @@ alias grao = git remote add origin
 alias gs = git status
 alias gsh = git stash -u
 alias gshp = git stash pop
+alias gshl = git stash list
+alias gshs = git stash show -p
+alias gshd = git stash drop
 
 alias c = cargo
 
@@ -37,7 +40,6 @@ alias n = npm
 alias ni = npm install
 alias no = npm outdated
 alias nr = npm run
-alias nt = npm test
 alias nrb = npm run build
 alias nrd = npm run dev
 alias nrs = npm run start
@@ -48,12 +50,22 @@ alias pn = pnpm
 alias pni = pnpm install
 alias pno = pnpm outdated
 alias pnr = pnpm run
-alias pnt = pnpm run
 alias pnrb = pnpm run build
 alias pnrd = pnpm run dev
 alias pnrs = pnpm run start
 alias pnrp = pnpm run preview
 alias pnrt = pnpm run test
+
+alias bn = bun
+alias bni = bun install
+alias bno = bun outdated
+alias bnr = bun run
+alias bnrb = bun run build
+alias bnrd = bun run dev
+alias bnrs = bun run start
+alias bnrp = bun run preview
+alias bnrt = bun run test
+alias bnx = bunx
 
 alias dr = docker
 alias drc = docker-compose
