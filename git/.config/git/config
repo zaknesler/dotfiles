@@ -23,3 +23,10 @@
 [push]
 	autoSetupRemote = true
 	default = current
+[difftool]
+  prompt = false
+[pager]
+  difftool = true
+[diff]
+  external = difft
+  tool = difftastic
