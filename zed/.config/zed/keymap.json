@@ -8,10 +8,7 @@
       "ctrl-tab": "pane::ActivateNextItem",
       "ctrl-shift-tab": "pane::ActivatePreviousItem",
       "ctrl-alt-win-c": "workspace::ToggleCenteredLayout",
-      "cmd-shift-g": [
-        "task::Spawn",
-        { "task_name": "LazyGit", "reveal_target": "center" },
-      ],
+      "cmd-shift-g": "git_panel::ToggleFocus",
       "ctrl-}": "window::ShowNextWindowTab",
       "ctrl-{": "window::ShowPreviousWindowTab",
     },
@@ -43,6 +40,13 @@
       "ctrl-alt-v": "project_panel::ToggleHideHidden",
       "alt-cmd-v": "project_panel::ToggleHideHidden",
       "alt-cmd-i": null,
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "cmd-g": "search::SelectNextMatch",
+      "cmd-shift-g": "search::SelectPreviousMatch",
     },
   },
 ]

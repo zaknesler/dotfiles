@@ -38,6 +38,15 @@ def nah [
   }
 }
 
+# Delete all local git branches except main/master/dev
+def gclean [] {
+  git branch
+  | lines
+  | each { str trim }
+  | where { |b| not ($b | str starts-with '*') and ($b not-in ['main', 'master', 'dev']) }
+  | each { |b| git branch -D $b }
+}
+
 # Initialize and create a private GitHub repository
 def ghcr [repo: string] {
   git init
