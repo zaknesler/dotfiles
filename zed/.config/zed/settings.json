@@ -1,6 +1,9 @@
 // https://zed.dev/docs/configuring-zed
 {
   "agent": {
+    "flexible": true,
+    "sidebar_side": "left",
+    "dock": "left",
     "commit_message_model": {
       "model": "claude-haiku-4.5",
       "provider": "copilot_chat",
@@ -55,7 +58,7 @@
   "buffer_font_features": { "calt": false, "ss01": false },
   "buffer_font_size": 14,
   "buffer_line_height": { "custom": 2.1 },
-  "collaboration_panel": { "button": false },
+  "collaboration_panel": { "dock": "right", "button": false },
   "colorize_brackets": false,
   "current_line_highlight": "all",
   "disable_ai": false,
@@ -73,7 +76,7 @@
   "ensure_final_newline_on_save": true,
   "git": { "inline_blame": { "enabled": false } },
   "git_panel": {
-    "dock": "left",
+    "dock": "right",
     "sort_by_path": false,
     "tree_view": false,
   },
@@ -86,7 +89,6 @@
     "**/*.log",
     "**/*.tsbuildinfo",
     "**/*env.d.ts",
-    "**/__*",
     "**/artisan",
     "**/azure*yml",
     "**/build",
@@ -103,6 +105,7 @@
     "**/vendor",
     "**/venv",
     ".*",
+    "/__*",
     "/sentry*",
   ],
   "icon_theme": {
@@ -140,6 +143,9 @@
       },
       "enable_lsp_tasks": true,
     },
+  },
+  "outline_panel": {
+    "dock": "right",
   },
   "profiles": {
     "Focus": {

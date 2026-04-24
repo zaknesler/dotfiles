@@ -4,7 +4,7 @@
     "label": "Create styles.module.css",
     "command": "touch",
     "args": ["${ZED_DIRNAME}/styles.module.css"],
-    "reveal": "never"
+    "reveal": "never",
   },
   {
     "label": "Checkout audit fix branch",
@@ -12,17 +12,6 @@
     "args": ["checkout -b tweak/audit-fix-$(date +%-m)-$(date +%-d)"],
     "shell": { "program": "sh" },
     "reveal": "never",
-    "hide": "always"
+    "hide": "always",
   },
-  {
-    "label": "LazyGit",
-    "command": "lazygit",
-    "shell": { "program": "sh" },
-    "hide": "on_success",
-    "reveal_target": "center",
-    "show_summary": false,
-    "show_command": false,
-    "allow_concurrent_runs": true,
-    "use_new_terminal": true
-  }
 ]
