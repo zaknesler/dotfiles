@@ -213,3 +213,51 @@ def killport [port: int] {
     print $"Killed process ($pid) on port ($port)"
   }
 }
+
+# Convert a video to a GIF, using ffmpeg
+def to-gif [
+  input: string                   # Input video file
+  --output (-o): string           # Output GIF filename (defaults to input filename with .gif extension)
+  --duration (-t): float          # Duration in seconds to convert (default: full video)
+  --speed (-s): float = 1.0       # Playback speed multiplier (e.g., 0.5 = half speed, 2.0 = double speed)
+  --fps (-f): int = 15            # Frames per second of output GIF
+  --width (-w): int = 500         # Width of output GIF in pixels (height is auto-scaled)
+  --loop (-l): int = 0            # Number of times to loop (0 = infinite)
+  --square (-q)                   # Crop output to a square (centered)
+  --quality (-Q): string = "high" # Dithering quality: "high" (sierra2_4a), "medium" (floyd_steinberg), "low" (bayer), "none"
+  --top-text (-T): string         # Top text (Impact font, white with black outline)
+  --bottom-text (-B): string      # Bottom text (Impact font, white with black outline)
+] {
+  let out = if $output != null {
+    $output
+  } else {
+    let parsed = ($input | path parse)
+    $"($parsed.stem).gif"
+  }
+
+  let dither = match $quality {
+    "high"   => "dither=sierra2_4a",
+    "medium" => "dither=floyd_steinberg",
+    "low"    => "dither=bayer:bayer_scale=3",
+    "none"   => "dither=none",
+    _        => { print $"Unknown quality '($quality)', expected: high, medium, low, none"; return }
+  }
+
+  let pts = $"setpts=(1 / ($speed))*PTS"
+  let crop = if $square { "crop=min(iw\\,ih):min(iw\\,ih)," } else { "" }
+  let scale = $"scale=($width):-1:flags=lanczos"
+
+  let text_style = "font=Impact:fontcolor=white:bordercolor=black:borderw=3"
+  let top_filter = if $top_text != null {
+    $",drawtext=($text_style):fontsize=($width / 8):text='($top_text)':x=\(w-text_w\)/2:y=10"
+  } else { "" }
+  let bottom_filter = if $bottom_text != null {
+    $",drawtext=($text_style):fontsize=($width / 8):text='($bottom_text)':x=\(w-text_w\)/2:y=h-text_h-10"
+  } else { "" }
+
+  let vf = $"($pts),($crop)fps=($fps),($scale)($top_filter)($bottom_filter),split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse=($dither)"
+
+  let duration_args = if $duration != null { ["-t" $duration] } else { [] }
+
+  ffmpeg -i $input ...$duration_args -vf $vf -loop $loop $out
+}
