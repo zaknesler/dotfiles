@@ -2,14 +2,14 @@
   <img height="70px" src="https://user-images.githubusercontent.com/7189795/222496059-5d1dfedb-3a0d-45d1-9b20-b364ab1ba7a5.svg" />
 </p>
 
-This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GNU Stow](https://www.gnu.org/software/stow) to organize the configuration files, and follows the [XDG Base Directory specification](https://wiki.archlinux.org/index.php/XDG_Base_Directory) to keep my home directory (`~/`) as clean as possible.
+This is the repository for all of my dotfiles for Linux/Mac/Windows. It follows the [XDG Base Directory specification](https://wiki.archlinux.org/index.php/XDG_Base_Directory) to keep my home directory (`~/`) as clean as possible.
 
 > [!IMPORTANT]
 > Do not start Nushell until the directories are symlinked. Nushell will not let you symlink its config directory if it's already running. Use the default shell (`bash`, `zsh`, etc.) for the first few steps.
 
 ### Installation
 
-1. Install [Nushell](https://github.com/nushell/nushell), [GNU Stow](https://www.gnu.org/software/stow), and [Neovim](https://github.com/neovim/neovim)
+1. Install [Nushell](https://github.com/nushell/nushell) and [Neovim](https://github.com/neovim/neovim)
 
 1. Clone repository to `~/.config/dotfiles` and `cd` into it
 
@@ -18,10 +18,10 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It uses [GN
    cd ~/.config/dotfiles
    ```
 
-1. Symlink directories using Stow
+1. Symlink directories
 
    ```bash
-   ls -d */ | xargs stow -t $HOME
+   bash ./link.sh link
    ```
 
 1. Install Homebrew (macOS only)
