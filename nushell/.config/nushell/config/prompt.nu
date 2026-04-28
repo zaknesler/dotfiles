@@ -1,3 +1,5 @@
+use ../colors/theme.nu *
+
 def spacify [lines: list<string> sep: string = " "] {
   if ($lines | is-empty) { return "" }
 
@@ -11,8 +13,8 @@ export def create_left_prompt [] {
     $relative_pwd => ([~ $relative_pwd] | path join)
   }
 
-  let path_color = if (is-admin) { ansi light_red } else { ansi deepskyblue2 }
-  let separator_color = if (is-admin) { ansi red } else { ansi deepskyblue4b }
+  let path_color = if (is-admin) { ansi $theme.error } else { ansi $theme.link }
+  let separator_color = if (is-admin) { ansi $theme.error_dim } else { ansi $theme.type }
   let path_segment = $"($path_color)($dir)"
 
   let path = $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
@@ -22,7 +24,6 @@ export def create_left_prompt [] {
 }
 
 def git_info [] {
-  # nu_plugin_gstat must be installed
   if (which gstat | is-empty) { return "" }
 
   let git = (gstat);
@@ -36,39 +37,39 @@ def git_info [] {
   }
 
   let repo = match [ ($git | get branch) ($git | get tag) ] {
-    [ $branch $tag ] if $branch != "no_branch" and $tag == "no_tag" => ([ (ansi seagreen3) $branch ] | str join)
+    [ $branch $tag ] if $branch != "no_branch" and $tag == "no_tag" => ([ (ansi $theme.string) $branch ] | str join)
     [ $branch $tag ] if $tag != "no_branch" and ($tag | is-not-empty) and $tag != "no_tag" => ([
-      (ansi seagreen3) $branch
-      (ansi grey53) " #" $tag
+      (ansi $theme.string) $branch
+      (ansi $theme.fg_dim) " #" $tag
     ] | str join)
     _ => ""
   }
 
   let items = spacify [
     $repo
-    (create-item ahead [ (ansi yellow) (char upwards_arrow) ])
-    (create-item behind [ (ansi yellow) (char downwards_arrow) ])
-    (create-item wt_modified [ (ansi yellow) "!" ])
-    (create-item wt_deleted [ (ansi yellow) "-" ])
-    (create-item idx_modified_staged [ (ansi light_green) "+" ])
-    (create-item idx_deleted_staged [ (ansi light_red) "-" ])
-    (create-item stashes [ (ansi yellow) "*" ])
+    (create-item ahead [ (ansi $theme.number) (char upwards_arrow) ])
+    (create-item behind [ (ansi $theme.number) (char downwards_arrow) ])
+    (create-item wt_modified [ (ansi $theme.number) "!" ])
+    (create-item wt_deleted [ (ansi $theme.accent) "-" ])
+    (create-item idx_modified_staged [ (ansi $theme.string) "+" ])
+    (create-item idx_deleted_staged [ (ansi $theme.primary) "-" ])
+    (create-item stashes [ (ansi $theme.keyword) "*" ])
   ]
 
   match $items {
-    $inner if ($inner | is-not-empty) => ([ (ansi darkseagreen4a) "[" $inner (ansi darkseagreen4a) "]" ] | str join)
+    $inner if ($inner | is-not-empty) => ([ (ansi $theme.fg_faint) "[" $inner (ansi $theme.fg_faint) "]" ] | str join)
     _ => ""
   }
 }
 
 export def create_right_prompt [] {
   let last_exit_code = match $env.LAST_EXIT_CODE {
-    $code if $code != 0 => ([ (ansi rb) ($env.LAST_EXIT_CODE) ] | str join)
+    $code if $code != 0 => ([ (ansi --escape { fg: $theme.error attr: 'b' }) ($env.LAST_EXIT_CODE) ] | str join)
     _ => ""
   }
 
   let login = [ (whoami | str downcase) (sys host | get hostname) ] | str join "@"
-  let user = [ (ansi tan) $login ] | str join
+  let user = [ (ansi $theme.metadata) $login ] | str join
 
   let type = match () {
     _ if ("/run/WSL" | path exists) => "wsl"
@@ -80,13 +81,13 @@ export def create_right_prompt [] {
   }
 
   let session = match $type {
-    $type if ($type | is-not-empty) => ([ (ansi lightslategrey) "[" (ansi lightslateblue) $type (ansi lightslategrey) "]" ] | str join)
+    $type if ($type | is-not-empty) => ([ (ansi $theme.fg_faint) "[" (ansi $theme.keyword) $type (ansi $theme.fg_faint) "]" ] | str join)
     _ => ""
   }
 
-  let time = [ (ansi white_dimmed) (date now | format date "%I:%M:%S %p") ]
+  let time = [ (ansi $theme.fg_muted) (date now | format date "%I:%M:%S %p") ]
     | str join
-    | str replace --regex --all "([/:])" $"(ansi dark_gray_dimmed)${1}(ansi white_dimmed)"
+    | str replace --regex --all "([/:])" $"(ansi $theme.fg_faint)${1}(ansi $theme.fg_muted)"
 
   spacify [ $last_exit_code $user $session $time ] ([ (ansi reset) (char space) ] | str join)
 }
