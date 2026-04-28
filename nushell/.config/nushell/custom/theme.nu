@@ -1,97 +1,129 @@
+use ../colors/theme.nu *
+
 export def main [] {
   return {
-    binary: '#55859b'
-    block: '#478c90'
-    cell-path: '#87928a'
-    closure: '#1c9aa0'
-    custom: '#ecf4ee'
-    duration: '#a07e3b'
-    float: '#b16139'
-    glob: '#ecf4ee'
-    int: '#55859b'
-    list: '#1c9aa0'
-    nothing: '#b16139'
-    range: '#a07e3b'
-    record: '#1c9aa0'
-    string: '#489963'
-
-    bool: {|| if $in { '#1c9aa0' } else { '#a07e3b' } }
+    # Primitives
+    binary: $theme.number
+    block: $theme.type
+    bool: {|| if $in { $theme.string } else { $theme.primary } }
+    cell-path: $theme.metadata
+    closure: $theme.accent
+    custom: $theme.fg
+    duration: $theme.number
+    float: $theme.number
+    glob: $theme.link
+    int: $theme.number
+    list: $theme.type
+    nothing: $theme.primary
+    range: $theme.number
+    record: $theme.type
+    string: $theme.string
 
     datetime: {|| (date now) - $in |
       if $in < 1hr {
-        { fg: '#b16139' attr: 'b' }
+        { fg: $theme.primary attr: 'b' }
       } else if $in < 6hr {
-        '#b16139'
+        $theme.primary
       } else if $in < 1day {
-        '#a07e3b'
+        $theme.accent
       } else if $in < 3day {
-        '#489963'
+        $theme.number
       } else if $in < 1wk {
-        { fg: '#489963' attr: 'b' }
+        { fg: $theme.string attr: 'b' }
       } else if $in < 6wk {
-        '#1c9aa0'
+        $theme.link
       } else if $in < 52wk {
-        '#478c90'
-      } else { 'dark_gray' }
+        $theme.type
+      } else { $theme.fg_faint }
     }
 
     filesize: {|e|
       if $e == 0b {
-        '#87928a'
+        $theme.fg_faint
       } else if $e < 1mb {
-        '#1c9aa0'
-      } else {{ fg: '#478c90' }}
+        $theme.string
+      } else if $e < 1gb {
+        $theme.number
+      } else if $e < 100gb {
+        $theme.accent
+      } else {
+        { fg: $theme.primary attr: 'b' }
+      }
     }
 
-    shape_and: { fg: '#55859b' attr: 'b' }
-    shape_binary: { fg: '#55859b' attr: 'b' }
-    shape_block: { fg: '#478c90' attr: 'b' }
-    shape_bool: '#1c9aa0'
-    shape_closure: { fg: '#1c9aa0' attr: 'b' }
-    shape_custom: '#489963'
-    shape_datetime: { fg: '#1c9aa0' attr: 'b' }
-    shape_directory: '#1c9aa0'
-    shape_external: '#1c9aa0'
-    shape_external_resolved: '#1c9aa0'
-    shape_externalarg: { fg: '#489963' attr: 'b' }
-    shape_filepath: '#1c9aa0'
-    shape_flag: { fg: '#478c90' attr: 'b' }
-    shape_float: { fg: '#b16139' attr: 'b' }
-    shape_garbage: { fg: '#FFFFFF' bg: '#FF0000' attr: 'b' }
-    shape_glob_interpolation: { fg: '#1c9aa0' attr: 'b' }
-    shape_globpattern: { fg: '#1c9aa0' attr: 'b' }
-    shape_int: { fg: '#55859b' attr: 'b' }
-    shape_internalcall: { fg: '#1c9aa0' attr: 'b' }
-    shape_keyword: { fg: '#55859b' attr: 'b' }
-    shape_list: { fg: '#1c9aa0' attr: 'b' }
-    shape_literal: '#478c90'
-    shape_match_pattern: '#489963'
+    # Callables
+    shape_internalcall: $theme.accent
+    shape_external: $theme.accent
+    shape_external_resolved: $theme.accent
+    shape_externalarg: $theme.fg
+    shape_closure: { fg: $theme.accent attr: 'i' }
+
+    # Keywords / control flow
+    shape_keyword: $theme.keyword
+    shape_pipe: $theme.keyword
+    shape_redirection: { fg: $theme.keyword attr: 'b' }
+    shape_and: { fg: $theme.keyword attr: 'b' }
+    shape_or: { fg: $theme.keyword attr: 'b' }
+    shape_match_pattern: $theme.keyword
+
+    # Operators
+    shape_operator: $theme.fg_muted
+
+    # Strings
+    shape_string: $theme.string
+    shape_string_interpolation: { fg: $theme.link attr: 'b' }
+    shape_raw_string: $theme.string_alt
+
+    # Numbers / constants
+    shape_int: $theme.number
+    shape_float: $theme.number
+    shape_range: $theme.number
+    shape_binary: $theme.number
+    shape_datetime: $theme.number
+
+    # Booleans / nothing
+    shape_bool: $theme.primary
+    shape_nothing: { fg: $theme.primary attr: 'i' }
+
+    # Filesystem
+    shape_filepath: $theme.link
+    shape_directory: { fg: $theme.link attr: 'b' }
+    shape_glob_interpolation: { fg: $theme.link attr: 'b' }
+    shape_globpattern: $theme.link
+
+    # Variables
+    shape_variable: $theme.fg
+    shape_vardecl: { fg: $theme.fg attr: 'u' }
+
+    # Flags
+    shape_flag: { fg: $theme.parameter attr: 'i' }
+
+    # Structural types
+    shape_block: { fg: $theme.type attr: 'b' }
+    shape_record: $theme.type
+    shape_list: $theme.type
+    shape_table: { fg: $theme.type attr: 'b' }
+    shape_signature: { fg: $theme.type attr: 'i' }
+
+    # Literals
+    shape_literal: $theme.number
+    shape_custom: { attr: 'b' }
+
+    # Errors
+    shape_garbage: { fg: $theme.fg bg: $theme.error_bg attr: 'b' }
     shape_matching_brackets: { attr: 'u' }
-    shape_nothing: '#b16139'
-    shape_operator: '#a07e3b'
-    shape_or: { fg: '#55859b' attr: 'b' }
-    shape_pipe: { fg: '#55859b' attr: 'b' }
-    shape_range: { fg: '#a07e3b' attr: 'b' }
-    shape_raw_string: { fg: '#ecf4ee' attr: 'b' }
-    shape_record: { fg: '#1c9aa0' attr: 'b' }
-    shape_redirection: { fg: '#55859b' attr: 'b' }
-    shape_signature: { fg: '#489963' attr: 'b' }
-    shape_string: '#489963'
-    shape_string_interpolation: { fg: '#1c9aa0' attr: 'b' }
-    shape_table: { fg: '#478c90' attr: 'b' }
-    shape_vardecl: { fg: '#478c90' attr: 'u' }
-    shape_variable: '#55859b'
 
-    foreground: '#87928a'
-    background: '#171c19'
-    cursor: '#87928a'
+    # UI chrome
+    foreground: $theme.fg
+    background: $theme.bg
+    cursor: $theme.primary
 
-    empty: '#478c90'
-    header: { fg: '#489963' attr: 'b' }
-    hints: '#5f6d64'
+    header: { fg: $theme.primary attr: 'b' }
+    row_index: { fg: $theme.metadata attr: 'b' }
+    separator: $theme.border
+    empty: $theme.fg_faint
+    hints: $theme.fg_faint
+    search_result: { fg: $theme.fg bg: ($theme.primary + '40') }
     leading_trailing_space_bg: { attr: 'n' }
-    row_index: { fg: '#489963' attr: 'b' }
-    search_result: { fg: '#b16139' bg: '#87928a' }
-    separator: '#87928a'
   }
 }

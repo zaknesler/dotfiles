@@ -204,7 +204,7 @@
     "folder_icons": true,
     "git_status": true,
     "git_status_indicator": false,
-    "hide_hidden": false,
+    "hide_hidden": true,
     "hide_root": false,
     "indent_size": 16,
     "show_diagnostics": "off",
