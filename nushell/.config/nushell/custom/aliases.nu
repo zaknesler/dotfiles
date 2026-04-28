@@ -33,6 +33,7 @@ alias gshp = git stash pop
 alias gshl = git stash list
 alias gshs = git stash show -p
 alias gshd = git stash drop
+alias gsmu = git submodule update --init --recursive --remote
 
 alias c = cargo
 
