@@ -2,7 +2,7 @@
   "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
   "name": "DA",
   "author": "Zak Nesler",
-  "description": "Ported from Ihor Oleksandrov's Sublime DA UI theme",
+  "description": "Ported from Ihor Oleksandrov's Sublime DA UI (Sodish) theme",
   "themes": [
     {
       "name": "DA Dark",
