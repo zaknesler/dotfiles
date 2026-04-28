@@ -240,8 +240,8 @@
     "shell": { "program": "nu" },
   },
   "theme": {
-    "dark": "One Dark",
-    "light": "One Light",
+    "dark": "Orange Dark",
+    "light": "Orange Light",
     "mode": "system",
   },
   "theme_overrides": {
