@@ -30,7 +30,7 @@ def wip [] {
 
 # Discard all git changes
 def nah [
-  --yes (-y) # Accept yes/no prompt
+  --yes # Accept yes/no prompt
 ] {
   if $yes or (input "you sure? (y/n): ") == "y"  {
     git reset --hard
