@@ -1,6 +1,8 @@
 use ../colors/theme.nu *
 
 export def main [] {
+  let theme = (palette)
+
   return {
     # Primitives
     binary: $theme.number
@@ -126,4 +128,20 @@ export def main [] {
     search_result: { fg: $theme.fg bg: ($theme.primary + '40') }
     leading_trailing_space_bg: { attr: 'n' }
   }
+}
+
+export def --env dark [] {
+  write_mode "dark"
+  $env.config.color_config = (main)
+}
+
+export def --env light [] {
+  write_mode "light"
+  $env.config.color_config = (main)
+}
+
+export def --env toggle [] {
+  let new = if (current_mode) == "light" { "dark" } else { "light" }
+  write_mode $new
+  $env.config.color_config = (main)
 }

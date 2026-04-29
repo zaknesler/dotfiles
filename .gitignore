@@ -20,6 +20,7 @@ Brewfile.lock*
 history.txt
 plugin.nu
 *.msgpackz
+.mode
 
 nushell/.config/nushell/scripts*/*.nuon
 

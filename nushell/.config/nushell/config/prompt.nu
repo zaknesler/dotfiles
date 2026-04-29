@@ -7,6 +7,8 @@ def spacify [lines: list<string> sep: string = " "] {
 }
 
 export def create_left_prompt [] {
+  let theme = (palette)
+
   let dir = match (do --ignore-errors { $env.PWD | path relative-to $nu.home-path }) {
     null => $env.PWD
     '' => '~'
@@ -28,6 +30,8 @@ def git_info [] {
 
   let git = (gstat);
   if ($git | get repo_name | is-empty) { return "" }
+
+  let theme = (palette)
 
   def create-item [value: string items: list<string>] {
     match ($git | get $value) {
@@ -63,6 +67,8 @@ def git_info [] {
 }
 
 export def create_right_prompt [] {
+  let theme = (palette)
+
   let last_exit_code = match $env.LAST_EXIT_CODE {
     $code if $code != 0 => ([ (ansi --escape { fg: $theme.error attr: 'b' }) ($env.LAST_EXIT_CODE) ] | str join)
     _ => ""
