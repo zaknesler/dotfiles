@@ -11,7 +11,7 @@ alias vim = nvim
 
 alias l = ls -a
 alias la = ls -a
-def ll [...args] { ls -la ...$args | reject inode num_links readonly target }
+def ll [] { ls -la | reject inode num_links readonly target }
 alias lll = ls -la
 
 alias gaa = git add -A
