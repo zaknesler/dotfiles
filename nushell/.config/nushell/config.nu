@@ -3,6 +3,8 @@ use menus.nu
 use theme.nu
 use colors/theme.nu *
 
+let theme = (palette)
+
 $env.config = {
   menus: (menus)
   keybindings: (binds)
