@@ -4,18 +4,16 @@ return {
     lazy = false,
     name = "catppuccin",
     priority = 1000,
-    version = "1.6.x",
+    version = "2.x.x",
     config = function()
       require("catppuccin").setup({
-        flavour = "mocha",
-        transparent_background = false,
-        show_end_of_buffer = false,
-        term_colors = false,
-        dim_inactive = {
-          enabled = false,
-          shade = "dark",
-          percentage = 0.15,
+        flavour = "auto",
+        background = {
+          light = "latte",
+          dark = "mocha",
         },
+        transparent_background = true,
+        term_colors = false,
         no_italic = false,
         no_bold = false,
         styles = {
@@ -32,8 +30,29 @@ return {
           types = {},
           operators = {},
         },
+        lsp_styles = {
+          virtual_text = {
+            errors = { "italic" },
+            hints = { "italic" },
+            warnings = { "italic" },
+            information = { "italic" },
+            ok = { "italic" },
+          },
+          underlines = {
+            errors = { "underline" },
+            hints = { "underline" },
+            warnings = { "underline" },
+            information = { "underline" },
+            ok = { "underline" },
+          },
+          inlay_hints = {
+            background = true,
+          },
+        },
         color_overrides = {},
         custom_highlights = {},
+        default_integrations = true,
+        auto_integrations = false,
         integrations = {
           cmp = true,
           gitsigns = true,
