@@ -6,19 +6,28 @@ export def main [
   --reset-to-dev(-R) # Reset to dev on all repos
   --npm-audit(-A) # Run NPM audit
   --npm-link(-L) # Run NPM link for dependencies
+  --latest(-U) # Update to latest internal packages
   --sequential(-s) # Run sequentially instead of in parallel
 ] {
   let repos = open ($DIR | path join "branches.nuon")
 
+  let options = {
+    npm_install: $npm_install,
+    reset_to_dev: $reset_to_dev,
+    npm_audit: $npm_audit,
+    npm_link: $npm_link,
+    latest: $latest,
+  }
+
   if $sequential {
-    $repos | each {|r| process-repo $r --npm-install=$npm_install --reset-to-dev=$reset_to_dev --npm-audit=$npm_audit --npm-link=$npm_link }
+    $repos | each {|r| process-repo $r $options }
   } else {
-    $repos | par-each {|r| process-repo $r --npm-install=$npm_install --reset-to-dev=$reset_to_dev --npm-audit=$npm_audit --npm-link=$npm_link } | collect
+    $repos | par-each {|r| process-repo $r $options } | collect
   }
 }
 
 # Function that runs the repo checks
-def process-repo [repo: record --npm-install --reset-to-dev --npm-audit --npm-link] {
+def process-repo [repo: record, options: record] {
   let path = ($env.HOME | path join ($repo.path | path join))
   cd $path
 
@@ -26,7 +35,7 @@ def process-repo [repo: record --npm-install --reset-to-dev --npm-audit --npm-li
 
   let _ = (git fetch out+err> /dev/null)
 
-  if $reset_to_dev {
+  if $options.reset_to_dev {
     git restore package-lock.json
     git reset --hard
     git clean -df
@@ -34,16 +43,18 @@ def process-repo [repo: record --npm-install --reset-to-dev --npm-audit --npm-li
     git pull
   }
 
-  if $npm_install {
+  if $options.npm_install {
     try { npm install out+err> /dev/null }
     git restore package-lock.json
   }
 
-  if $npm_link and ($repo.npm_link | length) > 0 {
-    try { npm link ...$repo.npm_link }
+  if $options.npm_link and ($repo.woop_packages | length) > 0 {
+    try { npm link ...$repo.woop_packages }
+  } else if $options.latest and ($repo.woop_packages | length) > 0 {
+    try { npm install ...($repo.woop_packages | each { |p| $"($p)@latest" }) }
   }
 
-  if $npm_audit {
+  if $options.npm_audit {
     try { npm audit }
   }
 
