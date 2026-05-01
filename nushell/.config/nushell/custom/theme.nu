@@ -36,7 +36,7 @@ export def main [] {
         $theme.link
       } else if $in < 52wk {
         $theme.type
-      } else { $theme.fg_faint }
+      } else { $theme.metadata }
     }
 
     filesize: {|e|
