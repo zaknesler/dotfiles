@@ -104,7 +104,16 @@ export def download [
 
     # Run yt-dlp
     try {
-      process-video $channel.url $channel.path $date_after $cookies_from_browser $cookies $dry_run $no_break_on_existing
+      process-video {
+        url: $channel.url
+        output_path: $channel.path
+        date_after: $date_after
+        cookies_from_browser: $cookies_from_browser
+        cookies: $cookies
+        dry_run: $dry_run
+        no_break_on_existing: $no_break_on_existing
+        channel_name: $channel.name
+      }
       print $"✓ Synced ($channel.name)"
     } catch { |err|
       # The debug field is a string, need to check if it contains exit_code: 101
@@ -140,7 +149,15 @@ export def video [
   for url in $urls {
     # Run yt-dlp for each video
     try {
-      process-video $url $target_path $date_after $cookies_from_browser $cookies $dry_run true
+      process-video {
+        url: $url
+        output_path: $target_path
+        date_after: $date_after
+        cookies_from_browser: $cookies_from_browser
+        cookies: $cookies
+        dry_run: $dry_run
+        no_break_on_existing: true
+      }
       print $"✓ Downloaded video\(s\)"
     } catch { |err|
       print $"✗ Failed to download video\(s\): ($err.msg)"
@@ -195,15 +212,16 @@ export def list [
 
 
 # Internal helper function to run yt-dlp with specified arguments
-def process-video [
-  url: string
-  output_path: string
-  date_after: string
-  cookies_from_browser?: string
-  cookies?: string
-  dry_run: bool = false
-  no_break_on_existing: bool = false
-] {
+def process-video [options: record] {
+  let url = $options.url
+  let output_path = $options.output_path
+  let date_after = $options.date_after
+  let cookies_from_browser = $options.cookies_from_browser?
+  let cookies = $options.cookies?
+  let dry_run = $options.dry_run? | default false
+  let no_break_on_existing = $options.no_break_on_existing? | default false
+  let channel_name = $options.channel_name?
+
   # Build yt-dlp arguments
   let base_args = [
     # Main video output
@@ -265,13 +283,20 @@ def process-video [
     []
   }
 
+  # Override artist/album with the config channel name if provided
+  let channel_name_args = if ($channel_name | is-not-empty) {
+    [--replace-in-metadata "meta_artist,meta_album" ".+" $channel_name]
+  } else {
+    []
+  }
+
   let dry_run_args = if $dry_run {
     [--simulate --print "%(upload_date>%Y-%m-%d)s - %(title)s [%(id)s]"]
   } else {
     []
   }
 
-  let all_args = ($base_args | append $break_args | append $cookie_args | append $dry_run_args | append $url)
+  let all_args = ($base_args | append $channel_name_args | append $break_args | append $cookie_args | append $dry_run_args | append $url)
 
   # Run yt-dlp
   yt-dlp ...$all_args
