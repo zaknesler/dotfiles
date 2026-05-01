@@ -100,7 +100,7 @@ def gdl [
   let args = [
     "-D" "."
     "-c" $"($env.XDG_CONFIG_HOME)/gallery-dl/gallery-dl.conf"
-    (if $default_filename { null } else { ["--filename" "{date:%Y-%m-%d}_{index}_{filename}.{extension}"] })
+    (if $default_filename { null } else { ["--filename" "{username}_{date:%Y-%m-%d}_{index}{index_file:?_//}_{filename}.{extension}"] })
     (if $cookies_from_browser != null { ["--cookies-from-browser" $cookies_from_browser] } else { null })
     (if $cookies != null { ["--cookies" $cookies] } else { null })
     (if $args != null { $args } else { null })
