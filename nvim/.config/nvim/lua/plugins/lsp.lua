@@ -11,7 +11,14 @@ return {
         "lua_ls",
         "rust_analyzer",
         "vtsls",
-      }
+      },
+      handlers = {
+        function(server_name)
+          require("lspconfig")[server_name].setup({
+            capabilities = require("blink.cmp").get_lsp_capabilities(),
+          })
+        end,
+      },
     })
 
     vim.diagnostic.config({
