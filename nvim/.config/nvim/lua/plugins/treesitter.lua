@@ -7,7 +7,7 @@ return {
     config = function()
       require("nvim-treesitter").install({
         "typescript", "tsx", "javascript", "jsdoc",
-        "json", "jsonc", "html", "css",
+        "json", "html", "css",
         "lua", "rust",
         "bash", "markdown", "markdown_inline", "regex",
       })
