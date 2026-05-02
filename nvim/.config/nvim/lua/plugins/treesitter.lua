@@ -9,7 +9,7 @@ return {
         "typescript", "tsx", "javascript", "jsdoc",
         "json", "html", "css",
         "lua", "rust",
-        "bash", "markdown", "markdown_inline", "regex",
+        "bash", "markdown", "regex",
       })
 
       vim.api.nvim_create_autocmd("FileType", {
