@@ -15,6 +15,20 @@ def --env mkcd [dirname: string]: nothing -> nothing {
   cd $dirname
 }
 
+# Print contents of public SSH key
+def catssh [] {
+  let key = ["id_ed25519.pub", "id_rsa.pub"]
+    | each { |k| path join $env.HOME ".ssh" $k }
+    | where { |it| $it | path exists }
+    | first
+
+  if $key != null {
+    cat $key
+  } else {
+    print "No SSH public keys found in ~/.ssh"
+  }
+}
+
 # Initialize Git repository and create initial commit
 def gii [] {
   git init
@@ -120,9 +134,9 @@ def bak [file: string] {
 
 # Compress files/directories into a tar.gz archive
 def tarpls [
-  output: string # Output archive filename (without .tar.gz extension)
-  ...paths: string # Files or directories to compress
-  --exclude-vendor (-e) # Exclude common vendor folders (node_modules, vendor, .git, etc.)
+  output: string         # Output archive filename (without .tar.gz extension)
+  ...paths: string       # Files or directories to compress
+  --exclude-vendor (-e)  # Exclude common vendor folders (node_modules, vendor, .git, etc.)
 ] {
   let tarfile = if ($output | str ends-with ".tar.gz") {
     $output
@@ -216,17 +230,17 @@ def killport [port: int] {
 
 # Convert a video to a GIF, using ffmpeg
 def to-gif [
-  input: string                   # Input video file
-  --output (-o): string           # Output GIF filename (defaults to input filename with .gif extension)
-  --duration (-t): float          # Duration in seconds to convert (default: full video)
-  --speed (-s): float = 1.0       # Playback speed multiplier (e.g., 0.5 = half speed, 2.0 = double speed)
-  --fps (-f): int = 15            # Frames per second of output GIF
-  --width (-w): int = 500         # Width of output GIF in pixels (height is auto-scaled)
-  --loop (-l): int = 0            # Number of times to loop (0 = infinite)
-  --square (-q)                   # Crop output to a square (centered)
-  --quality (-Q): string = "high" # Dithering quality: "high" (sierra2_4a), "medium" (floyd_steinberg), "low" (bayer), "none"
-  --top-text (-T): string         # Top text (Impact font, white with black outline)
-  --bottom-text (-B): string      # Bottom text (Impact font, white with black outline)
+  input: string                    # Input video file
+  --output (-o): string            # Output GIF filename (defaults to input filename with .gif extension)
+  --duration (-t): float           # Duration in seconds to convert (default: full video)
+  --speed (-s): float = 1.0        # Playback speed multiplier (e.g., 0.5 = half speed, 2.0 = double speed)
+  --fps (-f): int = 15             # Frames per second of output GIF
+  --width (-w): int = 500          # Width of output GIF in pixels (height is auto-scaled)
+  --loop (-l): int = 0             # Number of times to loop (0 = infinite)
+  --square (-q)                    # Crop output to a square (centered)
+  --quality (-Q): string = "high"  # Dithering quality: "high" (sierra2_4a), "medium" (floyd_steinberg), "low" (bayer), "none"
+  --top-text (-T): string          # Top text (Impact font, white with black outline)
+  --bottom-text (-B): string       # Bottom text (Impact font, white with black outline)
 ] {
   let out = if $output != null {
     $output
