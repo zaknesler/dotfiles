@@ -27,6 +27,3 @@
   prompt = false
 [pager]
   difftool = true
-[diff]
-  external = difft
-  tool = difftastic
