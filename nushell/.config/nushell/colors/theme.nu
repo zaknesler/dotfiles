@@ -15,6 +15,7 @@ export def current_mode [] {
 
 export def write_mode [mode: string] {
   $mode | save -f (state_file)
+  print $"Theme mode set to: ($mode)"
 }
 
 export def palette [] {
