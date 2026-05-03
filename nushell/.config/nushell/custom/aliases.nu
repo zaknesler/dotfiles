@@ -83,7 +83,6 @@ alias pip = pip3
 alias py = python3
 alias python = python3
 
-alias catssh = cat ~/.ssh/id_*.pub
 alias own = sudo chown -R ([$env.USER $env.USER] | str join ":")
 alias c~ = rm -rf ~/.aws ~/.azure ~/.yarnrc ~/errors.log ~/.sudo_as_admin_successful ~/.wget-hsts ~/.python_history ~/.tailwindcss ~/.omnisharp ~/.nuxtrc ~/.electron ~/.vue-templates ~/.dotnet ~/.racket_history
 
