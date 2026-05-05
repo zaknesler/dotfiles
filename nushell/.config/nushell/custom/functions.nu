@@ -108,15 +108,32 @@ def gdl [
   ...urls: string  # URL containing images to download
   --default-filename (-d)              # Ignore custom filename format and use the default
   --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
+  --include-username (-u)              # Include username in filename
   --cookies (-C): string               # Path to cookies file
   --args (-a): list<string>            # Extra arguments to pass through to gallery-dl (e.g., --args [--no-mtime --retries 5])
 ] {
+  let filename_args = if $default_filename {
+    null
+  } else if $include_username {
+    ["--filename" "{username}{date:%Y-%m-%d}{filename:?_//}{num:?_p//}.{extension}"]
+  } else {
+    ["--filename" "{date:%Y-%m-%d}{filename:?_//}{num:?_p//}.{extension}"]
+  }
+
+  let cookie_args = if $cookies_from_browser != null {
+    ["--cookies-from-browser" $cookies_from_browser]
+  } else if $cookies != null {
+    ["--cookies" $cookies]
+  } else {
+    null
+  }
+
   let args = [
     "-D" "."
+    "-A" "3"
     "-c" $"($env.XDG_CONFIG_HOME)/gallery-dl/gallery-dl.conf"
-    (if $default_filename { null } else { ["--filename" "{username}_{date:%Y-%m-%d}_{index}{index_file:?_//}_{filename}.{extension}"] })
-    (if $cookies_from_browser != null { ["--cookies-from-browser" $cookies_from_browser] } else { null })
-    (if $cookies != null { ["--cookies" $cookies] } else { null })
+    $filename_args
+    $cookie_args
     (if $args != null { $args } else { null })
   ]
   | flatten

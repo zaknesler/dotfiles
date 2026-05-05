@@ -1,10 +1,5 @@
 // https://zed.dev/docs/configuring-zed
 {
-  "cli_default_open_behavior": "existing_window",
-  "log": {
-    "worktree": "trace",
-    "fs": "trace",
-  },
   "agent": {
     "flexible": true,
     "sidebar_side": "left",
@@ -70,6 +65,7 @@
   "buffer_font_features": { "calt": false, "ss01": false },
   "buffer_font_size": 14,
   "buffer_line_height": { "custom": 2.1 },
+  "cli_default_open_behavior": "existing_window",
   "collaboration_panel": { "dock": "right", "button": false },
   "colorize_brackets": false,
   "current_line_highlight": "all",
@@ -209,7 +205,7 @@
     "folder_icons": true,
     "git_status": true,
     "git_status_indicator": false,
-    "hide_hidden": false,
+    "hide_hidden": true,
     "hide_root": false,
     "indent_size": 16,
     "show_diagnostics": "off",
@@ -245,7 +241,7 @@
     "shell": { "program": "nu" },
   },
   "theme": {
-    "dark": "Orange Dark",
+    "dark": "Orange Dimmed",
     "light": "Orange Light",
     "mode": "system",
   },
