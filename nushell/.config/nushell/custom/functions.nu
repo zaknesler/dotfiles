@@ -68,7 +68,7 @@ def ghcr [repo: string] {
   git remote add origin $"git@github.com:zaknesler/($repo).git"
 }
 
-# Run npm run test filtering by test path and name
+# Run `npm run test` filtering by test path and name
 def nt [
   path: string = ""
   name: string = ""
@@ -76,12 +76,29 @@ def nt [
   npm run test $path -- -t $name
 }
 
-# Run pnpm run test filtering by test path and name
+
+# Run `npm run test:api` filtering by test path and name
+def nta [
+  path: string = ""
+  name: string = ""
+] {
+  npm run test:api $path -- -t $name
+}
+
+# Run `pnpm run test` filtering by test path and name
 def pnt [
   path: string = ""
   name: string = ""
 ] {
   pnpm run test $path -- -t $name
+}
+
+# Run `pnpm run test:api` filtering by test path and name
+def pnta [
+  path: string = ""
+  name: string = ""
+] {
+  pnpm run test:api $path -- -t $name
 }
 
 # Reset all changes, git checkout to dev, pull new changes, and re-install npm deps

@@ -72,5 +72,6 @@ def process-repo [repo: record, options: record] {
     deleted: ($git | get wt_deleted),
     type_changed: ($git | get wt_type_changed),
     renamed: ($git | get wt_renamed),
+    stashes: ($git | get stashes),
   }
 }

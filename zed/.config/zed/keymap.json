@@ -12,6 +12,7 @@
       "ctrl-}": "window::ShowNextWindowTab",
       "ctrl-{": "window::ShowPreviousWindowTab",
       "alt-`": "workspace::NewCenterTerminal",
+      // "alt-shift-p": "quick_search::Toggle",
     },
   },
   {
