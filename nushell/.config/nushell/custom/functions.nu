@@ -309,3 +309,39 @@ def to-gif [
 
   ffmpeg -i $input ...$duration_args -vf $vf -loop $loop $out
 }
+
+# Kill all node, npm, etc. processes (excluding Raycast)
+def killnode [
+  --force         # Send SIGKILL immediately instead of SIGTERM
+  --dry-run (-n)  # Show what would be killed without killing
+] {
+  let names = ["node" "npm" "pnpm" "yarn" "bun" "deno" "tsx" "ts-node" "vite" "esbuild"]
+  let name_pattern = $"^\(($names | str join '|')\)$"
+
+  let procs = ps -l
+    | where { |p| ($p.name | path basename) =~ $name_pattern }
+    | where { |p| not (($p.command? | default "") =~ "(?i)raycast") }
+    | where pid != $nu.pid
+
+  if ($procs | is-empty) {
+    print "No node/npm processes found"
+    return
+  }
+
+  print "Matched processes:"
+  $procs | select pid name command? | print
+
+  if $dry_run {
+    print "(dry-run: nothing killed)"
+    return
+  }
+
+  let pids = $procs | get pid
+  if $force {
+    kill --force ...$pids
+  } else {
+    kill ...$pids
+  }
+
+  print $"Killed ($pids | length) process\(es\): ($pids | str join ', ')"
+}
