@@ -43,12 +43,12 @@ def wip [] {
 }
 
 # Discard all git changes
-def nah [
-  --yes # Accept yes/no prompt
-] {
-  if $yes or (input "you sure? (y/n): ") == "y"  {
+def nah [] {
+  if (input "you sure? (y/n): ") == "y"  {
     git reset --hard
     git clean -df
+  } else {
+    print "Cancelled, nothing was discarded"
   }
 }
 
