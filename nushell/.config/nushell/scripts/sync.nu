@@ -1,4 +1,4 @@
-const DIR = (path self | path dirname)
+final_output_pathconst DIR = (path self | path dirname)
 
 const YT_DLP_FORMAT = ([
   "bv*[height<=2160][vcodec^=avc1]+ba"
@@ -142,8 +142,10 @@ export def video [
 
   print $"Downloading ($urls | length) video\(s\) to: ($target_path)"
 
-  # Ensure directory exists
-  mkdir ($target_path | path expand)
+  # Maybe create target directory if it doesn't exist
+  if $title_dir {
+    mkdir ($target_path | path expand)
+  }
 
   # Use date_after of "19700101" to download the video regardless of date
   let date_after = "19700101"
@@ -226,16 +228,22 @@ def process-video [options: record] {
   let channel_name = $options.channel_name?
   let title_dir = $options.title_dir | default false
 
-  let output = if $title_dir {
+  let final_output_path = if $title_dir {
     [$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s].%(ext)s"] | path join
   } else {
     [$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B_[%(id)s].%(ext)s"] | path join
   }
 
+  let final_thumbnail_path = if $title_dir {
+    [$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s]-thumb.%(ext)s"] | path join
+  } else {
+    [$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B_[%(id)s]-thumb.%(ext)s"] | path join
+  }
+
   # Build yt-dlp arguments
   let base_args = [
     # Main video output
-    -o $output
+    -o $final_output_path
     --restrict-filenames  # Removes special characters, use underscores, etc.
     -f $YT_DLP_FORMAT
 
@@ -262,7 +270,7 @@ def process-video [options: record] {
     --write-thumbnail
 
     # Thumbnail in same directory as video
-    -o (["thumbnail:" ([$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(upload_date>%Y-%m-%d)s_%(title).200B_[%(id)s]-thumb.%(ext)s"] | path join)] | str join)
+    -o (["thumbnail:" $final_thumbnail_path] | str join)
     --convert-thumbnails jpg
 
     --write-info-json
