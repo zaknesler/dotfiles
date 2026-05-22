@@ -1,4 +1,4 @@
-final_output_pathconst DIR = (path self | path dirname)
+const DIR = (path self | path dirname)
 
 const YT_DLP_FORMAT = ([
   "bv*[height<=2160][vcodec^=avc1]+ba"
