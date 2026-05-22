@@ -113,6 +113,7 @@ export def download [
         dry_run: $dry_run
         no_break_on_existing: $no_break_on_existing
         channel_name: $channel.name
+        title_dir: true
       }
       print $"✓ Synced ($channel.name)"
     } catch { |err|
@@ -134,6 +135,7 @@ export def video [
   --path (-p): string  # Directory to save the video to (defaults to current directory)
   --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
   --cookies (-c): string  # Path to cookies file
+  --title-dir (-t) # Store videos in a subdirectory named after the video title
   --dry-run (-d)  # Show what would be downloaded without downloading
 ] {
   let target_path = if ($path | is-empty) { "." } else { $path }
@@ -157,6 +159,7 @@ export def video [
         cookies: $cookies
         dry_run: $dry_run
         no_break_on_existing: true
+        title_dir: $title_dir
       }
       print $"✓ Downloaded video\(s\)"
     } catch { |err|
@@ -221,11 +224,18 @@ def process-video [options: record] {
   let dry_run = $options.dry_run? | default false
   let no_break_on_existing = $options.no_break_on_existing? | default false
   let channel_name = $options.channel_name?
+  let title_dir = $options.title_dir | default false
+
+  let output = if $title_dir {
+    [$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s].%(ext)s"] | path join
+  } else {
+    [$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B_[%(id)s].%(ext)s"] | path join
+  }
 
   # Build yt-dlp arguments
   let base_args = [
     # Main video output
-    -o ([$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s].%(ext)s"] | path join)
+    -o $output
     --restrict-filenames  # Removes special characters, use underscores, etc.
     -f $YT_DLP_FORMAT
 
@@ -252,7 +262,7 @@ def process-video [options: record] {
     --write-thumbnail
 
     # Thumbnail in same directory as video
-    -o (["thumbnail:" ([$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s]-thumb.%(ext)s"] | path join)] | str join)
+    -o (["thumbnail:" ([$output_path "%(upload_date>%Y-%m-%d)s_%(title).200B" "%(upload_date>%Y-%m-%d)s_%(title).200B_[%(id)s]-thumb.%(ext)s"] | path join)] | str join)
     --convert-thumbnails jpg
 
     --write-info-json
