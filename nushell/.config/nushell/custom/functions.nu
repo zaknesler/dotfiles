@@ -126,15 +126,23 @@ def gdl [
   --default-filename (-d)              # Ignore custom filename format and use the default
   --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
   --include-username (-u)              # Include username in filename
+  --include-title (-t)                 # Include title in filename (when available)
   --cookies (-C): string               # Path to cookies file
   --args (-a): list<string>            # Extra arguments to pass through to gallery-dl (e.g., --args [--no-mtime --retries 5])
 ] {
   let filename_args = if $default_filename {
     null
-  } else if $include_username {
-    ["--filename" "{username}{date:%Y-%m-%d}{filename:?_//}{num:?_p//}.{extension}"]
   } else {
-    ["--filename" "{date:%Y-%m-%d}{filename:?_//}{num:?_p//}.{extension}"]
+    let filename = [
+      (if $include_username { "{username!g}" } else { "" })
+      "{date:%Y-%m-%d}"
+      (if $include_title { "{title!g:?_//X32//}" } else { "" })
+      "{filename!g:?_//X32//}"
+      "{num:?_p//}"
+      ".{extension}"
+    ] | str join ""
+
+    ["--filename" $filename]
   }
 
   let cookie_args = if $cookies_from_browser != null {
@@ -152,9 +160,7 @@ def gdl [
     $filename_args
     $cookie_args
     (if $args != null { $args } else { null })
-  ]
-  | flatten
-  | compact
+  ] | flatten | compact
 
   gallery-dl ...$args ...$urls
 }
