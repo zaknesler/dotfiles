@@ -122,7 +122,7 @@ def myip [] {
 
 # Download all images from a list of URLs to the current directory
 def gdl [
-  ...urls: string  # URL containing images to download
+  ...urls: string                      # URL(s) containing images to download
   --default-filename (-d)              # Ignore custom filename format and use the default
   --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
   --include-username (-u)              # Include username in filename
