@@ -134,7 +134,7 @@ def gdl [
     null
   } else {
     let filename = [
-      (if $include_username { "{username:?//_/Cg/}" } else { "" })
+      (if $include_username { "{username:?/_/Cg/}" } else { "" })
       "{date:%Y-%m-%d}"
       (if $include_title { "{title:?_//Cg/X32//}" } else { "" })
       "{tweet_id|filename!g:?_//X32//}"
