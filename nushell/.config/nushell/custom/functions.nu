@@ -137,7 +137,7 @@ def gdl [
       (if $include_username { "{username!g}" } else { "" })
       "{date:%Y-%m-%d}"
       (if $include_title { "{title:?_//Cg/X32//}" } else { "" })
-      "{filename!g:?_//X32//}"
+      "{tweet_id|filename!g:?_//X32//}"
       "{num:?_p//}"
       ".{extension}"
     ] | str join ""
