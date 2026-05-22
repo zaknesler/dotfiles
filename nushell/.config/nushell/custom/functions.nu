@@ -136,7 +136,7 @@ def gdl [
     let filename = [
       (if $include_username { "{username!g}" } else { "" })
       "{date:%Y-%m-%d}"
-      (if $include_title { "{title!g:?_//X32//}" } else { "" })
+      (if $include_title { "{title:?_//Cg/X32//}" } else { "" })
       "{filename!g:?_//X32//}"
       "{num:?_p//}"
       ".{extension}"
