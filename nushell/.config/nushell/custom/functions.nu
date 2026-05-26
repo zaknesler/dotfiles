@@ -126,7 +126,7 @@ def gdl [
   --default-filename (-d)              # Ignore custom filename format and use the default
   --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
   --include-username (-u)              # Include username in filename
-  --include-title (-t)                 # Include title in filename (if available) instead of ID
+  --include-title (-t)                 # Use title in filename (if available) instead of ID
   --cookies (-C): string               # Path to cookies file
   --args (-a): list<string>            # Extra arguments to pass through to gallery-dl (e.g., --args [--no-mtime --retries 5])
 ] {
@@ -349,4 +349,41 @@ def killnode [
   }
 
   print $"Killed ($pids | length) process\(es\): ($pids | str join ', ')"
+}
+
+# Convert a file to an MP4 using ffmpeg
+def to-mp4 [
+  input: string                  # Input video file
+  --output (-o): string          # Output MP4 filename (defaults to input filename with .mp4 extension)
+  --keep-hdr (-H)                # Keep HDR metadata
+] {
+  let out = if ($output | is-not-empty) {
+    $output
+  } else {
+    let parsed = ($input | path parse)
+    $"($parsed.stem).mp4"
+  }
+
+  let hdr_args = if $keep_hdr {
+    ["-c:v" "copy"]
+  } else {
+    [
+      "-c:v" "libx264"
+      "-vf" "zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p"
+      "-color_primaries" "bt709"
+      "-color_trc" "bt709"
+      "-colorspace" "bt709"
+    ]
+  }
+
+  let args = [
+    "-i" $input
+    "-map" "0:v:0"
+    "-map" "0:a:0"
+    ...$hdr_args
+    "-c:a" "copy"
+    $out
+  ]
+
+  ffmpeg ...$args
 }
