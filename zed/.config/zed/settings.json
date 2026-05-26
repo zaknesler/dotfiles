@@ -126,8 +126,8 @@
   "indent_guides": { "enabled": true },
   "inline_code_actions": false,
   "languages": {
-    "TypeScript": { "language_servers": ["vtsls"] },
-    "JavaScript": { "language_servers": ["vtsls"] },
+    "TypeScript": { "language_servers": ["tsgo"] },
+    "JavaScript": { "language_servers": ["tsgo"] },
   },
   "language_models": {
     "ollama": { "api_url": "http://10.0.10.0:11434" },
