@@ -132,7 +132,7 @@ $env.GPG_TTY = (is-terminal --stdin)
 # Path configuration
 use std "path add"
 
-path add $env.PNPM_HOME --append
+path add ($env.PNPM_HOME | path join "bin") --append
 path add ($env.HOME | path join ".local" "bin")
 path add ($env.HOME | path join ".bun" "bin") # no XDG support yet (https://github.com/oven-sh/bun/issues/1678)
 path add ($env.XDG_CACHE_HOME | path join ".bun" "bin")
@@ -159,6 +159,7 @@ if $nu.os-info.name == "macos" {
   path add "/opt/homebrew/opt/llvm/bin"
   path add "/opt/homebrew/bin"
   path add "/opt/homebrew/opt/java/bin"
+  path add "/opt/homebrew/opt/postgresql@18/bin"
 
   $env.JAVA_HOME = "/opt/homebrew/opt/java"
   $env.JDK_HOME = "/opt/homebrew/opt/java"
