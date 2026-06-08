@@ -51,6 +51,11 @@
       "type": "registry",
     },
     "claude-acp": {
+      "default_config_options": {
+        "mode": "auto",
+        "effort": "medium",
+        "model": "default",
+      },
       "type": "registry",
     },
   },
@@ -65,12 +70,13 @@
   "buffer_font_features": { "calt": false, "ss01": false },
   "buffer_font_size": 14,
   "buffer_line_height": { "custom": 2.1 },
-  "cli_default_open_behavior": "existing_window",
+  "cli_default_open_behavior": "new_window",
   "code_lens": "menu",
   "collaboration_panel": { "dock": "right", "button": false },
   "colorize_brackets": false,
   "completion_detail_alignment": "left",
   "current_line_highlight": "all",
+  "diff_view_style": "split",
   "disable_ai": false,
   "double_click_in_multibuffer": "select",
   "edit_predictions": {
@@ -158,6 +164,14 @@
     "dock": "right",
   },
   "profiles": {
+    "Larger": {
+      "settings": {
+        "buffer_font_size": 15,
+        "ui_font_size": 18,
+        "agent_buffer_font_size": 15,
+        "git_commit_buffer_font_size": 15,
+      },
+    },
     "Focus": {
       "settings": {
         "buffer_font_size": 18,
@@ -165,12 +179,8 @@
         "gutter": {
           "breakpoints": false,
           "folds": false,
-          "line_numbers": false,
           "min_line_number_digits": 0,
           "runnables": false,
-        },
-        "indent_guides": {
-          "enabled": false,
         },
         "scrollbar": {
           "cursors": false,
