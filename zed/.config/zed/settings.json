@@ -16,7 +16,6 @@
     },
     "default_profile": "write",
     "favorite_models": [
-      { "model": "claude-opus-4.6", "provider": "copilot_chat" },
       { "model": "claude-sonnet-4.6", "provider": "copilot_chat" },
       { "model": "claude-haiku-4.5", "provider": "copilot_chat" },
     ],
@@ -32,7 +31,7 @@
           "default": "confirm",
           "always_allow": [
             { "pattern": "^cargo\\s+(build|test|check|clippy|fmt)" },
-            { "pattern": "^(p?npm|bun)\\s+(install|test|run|build|update)" },
+            { "pattern": "^p?npm\\s+(install|test|run|build|update)" },
             { "pattern": "^git\\s+(status|log|diff|branch|pull)" },
             {
               "pattern": "^(ls|cat|pwd|echo|which|find|grep|tree|test|head|tail|wc)\\b",
@@ -53,8 +52,8 @@
     "claude-acp": {
       "default_config_options": {
         "mode": "auto",
-        "effort": "medium",
-        "model": "default",
+        "effort": "high",
+        "model": "sonnet",
       },
       "type": "registry",
     },

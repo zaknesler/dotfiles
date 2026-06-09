@@ -59,17 +59,6 @@ alias pnrs = pnpm run start
 alias pnrp = pnpm run preview
 alias pnrt = pnpm run test
 
-alias bn = bun
-alias bni = bun install
-alias bno = bun outdated
-alias bnr = bun run
-alias bnrb = bun run build
-alias bnrd = bun run dev
-alias bnrs = bun run start
-alias bnrp = bun run preview
-alias bnrt = bun run test
-alias bnx = bunx
-
 alias dr = docker
 alias drc = docker-compose
 alias drcb = docker-compose build

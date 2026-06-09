@@ -9,7 +9,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It follows 
 
 ### Installation
 
-1. Install [Nushell](https://github.com/nushell/nushell) and [Neovim](https://github.com/neovim/neovim)
+1. Install [Nushell](https://github.com/nushell/nushell), [Stow](https://www.gnu.org/software/stow), and [Neovim](https://github.com/neovim/neovim)
 
 1. Clone repository to `~/.config/dotfiles` and `cd` into it
 
@@ -18,10 +18,10 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It follows 
    cd ~/.config/dotfiles
    ```
 
-1. Symlink directories
+1. Symlink directories using Stow
 
    ```bash
-   bash ./link.sh link
+   ls -d */ | xargs stow -t $HOME
    ```
 
 1. Install Homebrew (macOS only)
@@ -33,8 +33,8 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It follows 
    # Install Homebrew
    curl -fsSL --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | sh
 
-   # Install formulae from ./Brewfile
-   brew bundle
+   # Install formulae from global Brewfile
+   brew bundle -g
    ```
 
 1. Set your default shell to Nushell (Linux/macOS only)

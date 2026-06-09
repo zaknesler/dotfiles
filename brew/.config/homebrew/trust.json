@@ -1,0 +1,8 @@
+{
+  "trustedtaps": [
+    "azure/functions",
+    "homebrew-ffmpeg/ffmpeg",
+    "mongodb/brew",
+    "tw93/tap"
+  ]
+}
