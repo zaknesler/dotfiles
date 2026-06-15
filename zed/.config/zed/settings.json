@@ -30,9 +30,15 @@
         "terminal": {
           "default": "confirm",
           "always_allow": [
-            { "pattern": "^cargo\\s+(build|test|check|clippy|fmt)" },
-            { "pattern": "^p?npm\\s+(install|test|run|build|update)" },
-            { "pattern": "^git\\s+(status|log|diff|branch|pull)" },
+            {
+              "pattern": "^cargo\\s+(build|test|check|clippy|fmt)",
+            },
+            {
+              "pattern": "^p?npm\\s+(install|test|run|build|update)",
+            },
+            {
+              "pattern": "^git\\s+(status|log|diff|branch|pull)",
+            },
             {
               "pattern": "^(ls|cat|pwd|echo|which|find|grep|tree|test|head|tail|wc)\\b",
             },
@@ -126,9 +132,6 @@
     "TypeScript": { "language_servers": ["tsgo"] },
     "JavaScript": { "language_servers": ["tsgo"] },
   },
-  "language_models": {
-    "ollama": { "api_url": "http://10.0.10.0:11434" },
-  },
   "lsp": {
     "vtsls": {
       "settings": {
@@ -155,17 +158,40 @@
     "dock": "right",
   },
   "profiles": {
+    "Large": {
+      "settings": {
+        "agent_buffer_font_size": 15,
+        "buffer_font_size": 15,
+        "git_commit_buffer_font_size": 15,
+        "project_panel": { "indent_size": 20 },
+        "ui_font_size": 18,
+      },
+    },
     "Larger": {
       "settings": {
-        "buffer_font_size": 15,
-        "ui_font_size": 18,
-        "agent_buffer_font_size": 15,
-        "git_commit_buffer_font_size": 15,
+        "agent_buffer_font_size": 18,
+        "buffer_font_size": 18,
+        "git_commit_buffer_font_size": 18,
+        "project_panel": { "indent_size": 24 },
+        "ui_font_size": 20,
+      },
+    },
+    "Largest": {
+      "settings": {
+        "agent_buffer_font_size": 20,
+        "buffer_font_size": 24,
+        "git_commit_buffer_font_size": 20,
+        "project_panel": { "indent_size": 24 },
+        "ui_font_size": 24,
       },
     },
     "Focus": {
       "settings": {
+        "agent_buffer_font_size": 18,
         "buffer_font_size": 18,
+        "git_commit_buffer_font_size": 18,
+        "project_panel": { "indent_size": 24 },
+        "ui_font_size": 20,
         "current_line_highlight": "none",
         "gutter": {
           "breakpoints": false,
@@ -181,22 +207,11 @@
           "selected_symbol": false,
           "show": "never",
         },
-        "tab_bar": {
-          "show": false,
-        },
+        "tab_bar": { "show": false },
         "toolbar": {
           "breadcrumbs": false,
           "quick_actions": false,
         },
-      },
-    },
-    "Sharing": {
-      "settings": {
-        "buffer_font_size": 26,
-        "project_panel": {
-          "indent_size": 20,
-        },
-        "ui_font_size": 26,
       },
     },
   },
