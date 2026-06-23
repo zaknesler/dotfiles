@@ -387,3 +387,55 @@ def to-mp4 [
 
   ffmpeg ...$args
 }
+
+# Check for invalid/missing TypeScript/JS imports using tsc
+def check-tsc-imports [
+  --all (-a)  # Include additional error codes
+] {
+  let error_codes = [
+    "TS2307"  # Cannot find module
+    "TS2305"  # Module has no exported member
+    "TS2724"  # Module has no exported member (re-export)
+    "TS2614"  # Module has no exported member (namespace import)
+    "TS7016"  # Could not find a declaration file for module
+  ]
+
+  let extra_error_codes = [
+    "TS2339"  # Property does not exist on type (for named imports)
+  ]
+
+  let codes = if $all {
+    $error_codes ++ $extra_error_codes
+  } else {
+    $error_codes
+  }
+
+  let pattern = ($codes | str join "|")
+
+  let output = do { npx tsc --noEmit --checkJs } | complete
+
+  let lines = (
+    [ $output.stdout $output.stderr ]
+    | str join "\n"
+    | lines
+    | where { |line| $line =~ $pattern }
+  )
+
+  if ($lines | is-empty) {
+    print "No import errors found."
+    return
+  }
+
+  print $"Found ($lines | length) import error\(s\):\n"
+  $lines | each { |line|
+    let parsed = ($line | parse --regex `(?P<file>[^(]+)\((?P<row>\d+),(?P<col>\d+)\): error (?P<code>TS\d+): (?P<message>.+)`)
+    if ($parsed | is-not-empty) {
+      let r = ($parsed | first)
+      print $"  ($r.code)  ($r.file | str trim):($r.row):($r.col)"
+      print $"          ($r.message)\n"
+    } else {
+      print $"  ($line)"
+    }
+  }
+  | ignore
+}
