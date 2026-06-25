@@ -73,7 +73,11 @@ def nt [
   path: string = ""
   name: string = ""
 ] {
-  npm run test $path -- -t $name
+  let path_args = if ($path | is-not-empty) { [$path] } else { [] }
+  let name_args = if ($name | is-not-empty) { ["-t" $name] } else { [] }
+
+  npm run test -- ...$path_args ...$name_args
+
 }
 
 
@@ -82,7 +86,10 @@ def nta [
   path: string = ""
   name: string = ""
 ] {
-  npm run test:api $path -- -t $name
+  let path_args = if ($path | is-not-empty) { [$path] } else { [] }
+  let name_args = if ($name | is-not-empty) { ["-t" $name] } else { [] }
+
+  npm run test:api -- ...$path_args ...$name_args
 }
 
 # Run `pnpm run test` filtering by test path and name

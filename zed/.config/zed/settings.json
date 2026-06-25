@@ -18,7 +18,7 @@
       "model": "gpt-5.4",
       "provider": "copilot_chat",
     },
-    "default_profile": "ask",
+    "default_profile": "write",
     "inline_assistant_model": {
       "model": "claude-sonnet-4.6",
       "provider": "copilot_chat",
