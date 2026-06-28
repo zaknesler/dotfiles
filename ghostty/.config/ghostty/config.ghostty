@@ -4,12 +4,12 @@ font-family = 0xProto Nerd Font
 adjust-cell-height = 2
 
 # Colors
-theme = light:Catppuccin Latte, dark:Catppuccin Macchiato
+theme = light:orange_light,dark:orange_dark
 background-blur = true
 background-image = ~/.config/ghostty/background.png
 background-image-fit = cover
 background-opacity = 0.9
-background-image-opacity = 0.1
+background-image-opacity = 0.15
 
 # Window
 window-theme = system
@@ -17,11 +17,24 @@ window-width = 120
 window-height = 35
 window-padding-x = 16
 window-padding-y = 16
+window-padding-balance = true
+window-padding-color = extend
+window-colorspace = display-p3
+fullscreen = false
+maximize = false
+macos-titlebar-style = transparent
 
 # Misc
-bell-features = no-system,no-audio
-desktop-notifications = false
-app-notifications = false
 auto-update = off
-notify-on-command-finish = never
+app-notifications = clipboard-copy,config-reload
+bell-features = no-attention,no-audio,title,border
+desktop-notifications = false
+notify-on-command-finish = unfocused
 notify-on-command-finish-action = no-bell
+clipboard-paste-protection = true
+clipboard-paste-bracketed-safe = true
+link-previews = true
+
+# Shaders
+custom-shader = ~/.config/ghostty/shaders/noise.glsl
+custom-shader-animation = true
