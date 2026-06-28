@@ -1,0 +1,75 @@
+{
+  "$help": "https://aka.ms/terminal-documentation",
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "copyFormatting": "none",
+  "copyOnSelect": false,
+  "defaultProfile": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
+  "initialCols": 140,
+  "initialRows": 40,
+  "keybindings": [
+    {
+      "id": "User.splitPane.A6751878",
+      "keys": "alt+shift+d"
+    },
+    {
+      "id": "User.find",
+      "keys": "ctrl+shift+f"
+    },
+    {
+      "id": "User.paste",
+      "keys": "ctrl+v"
+    },
+    {
+      "id": "User.copy.644BA8F2",
+      "keys": "ctrl+c"
+    }
+  ],
+  "profiles": {
+    "defaults": {
+      "adjustIndistinguishableColors": "never",
+      "altGrAliasing": true,
+      "antialiasingMode": "grayscale",
+      "backgroundImage": "C:\\Users\\Zak\\.config\\dotfiles\\ghostty\\.config\\ghostty\\background.png",
+      "backgroundImageOpacity": 0.1,
+      "cursorShape": "bar",
+      "font": {
+        "face": "0xProto Nerd Font",
+        "size": 11
+      },
+      "padding": "24, 24, 24, 24",
+      "useAcrylic": true,
+      "colorScheme": {
+        "dark": "One Half Dark",
+        "light": "One Half Light"
+      }
+    },
+    "list": [
+      {
+        "commandline": "C:\\Program Files\\nu\\bin\\nu.exe",
+        "guid": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
+        "hidden": false,
+        "name": "Nushell",
+        "padding": "24, 24, 0, 24",
+        "source": "nu",
+        "startingDirectory": "C:\\code"
+      },
+      {
+        "commandline": "%SystemRoot%\\System32\\cmd.exe",
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "hidden": false,
+        "name": "Command Prompt"
+      },
+      {
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "hidden": false,
+        "name": "PowerShell"
+      }
+    ]
+  },
+  "tabSwitcherMode": "disabled",
+  "tabWidthMode": "equal",
+  "theme": "system",
+  "themes": [],
+  "useAcrylicInTabRow": true,
+  "wordDelimiters": " /\\()\"'-.,:;<>~!@#$%^&*|+=[]{}~?\u2502"
+}

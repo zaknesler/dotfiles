@@ -21,7 +21,7 @@ This is the repository for all of my dotfiles for Linux/Mac/Windows. It follows 
 1. Symlink directories using Stow
 
    ```bash
-   ls -d */ | xargs stow -t $HOME
+   stow -t $HOME brew editorconfig ghostty git npm nushell nvim zed
    ```
 
 1. Install Homebrew (macOS only)
