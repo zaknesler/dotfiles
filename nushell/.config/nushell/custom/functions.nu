@@ -77,7 +77,6 @@ def nt [
   let name_args = if ($name | is-not-empty) { ["-t" $name] } else { [] }
 
   npm run test -- ...$path_args ...$name_args
-
 }
 
 
@@ -251,16 +250,6 @@ def extract [file: string] {
     "bz2" => { tar -xjf $file },
     _ => { print "Unknown archive format" }
   }
-}
-
-# Amend last commit without editing message
-def gca [] {
-  git commit --amend --no-edit
-}
-
-# Undo last commit but keep changes staged
-def gundo [] {
-  git reset --soft HEAD~1
 }
 
 # Stop all processes by port
