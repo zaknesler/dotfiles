@@ -1,0 +1,27 @@
+# Font
+font-size = 15
+font-family = 0xProto Nerd Font
+adjust-cell-height = 2
+
+# Colors
+theme = light:Catppuccin Latte, dark:Catppuccin Macchiato
+background-blur = true
+background-image = ~/.config/ghostty/background.png
+background-image-fit = cover
+background-opacity = 0.9
+background-image-opacity = 0.1
+
+# Window
+window-theme = system
+window-width = 120
+window-height = 35
+window-padding-x = 16
+window-padding-y = 16
+
+# Misc
+bell-features = no-system,no-audio
+desktop-notifications = false
+app-notifications = false
+auto-update = off
+notify-on-command-finish = never
+notify-on-command-finish-action = no-bell

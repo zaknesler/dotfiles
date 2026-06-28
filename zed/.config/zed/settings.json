@@ -1,9 +1,5 @@
 // https://zed.dev/docs/configuring-zed
 {
-  "log": {
-    "worktree": "debug",
-    "project": "debug",
-  },
   "agent": {
     "flexible": true,
     "sidebar_side": "left",
@@ -49,11 +45,6 @@
           ],
         },
       },
-    },
-  },
-  "agent_servers": {
-    "github-copilot-cli": {
-      "type": "registry",
     },
   },
   "auto_install_extensions": {
@@ -223,7 +214,7 @@
     "folder_icons": true,
     "git_status": true,
     "git_status_indicator": false,
-    "hide_hidden": true,
+    "hide_hidden": false,
     "hide_root": false,
     "indent_size": 16,
     "show_diagnostics": "off",
