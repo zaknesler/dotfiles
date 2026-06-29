@@ -5,19 +5,19 @@
     "sidebar_side": "left",
     "dock": "left",
     "commit_message_model": {
-      "model": "claude-haiku-4.5",
-      "provider": "copilot_chat",
+      "model": "claude-haiku-4-5",
+      "provider": "zed.dev",
     },
     "default_model": {
-      "effort": "high",
+      "effort": "low",
       "enable_thinking": true,
-      "model": "gpt-5.4",
-      "provider": "copilot_chat",
+      "model": "claude-sonnet-4-6",
+      "provider": "zed.dev",
     },
     "default_profile": "write",
     "inline_assistant_model": {
-      "model": "claude-sonnet-4.6",
-      "provider": "copilot_chat",
+      "model": "claude-haiku-4-5",
+      "provider": "zed.dev",
       "enable_thinking": false,
     },
     "tool_permissions": {
@@ -68,14 +68,9 @@
   "disable_ai": false,
   "double_click_in_multibuffer": "select",
   "edit_predictions": {
-    "copilot": {
-      "enable_next_edit_suggestions": true,
-      "enterprise_uri": null,
-      "proxy": null,
-      "proxy_no_verify": null,
-    },
-    "provider": "copilot",
+    "provider": "zed",
     "mode": "subtle",
+    "allow_data_collection": "no",
   },
   "ensure_final_newline_on_save": true,
   "git": { "inline_blame": { "enabled": false } },
