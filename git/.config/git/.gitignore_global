@@ -80,7 +80,7 @@ dist/
 out/
 
 # Agents
-.claude/
+**/.claude
 
 # Misc
 .cache/
