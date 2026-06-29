@@ -1,5 +1,6 @@
 // https://zed.dev/docs/configuring-zed
 {
+  "$schema": "zed://schemas/settings",
   "agent": {
     "flexible": true,
     "sidebar_side": "left",
