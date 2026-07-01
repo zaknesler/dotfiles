@@ -17,9 +17,10 @@
     },
     "default_profile": "write",
     "inline_assistant_model": {
-      "model": "claude-haiku-4-5",
+      "model": "claude-sonnet-4-6",
       "provider": "zed.dev",
       "enable_thinking": false,
+      "effort": "low",
     },
     "tool_permissions": {
       "tools": {
