@@ -1,0 +1,27 @@
+{
+  "theme": {
+    "mode": "system"
+  },
+  "ui": {
+    "density": "default",
+    "font_size": 14,
+    "font_family": "0xProto Nerd Font",
+    "font_fallbacks": null,
+    "font_features": { "calt": false },
+    "font_weight": 400
+  },
+  "editor": {
+    "font_size": 14,
+    "font_family": "0xProto Nerd Font",
+    "font_fallbacks": null,
+    "font_features": { "calt": false, "ss01": false },
+    "font_weight": 400,
+    "line_height": { "custom": 2.1 },
+    "current_line_highlight": "all",
+    "gutter": {
+      "line_numbers": true,
+      "min_line_number_digits": 4
+    }
+  },
+  "log": {}
+}
