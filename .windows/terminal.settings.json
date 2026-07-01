@@ -1,6 +1,7 @@
 {
   "$help": "https://aka.ms/terminal-documentation",
   "$schema": "https://aka.ms/terminal-profiles-schema",
+  "actions": [],
   "copyFormatting": "none",
   "copyOnSelect": false,
   "defaultProfile": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
@@ -12,16 +13,21 @@
       "keys": "alt+shift+d"
     },
     {
+      "id": "Terminal.PasteFromClipboard",
+      "keys": "ctrl+v"
+    },
+    {
       "id": "User.find",
       "keys": "ctrl+shift+f"
     },
     {
-      "id": "User.paste",
-      "keys": "ctrl+v"
-    },
-    {
-      "id": "User.copy.644BA8F2",
+      "id": "Terminal.CopyToClipboard",
       "keys": "ctrl+c"
+    }
+  ],
+  "newTabMenu": [
+    {
+      "type": "remainingProfiles"
     }
   ],
   "profiles": {
@@ -31,18 +37,18 @@
       "antialiasingMode": "grayscale",
       "backgroundImage": "C:\\Users\\Zak\\.config\\dotfiles\\ghostty\\.config\\ghostty\\background.png",
       "backgroundImageOpacity": 0.085,
-      "cursorShape": "bar",
-      "font": {
-        "face": "0xProto Nerd Font",
-        "size": 11,
-        "cellHeight": "1.3"
-      },
-      "padding": "24, 24, 24, 24",
-      "useAcrylic": true,
       "colorScheme": {
         "dark": "One Half Dark",
         "light": "One Half Light"
-      }
+      },
+      "cursorShape": "bar",
+      "font": {
+        "cellHeight": "1.3",
+        "face": "0xProto Nerd Font",
+        "size": 11
+      },
+      "padding": "24, 24, 24, 24",
+      "useAcrylic": true
     },
     "list": [
       {
