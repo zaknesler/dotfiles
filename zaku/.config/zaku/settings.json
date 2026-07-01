@@ -3,11 +3,11 @@
     "mode": "system"
   },
   "ui": {
-    "density": "default",
+    "density": "comfortable",
     "font_size": 14,
     "font_family": "0xProto Nerd Font",
     "font_fallbacks": null,
-    "font_features": { "calt": false },
+    "font_features": { "calt": false, "ss01": false },
     "font_weight": 400
   },
   "editor": {
