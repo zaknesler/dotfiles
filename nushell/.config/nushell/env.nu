@@ -182,3 +182,8 @@ if $nu.os-info.family == "unix" {
   path add ($env.HOME | path join ".local" "share" "bob" "nvim-bin")
   # path add ($env.VITE_PLUS_HOME | path join "bin")
 }
+
+# Windows
+if $nu.os-info.name == "windows" {
+  $env.CMAKE_GENERATOR = "Ninja"
+}
