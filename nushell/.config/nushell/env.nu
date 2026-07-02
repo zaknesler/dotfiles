@@ -1,5 +1,5 @@
 # Nushell config
-# version = "0.111.0"
+# version = "0.113.1"
 
 # Ensure XDG variables are set
 $env.XDG_CACHE_HOME = ($env.HOME | path join ".cache")
@@ -23,17 +23,6 @@ $env.PROMPT_INDICATOR = {|| [ $prompt_color $arrow (char space) ] | str join }
 $env.PROMPT_INDICATOR_VI_INSERT = {|| [ $prompt_color $arrow (char space) ] | str join }
 $env.PROMPT_INDICATOR_VI_NORMAL = {|| [ $prompt_color $arrow (char space) ] | str join }
 $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
-
-$env.ENV_CONVERSIONS = {
-  "PATH": {
-    from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-    to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-  }
-  "Path": {
-    from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-    to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-  }
-}
 
 # Directories to search for scripts when calling source or use
 $env.NU_LIB_DIRS = [
@@ -131,36 +120,40 @@ $env.MANPAGER = "less -X"
 $env.GPG_TTY = (is-terminal --stdin)
 
 # Path configuration
-use std "path add"
+def --env path-add [dir: string, --append (-a)] {
+  if $append {
+    $env.PATH = ($env.PATH | append ($dir | path expand --no-symlink) | uniq)
+  } else {
+    $env.PATH = ($env.PATH | prepend ($dir | path expand --no-symlink) | uniq)
+  }
+}
 
-path add ($env.PNPM_HOME | path join "bin") --append
-path add ($env.HOME | path join ".local" "bin")
-path add ($env.HOME | path join ".bun" "bin") # no XDG support yet (https://github.com/oven-sh/bun/issues/1678)
-path add ($env.XDG_CACHE_HOME | path join ".bun" "bin")
-path add ($env.XDG_DATA_HOME | path join "deno" "bin")
-path add ($env.XDG_DATA_HOME | path join "cargo" "bin")
-path add ($env.XDG_DATA_HOME | path join "pyenv" "bin")
-path add ($env.XDG_DATA_HOME | path join "python" "bin")
+path-add -a ($env.PNPM_HOME | path join "bin")
+path-add ($env.HOME | path join ".local" "bin")
+path-add ($env.XDG_DATA_HOME | path join "deno" "bin")
+path-add ($env.XDG_DATA_HOME | path join "cargo" "bin")
+path-add ($env.XDG_DATA_HOME | path join "pyenv" "bin")
+path-add ($env.XDG_DATA_HOME | path join "python" "bin")
 
 # Go
 if not ($env | get -o GOPATH | is-empty) {
-  path add ($env.GOPATH | path join "bin") --append
+  path-add -a ($env.GOPATH | path join "bin")
 }
 
 if not ($env | get -o GOROOT | is-empty) {
-  path add ($env.GOROOT | path join "bin") --append
+  path-add -a ($env.GOROOT | path join "bin")
 }
 
 # Mac OS
 if $nu.os-info.name == "macos" {
-  path add ($env.HOME | path join "Library" "Application Support" "Herd" "bin")
-  # path add ($env.HOME | path join "Library" "Python" "3.9" "bin")
-  path add "/usr/local/opt/coreutils/libexec/gnubin"
-  path add "/usr/local/opt/openjdk/bin"
-  path add "/opt/homebrew/opt/llvm/bin"
-  path add "/opt/homebrew/bin"
-  path add "/opt/homebrew/opt/java/bin"
-  path add "/opt/homebrew/opt/postgresql@18/bin"
+  path-add ($env.HOME | path join "Library" "Application Support" "Herd" "bin")
+  # path-add ($env.HOME | path join "Library" "Python" "3.9" "bin")
+  path-add "/usr/local/opt/coreutils/libexec/gnubin"
+  path-add "/usr/local/opt/openjdk/bin"
+  path-add "/opt/homebrew/opt/llvm/bin"
+  path-add "/opt/homebrew/bin"
+  path-add "/opt/homebrew/opt/java/bin"
+  path-add "/opt/homebrew/opt/postgresql@18/bin"
 
   $env.JAVA_HOME = "/opt/homebrew/opt/java"
   $env.JDK_HOME = "/opt/homebrew/opt/java"
@@ -176,11 +169,11 @@ if $nu.os-info.name == "linux" {
 
 # Unix-like
 if $nu.os-info.family == "unix" {
-  path add "/usr/local/bin" --append
-  path add "/usr/local/go/bin" --append
-  path add "/usr/sbin" --append
-  path add ($env.HOME | path join ".local" "share" "npm" "bin") --append
-  path add ($env.HOME | path join ".local" "share" "bob" "nvim-bin") --append
+  path-add -a "/usr/local/bin"
+  path-add -a "/usr/local/go/bin"
+  path-add -a "/usr/sbin"
+  path-add -a ($env.HOME | path join ".local" "share" "npm" "bin")
+  path-add -a ($env.HOME | path join ".local" "share" "bob" "nvim-bin")
 }
 
 # Windows

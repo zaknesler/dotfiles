@@ -78,6 +78,7 @@
   "git": { "inline_blame": { "enabled": false } },
   "git_panel": {
     "dock": "right",
+    // "group_by": "staging",
     "sort_by_path": false,
     "tree_view": false,
   },
