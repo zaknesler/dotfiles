@@ -97,7 +97,7 @@ $env.SQLITE_HISTORY = ($env.XDG_STATE_HOME | path join "sqlite_history")
 $env.TEXMFCONFIG = ($env.XDG_CONFIG_HOME | path join "texlive" "texmf-config")
 $env.TEXMFHOME = ($env.XDG_DATA_HOME | path join "texmf")
 $env.TEXMFVAR = ($env.XDG_CACHE_HOME | path join "texlive" "texmf-var")
-# $env.VITE_PLUS_HOME = ($env.XDG_CONFIG_HOME | path join "vite-plus")
+$env.VITE_PLUS_HOME = ($env.XDG_CONFIG_HOME | path join "vite-plus")
 $env.WGETRC = ($env.XDG_CONFIG_HOME | path join "wgetrc")
 $env.ZDOTDIR = ($env.XDG_CONFIG_HOME | path join "zsh")
 
@@ -176,11 +176,11 @@ if $nu.os-info.name == "linux" {
 
 # Unix-like
 if $nu.os-info.family == "unix" {
-  path add "/usr/local/bin"
-  path add "/usr/local/go/bin"
-  path add ($env.HOME | path join ".local" "share" "npm" "bin")
-  path add ($env.HOME | path join ".local" "share" "bob" "nvim-bin")
-  # path add ($env.VITE_PLUS_HOME | path join "bin")
+  path add "/usr/local/bin" --append
+  path add "/usr/local/go/bin" --append
+  path add "/usr/sbin" --append
+  path add ($env.HOME | path join ".local" "share" "npm" "bin") --append
+  path add ($env.HOME | path join ".local" "share" "bob" "nvim-bin") --append
 }
 
 # Windows
