@@ -5,9 +5,9 @@ adjust-cell-height = 2
 
 # Colors
 theme = light:orange_light,dark:orange_dark
-background-blur = true
 background-image = ~/.config/ghostty/background.png
 background-image-fit = cover
+background-blur = true
 background-opacity = 0.9
 background-image-opacity = 0.15
 
@@ -25,15 +25,16 @@ maximize = false
 macos-titlebar-style = transparent
 
 # Misc
-auto-update = off
 app-notifications = clipboard-copy,config-reload
+auto-update = off
 bell-features = no-attention,no-audio,title,border
+clipboard-paste-bracketed-safe = true
+clipboard-paste-protection = true
 desktop-notifications = false
+link-previews = true
 notify-on-command-finish = unfocused
 notify-on-command-finish-action = no-bell
-clipboard-paste-protection = true
-clipboard-paste-bracketed-safe = true
-link-previews = true
+tab-inherit-working-directory = false
 
 # Shaders
 custom-shader = ~/.config/ghostty/shaders/noise.glsl
