@@ -48,10 +48,10 @@ def process-repo [repo: record, options: record] {
     git restore package-lock.json
   }
 
-  if $options.npm_link and ($repo.woop_packages | length) > 0 {
-    try { npm link ...$repo.woop_packages }
-  } else if $options.latest and ($repo.woop_packages | length) > 0 {
-    try { npm install ...($repo.woop_packages | each { |p| $"($p)@latest" }) }
+  if $options.npm_link and ($repo.packages | length) > 0 {
+    try { npm link ...$repo.packages }
+  } else if $options.latest and ($repo.packages | length) > 0 {
+    try { npm install ...($repo.packages | each { |p| $"($p)@latest" }) }
   }
 
   if $options.npm_audit {
