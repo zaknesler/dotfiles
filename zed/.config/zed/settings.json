@@ -1,5 +1,23 @@
 // https://zed.dev/docs/configuring-zed
 {
+  "wsl_connections": [
+    {
+      "distro_name": "Debian",
+      "user": null,
+      "projects": [
+        {
+          "paths": [
+            "/home/zak/code"
+          ]
+        },
+        {
+          "paths": [
+            "/home/zak/code/modern-beta"
+          ]
+        }
+      ]
+    }
+  ],
   "$schema": "zed://schemas/settings",
   "agent": {
     "flexible": true,
