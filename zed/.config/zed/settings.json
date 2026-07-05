@@ -1,23 +1,5 @@
 // https://zed.dev/docs/configuring-zed
 {
-  "wsl_connections": [
-    {
-      "distro_name": "Debian",
-      "user": null,
-      "projects": [
-        {
-          "paths": [
-            "/home/zak/code"
-          ]
-        },
-        {
-          "paths": [
-            "/home/zak/code/modern-beta"
-          ]
-        }
-      ]
-    }
-  ],
   "$schema": "zed://schemas/settings",
   "agent": {
     "flexible": true,
@@ -268,20 +250,6 @@
     "light": "Orange Light",
     "mode": "system",
   },
-  "theme_overrides": {
-    "One Dark": {
-      "syntax": {
-        "comment": { "font_style": "italic" },
-        "comment.doc": { "font_style": "italic" },
-      },
-    },
-    "One Light": {
-      "syntax": {
-        "comment": { "font_style": "italic" },
-        "comment.doc": { "font_style": "italic" },
-      },
-    },
-  },
   "title_bar": {
     "show_sign_in": false,
     "show_user_picture": false,
@@ -291,4 +259,11 @@
   "vertical_scroll_margin": 6,
   "vim": { "toggle_relative_line_numbers": true },
   "vim_mode": false,
+  "wsl_connections": [
+    {
+      "distro_name": "Debian",
+      "user": null,
+      "projects": [{ "paths": ["/home/zak/code"] }],
+    },
+  ],
 }
