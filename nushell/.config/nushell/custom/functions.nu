@@ -142,7 +142,7 @@ def gdl [
     let filename = [
       (if $include_username { "{username:?/_/Cg/}" } else { "" })
       "{date:%Y-%m-%d}"
-      (if $include_title { "{title|tweet_id|id|filename:?_//Cg/X100//}" } else { "{tweet_id|id|filename!g:?_//Cg/X100//}" })
+      (if $include_title { "{title|tweet_id|post_id|id|filename:?_//Cg/X100//}" } else { "{tweet_id|post_id|id|filename!g:?_//Cg/X100//}" })
       "{num:?_p//}"
       ".{extension}"
     ] | str join ""
