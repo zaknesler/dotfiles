@@ -3,9 +3,11 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    "RubixDev/mason-update-all",
   },
   config = function()
     require("mason").setup()
+    require("mason-update-all").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
         "lua_ls",
