@@ -154,6 +154,7 @@ if $nu.os-info.name == "macos" {
   path-add "/opt/homebrew/bin"
   path-add "/opt/homebrew/opt/java/bin"
   path-add "/opt/homebrew/opt/postgresql@18/bin"
+  path-add "/opt/homebrew/opt/ruby/bin"
 
   $env.JAVA_HOME = "/opt/homebrew/opt/java"
   $env.JDK_HOME = "/opt/homebrew/opt/java"
