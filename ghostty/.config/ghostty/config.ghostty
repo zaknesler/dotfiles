@@ -5,7 +5,7 @@ adjust-cell-height = 2
 
 # Colors
 theme = light:orange_light,dark:orange_dark
-background-image = ~/.config/ghostty/background.png
+background-image = ~/.config/ghostty/background.jpg
 background-image-fit = cover
 background-blur = true
 background-opacity = 0.9
