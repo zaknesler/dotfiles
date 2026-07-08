@@ -140,7 +140,7 @@ def gdl [
     null
   } else {
     let filename = [
-      (if $include_username { "{username|user:?/_/Cg/}" } else { "" })
+      (if $include_username { "{username|user[name]|author[handle]|artist:?/_/Cg/}" } else { "" })
       "{date:%Y-%m-%d}"
       (if $include_title { "{title|tweet_id|post_id|id|filename:?_//Cg/X100//}" } else { "{tweet_id|post_id|id|filename!g:?_//Cg/X100//}" })
       "{num:?_p//}"
