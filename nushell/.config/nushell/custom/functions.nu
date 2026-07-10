@@ -68,6 +68,13 @@ def ghcr [repo: string] {
   git remote add origin $"git@github.com:zaknesler/($repo).git"
 }
 
+def git-reset-tag [tag: string] {
+  try { git tag -d $tag }
+  try { git push --delete origin $tag }
+  git tag $tag
+  git push --tags
+}
+
 # Run `npm run test` filtering by test path and name
 def nt [
   path: string = ""

@@ -6,6 +6,6 @@
     "**/.settings",
     "**/history.txt",
     "**/nu_scripts",
-    "**/Thumbs.db"
-  ]
+    "**/Thumbs.db",
+  ],
 }
