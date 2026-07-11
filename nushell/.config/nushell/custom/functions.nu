@@ -442,3 +442,14 @@ def check-tsc-imports [
   }
   | ignore
 }
+
+def unblock-app [path: string] {
+  let full_path = ($path | path expand)
+
+  if not ($full_path | path exists) {
+    print $'Path not found: ($full_path)'
+    return
+  }
+
+  sudo xattr -d com.apple.quarantine $full_path
+}
