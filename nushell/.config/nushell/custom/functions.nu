@@ -68,11 +68,15 @@ def ghcr [repo: string] {
   git remote add origin $"git@github.com:zaknesler/($repo).git"
 }
 
-def git-reset-tag [tag: string] {
+def git-reset-tag [tag: string, --delete_release (-d)] {
   try { git tag -d $tag }
   try { git push --delete origin $tag }
   git tag $tag
   git push --tags
+
+  if $delete_release {
+    gh release delete $tag
+  }
 }
 
 # Run `npm run test` filtering by test path and name
