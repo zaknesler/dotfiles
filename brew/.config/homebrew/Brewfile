@@ -1,3 +1,7 @@
+tap 'homebrew-ffmpeg/ffmpeg', trusted: true
+tap 'mongodb/brew', trusted: true
+tap 'tw93/tap', trusted: true
+
 # Languages
 brew 'deno'
 brew 'go'
@@ -5,7 +9,7 @@ brew 'node@24'
 brew 'nushell'
 brew 'openjdk'
 brew 'pnpm'
-brew 'postgresql'
+brew 'postgresql@18'
 brew 'python@3.14'
 brew 'sqlite'
 brew 'typst'
@@ -16,19 +20,18 @@ brew 'btop'
 brew 'cargo-binstall'
 brew 'cmake'
 brew 'curl'
-brew 'difftastic'
 brew 'direnv'
 brew 'docker-buildx'
 brew 'duti'
-brew 'ffmpeg'
 brew 'gallery-dl'
 brew 'gcc'
 brew 'gh'
+brew 'gifski'
 brew 'git'
+brew 'git-filter-repo'
 brew 'git-lfs'
 # brew 'handbrake'
 brew 'htop'
-brew 'mongodb/brew/mongodb-community'
 brew 'mongosh'
 brew 'mprocs'
 brew 'neofetch'
@@ -39,9 +42,13 @@ brew 'stow'
 brew 'tree'
 brew 'tree-sitter'
 brew 'virtualenv'
-brew 'weave'
 brew 'wget'
 brew 'yt-dlp'
+
+# Custom formulae
+brew 'homebrew-ffmpeg/ffmpeg/ffmpeg', args: ['with-zimg']
+brew 'mongodb/brew/mongodb-community'
+brew 'tw93/tap/mole'
 
 # Casks
 cask '1password'
@@ -69,7 +76,6 @@ cask 'slack'
 cask 'spotify'
 cask 'steam'
 cask 'tableplus'
-brew 'tw93/tap/mole'
 cask 'zed'
 
 # Fonts
@@ -79,6 +85,15 @@ cask 'font-inter'
 cask 'font-lilex-nerd-font'
 cask 'font-meslo-lg-nerd-font'
 
-# Go tools
+# Go
 go 'golang.org/x/tools/gopls'
 go 'honnef.co/go/tools/cmd/staticcheck'
+
+# Cargo
+cargo 'cargo-bloat'
+cargo 'cargo-bundle'
+cargo 'cargo-clean-all'
+cargo 'cargo-outdated'
+cargo 'cargo-watch'
+cargo 'tree-sitter-cli'
+cargo 'typeshare-cli'

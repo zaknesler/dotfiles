@@ -49,6 +49,16 @@
       },
     },
   },
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": {
+        "effort": "low",
+        "mode": "auto",
+        "model": "sonnet",
+      },
+      "type": "registry",
+    },
+  },
   "auto_install_extensions": {
     "catppuccin-icons": true,
     "emmet": true,
