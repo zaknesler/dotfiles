@@ -1,100 +1,93 @@
 {
-    "$help": "https://aka.ms/terminal-documentation",
-    "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": [],
-    "copyFormatting": "none",
-    "copyOnSelect": false,
-    "defaultProfile": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
-    "initialCols": 140,
-    "initialRows": 40,
-    "keybindings": 
-    [
-        {
-            "id": "User.splitPane.A6751878",
-            "keys": "alt+shift+d"
-        },
-        {
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "id": "Terminal.PasteFromClipboard",
-            "keys": "ctrl+v"
-        },
-        {
-            "id": "Terminal.CopyToClipboard",
-            "keys": "ctrl+c"
-        }
-    ],
-    "newTabMenu": 
-    [
-        {
-            "type": "remainingProfiles"
-        }
-    ],
-    "profiles": 
+  "$help": "https://aka.ms/terminal-documentation",
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "actions": [],
+  "copyFormatting": "none",
+  "copyOnSelect": false,
+  "defaultProfile": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
+  "initialCols": 140,
+  "initialRows": 40,
+  "keybindings": [
     {
-        "defaults": 
-        {
-            "adjustIndistinguishableColors": "indexed",
-            "altGrAliasing": true,
-            "antialiasingMode": "grayscale",
-            "backgroundImage": "C:\\Users\\Zak\\.config\\dotfiles\\ghostty\\.config\\ghostty\\background.png",
-            "backgroundImageOpacity": 0.085,
-            "colorScheme": 
-            {
-                "dark": "One Half Dark",
-                "light": "One Half Light"
-            },
-            "cursorShape": "bar",
-            "font": 
-            {
-                "cellHeight": "1.3",
-                "face": "0xProto Nerd Font",
-                "size": 11
-            },
-            "padding": "24, 24, 24, 24",
-            "useAcrylic": true
-        },
-        "list": 
-        [
-            {
-                "commandline": "C:\\Program Files\\nu\\bin\\nu.exe",
-                "guid": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
-                "hidden": false,
-                "name": "Nushell",
-                "padding": "24, 24, 0, 24",
-                "source": "nu",
-                "startingDirectory": "C:\\code"
-            },
-            {
-                "commandline": "%SystemRoot%\\System32\\cmd.exe",
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
-                "name": "Command Prompt",
-                "startingDirectory": "C:\\code"
-            },
-            {
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
-                "name": "PowerShell",
-                "startingDirectory": "C:\\code"
-            },
-            {
-                "guid": "{0706986a-709a-5996-b014-6787bb7471de}",
-                "hidden": false,
-                "name": "Debian",
-                "source": "Microsoft.WSL"
-            }
-        ]
+      "id": "User.splitPane.A6751878",
+      "keys": "alt+shift+d"
     },
-    "schemes": [],
-    "searchWebDefaultQueryUrl": "https://duckduckgo.com/?q=%22%s%22",
-    "tabSwitcherMode": "disabled",
-    "tabWidthMode": "equal",
-    "theme": "system",
-    "themes": [],
-    "useAcrylicInTabRow": true,
-    "warning.largePaste": false,
-    "wordDelimiters": " /\\()\"'-.,:;<>~!@#$%^&*|+=[]{}~?\u2502"
+    {
+      "id": "User.find",
+      "keys": "ctrl+shift+f"
+    },
+    {
+      "id": "Terminal.PasteFromClipboard",
+      "keys": "ctrl+v"
+    },
+    {
+      "id": "Terminal.CopyToClipboard",
+      "keys": "ctrl+c"
+    }
+  ],
+  "newTabMenu": [
+    {
+      "type": "remainingProfiles"
+    }
+  ],
+  "profiles": {
+    "defaults": {
+      "adjustIndistinguishableColors": "indexed",
+      "altGrAliasing": true,
+      "antialiasingMode": "grayscale",
+      "backgroundImage": "C:\\Users\\Zak\\.config\\dotfiles\\ghostty\\.config\\ghostty\\background.jpg",
+      "backgroundImageOpacity": 0.085,
+      "colorScheme": {
+        "dark": "One Half Dark",
+        "light": "One Half Light"
+      },
+      "cursorShape": "bar",
+      "font": {
+        "cellHeight": "1.3",
+        "face": "0xProto Nerd Font",
+        "size": 11
+      },
+      "padding": "24, 24, 24, 24",
+      "useAcrylic": true
+    },
+    "list": [
+      {
+        "commandline": "C:\\Program Files\\nu\\bin\\nu.exe",
+        "guid": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
+        "hidden": false,
+        "name": "Nushell",
+        "padding": "24, 24, 0, 24",
+        "source": "nu",
+        "startingDirectory": "C:\\code"
+      },
+      {
+        "commandline": "%SystemRoot%\\System32\\cmd.exe",
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "hidden": false,
+        "name": "Command Prompt",
+        "startingDirectory": "C:\\code"
+      },
+      {
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "hidden": false,
+        "name": "PowerShell",
+        "startingDirectory": "C:\\code"
+      },
+      {
+        "guid": "{0706986a-709a-5996-b014-6787bb7471de}",
+        "hidden": false,
+        "name": "Debian",
+        "source": "Microsoft.WSL"
+      }
+    ]
+  },
+  "schemes": [],
+  "searchWebDefaultQueryUrl": "https://duckduckgo.com/?q=%22%s%22",
+  "tabSwitcherMode": "disabled",
+  "tabWidthMode": "equal",
+  "theme": "system",
+  "themes": [],
+  "useAcrylicInTabRow": true,
+  "warning.largePaste": false,
+  "wordDelimiters": " /\\()\"'-.,:;<>~!@#$%^&*|+=[]{}~?\u2502"
 }
