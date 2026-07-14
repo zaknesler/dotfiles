@@ -68,6 +68,17 @@ def ghcr [repo: string] {
   git remote add origin $"git@github.com:zaknesler/($repo).git"
 }
 
+def git-reset-tag [tag: string, --delete_release (-d)] {
+  try { git tag -d $tag }
+  try { git push --delete origin $tag }
+  git tag $tag
+  git push --tags
+
+  if $delete_release {
+    gh release delete $tag
+  }
+}
+
 # Run `npm run test` filtering by test path and name
 def nt [
   path: string = ""
@@ -140,7 +151,7 @@ def gdl [
     null
   } else {
     let filename = [
-      (if $include_username { "{username:?/_/Cg/}" } else { "" })
+      (if $include_username { "{username|user[name]|author[handle]|artist:?/_/Cg/}" } else { "" })
       "{date:%Y-%m-%d}"
       (if $include_title { "{title|tweet_id|post_id|id|filename:?_//Cg/X100//}" } else { "{tweet_id|post_id|id|filename!g:?_//Cg/X100//}" })
       "{num:?_p//}"
@@ -434,4 +445,15 @@ def check-tsc-imports [
     }
   }
   | ignore
+}
+
+def unblock-app [path: string] {
+  let full_path = ($path | path expand)
+
+  if not ($full_path | path exists) {
+    print $'Path not found: ($full_path)'
+    return
+  }
+
+  sudo xattr -d com.apple.quarantine $full_path
 }

@@ -75,11 +75,17 @@
     "allow_data_collection": "no",
   },
   "ensure_final_newline_on_save": true,
-  "git": { "inline_blame": { "enabled": false } },
+  "format_on_save": "on",
+  "git": {
+    "inline_blame": {
+      "enabled": true,
+      "location": "status_bar",
+    },
+  },
   "git_panel": {
     "dock": "right",
-    // "group_by": "staging",
-    "sort_by_path": false,
+    "group_by": "staging",
+    "sort_by": "path",
     "tree_view": false,
   },
   "hidden_files": [
