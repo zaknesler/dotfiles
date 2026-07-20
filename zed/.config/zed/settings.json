@@ -163,7 +163,6 @@
     "max_width": 800,
     "limit_content_width": true,
   },
-  "markdown_preview_font_family": "PT Serif",
   "markdown_preview_font_size": 16,
   "outline_panel": { "dock": "right" },
   "profiles": {
