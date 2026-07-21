@@ -75,7 +75,7 @@ def git-reset-tag [tag: string, --delete_release (-d)] {
   git push --tags
 
   if $delete_release {
-    gh release delete $tag
+    gh release delete $tag --yes
   }
 }
 
