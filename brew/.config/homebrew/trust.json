@@ -2,6 +2,7 @@
   "trustedtaps": [
     "homebrew-ffmpeg/ffmpeg",
     "mongodb/brew",
+    "probe-rs/probe-rs",
     "tw93/tap"
   ]
 }
