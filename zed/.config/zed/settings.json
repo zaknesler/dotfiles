@@ -244,10 +244,16 @@
   "show_edit_predictions": false,
   "ssh_connections": [
     {
-      "args": [],
       "host": "axo",
-      "projects": [{ "paths": ["/home/zak"] }],
       "username": "zak",
+      "args": [],
+      "projects": [{ "paths": ["/home/zak"] }],
+    },
+    {
+      "host": "pi",
+      "username": "zak",
+      "args": [],
+      "projects": [{ "paths": ["/home/zak"] }],
     },
   ],
   "sticky_scroll": { "enabled": true },
