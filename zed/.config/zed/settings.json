@@ -133,16 +133,13 @@
   },
   "indent_guides": { "enabled": true },
   "inline_code_actions": false,
-  "languages": {
-    "TypeScript": { "language_servers": ["tsgo"] },
-    "JavaScript": { "language_servers": ["tsgo"] },
-  },
   "lsp": {
     "vtsls": {
       "settings": {
         "typescript": {
-          "updateImportsOnFileMove": {
-            "enabled": "always",
+          "updateImportsOnFileMove": { "enabled": "always" },
+          "suggest": {
+            "completeFunctionCalls": false,
           },
           "tsserver": {
             "experimental": {
@@ -151,8 +148,9 @@
           },
         },
         "javascript": {
-          "updateImportsOnFileMove": {
-            "enabled": "always",
+          "updateImportsOnFileMove": { "enabled": "always" },
+          "suggest": {
+            "completeFunctionCalls": false,
           },
         },
       },
