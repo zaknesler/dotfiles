@@ -242,13 +242,13 @@
   "show_edit_predictions": false,
   "ssh_connections": [
     {
-      "host": "axo",
+      "host": "allay",
       "username": "zak",
       "args": [],
       "projects": [{ "paths": ["/home/zak"] }],
     },
     {
-      "host": "pi",
+      "host": "axo",
       "username": "zak",
       "args": [],
       "projects": [{ "paths": ["/home/zak"] }],
