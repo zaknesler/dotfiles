@@ -143,7 +143,8 @@ def gdl [
   --default-filename (-d)              # Ignore custom filename format and use the default
   --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
   --include-username (-u)              # Include username in filename
-  --include-title (-t)                 # Use title in filename (if available) instead of ID
+  --prefer-title (-t)                  # Prefer title in filename (if available) instead of ID
+  --prefer-filename (-f)               # Prefer original filename (if available) instead of ID
   --cookies (-C): string               # Path to cookies file
   --args (-a): list<string>            # Extra arguments to pass through to gallery-dl (e.g., --args [--no-mtime --retries 5])
 ] {
@@ -153,7 +154,13 @@ def gdl [
     let filename = [
       (if $include_username { "{username|user[name]|author[handle]|artist:?/_/Cg/}" } else { "" })
       "{date:%Y-%m-%d}"
-      (if $include_title { "{title|tweet_id|post_id|id|filename:?_//Cg/X100//}" } else { "{tweet_id|post_id|id|filename!g:?_//Cg/X100//}" })
+      (if $prefer_title {
+        "{title|tweet_id|post_id|id|filename:?_//Cg/X100//}"
+      } else if $prefer_filename {
+        "{filename|tweet_id|post_id|id:?_//Cg/X100//}"
+      } else {
+        "{tweet_id|post_id|id|filename!g:?_//Cg/X100//}"
+      })
       "{num:?_p//}"
       ".{extension}"
     ] | str join ""
