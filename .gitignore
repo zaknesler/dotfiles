@@ -12,6 +12,7 @@ plugged/
 vendor/
 packer_compiled.lua
 .netrwhist
+.minimal
 
 # Brew
 Brewfile.lock*

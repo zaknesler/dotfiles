@@ -2,6 +2,7 @@ return {
   {
     "saghen/blink.cmp",
     version = "1.*",
+    cond = not vim.g.minimal,
     opts = {
       fuzzy = {
         implementation = vim.fn.has("win32") == 1 and "lua" or "prefer_rust",

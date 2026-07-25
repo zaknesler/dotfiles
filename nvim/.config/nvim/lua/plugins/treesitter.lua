@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    cond = not vim.g.minimal,
     lazy = false,
     branch = "main",
     build = ":TSUpdate",
@@ -22,6 +23,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
+    cond = not vim.g.minimal,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
       require("treesitter-context").setup({
