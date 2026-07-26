@@ -1,5 +1,5 @@
 const float GRAIN_SCALE = 3.0;
-const float GRAIN_INTENSITY = 0.015;
+const float GRAIN_INTENSITY = 0.075;
 const float GRAIN_SPEED = 24.0;
 
 float hash(vec2 p) {
@@ -16,6 +16,13 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   float frame = floor(iTime * GRAIN_SPEED);
   float grain = hash(grainCoord + frame * 0.1) * 2.0 - 1.0;
 
-  color.rgb += grain * GRAIN_INTENSITY;
+  // Blend noise with the background color
+  vec3 grainRGB = vec3(grain * GRAIN_INTENSITY);
+  vec3 blended = mix(
+    2.0 * color.rgb * (0.5 + grainRGB),
+    1.0 - 2.0 * (1.0 - color.rgb) * (0.5 - grainRGB),
+    step(0.5, color.rgb)
+  );
+  color.rgb = blended;
   fragColor = color;
 }
