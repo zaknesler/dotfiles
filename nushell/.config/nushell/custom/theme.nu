@@ -22,21 +22,9 @@ export def main [] {
     string: $theme.string
 
     datetime: {|| (date now) - $in |
-      if $in < 1hr {
-        { fg: $theme.primary attr: 'b' }
-      } else if $in < 6hr {
-        $theme.primary
-      } else if $in < 1day {
-        $theme.accent
-      } else if $in < 3day {
-        $theme.number
-      } else if $in < 1wk {
-        { fg: $theme.string attr: 'b' }
-      } else if $in < 6wk {
-        $theme.link
-      } else if $in < 52wk {
-        $theme.type
-      } else { $theme.metadata }
+      if $in < 1day {
+        $theme.metadata
+      } else { $theme.fg_muted }
     }
 
     filesize: {|e|
@@ -120,7 +108,7 @@ export def main [] {
     background: $theme.bg
     cursor: $theme.primary
 
-    header: { fg: $theme.primary attr: 'b' }
+    header: { fg: $theme.metadata attr: 'b' }
     row_index: { fg: $theme.metadata attr: 'b' }
     separator: $theme.border
     empty: $theme.fg_faint

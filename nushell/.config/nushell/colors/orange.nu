@@ -22,9 +22,9 @@ export const orange_dark = {
   fg:         '#E8DDD0'
   fg_muted:   '#9A8878'
   fg_dim:     '#7A6858'
-  fg_faint:   '#5C5147'
+  fg_faint:   '#786A5A'
   bg:         '#1C1917'
-  border:     '#3D342C'
+  border:     '#584B3F'
 }
 
 export const orange_light = {
