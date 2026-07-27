@@ -28,3 +28,6 @@ nushell/.config/nushell/scripts*/*.nuon
 # Zed
 zed/**/conversations/*
 zed/**/prompts/*
+
+# Ghostty
+local.ghostty

@@ -1,3 +1,6 @@
+# Local overrides
+config-file = ?local.ghostty
+
 # Font
 font-size = 15
 font-family = 0xProto Nerd Font
