@@ -1,10 +1,11 @@
 # Font
-font-size = 12
+font-size = 15
 font-family = 0xProto Nerd Font
 adjust-cell-height = 2
 
 # Colors
 theme = light:orange_light,dark:orange_dark
+background = #222222
 background-image = ~/.config/ghostty/background.jpg
 background-image-fit = cover
 background-blur = true
@@ -13,8 +14,8 @@ background-image-opacity = 0.15
 
 # Window
 window-theme = system
-window-width = 120
-window-height = 35
+window-width = 130
+window-height = 40
 window-padding-x = 12
 window-padding-y = 12
 window-padding-balance = true
