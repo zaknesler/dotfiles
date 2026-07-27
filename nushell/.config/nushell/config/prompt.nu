@@ -91,9 +91,11 @@ export def create_right_prompt [] {
     _ => ""
   }
 
-  let time = [ (ansi $theme.fg_muted) (date now | format date "%I:%M:%S %p") ]
+  let time = [ (ansi $theme.fg_muted) (date now | format date "%I:%M:%S%p") ]
     | str join
+    | str lowercase
     | str replace --regex --all "([/:])" $"(ansi $theme.fg_faint)${1}(ansi $theme.fg_muted)"
+  let time = $"(ansi $theme.fg_faint)[($time)(ansi $theme.fg_faint)]"
 
   spacify [ $last_exit_code $user $session $time ] ([ (ansi reset) (char space) ] | str join)
 }
