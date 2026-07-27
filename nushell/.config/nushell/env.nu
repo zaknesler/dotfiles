@@ -97,6 +97,7 @@ $env.DOCKER_BUILDKIT = "1"
 # Defaults
 $env.EDITOR = "nvim"
 $env.VISUAL = "nvim"
+$env.EDIR_EDITOR = 'zed --wait'
 
 # Node
 $env.NODE_REPL_HISTORY_SIZE = "32768"
