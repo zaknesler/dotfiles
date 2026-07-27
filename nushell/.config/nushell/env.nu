@@ -37,6 +37,7 @@ $env.NU_PLUGIN_DIRS = [
 ]
 
 # XDG Supported Directories
+# https://wiki.archlinux.org/title/XDG_Base_Directory
 $env.AWS_CONFIG_FILE = ($env.XDG_CONFIG_HOME | path join "aws" "config")
 $env.AWS_SHARED_CREDENTIALS_FILE = ($env.XDG_CONFIG_HOME | path join "aws" "credentials")
 $env.AZURE_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "azure")
@@ -45,10 +46,10 @@ $env.BUNDLE_USER_CACHE = ($env.XDG_CACHE_HOME | path join "bundle")
 $env.BUNDLE_USER_CONFIG = ($env.XDG_CONFIG_HOME | path join "bundle")
 $env.BUNDLE_USER_PLUGIN = ($env.XDG_DATA_HOME | path join "bundle")
 $env.CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
+$env.CLAUDE_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "claude")
 $env.COMPOSER_HOME = ($env.XDG_DATA_HOME | path join "composer")
 $env.CONDARC = ($env.XDG_CONFIG_HOME | path join "conda" "condarc")
 $env.CUDA_CACHE_PATH = ($env.XDG_CACHE_HOME | path join "nv")
-$env.CLAUDE_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "claude")
 $env.DENO_DIR = ($env.XDG_DATA_HOME | path join "deno")
 $env.FNM_DIR = ($env.XDG_DATA_HOME | path join "fnm")
 $env.GEM_HOME = ($env.XDG_DATA_HOME | path join "gem")
@@ -58,6 +59,8 @@ $env.GNUPGHOME = ($env.XDG_DATA_HOME | path join "gnupg")
 $env.GOMODCACHE = ($env.XDG_CACHE_HOME | path join "go" "mod")
 $env.GOPATH = ($env.HOME | path join "code" "go")
 $env.GRADLE_USER_HOME = ($env.XDG_DATA_HOME | path join "gradle")
+$env.GTK2_RC_FILES = ($env.XDG_CONFIG_HOME | path join "gtk-2.0" "gtkrc")
+$env.GTK_RC_FILES = ($env.XDG_CONFIG_HOME | path join "gtk-1.0" "gtkrc")
 $env.HISTFILE = ($env.XDG_STATE_HOME | path join "bash" "history")
 $env.INPUTRC = ($env.XDG_CONFIG_HOME | path join "readline" "inputrc")
 $env.IPYTHONDIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
