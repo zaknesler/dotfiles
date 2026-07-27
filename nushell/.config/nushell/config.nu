@@ -113,5 +113,16 @@ source nu_scripts/custom-completions/npm/npm-completions.nu
 source nu_scripts/custom-completions/pnpm/pnpm-completions.nu
 source nu_scripts/custom-completions/rustup/rustup-completions.nu
 
+# Scripts
+source nu_scripts/modules/formats/from-env.nu
+
+# Load local env file
+try {
+  let local_env = ($nu.default-config-dir | path join ".env.local")
+  if ($local_env | path exists) {
+    open $local_env | from env | load-env
+  }
+} | ignore
+
 use sync.nu
 use branches.nu

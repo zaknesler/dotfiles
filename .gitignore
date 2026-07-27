@@ -22,6 +22,7 @@ history.txt
 plugin.nu
 *.msgpackz
 .mode
+.env.local
 
 nushell/.config/nushell/scripts*/*.nuon
 
