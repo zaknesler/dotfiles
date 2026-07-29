@@ -454,7 +454,7 @@ def check-tsc-imports [
   | ignore
 }
 
-def unblock-app [path: string] {
+def allow-app [path: string] {
   let full_path = ($path | path expand)
 
   if not ($full_path | path exists) {
