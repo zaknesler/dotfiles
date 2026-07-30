@@ -14,8 +14,8 @@ for arg in "$@"; do
   [ "$arg" = "--server" ] && SERVER_MODE=true
 done
 
-if [ "$SERVER_MODE" = false ] && [ -t 0 ]; then
-  read -r -p "Server install? Will only symlink necessary config files. [y/N] " reply || reply=""
+if [ "$SERVER_MODE" = false ] && [ -e /dev/tty ]; then
+  read -r -p "Server install? Will only symlink necessary config files. [y/N] " reply </dev/tty || reply=""
   case "$reply" in
     [yY]*) SERVER_MODE=true ;;
   esac
@@ -201,6 +201,14 @@ else
   log "cargo-binstall already installed."
 fi
 
+# install tree-sitter-cli, nvim needs it
+if ! is_installed tree-sitter; then
+  log "Installing tree-sitter-cli..."
+  cargo-binstall --no-confirm tree-sitter-cli
+else
+  log "tree-sitter-cli already installed."
+fi
+
 # install nushell, must happen before stowing its config dir
 if [ "$PLATFORM" = mac ]; then
   if ! is_installed nu; then
@@ -278,8 +286,8 @@ else
 fi
 
 # update system packages
-if [ "$PLATFORM" = linux ] && [ -t 0 ]; then
-  read -r -p "Update all system packages now? [y/N] " reply || reply=""
+if [ "$PLATFORM" = linux ] && [ -e /dev/tty ]; then
+  read -r -p "Update all system packages now? [y/N] " reply </dev/tty || reply=""
   case "$reply" in
     [yY]*)
       if is_installed apt-get; then
