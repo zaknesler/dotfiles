@@ -70,12 +70,12 @@ alias pnrt = pnpm run test
 
 # Docker
 alias dr = docker
-alias drc = docker-compose
-alias drcb = docker-compose build
-alias drcd = docker-compose down
-alias drce = docker-compose exec
-alias drcr = docker-compose run --rm
-alias drcu = docker-compose up -d
+alias drc = docker compose
+alias drcb = docker compose build
+alias drcd = docker compose down
+alias drce = docker compose exec
+alias drcr = docker compose run --rm
+alias drcu = docker compose up -d
 alias dr-clean = docker rmi \`docker images -f 'dangling=true' -q\` --force
 
 # Python
