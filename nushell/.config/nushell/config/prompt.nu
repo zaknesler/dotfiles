@@ -91,7 +91,7 @@ export def create_right_prompt [] {
     _ => ""
   }
 
-  let time = [ (ansi $theme.fg_muted) (date now | format date "%I:%M:%S%p") ]
+  let time = [ (ansi $theme.fg_muted) (date now | date to-timezone 'America/New_York' | format date "%I:%M:%S%p") ]
     | str join
     | str lowercase
     | str replace --regex --all "([/:])" $"(ansi $theme.fg_faint)${1}(ansi $theme.fg_muted)"
