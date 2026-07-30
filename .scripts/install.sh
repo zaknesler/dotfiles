@@ -9,15 +9,34 @@ warn() { printf '\033[1;33m!!\033[0m %s\n' "$*" >&2; }
 err()  { printf '\033[1;31mXX\033[0m %s\n' "$*" >&2; }
 is_installed() { command -v "$1" >/dev/null 2>&1; }
 
+# detect platform
+OS="$(uname -s)"
+case "$OS" in
+  Darwin) PLATFORM=mac ;;
+  Linux)  PLATFORM=linux ;;
+  *) err "Unsupported OS: $OS (only macOS and Linux supported)"; exit 1 ;;
+esac
+
+log "Detected platform: $PLATFORM"
+
+# ask about server mode
 SERVER_MODE=false
 for arg in "$@"; do
   [ "$arg" = "--server" ] && SERVER_MODE=true
 done
-
 if [ "$SERVER_MODE" = false ] && [ -e /dev/tty ]; then
   read -r -p "Server install? Will only symlink necessary config files. [y/N] " reply </dev/tty || reply=""
   case "$reply" in
     [yY]*) SERVER_MODE=true ;;
+  esac
+fi
+
+# ask about package updates
+UPDATE_PACKAGES=false
+if [ "$PLATFORM" = linux ] && [ -e /dev/tty ]; then
+  read -r -p "Update all system packages when done? [y/N] " reply </dev/tty || reply=""
+  case "$reply" in
+    [yY]*) UPDATE_PACKAGES=true ;;
   esac
 fi
 
@@ -28,15 +47,6 @@ export XDG_CONFIG_HOME XDG_DATA_HOME
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export PATH="$CARGO_HOME/bin:$PATH"
-
-OS="$(uname -s)"
-case "$OS" in
-  Darwin) PLATFORM=mac ;;
-  Linux)  PLATFORM=linux ;;
-  *) err "Unsupported OS: $OS (only macOS and Linux supported)"; exit 1 ;;
-esac
-
-log "Detected platform: $PLATFORM"
 
 if [ "$SERVER_MODE" = true ]; then
   STOW_DIRS=(editorconfig git npm nushell nvim)
@@ -61,6 +71,7 @@ github_asset_url() {
     | head -n1 | cut -d'"' -f4
 }
 
+# install macOS prerequisites
 install_mac_prereqs() {
   if ! xcode-select -p >/dev/null 2>&1; then
     log "Installing Xcode command line tools..."
@@ -258,7 +269,6 @@ if [ -z "$NU_PATH" ]; then
   err "Nushell binary not found on PATH; cannot set it as the default shell."
   exit 1
 fi
-
 if ! grep -qxF "$NU_PATH" /etc/shells 2>/dev/null; then
   log "Adding $NU_PATH to /etc/shells..."
   # add a trailing newline first, otherwise we'd concatenate onto the last entry
@@ -268,7 +278,6 @@ if ! grep -qxF "$NU_PATH" /etc/shells 2>/dev/null; then
     printf "%s\n" "$1" >> "$f"
   ' _ "$NU_PATH"
 fi
-
 if [ "${SHELL:-}" != "$NU_PATH" ]; then
   log "Setting default shell to Nushell ($NU_PATH)..."
   sudo chsh -s "$NU_PATH" "$(id -un)" || warn "chsh failed; run manually: chsh -s $NU_PATH"
@@ -286,17 +295,12 @@ else
 fi
 
 # update system packages
-if [ "$PLATFORM" = linux ] && [ -e /dev/tty ]; then
-  read -r -p "Update all system packages now? [y/N] " reply </dev/tty || reply=""
-  case "$reply" in
-    [yY]*)
-      if is_installed apt-get; then
-        sudo apt-get update && sudo apt-get upgrade -y
-      elif is_installed pacman; then
-        sudo pacman -Syu --noconfirm
-      fi
-      ;;
-  esac
+if [ "$UPDATE_PACKAGES" = true ]; then
+  if is_installed apt-get; then
+    sudo apt-get update && sudo apt-get upgrade -y
+  elif is_installed pacman; then
+    sudo pacman -Syu --noconfirm
+  fi
 fi
 
 log "Done. Run 'nu' to verify, then relog."
