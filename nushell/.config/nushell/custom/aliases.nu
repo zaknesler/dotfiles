@@ -2,7 +2,8 @@ alias s- = su -
 
 # Dirs
 alias dot = cd ($env.XDG_CONFIG_HOME | path join "dotfiles")
-alias dt = cd ($env.HOME | path join "desktop")
+alias dl = cd ($env.HOME | path join "Downloads")
+alias dt = cd ($env.HOME | path join "Desktop")
 alias co = cd ($env.HOME | path join "code")
 alias s = start
 
@@ -15,7 +16,7 @@ alias vim = nvim
 # ls
 alias l = ls -a
 alias la = ls -a
-def ll [] { ls -la | reject inode num_links readonly target }
+def ll [] { ls -la | reject -o inode num_links readonly target }
 alias lll = ls -la
 
 # Git
@@ -69,12 +70,12 @@ alias pnrt = pnpm run test
 
 # Docker
 alias dr = docker
-alias drc = docker-compose
-alias drcb = docker-compose build
-alias drcd = docker-compose down
-alias drce = docker-compose exec
-alias drcr = docker-compose run --rm
-alias drcu = docker-compose up -d
+alias drc = docker compose
+alias drcb = docker compose build
+alias drcd = docker compose down
+alias drce = docker compose exec
+alias drcr = docker compose run --rm
+alias drcu = docker compose up -d
 alias dr-clean = docker rmi \`docker images -f 'dangling=true' -q\` --force
 
 # Python

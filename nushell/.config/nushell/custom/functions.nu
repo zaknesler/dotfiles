@@ -139,34 +139,19 @@ def myip [] {
 
 # Download all images from a list of URLs to the current directory
 def gdl [
-  ...urls: string                      # URL(s) containing images to download
-  --default-filename (-d)              # Ignore custom filename format and use the default
-  --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
-  --include-username (-u)              # Include username in filename
-  --prefer-title (-t)                  # Prefer title in filename (if available) instead of ID
-  --prefer-filename (-f)               # Prefer original filename (if available) instead of ID
   --cookies (-C): string               # Path to cookies file
-  --args (-a): list<string>            # Extra arguments to pass through to gallery-dl (e.g., --args [--no-mtime --retries 5])
+  --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
+  --no-abort                           # Disable aborting after 3 failed attempts (Boolean flag)
+  ...urls: string                      # URL(s) containing images to download
 ] {
-  let filename_args = if $default_filename {
-    null
-  } else {
-    let filename = [
-      (if $include_username { "{username|user[name]|author[handle]|artist:?/_/Cg/}" } else { "" })
-      "{date:%Y-%m-%d}"
-      (if $prefer_title {
-        "{title|tweet_id|post_id|id|filename:?_//Cg/X100//}"
-      } else if $prefer_filename {
-        "{filename|tweet_id|post_id|id:?_//Cg/X100//}"
-      } else {
-        "{tweet_id|post_id|id|filename!g:?_//Cg/X100//}"
-      })
-      "{num:?_p//}"
-      ".{extension}"
-    ] | str join ""
-
-    ["--filename" $filename]
-  }
+  let filename = [
+    "{username|user[name]|author[handle]|artist:?/_/Cg/}"
+    "{date:%Y-%m-%d}"
+    "{title|filename:?_//Cg/X100//}"
+    "{tweet_id|post_id|id!g:?_//Cg/X100//}"
+    "{num:?_p//}"
+    ".{extension}"
+  ] | str join ""
 
   let cookie_args = if $cookies_from_browser != null {
     ["--cookies-from-browser" $cookies_from_browser]
@@ -177,12 +162,10 @@ def gdl [
   }
 
   let args = [
-    "-D" "."
-    "-A" "3"
-    "-c" $"($env.XDG_CONFIG_HOME)/gallery-dl/gallery-dl.conf"
-    $filename_args
+    "--directory" "."
+    (if not $no_abort { ["--abort" "3"] })
+    "--filename" $filename
     $cookie_args
-    (if $args != null { $args } else { null })
   ] | flatten | compact
 
   gallery-dl ...$args ...$urls
@@ -454,7 +437,7 @@ def check-tsc-imports [
   | ignore
 }
 
-def unblock-app [path: string] {
+def allow-app [path: string] {
   let full_path = ($path | path expand)
 
   if not ($full_path | path exists) {
