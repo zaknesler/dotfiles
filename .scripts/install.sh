@@ -19,6 +19,19 @@ esac
 
 log "Detected platform: $PLATFORM"
 
+# ensure sudo is installed
+if [ "$PLATFORM" = linux ] && [ "$(id -u)" -eq 0 ] && ! is_installed sudo; then
+  log "sudo not found; installing it..."
+  if is_installed apt-get; then
+    apt-get update && apt-get install -y sudo
+  elif is_installed pacman; then
+    pacman -Sy --noconfirm --needed sudo
+  else
+    err "No known package manager found (apt/pacman) to install sudo."
+    exit 1
+  fi
+fi
+
 # ask about server mode
 SERVER_MODE=false
 for arg in "$@"; do
