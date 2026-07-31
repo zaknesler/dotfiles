@@ -14,7 +14,7 @@ OS="$(uname -s)"
 case "$OS" in
   Darwin) PLATFORM=mac ;;
   Linux)  PLATFORM=linux ;;
-  *) err "Unsupported OS: $OS (only macOS and Linux supported)"; exit 1 ;;
+  *) err "Unsupported OS: $OS (can only install on macOS and Linux)"; exit 1 ;;
 esac
 
 log "Detected platform: $PLATFORM"
