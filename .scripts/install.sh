@@ -109,18 +109,21 @@ install_linux_prereqs() {
   if is_installed apt-get; then
     log "Installing core packages via apt..."
     sudo apt-get update
-    sudo apt-get install -y stow git curl pkg-config build-essential libssl-dev ca-certificates unzip htop
+    sudo apt-get install -y stow git curl gnupg pkg-config build-essential libssl-dev ca-certificates unzip htop
   elif is_installed pacman; then
     log "Installing core packages via pacman..."
-    sudo pacman -Sy --noconfirm --needed stow git curl pkgconf base-devel openssl ca-certificates unzip htop
+    sudo pacman -Sy --noconfirm --needed stow git curl pkgconf base-devel openssl ca-certificates unzip htop neovim nushell tree-sitter-cli
   else
     err "No known package manager found (apt/pacman). Install stow, git, curl, and a C toolchain manually."
     exit 1
   fi
 }
 
-# install latest neovim from github
+# install latest neovim (apt only)
 install_linux_neovim() {
+  if ! is_installed apt-get; then
+    return
+  fi
   if is_installed nvim; then
     log "Neovim already installed ($(nvim --version | head -n1))."
     return
@@ -154,38 +157,21 @@ install_linux_neovim() {
   log "Installed $(nvim --version | head -n1)"
 }
 
-# install latest nushell from github
+# install nushell via apt on debian, pacman's already installed by now
 install_linux_nushell() {
-  if is_installed nu && is_installed nu_plugin_gstat; then
-    log "Nushell already installed ($(nu --version | head -n1))."
-    return
+  if ! is_installed nu && is_installed apt-get; then
+    log "Installing Nushell via apt..."
+    sudo install -d -m755 /etc/apt/keyrings
+    curl -fsSL https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/fury-nushell.gpg
+    echo "deb [signed-by=/etc/apt/keyrings/fury-nushell.gpg] https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury-nushell.list >/dev/null
+    sudo apt-get update
+    sudo apt-get install -y nushell
   fi
 
-  local target
-  case "$(uname -m)" in
-    x86_64|amd64)  target=x86_64-unknown-linux-gnu ;;
-    aarch64|arm64) target=aarch64-unknown-linux-gnu ;;
-    *) err "No prebuilt Nushell tarball for $(uname -m); install manually."; exit 1 ;;
-  esac
+  log "Nushell installed ($(nu --version | head -n1))."
 
-  log "Installing latest Nushell from GitHub release..."
-  local tmpdir url extracted
-  tmpdir="$(mktemp -d)"
-  url="$(github_asset_url nushell/nushell "${target}\.tar\.gz" || true)"
-
-  if [ -z "$url" ]; then
-    err "Could not resolve latest Nushell release URL; install manually."
-    rm -rf "$tmpdir"
-    exit 1
-  fi
-
-  curl -fsSL "$url" -o "$tmpdir/nu.tar.gz"
-  tar xzf "$tmpdir/nu.tar.gz" -C "$tmpdir"
-  extracted="$(find "$tmpdir" -maxdepth 1 -type d -name 'nu-*' | head -n1)"
-  sudo install -m755 "$extracted/nu" "$extracted/nu_plugin_gstat" /usr/local/bin/
-  rm -rf "$tmpdir"
-
-  log "Installed $(nu --version | head -n1)"
+  # install gstat if not already installed
+  is_installed nu_plugin_gstat || cargo-binstall --no-confirm nu_plugin_gstat
 }
 
 # install pre-reqs
