@@ -75,6 +75,7 @@
   "collaboration_panel": { "dock": "right", "button": false },
   "colorize_brackets": false,
   "completion_detail_alignment": "left",
+  "completion_menu_item_kind": "symbol",
   "current_line_highlight": "all",
   "diff_view_style": "split",
   "disable_ai": false,
