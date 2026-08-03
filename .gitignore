@@ -13,6 +13,7 @@ vendor/
 packer_compiled.lua
 .netrwhist
 .minimal
+lazy-lock.json
 
 # Brew
 Brewfile.lock*
