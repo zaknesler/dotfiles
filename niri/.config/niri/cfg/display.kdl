@@ -4,6 +4,7 @@
 output "HDMI-A-1" {
   mode "3840x2160@239.991"
   scale 1.5
+  position x=0 y=0
   focus-at-startup
 }
 
@@ -12,4 +13,5 @@ output "DP-2" {
   mode "2560x1440@144.000"
   transform "270"
   scale 1.25
+  position x=2560 y=-225
 }
