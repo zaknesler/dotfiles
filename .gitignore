@@ -34,6 +34,6 @@ zed/**/prompts/*
 local.ghostty
 
 # Wayland
-noctalia/**/colors.json
-noctalia/**/plugins/*
-niri/**/noctalia.kdl
+wayland/.config/noctalia/**/colors.json
+wayland/.config/noctalia/**/plugins/*
+wayland/.config/niri/**/noctalia.kdl
