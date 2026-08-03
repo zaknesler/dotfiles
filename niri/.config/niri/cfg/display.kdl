@@ -1,10 +1,15 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 
-// output "DP-1" {
-//   mode "2560x1440@359.979" // Set resolution and refresh rate
-//   scale 1 // No scaling (use 2 for HiDPI)
-// }
-
-output "Virtual-1" {
+// Main
+output "HDMI-A-1" {
+  mode "3840x2160@239.991"
   scale 1.5
+  focus-at-startup
+}
+
+// Vertical
+output "DP-2" {
+  mode "2560x1440@144.000"
+  transform "270"
+  scale 1.25
 }
