@@ -36,3 +36,4 @@ local.ghostty
 # Wayland
 noctalia/**/colors.json
 noctalia/**/plugins/*
+niri/**/noctalia.kdl

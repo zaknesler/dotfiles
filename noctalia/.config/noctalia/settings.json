@@ -363,7 +363,7 @@
     "clockStyle": "custom",
     "compactLockScreen": false,
     "dimmerOpacity": 0,
-    "enableBlurBehind": true,
+    "enableBlurBehind": false,
     "enableLockScreenCountdown": true,
     "enableLockScreenMediaControls": false,
     "enableShadows": true,
@@ -388,11 +388,11 @@
     "passwordChars": false,
     "radiusRatio": 1,
     "reverseScroll": false,
-    "scaleRatio": 1,
+    "scaleRatio": 0.9,
     "screenRadiusRatio": 1,
     "shadowDirection": "bottom_right",
-    "shadowOffsetX": -1,
-    "shadowOffsetY": -1,
+    "shadowOffsetX": 1,
+    "shadowOffsetY": 1,
     "showChangelogOnStartup": true,
     "showHibernateOnLockScreen": false,
     "showScreenCorners": false,
@@ -601,18 +601,23 @@
     "warningColor": ""
   },
   "templates": {
-    "activeTemplates": [],
+    "activeTemplates": [
+      {
+        "id": "niri",
+        "enabled": true
+      }
+    ],
     "enableUserTheming": false
   },
   "ui": {
     "boxBorderEnabled": false,
     "fontDefault": "Inter",
-    "fontDefaultScale": 1,
+    "fontDefaultScale": 0.9,
     "fontFixed": "0xProto Nerd Font",
-    "fontFixedScale": 1,
-    "panelBackgroundOpacity": 0.93,
+    "fontFixedScale": 0.9,
+    "panelBackgroundOpacity": 1,
     "panelsAttachedToBar": true,
-    "scrollbarAlwaysVisible": true,
+    "scrollbarAlwaysVisible": false,
     "settingsPanelMode": "attached",
     "settingsPanelSideBarCardStyle": false,
     "tooltipsEnabled": true,
@@ -620,7 +625,7 @@
   },
   "wallpaper": {
     "automationEnabled": true,
-    "directory": "/home/zak/Pictures/Wallpapers",
+    "directory": "/home/zak/Downloads/bg",
     "enableMultiMonitorDirectories": false,
     "enabled": true,
     "favorites": [],
