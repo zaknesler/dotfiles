@@ -5,6 +5,7 @@ alias dot = cd ($env.XDG_CONFIG_HOME | path join "dotfiles")
 alias dl = cd ($env.HOME | path join "Downloads")
 alias dt = cd ($env.HOME | path join "Desktop")
 alias co = cd ($env.HOME | path join "code")
+alias code = cd ($env.HOME | path join "code")
 alias s = start
 
 # Neovim
