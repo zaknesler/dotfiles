@@ -4,7 +4,7 @@ config-file = ?local.ghostty
 # Font
 font-size = 15
 font-family = 0xProto Nerd Font
-adjust-cell-height = 2
+adjust-cell-height = -10%
 
 # Colors
 theme = light:orange_light,dark:orange_dark
