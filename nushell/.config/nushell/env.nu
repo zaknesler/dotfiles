@@ -153,13 +153,6 @@ def --env path-add [dir: string, --append (-a)] {
   }
 }
 
-path-add -a ($env.PNPM_HOME | path join "bin")
-path-add ($env.HOME | path join ".local" "bin")
-path-add ($env.XDG_DATA_HOME | path join "deno" "bin")
-path-add ($env.XDG_DATA_HOME | path join "cargo" "bin")
-path-add ($env.XDG_DATA_HOME | path join "pyenv" "bin")
-path-add ($env.XDG_DATA_HOME | path join "python" "bin")
-
 # Go
 if not ($env | get -o GOPATH | is-empty) {
   path-add -a ($env.GOPATH | path join "bin")
@@ -197,11 +190,18 @@ if $nu.os-info.family == "unix" {
   path-add -a "/usr/local/bin"
   path-add -a "/usr/local/go/bin"
   path-add -a "/usr/sbin"
-  path-add -a ($env.HOME | path join ".local" "share" "npm" "bin")
-  path-add -a ($env.HOME | path join ".local" "share" "bob" "nvim-bin")
 }
 
 # Windows
 if $nu.os-info.name == "windows" {
   $env.CMAKE_GENERATOR = "Ninja"
 }
+
+# Local binaries
+path-add ($env.PNPM_HOME | path join "bin")
+path-add ($env.HOME | path join ".local" "bin")
+path-add ($env.XDG_DATA_HOME | path join "npm" "bin")
+path-add ($env.XDG_DATA_HOME | path join "deno" "bin")
+path-add ($env.XDG_DATA_HOME | path join "cargo" "bin")
+path-add ($env.XDG_DATA_HOME | path join "pyenv" "bin")
+path-add ($env.XDG_DATA_HOME | path join "python" "bin")
