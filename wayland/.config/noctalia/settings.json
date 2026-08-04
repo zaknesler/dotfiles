@@ -236,7 +236,7 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": false,
+        "darkMode": true,
         "generationMethod": "tonal-spot",
         "manualSunrise": "08:00",
         "manualSunset": "19:00",
