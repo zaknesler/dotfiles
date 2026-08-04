@@ -1,38 +1,32 @@
 .DS_Store
 
-# Zsh
-.zcompdump*
-*.session
-.zsh_sessions/
-
 # Neovim
-autoload/
-pack/
-plugged/
-vendor/
-packer_compiled.lua
-.netrwhist
-.minimal
-lazy-lock.json
+nvim/.config/nvim/autoload/
+nvim/.config/nvim/pack/
+nvim/.config/nvim/plugged/
+nvim/.config/nvim/vendor/
+nvim/.config/nvim/packer_compiled.lua
+nvim/.config/nvim/.netrwhist
+nvim/.config/nvim/.minimal
+nvim/.config/nvim/lazy-lock.json
 
 # Brew
-Brewfile.lock*
+brew/.config/homebrew/Brewfile.lock*
 
 # Nushell
-history.txt
-plugin.nu
-*.msgpackz
-.mode
-.env.local
-
+nushell/.config/nushell/history.txt
+nushell/.config/nushell/plugin.nu
+nushell/.config/nushell/*.msgpackz
+nushell/.config/nushell/.mode
+nushell/.config/nushell/.env.local
 nushell/.config/nushell/scripts*/*.nuon
 
 # Zed
-zed/**/conversations/*
-zed/**/prompts/*
+zed/.config/zed/conversations/*
+zed/.config/zed/prompts/*
 
 # Ghostty
-local.ghostty
+ghostty/.config/ghostty/local.ghostty
 
 # Wayland
 wayland/.config/noctalia/**/colors.json
