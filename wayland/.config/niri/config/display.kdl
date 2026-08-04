@@ -2,7 +2,11 @@
 
 // Main
 output "HDMI-A-1" {
-  mode "3840x2160@239.991"
+  // I get weird flickering at 240hz :(
+  //  -> https://github.com/niri-wm/niri/issues/2597
+  // mode "3840x2160@239.991"
+
+  mode "3840x2160@119.880"
   scale 1.25
   position x=0 y=0
   focus-at-startup
