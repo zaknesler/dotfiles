@@ -1,5 +1,11 @@
 .DS_Store
 
+# Brew
+brew/.config/homebrew/Brewfile.lock*
+
+# Ghostty
+ghostty/.config/ghostty/local.ghostty
+
 # Neovim
 nvim/.config/nvim/autoload/
 nvim/.config/nvim/pack/
@@ -10,9 +16,6 @@ nvim/.config/nvim/.netrwhist
 nvim/.config/nvim/.minimal
 nvim/.config/nvim/lazy-lock.json
 
-# Brew
-brew/.config/homebrew/Brewfile.lock*
-
 # Nushell
 nushell/.config/nushell/history.txt
 nushell/.config/nushell/plugin.nu
@@ -21,14 +24,11 @@ nushell/.config/nushell/.mode
 nushell/.config/nushell/.env.local
 nushell/.config/nushell/scripts*/*.nuon
 
-# Zed
-zed/.config/zed/conversations/*
-zed/.config/zed/prompts/*
-
-# Ghostty
-ghostty/.config/ghostty/local.ghostty
-
 # Wayland
 wayland/.config/noctalia/**/colors.json
 wayland/.config/noctalia/**/plugins/*
 wayland/.config/niri/**/noctalia.kdl
+
+# Zed
+zed/.config/zed/conversations/*
+zed/.config/zed/prompts/*
