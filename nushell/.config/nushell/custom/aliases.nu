@@ -77,7 +77,7 @@ alias drcd = docker compose down
 alias drce = docker compose exec
 alias drcr = docker compose run --rm
 alias drcu = docker compose up -d
-alias dr-clean = docker rmi \`docker images -f 'dangling=true' -q\` --force
+alias dr-clean = docker rmi --force (docker images -f dangling=true -q)
 
 # Python
 alias pip = pip3
