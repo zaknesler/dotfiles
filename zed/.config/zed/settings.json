@@ -246,13 +246,10 @@
       "host": "allay",
       "username": "zak",
       "args": [],
-      "projects": [{ "paths": ["/home/zak"] }],
-    },
-    {
-      "host": "axo",
-      "username": "zak",
-      "args": [],
-      "projects": [{ "paths": ["/home/zak"] }],
+      "projects": [
+        { "paths": ["/home/zak"] },
+        { "paths": ["/volume1/docker"] },
+      ],
     },
   ],
   "sticky_scroll": { "enabled": true },
