@@ -6,21 +6,26 @@
     "sidebar_side": "left",
     "dock": "left",
     "commit_message_model": {
+      "effort": "low",
+      "enable_thinking": false,
       "model": "claude-haiku-4-5",
       "provider": "zed.dev",
+      "speed": "fast",
     },
     "default_model": {
       "effort": "low",
       "enable_thinking": true,
       "model": "claude-sonnet-5",
       "provider": "zed.dev",
+      "speed": "standard",
     },
     "default_profile": "write",
     "inline_assistant_model": {
-      "model": "claude-sonnet-4-6",
-      "provider": "zed.dev",
-      "enable_thinking": false,
       "effort": "low",
+      "enable_thinking": false,
+      "model": "claude-sonnet-5",
+      "provider": "zed.dev",
+      "speed": "fast",
     },
     "tool_permissions": {
       "tools": {
@@ -28,22 +33,16 @@
         "terminal": {
           "default": "confirm",
           "always_allow": [
-            {
-              "pattern": "^cargo\\s+(build|test|check|clippy|fmt)",
-            },
-            {
-              "pattern": "^p?npm\\s+(install|test|run|build|update)",
-            },
-            {
-              "pattern": "^git\\s+(status|log|diff|branch|pull)",
-            },
-            {
-              "pattern": "^(ls|cat|pwd|echo|which|find|grep|tree|test|head|tail|wc)\\b",
-            },
+            { "pattern": "^cargo\\s+(build|test|check|clippy|fmt)" },
+            { "pattern": "^p?npm\\s+(install|test|run|build|update)" },
+            { "pattern": "^git\\s+(status|log|diff|branch|pull)" },
+            { "pattern": "^(ls|cat|echo|tree|head|tail|test)\\s+" },
+            { "pattern": "^(which|find|grep|wc|stat|pwd)\\s+" },
           ],
           "always_deny": [
-            { "pattern": "rm\\s+-rf\\s+(/|~)" },
-            { "pattern": "sudo\\b" },
+            { "pattern": "rm\\s+-[fr]+\\s+(/|~)" },
+            { "pattern": "sudo\\s+" },
+            { "pattern": "^git\\s+(commit|push|merge)" },
           ],
         },
       },
@@ -52,6 +51,7 @@
   "agent_servers": {
     "claude-acp": {
       "default_config_options": {
+        "fast": true,
         "effort": "low",
         "mode": "auto",
         "model": "sonnet",
@@ -244,12 +244,6 @@
   "ssh_connections": [
     {
       "host": "allay",
-      "username": "zak",
-      "args": [],
-      "projects": [{ "paths": ["/home/zak"] }],
-    },
-    {
-      "host": "axo",
       "username": "zak",
       "args": [],
       "projects": [{ "paths": ["/home/zak"] }],

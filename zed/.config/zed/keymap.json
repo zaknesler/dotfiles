@@ -13,6 +13,7 @@
       "ctrl-{": "window::ShowPreviousWindowTab",
       "alt-`": "workspace::NewCenterTerminal",
       "alt-shift-p": "text_finder::Toggle",
+      "alt-cmd-d": "git::ExpandCommitEditor",
     },
   },
   {
