@@ -6,7 +6,8 @@ window-rule {
 // always open windows matching this rule as floating
 window-rule {
   match app-id="steam"
-  exclude title=r#"^[Ss]team$"#
+  match app-id="org.gnome.Nautilus"
+  exclude title=r#"(?i)^steam$"#
   open-floating true
 }
 
