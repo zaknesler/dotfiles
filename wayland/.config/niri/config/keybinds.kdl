@@ -108,6 +108,10 @@ binds {
   Mod+Shift+BracketLeft               { set-window-height "-10%"; }
   Mod+Shift+BracketRight              { set-window-height "+10%"; }
 
+  // Column presets
+  Mod+Ctrl+BracketLeft                { set-column-width "50%"; }
+  // Mod+Ctrl+BracketRight               { set-column-width "50%"; move-column-right; }
+
   // Screenshots
   Mod+Shift+S                         { screenshot; }
   CTRL+Shift+1                        { screenshot; }
