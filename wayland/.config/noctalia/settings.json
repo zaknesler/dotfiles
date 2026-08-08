@@ -106,6 +106,13 @@
                     "useCustomFont": false
                 },
                 {
+                    "defaultSettings": {
+                        "customColor": "none",
+                        "showConditionIcon": true,
+                        "showTempUnit": true,
+                        "showTempValue": true,
+                        "tooltipOption": "everything"
+                    },
                     "id": "plugin:weather-indicator"
                 },
                 {
