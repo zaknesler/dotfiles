@@ -184,7 +184,7 @@ install_linux_nushell() {
   log "Nushell installed ($(nu --version | head -n1))."
 
   # install gstat if not already installed
-  is_installed nu_plugin_gstat || cargo-binstall --no-confirm nu_plugin_gstat
+  # is_installed nu_plugin_gstat || cargo-binstall --no-confirm nu_plugin_gstat
 }
 
 # install pre-reqs
