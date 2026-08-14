@@ -4,5 +4,13 @@
     "mongodb/brew",
     "probe-rs/probe-rs",
     "tw93/tap"
+  ],
+  "trustedformulae": [
+    "azure/functions/azure-functions-core-tools",
+    "azure/functions/azure-functions-core-tools@4",
+    "rustfs/tap/rc"
+  ],
+  "trustedcasks": [
+    "azure/azure-cli/azure-cli-preview"
   ]
 }

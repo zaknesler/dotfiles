@@ -251,6 +251,11 @@
         { "paths": ["/volume1/docker"] },
       ],
     },
+    {
+      "host": "vex",
+      "args": [],
+      "projects": [{ "paths": ["/home/zak"] }],
+    },
   ],
   "sticky_scroll": { "enabled": true },
   "tab_bar": { "show_nav_history_buttons": false },
