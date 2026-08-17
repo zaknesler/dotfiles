@@ -89,7 +89,7 @@ $env.config = {
 
   plugins: {}
   hooks: {
-    display_output: "if (term size).columns >= 100 { table -e } else { table }"
+    display_output: "table"
     pre_prompt: [{ null }]
     pre_execution: [{ null }]
     command_not_found: { null }
