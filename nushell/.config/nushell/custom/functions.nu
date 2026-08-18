@@ -68,7 +68,8 @@ def ghcr [repo: string] {
   git remote add origin $"git@github.com:zaknesler/($repo).git"
 }
 
-def git-reset-tag [tag: string, --delete_release (-d)] {
+# Reset a git tag and optionally delete the release
+def git-reset-tag [tag: string, --delete-release (-d)] {
   try { git tag -d $tag }
   try { git push --delete origin $tag }
   git tag $tag
