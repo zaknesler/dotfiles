@@ -1,11 +1,3 @@
 {
-  "file_scan_exclusions": [
-    "**/*.msgpackz",
-    "**/.DS_Store",
-    "**/.git",
-    "**/.settings",
-    "**/history.txt",
-    "**/nu_scripts",
-    "**/Thumbs.db",
-  ],
+  "file_scan_exclusions": ["...", "**/history.txt", "**/nu_scripts"],
 }

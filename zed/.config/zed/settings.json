@@ -158,6 +158,7 @@
       "enable_lsp_tasks": true,
     },
   },
+  "lsp_document_colors": "background",
   "markdown_preview": {
     "max_width": 800,
     "limit_content_width": true,
@@ -228,7 +229,7 @@
     "folder_icons": true,
     "git_status": true,
     "git_status_indicator": false,
-    "hide_hidden": true,
+    "hide_hidden": false,
     "hide_root": false,
     "indent_size": 16,
     "show_diagnostics": "off",
