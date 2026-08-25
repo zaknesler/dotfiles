@@ -1,4 +1,3 @@
-use binds.nu
 use menus.nu
 use theme.nu
 use colors/theme.nu *
@@ -7,7 +6,6 @@ let theme = (palette)
 
 $env.config = {
   menus: (menus)
-  keybindings: (binds)
   color_config: (theme)
 
   show_banner: false

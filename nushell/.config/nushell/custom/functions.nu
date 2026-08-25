@@ -68,7 +68,8 @@ def ghcr [repo: string] {
   git remote add origin $"git@github.com:zaknesler/($repo).git"
 }
 
-def git-reset-tag [tag: string, --delete_release (-d)] {
+# Reset a git tag and optionally delete the release
+def git-reset-tag [tag: string, --delete-release (-d)] {
   try { git tag -d $tag }
   try { git push --delete origin $tag }
   git tag $tag
@@ -350,9 +351,9 @@ def killnode [
 
 # Convert a file to an MP4 using ffmpeg
 def to-mp4 [
-  input: string                  # Input video file
-  --output (-o): string          # Output MP4 filename (defaults to input filename with .mp4 extension)
-  --keep-hdr (-H)                # Keep HDR metadata
+  input: string          # Input video file
+  --output (-o): string  # Output MP4 filename (defaults to input filename with .mp4 extension)
+  --skip-color           # Skip converting colorspace to sRGB/BT.709
 ] {
   let out = if ($output | is-not-empty) {
     $output
@@ -361,7 +362,7 @@ def to-mp4 [
     $"($parsed.stem).mp4"
   }
 
-  let hdr_args = if $keep_hdr {
+  let args = if $skip_color {
     ["-c:v" "copy"]
   } else {
     [
@@ -377,7 +378,7 @@ def to-mp4 [
     "-i" $input
     "-map" "0:v:0"
     "-map" "0:a:0"
-    ...$hdr_args
+    ...$args
     "-c:a" "copy"
     $out
   ]
