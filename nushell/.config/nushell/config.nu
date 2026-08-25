@@ -107,11 +107,16 @@ source functions.nu
 
 # Completions
 source nu_scripts/custom-completions/cargo/cargo-completions.nu
+source nu_scripts/custom-completions/curl/curl-completions.nu
+source nu_scripts/custom-completions/docker/docker-completions.nu
 source nu_scripts/custom-completions/gh/gh-completions.nu
 source nu_scripts/custom-completions/git/git-completions.nu
 source nu_scripts/custom-completions/npm/npm-completions.nu
 source nu_scripts/custom-completions/pnpm/pnpm-completions.nu
 source nu_scripts/custom-completions/rustup/rustup-completions.nu
+source nu_scripts/custom-completions/ssh/ssh-completions.nu
+source nu_scripts/custom-completions/tar/tar-completions.nu
+source nu_scripts/custom-completions/winget/winget-completions.nu
 
 use sync.nu
 use branches.nu

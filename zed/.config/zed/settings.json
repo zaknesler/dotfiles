@@ -51,8 +51,8 @@
   "agent_servers": {
     "claude-acp": {
       "default_config_options": {
-        "fast": true,
-        "effort": "low",
+        "fast": false,
+        "effort": "medium",
         "mode": "auto",
         "model": "sonnet",
       },
@@ -86,6 +86,9 @@
     "allow_data_collection": "no",
   },
   "ensure_final_newline_on_save": true,
+  "file_types": {
+    "XML": ["*.svg", "*.xml"],
+  },
   "format_on_save": "on",
   "git": {
     "inline_blame": {
@@ -138,6 +141,7 @@
     "vtsls": {
       "settings": {
         "typescript": {
+          "preferGoToSourceDefinition": true,
           "updateImportsOnFileMove": { "enabled": "always" },
           "suggest": {
             "completeFunctionCalls": false,
@@ -149,6 +153,7 @@
           },
         },
         "javascript": {
+          "preferGoToSourceDefinition": true,
           "updateImportsOnFileMove": { "enabled": "always" },
           "suggest": {
             "completeFunctionCalls": false,

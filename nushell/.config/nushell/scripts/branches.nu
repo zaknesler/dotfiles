@@ -2,12 +2,13 @@ const DIR = (path self | path dirname)
 
 # Get current branch status for project repos
 export def main [
-  --npm-install(-N) # Install NPM dependencies after fetching repo
-  --reset-to-dev(-R) # Reset to dev on all repos
-  --npm-audit(-A) # Run NPM audit
-  --npm-link(-L) # Run NPM link for dependencies
-  --latest(-U) # Update to latest internal packages
-  --sequential(-s) # Run sequentially instead of in parallel
+  --npm-install   # Install NPM dependencies after fetching repo
+  --reset-to-dev  # Reset to dev on all repos
+  --npm-audit     # Run NPM audit
+  --npm-audit-fix # Run NPM audit
+  --npm-link      # Run NPM link for dependencies
+  --latest        # Update to latest internal packages
+  --sequential    # Run sequentially instead of in parallel
 ] {
   let repos = open ($DIR | path join "branches.nuon")
 
@@ -15,6 +16,7 @@ export def main [
     npm_install: $npm_install,
     reset_to_dev: $reset_to_dev,
     npm_audit: $npm_audit,
+    npm_audit_fix: $npm_audit_fix,
     npm_link: $npm_link,
     latest: $latest,
   }
@@ -56,6 +58,8 @@ def process-repo [repo: record, options: record] {
 
   if $options.npm_audit {
     try { npm audit }
+  } else if $options.npm_audit_fix {
+    try { npm audit fix }
   }
 
   let git = (gstat)

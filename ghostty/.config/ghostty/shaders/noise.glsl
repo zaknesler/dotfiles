@@ -1,4 +1,4 @@
-const float GRAIN_SCALE = 3.0;
+const float GRAIN_SCALE = 2.0;
 const float GRAIN_INTENSITY = 0.075;
 const float GRAIN_SPEED = 24.0;
 
