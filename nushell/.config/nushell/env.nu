@@ -121,6 +121,7 @@ $env.DOCKER_BUILDKIT = "1"
 # Defaults
 $env.EDITOR = "nvim"
 $env.VISUAL = "nvim"
+$env.SYSTEMD_EDITOR = "nvim"
 $env.EDIR_EDITOR = 'zed --wait'
 
 # Node
