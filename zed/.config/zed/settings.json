@@ -41,6 +41,7 @@
           ],
           "always_deny": [
             { "pattern": "rm\\s+-[fr]+\\s+(/|~)" },
+            { "pattern": "find\\s+/\\s+" },
             { "pattern": "sudo\\s+" },
             { "pattern": "^git\\s+(commit|push|merge)" },
           ],
