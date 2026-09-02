@@ -253,15 +253,7 @@
       "host": "allay",
       "username": "zak",
       "args": [],
-      "projects": [
-        { "paths": ["/home/zak"] },
-        { "paths": ["/volume1/docker"] },
-      ],
-    },
-    {
-      "host": "vex",
-      "args": [],
-      "projects": [{ "paths": ["/home/zak"] }],
+      "projects": [{ "paths": ["/home/zak"] }, { "paths": ["/opt"] }],
     },
   ],
   "sticky_scroll": { "enabled": true },

@@ -13,12 +13,12 @@ export def main [
   let repos = open ($DIR | path join "branches.nuon")
 
   let options = {
-    npm_install: $npm_install,
-    reset_to_dev: $reset_to_dev,
-    npm_audit: $npm_audit,
-    npm_audit_fix: $npm_audit_fix,
-    npm_link: $npm_link,
-    latest: $latest,
+    npm_install: $npm_install
+    reset_to_dev: $reset_to_dev
+    npm_audit: $npm_audit
+    npm_audit_fix: $npm_audit_fix
+    npm_link: $npm_link
+    latest: $latest
   }
 
   if $sequential {
@@ -62,20 +62,19 @@ def process-repo [repo: record, options: record] {
     try { npm audit fix }
   }
 
-  let git = (gstat)
-
   print $"--- Finished ($repo.path | path join)"
 
+  let git = gstat
   {
-    repo: ($repo.path | path join),
-    branch: ($git | get branch),
-    behind: ($git | get behind),
-    ahead: ($git | get ahead),
-    untracked: ($git | get wt_untracked),
-    modified: ($git | get wt_modified),
-    deleted: ($git | get wt_deleted),
-    type_changed: ($git | get wt_type_changed),
-    renamed: ($git | get wt_renamed),
-    stashes: ($git | get stashes),
+    repo: ($repo.path | path join)
+    branch: ($git | get branch)
+    behind: ($git | get behind)
+    ahead: ($git | get ahead)
+    untracked: ($git | get wt_untracked)
+    modified: ($git | get wt_modified)
+    deleted: ($git | get wt_deleted)
+    type_changed: ($git | get wt_type_changed)
+    renamed: ($git | get wt_renamed)
+    stashes: ($git | get stashes)
   }
 }
