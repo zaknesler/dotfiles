@@ -228,11 +228,11 @@
     },
   },
   "project_panel": {
+    "folder_indicator": "icon",
     "auto_fold_dirs": false,
     "diagnostic_badges": true,
     "dock": "right",
     "entry_spacing": "comfortable",
-    "folder_icons": true,
     "git_status": true,
     "git_status_indicator": false,
     "hide_hidden": true,
