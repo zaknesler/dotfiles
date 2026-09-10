@@ -20,6 +20,29 @@ def load-groups [config_path: string] {
   }
 }
 
+# Safely format YYYY-MM-DD date as YYYYMMDD
+def format-date []: any -> any {
+  if ($in | is-empty) { null } else { $in | str replace -a "-" "" }
+}
+
+# Get last-downloaded video's date
+def latest-downloaded-date [channel_path: string] {
+  let root = ($channel_path | path expand)
+  let dates = (
+    try {
+      ls ($root | path join "**" "*.mp4" | into glob)
+      | where type == file
+      | get name
+      | each {|f| $f | str replace $root "" | parse -r '(?<date>\d{4}-\d{2}-\d{2})' | get date.0? }
+      | compact
+    } catch {
+      []
+    }
+  )
+
+  if ($dates | is-empty) { null } else { $dates | sort | last | format-date }
+}
+
 export def download [
   --config (-f): string  # Path to config file
   --cookies-from-browser (-b): string  # Browser to extract cookies from
@@ -115,52 +138,31 @@ export def download [
       # Ensure directory exists
       mkdir ($channel.path | path expand)
 
-      # Get the latest video date already downloaded
-      let existing_videos = (
-        try {
-          ls ($channel.path | path expand | path join "**" "*.mp4")
-          | where type == file
-          | get name
-          | each { |f| $f | parse "{date}_{rest}" | get date.0? }
-          | compact
-          | sort
-          | reverse
-        } catch {
-          [] # Return empty list if no files found
-        }
-      )
+      # Resume from the newest existing video, unless config `after` is later
+      let latest_existing = (latest-downloaded-date $channel.path)
+      let config_after = ($channel | get -o after | format-date)
+      let config_before = ($channel | get -o before | format-date)
+      let bounds = ([$latest_existing $config_after] | compact | sort)
+      let date_after = (if ($bounds | is-empty) { null } else { $bounds | last })
 
-      # Determine the minimum date from config (optional `after` field)
-      let config_after = if ($channel | get -o after | is-not-empty) {
-        let raw = $channel.after | str replace -a "-" ""
-        print $"  Config minimum date: ($channel.after)"
-        $raw
+      if ($latest_existing | is-empty) {
+        print "  No existing videos found"
       } else {
-        null
+        print $"  Latest video date: ($latest_existing)"
+      }
+      if ($date_after | is-empty) {
+        print "  Downloading all videos"
+      } else {
+        print $"  Downloading videos after: ($date_after)"
+      }
+      if ($config_before | is-not-empty) {
+        print $"  Downloading videos before: ($config_before)"
       }
 
-      let date_after = if ($existing_videos | is-empty) {
-        if ($config_after | is-not-empty) {
-          print "  No existing videos found, using config minimum date"
-          $config_after
-        } else {
-          print "  No existing videos found, downloading all"
-          "19700101"  # Download all videos if none exist
-        }
-      } else {
-        let latest_date = $existing_videos | first
-        let latest_yyyymmdd = $latest_date | str replace -a "-" ""
-        print $"  Latest video date: ($latest_date)"
-        # Use the later of the two dates (config minimum vs latest existing)
-        if ($config_after | is-not-empty) and ($config_after | into int) > ($latest_yyyymmdd | into int) {
-          print "  Using config minimum date (later than latest video)"
-          $config_after
-        } else {
-          $latest_yyyymmdd
-        }
+      if ($date_after | is-not-empty) and ($config_before | is-not-empty) and ($date_after | into int) >= ($config_before | into int) {
+        print $"[ok] Synced ($channel.name) \(already up to date through ($config_before)\)"
+        continue
       }
-
-      print $"  Downloading videos after: ($date_after)"
 
       # Run yt-dlp
       try {
@@ -168,6 +170,7 @@ export def download [
           url: $channel.url
           output_path: $channel.path
           date_after: $date_after
+          date_before: $config_before
           cookies_from_browser: $eff_cookies_from_browser
           cookies: $eff_cookies
           dry_run: $dry_run
@@ -211,16 +214,12 @@ export def video [
     mkdir ($target_path | path expand)
   }
 
-  # Use date_after of "19700101" to download the video regardless of date
-  let date_after = "19700101"
-
   for url in $urls {
     # Run yt-dlp for each video
     try {
       process-video {
         url: $url
         output_path: $target_path
-        date_after: $date_after
         cookies_from_browser: $cookies_from_browser
         cookies: $cookies
         dry_run: $dry_run
@@ -259,6 +258,7 @@ export def list [
         url: $c.url
         path: $c.path
         after: ($c | get -o after)
+        before: ($c | get -o before)
       }
     }
   }
@@ -270,7 +270,8 @@ export def list [
 def process-video [options: record] {
   let url = $options.url
   let output_path = $options.output_path
-  let date_after = $options.date_after
+  let date_after = $options.date_after?
+  let date_before = $options.date_before?
   let cookies_from_browser = $options.cookies_from_browser?
   let cookies = $options.cookies?
   let dry_run = $options.dry_run? | default false
@@ -306,9 +307,6 @@ def process-video [options: record] {
     -o $video_template
     --restrict-filenames  # Removes special characters, use underscores, etc.
     -f $YT_DLP_FORMAT
-
-    # Only download videos after the latest one we have
-    --dateafter $date_after
 
     # Don't write playlist metadata files
     --no-write-playlist-metafiles
@@ -346,6 +344,13 @@ def process-video [options: record] {
     --download-archive ([$output_path ".downloaded"] | path join)
   ]
 
+  # Unset bounds are left off entirely
+  let date_args = (
+    []
+    | append (if ($date_after | is-not-empty) { [--dateafter $date_after] } else { [] })
+    | append (if ($date_before | is-not-empty) { [--datebefore $date_before] } else { [] })
+  )
+
   # Add break-on-existing unless disabled
   let break_args = if $no_break_on_existing {
     []
@@ -374,7 +379,7 @@ def process-video [options: record] {
     []
   }
 
-  let all_args = ($base_args | append $path_args | append $channel_name_args | append $break_args | append $cookie_args | append $extra_args | append $dry_run_args | append $url)
+  let all_args = ($base_args | append $path_args | append $date_args | append $channel_name_args | append $break_args | append $cookie_args | append $extra_args | append $dry_run_args | append $url)
 
   # Run yt-dlp
   yt-dlp ...$all_args
