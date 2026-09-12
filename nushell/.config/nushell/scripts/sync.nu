@@ -142,7 +142,11 @@ export def download [
       let latest_existing = (latest-downloaded-date $channel.path)
       let config_after = ($channel | get -o after | format-date)
       let config_before = ($channel | get -o before | format-date)
-      let bounds = ([$latest_existing $config_after] | compact | sort)
+      let bounds = if $no_break_on_existing {
+        [$config_after] | compact | sort
+      } else {
+        [$latest_existing $config_after] | compact | sort
+      }
       let date_after = (if ($bounds | is-empty) { null } else { $bounds | last })
 
       if ($latest_existing | is-empty) {
