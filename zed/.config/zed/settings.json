@@ -166,50 +166,50 @@
   },
   "lsp_document_colors": "background",
   "markdown_preview": {
+    "font_size": 16,
     "max_width": 800,
     "limit_content_width": true,
   },
-  "markdown_preview_font_size": 16,
   "outline_panel": { "dock": "right" },
   "profiles": {
     "Large": {
       "settings": {
+        "markdown_preview": { "font_size": 18 },
         "agent_buffer_font_size": 15,
         "buffer_font_size": 15,
         "git_commit_buffer_font_size": 15,
-        "markdown_preview_font_size": 18,
         "project_panel": { "indent_size": 20 },
         "ui_font_size": 18,
       },
     },
     "Larger": {
       "settings": {
+        "markdown_preview": { "font_size": 20 },
         "agent_buffer_font_size": 18,
         "buffer_font_size": 18,
         "git_commit_buffer_font_size": 18,
-        "markdown_preview_font_size": 20,
         "project_panel": { "indent_size": 24 },
         "ui_font_size": 20,
       },
     },
     "Largest": {
       "settings": {
+        "markdown_preview": { "font_size": 22 },
         "agent_buffer_font_size": 20,
         "buffer_font_size": 24,
         "git_commit_buffer_font_size": 20,
-        "markdown_preview_font_size": 22,
         "project_panel": { "indent_size": 24 },
         "ui_font_size": 24,
       },
     },
     "Reading": {
       "settings": {
+        "markdown_preview": { "font_size": 20 },
         "agent_buffer_font_size": 18,
         "buffer_font_size": 18,
         "current_line_highlight": "none",
         "git": { "git_gutter": "hide" },
         "git_commit_buffer_font_size": 18,
-        "markdown_preview_font_size": 20,
         "gutter": {
           "breakpoints": false,
           "folds": false,
