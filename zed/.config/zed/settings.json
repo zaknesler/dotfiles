@@ -13,7 +13,7 @@
       "speed": "fast",
     },
     "default_model": {
-      "effort": "low",
+      "effort": "medium",
       "enable_thinking": true,
       "model": "claude-sonnet-5",
       "provider": "zed.dev",
