@@ -116,7 +116,6 @@ source nu_scripts/custom-completions/ssh/ssh-completions.nu
 source nu_scripts/custom-completions/tar/tar-completions.nu
 source nu_scripts/custom-completions/winget/winget-completions.nu
 
-use sync.nu
 use branches.nu
 
 # Load local env file
