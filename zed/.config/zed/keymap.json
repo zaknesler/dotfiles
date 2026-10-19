@@ -26,6 +26,9 @@
       "alt-cmd-i": "editor::Hover",
       "cmd-k cmd-i": "editor::Hover",
       "alt-win-s": "editor::SortLinesCaseInsensitive",
+      "alt-win-u": "editor::UniqueLinesCaseInsensitive",
+      "alt-cmd-s": "editor::SortLinesCaseInsensitive",
+      "alt-cmd-u": "editor::UniqueLinesCaseInsensitive",
     },
   },
   {

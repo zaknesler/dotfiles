@@ -43,7 +43,7 @@ def latest-downloaded-date [channel_path: string] {
   if ($dates | is-empty) { null } else { $dates | sort | last | format-date }
 }
 
-export def download [
+export def main [
   --config (-f): string  # Path to config file
   --cookies-from-browser (-b): string  # Browser to extract cookies from
   --cookies (-c): string  # Path to cookies file
@@ -200,7 +200,7 @@ export def download [
 }
 
 # Download one or more URLs
-export def video [
+export def "main video" [
   ...urls: string  # URL(s) of the video(s) to download
   --path (-p): string  # Directory to save the video to (defaults to current directory)
   --cookies-from-browser (-b): string  # Browser to extract cookies from (e.g., brave, chrome, firefox)
@@ -239,7 +239,7 @@ export def video [
 }
 
 # List configured channels across all groups
-export def list [
+export def "main list" [
   --config (-f): string  # Path to config file (defaults to sync.nuon in script directory)
 ] {
   let config_path = if ($config | is-empty) {
@@ -269,8 +269,6 @@ export def list [
   | flatten
 }
 
-
-# Internal helper function to run yt-dlp with specified arguments
 def process-video [options: record] {
   let url = $options.url
   let output_path = $options.output_path

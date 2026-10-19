@@ -3,6 +3,7 @@
     "homebrew-ffmpeg/ffmpeg",
     "mongodb/brew",
     "probe-rs/probe-rs",
+    "teamookla/speedtest",
     "tw93/tap"
   ],
   "trustedformulae": [
