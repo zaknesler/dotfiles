@@ -3,7 +3,6 @@
   "$schema": "zed://schemas/settings",
   "agent": {
     "flexible": true,
-    "sidebar_side": "left",
     "dock": "left",
     "commit_message_model": {
       "effort": "low",
@@ -27,6 +26,7 @@
       "provider": "zed.dev",
       "speed": "fast",
     },
+    "threads_sidebar": { "position": "left" },
     "tool_permissions": {
       "tools": {
         "fetch": { "default": "allow" },
