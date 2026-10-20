@@ -3,7 +3,6 @@
   "$schema": "zed://schemas/settings",
   "agent": {
     "flexible": true,
-    "sidebar_side": "left",
     "dock": "left",
     "commit_message_model": {
       "effort": "low",
@@ -13,7 +12,7 @@
       "speed": "fast",
     },
     "default_model": {
-      "effort": "low",
+      "effort": "medium",
       "enable_thinking": true,
       "model": "claude-sonnet-5",
       "provider": "zed.dev",
@@ -55,7 +54,7 @@
         "fast": false,
         "effort": "medium",
         "mode": "auto",
-        "model": "sonnet",
+        "model": "opus",
       },
       "type": "registry",
     },
@@ -279,7 +278,6 @@
     "show_sign_in": false,
     "show_user_picture": false,
   },
-  "ui_font_family": ".ZedSans",
   "ui_font_size": 16,
   "vertical_scroll_margin": 6,
   "vim": { "toggle_relative_line_numbers": true },
