@@ -291,9 +291,9 @@ def process-video [options: record] {
   }
 
   let thumbnail_template = if $title_dir {
-    ["%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s]-thumb.%(ext)s"] | path join
+    ["%(upload_date>%Y-%m-%d)s_%(title).200B" "%(title).200B_[%(id)s].%(ext)s"] | path join
   } else {
-    "%(upload_date>%Y-%m-%d)s_%(title).200B_[%(id)s]-thumb.%(ext)s"
+    "%(upload_date>%Y-%m-%d)s_%(title).200B_[%(id)s].%(ext)s"
   }
 
   let path_args = if ($staging | is-not-empty) {
