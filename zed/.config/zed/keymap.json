@@ -14,6 +14,7 @@
       "alt-`": "workspace::NewCenterTerminal",
       "alt-shift-p": "text_finder::Toggle",
       "alt-cmd-d": "git::ExpandCommitEditor",
+      "alt-win-s": "editor::SortLinesCaseInsensitive",
     },
   },
   {
@@ -24,6 +25,10 @@
       "cmd-;": null,
       "alt-cmd-i": "editor::Hover",
       "cmd-k cmd-i": "editor::Hover",
+      "alt-win-s": "editor::SortLinesCaseInsensitive",
+      "alt-win-u": "editor::UniqueLinesCaseInsensitive",
+      "alt-cmd-s": "editor::SortLinesCaseInsensitive",
+      "alt-cmd-u": "editor::UniqueLinesCaseInsensitive",
     },
   },
   {
