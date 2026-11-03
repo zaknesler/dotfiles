@@ -8,6 +8,7 @@ export def main [
   --npm-audit-fix # Run NPM audit
   --npm-link      # Run NPM link for dependencies
   --latest        # Update to latest internal packages
+  --update        # Update all npm dependencies
   --sequential    # Run sequentially instead of in parallel
 ] {
   let repos = open ($DIR | path join "branches.nuon")
@@ -19,6 +20,7 @@ export def main [
     npm_audit_fix: $npm_audit_fix
     npm_link: $npm_link
     latest: $latest
+    update: $update
   }
 
   if $sequential {
@@ -47,7 +49,14 @@ def process-repo [repo: record, options: record] {
 
   if $options.npm_install {
     try { npm install out+err> /dev/null }
-    git restore package-lock.json
+
+    if not $options.update {
+      git restore package-lock.json
+    }
+  }
+
+  if $options.update {
+    try { npm update out+err> /dev/null }
   }
 
   if $options.npm_link and ($repo.packages | length) > 0 {
