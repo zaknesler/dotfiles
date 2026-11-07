@@ -1,6 +1,5 @@
 // https://zed.dev/docs/configuring-zed
 {
-  "$schema": "zed://schemas/settings",
   "agent": {
     "flexible": true,
     "dock": "left",
@@ -14,7 +13,7 @@
     "default_model": {
       "effort": "medium",
       "enable_thinking": true,
-      "model": "claude-sonnet-5",
+      "model": "claude-sonnet-5-5",
       "provider": "zed.dev",
       "speed": "standard",
     },
