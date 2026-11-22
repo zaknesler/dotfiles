@@ -103,16 +103,6 @@ source aliases.nu
 # Functions
 source functions.nu
 
-# Completions
-source nu_scripts/custom-completions/cargo/cargo-completions.nu
-source nu_scripts/custom-completions/curl/curl-completions.nu
-source nu_scripts/custom-completions/docker/docker-completions.nu
-source nu_scripts/custom-completions/git/git-completions.nu
-source nu_scripts/custom-completions/npm/npm-completions.nu
-source nu_scripts/custom-completions/pnpm/pnpm-completions.nu
-source nu_scripts/custom-completions/rustup/rustup-completions.nu
-source nu_scripts/custom-completions/ssh/ssh-completions.nu
-
 use branches.nu
 
 # Load local env file
