@@ -91,6 +91,10 @@
   },
   "format_on_save": "on",
   "git": {
+    "auto_fetch": {
+      "enabled": true,
+      "interval_secs": 120,
+    },
     "inline_blame": {
       "enabled": true,
       "location": "status_bar",
@@ -141,7 +145,6 @@
     "vtsls": {
       "settings": {
         "typescript": {
-          "preferGoToSourceDefinition": true,
           "updateImportsOnFileMove": { "enabled": "always" },
           "suggest": {
             "completeFunctionCalls": false,
@@ -153,7 +156,6 @@
           },
         },
         "javascript": {
-          "preferGoToSourceDefinition": true,
           "updateImportsOnFileMove": { "enabled": "always" },
           "suggest": {
             "completeFunctionCalls": false,
